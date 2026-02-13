@@ -18,7 +18,7 @@ class PageManagementController extends Controller
         return view('admin.pages.index', [
             'brandKey' => $brandKey,
             'brandList' => $themes->allBrands(),
-            'pages' => $pages->all($brandKey),
+            'pages' => $pages->allWithSchedulingApplied($brandKey),
         ]);
     }
 
@@ -60,6 +60,14 @@ class PageManagementController extends Controller
         $pages->update($brandKey, $id, $request->validated());
 
         return redirect()->route('admin.pages.index', ['brand' => $brandKey])->with('status', 'Page updated.');
+    }
+
+    public function clone(string $id, PageRepository $pages): RedirectResponse
+    {
+        $brandKey = (string) request()->query('brand', 'eros');
+        $newId = $pages->clone($brandKey, $id);
+
+        return redirect()->route('admin.pages.edit', ['id' => $newId, 'brand' => $brandKey])->with('status', 'Page cloned.');
     }
 
     public function destroy(string $id, PageRepository $pages): RedirectResponse

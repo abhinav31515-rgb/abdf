@@ -5,6 +5,8 @@
     "slug": "/",
     "status": "published",
     "template": "home",
+    "publish_at": "",
+    "unpublish_at": "",
     "seo": {
       "title": "Eros Hotel New Delhi | Luxury Stay in Central Delhi",
       "description": "Discover luxury rooms, dining, spa, and curated city experiences at Eros Hotel New Delhi.",
@@ -17,8 +19,10 @@
     "id": "rooms",
     "title": "Rooms & Suites",
     "slug": "/rooms",
-    "status": "draft",
+    "status": "review",
     "template": "standard-page",
+    "publish_at": "",
+    "unpublish_at": "",
     "seo": {
       "title": "Rooms & Suites | Eros Hotel New Delhi",
       "description": "Browse rooms and suites with skyline views and curated comfort.",

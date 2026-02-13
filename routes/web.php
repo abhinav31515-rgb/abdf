@@ -18,5 +18,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function (): void {
     Route::post('/pages', [PageManagementController::class, 'store'])->name('admin.pages.store');
     Route::get('/pages/{id}/edit', [PageManagementController::class, 'edit'])->name('admin.pages.edit');
     Route::put('/pages/{id}', [PageManagementController::class, 'update'])->name('admin.pages.update');
+    Route::post('/pages/{id}/clone', [PageManagementController::class, 'clone'])->name('admin.pages.clone');
     Route::delete('/pages/{id}', [PageManagementController::class, 'destroy'])->name('admin.pages.destroy');
 });

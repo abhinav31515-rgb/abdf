@@ -105,9 +105,9 @@ This document is the **single source of truth** for missing work, conflicts, and
 ### 3.2 Page Management Admin
 - [ ] Visual page manager with:
   - [x] Create/Edit/Delete
-  - [ ] Draft/Review/Publish states
-  - [ ] Schedule publish/unpublish
-  - [ ] Clone page
+  - [x] Draft/Review/Publish states
+  - [x] Schedule publish/unpublish (basic datetime fields + automatic status apply on listing)
+  - [x] Clone page
   - [ ] Locale variants per page
   - [x] URL slug manager (basic slug editing in admin; redirect manager pending)
 - [ ] Section builder with drag/drop ordering and enable/disable toggles.
@@ -138,7 +138,7 @@ This document is the **single source of truth** for missing work, conflicts, and
   - [x] Meta description
   - [x] OG title/description (image pending)
   - [ ] Twitter cards
-  - [ ] Focus keyword(s)
+  - [x] Focus keyword(s)
   - [ ] Internal linking suggestions
 - [ ] SERP preview tool in admin.
 - [ ] SEO score + actionable recommendations panel.

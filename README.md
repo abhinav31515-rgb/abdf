@@ -7,7 +7,7 @@ This scaffold is structured for **reusability across multiple hotel brands** wit
 - Public homepage (`/`) that renders from reusable section partials.
 - Admin dashboard (`/admin/dashboard`) with KPI cards and trends.
 - Admin theme settings page (`/admin/theme-settings`) with save flow to theme JSON.
-- Admin page manager (`/admin/pages`) for creating/editing/deleting pages with SEO fields.
+- Admin page manager (`/admin/pages`) for create/edit/delete, clone, draft-review-publish states, scheduling fields, and SEO controls.
 
 ### Reusable architecture
 - `app/Support/BrandThemeRepository.php`
@@ -32,11 +32,11 @@ This scaffold is structured for **reusability across multiple hotel brands** wit
 - `/admin/dashboard?brand=eros`.
 - `/admin/theme-settings?brand=eros`.
 - `PUT /admin/theme-settings/{brand}` for persisting theme settings.
-- `/admin/pages?brand=eros` (index/create/edit/delete page records).
+- `/admin/pages?brand=eros` (index/create/edit/delete/clone page records with lifecycle fields).
 
 ### Next production steps
 1. Replace JSON storage with DB tables and revisioning.
 2. Add drag/drop page ordering and redirect manager.
-3. Add page scheduling workflow and review approvals.
+3. Add review approval notifications and scheduling automation jobs.
 4. Add media manager with SEO image fields.
 5. Add OTA/PMS connector execution per `tasks.md`.

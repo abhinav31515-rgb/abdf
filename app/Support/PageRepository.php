@@ -11,6 +11,34 @@ class PageRepository
         return $this->read($brand);
     }
 
+    public function allWithSchedulingApplied(string $brand): array
+    {
+        $pages = $this->read($brand);
+        $now = time();
+        $changed = false;
+
+        foreach ($pages as $index => $page) {
+            $publishAt = isset($page['publish_at']) && $page['publish_at'] !== '' ? strtotime((string) $page['publish_at']) : null;
+            $unpublishAt = isset($page['unpublish_at']) && $page['unpublish_at'] !== '' ? strtotime((string) $page['unpublish_at']) : null;
+
+            if (($page['status'] ?? 'draft') !== 'published' && $publishAt && $publishAt <= $now) {
+                $pages[$index]['status'] = 'published';
+                $changed = true;
+            }
+
+            if (($page['status'] ?? 'draft') === 'published' && $unpublishAt && $unpublishAt <= $now) {
+                $pages[$index]['status'] = 'draft';
+                $changed = true;
+            }
+        }
+
+        if ($changed) {
+            $this->write($brand, $pages);
+        }
+
+        return $pages;
+    }
+
     public function find(string $brand, string $id): ?array
     {
         foreach ($this->read($brand) as $page) {
@@ -27,6 +55,27 @@ class PageRepository
         $pages = $this->read($brand);
         $pages[] = $payload;
         $this->write($brand, $pages);
+    }
+
+    public function clone(string $brand, string $id): string
+    {
+        $pages = $this->read($brand);
+
+        foreach ($pages as $page) {
+            if (($page['id'] ?? null) === $id) {
+                $clone = $page;
+                $clone['id'] = $this->nextCloneId($pages, (string) $id);
+                $clone['title'] = ($page['title'] ?? 'Untitled').' (Copy)';
+                $clone['slug'] = rtrim((string) ($page['slug'] ?? '/'), '/').'-copy';
+                $clone['status'] = 'draft';
+                $pages[] = $clone;
+                $this->write($brand, $pages);
+
+                return $clone['id'];
+            }
+        }
+
+        throw new RuntimeException('Page not found for clone: '.$id);
     }
 
     public function update(string $brand, string $id, array $payload): void
@@ -52,6 +101,20 @@ class PageRepository
         ));
 
         $this->write($brand, $pages);
+    }
+
+    private function nextCloneId(array $pages, string $id): string
+    {
+        $candidate = $id.'-copy';
+        $counter = 2;
+        $existingIds = array_map(static fn (array $page): string => (string) ($page['id'] ?? ''), $pages);
+
+        while (in_array($candidate, $existingIds, true)) {
+            $candidate = $id.'-copy-'.$counter;
+            $counter++;
+        }
+
+        return $candidate;
     }
 
     private function read(string $brand): array
