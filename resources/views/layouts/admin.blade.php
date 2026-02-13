@@ -11,22 +11,28 @@
 <body>
 <div class="admin-shell">
     <aside class="sidebar">
-        <h2><i class="bi bi-buildings"></i> Hotel Admin</h2>
-        <a href="{{ route('admin.dashboard') }}" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
-        <a href="#"><i class="bi bi-calendar-check"></i> Bookings</a>
-        <a href="#"><i class="bi bi-door-open"></i> Rooms</a>
-        <a href="#"><i class="bi bi-tags"></i> Offers</a>
-        <a href="#"><i class="bi bi-people"></i> Guests</a>
-        <a href="#"><i class="bi bi-graph-up-arrow"></i> Reports</a>
+        <h2><i class="bi bi-buildings"></i> Multi-Brand CMS</h2>
+        <a href="{{ route('admin.dashboard', ['brand' => $brandKey]) }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="{{ route('admin.theme-settings', ['brand' => $brandKey]) }}" class="{{ request()->routeIs('admin.theme-settings') ? 'active' : '' }}"><i class="bi bi-palette"></i> Theme Settings</a>
+        <a href="#"><i class="bi bi-layout-text-window-reverse"></i> Section Builder</a>
+        <a href="#"><i class="bi bi-list"></i> Menu Manager</a>
+        <a href="#"><i class="bi bi-images"></i> Media Library</a>
+        <a href="#"><i class="bi bi-sliders"></i> SEO & Analytics</a>
     </aside>
 
     <section class="admin-main">
         <header class="admin-header">
             <div>
                 <h1>@yield('header', 'Dashboard')</h1>
-                <small>Luxury hotel operations snapshot</small>
+                <small>Brand: <strong>{{ $brandList[$brandKey] ?? $brandKey }}</strong></small>
             </div>
-            <button class="btn btn-success"><i class="bi bi-download"></i> Export Report</button>
+            <form method="get" class="brand-switcher">
+                <select name="brand" onchange="this.form.submit()">
+                    @foreach($brandList as $key => $name)
+                        <option value="{{ $key }}" @selected($brandKey === $key)>{{ $name }}</option>
+                    @endforeach
+                </select>
+            </form>
         </header>
 
         @yield('content')

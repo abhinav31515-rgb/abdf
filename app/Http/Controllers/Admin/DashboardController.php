@@ -3,16 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Support\BrandThemeRepository;
 use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(BrandThemeRepository $themes): View
     {
+        $brandKey = request()->query('brand', 'eros');
+        $theme = $themes->get($brandKey);
+
         return view('admin.dashboard', [
+            'brandKey' => $brandKey,
+            'brandList' => $themes->allBrands(),
+            'theme' => $theme,
             'stats' => [
                 'today_bookings' => 31,
-                'active_offers' => 11,
+                'active_offers' => count($theme['offers']),
                 'occupancy' => '87%',
                 'average_rating' => 4.9,
             ],
