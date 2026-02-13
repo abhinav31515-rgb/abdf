@@ -8,7 +8,7 @@ This document is the **single source of truth** for missing work, conflicts, and
 
 ### Critical Gaps Found
 - [ ] No full content model for all pages (only partial homepage-focused setup exists).
-- [ ] No true page management (create/edit/publish/unpublish/schedule/reorder/duplicate templates).
+- [x] Basic page management scaffold implemented (create/edit/delete, status, slug, template, SEO fields).
 - [ ] No central identity/brand governance across multiple properties.
 - [ ] No full SEO suite with LLM/AI-assisted SEO workflows from admin.
 - [ ] No review management platform (Google reviews import, moderation, selective display, response workflows).
@@ -104,12 +104,12 @@ This document is the **single source of truth** for missing work, conflicts, and
 
 ### 3.2 Page Management Admin
 - [ ] Visual page manager with:
-  - [ ] Create/Edit/Delete
+  - [x] Create/Edit/Delete
   - [ ] Draft/Review/Publish states
   - [ ] Schedule publish/unpublish
   - [ ] Clone page
   - [ ] Locale variants per page
-  - [ ] URL slug manager + redirects
+  - [x] URL slug manager (basic slug editing in admin; redirect manager pending)
 - [ ] Section builder with drag/drop ordering and enable/disable toggles.
 - [ ] Template library (prebuilt premium hotel layouts).
 - [ ] Component-level permissions for non-technical editors.
@@ -134,9 +134,9 @@ This document is the **single source of truth** for missing work, conflicts, and
 
 ### 4.2 On-Page SEO Suite
 - [ ] Admin fields on every page:
-  - [ ] SEO title
-  - [ ] Meta description
-  - [ ] OG title/description/image
+  - [x] SEO title
+  - [x] Meta description
+  - [x] OG title/description (image pending)
   - [ ] Twitter cards
   - [ ] Focus keyword(s)
   - [ ] Internal linking suggestions
@@ -265,8 +265,8 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [ ] Explainers/tooltips and “recommended defaults” mode.
 
 ### 9.2 Usability-first Admin
-- [ ] Plain-language labels (avoid technical jargon).
-- [ ] Context help on each setting.
+- [x] Plain-language labels (avoid technical jargon).
+- [x] Context help on key page settings (expand to all admin modules pending).
 - [ ] Undo/redo for content and theme changes.
 - [ ] Safe mode preview before publishing.
 - [ ] In-app guided tours and quick actions.

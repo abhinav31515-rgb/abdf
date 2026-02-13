@@ -14,6 +14,7 @@
         <h2><i class="bi bi-buildings"></i> Multi-Brand CMS</h2>
         <a href="{{ route('admin.dashboard', ['brand' => $brandKey]) }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
         <a href="{{ route('admin.theme-settings', ['brand' => $brandKey]) }}" class="{{ request()->routeIs('admin.theme-settings') ? 'active' : '' }}"><i class="bi bi-palette"></i> Theme Settings</a>
+        <a href="{{ route('admin.pages.index', ['brand' => $brandKey]) }}" class="{{ request()->routeIs('admin.pages.*') ? 'active' : '' }}"><i class="bi bi-file-earmark-text"></i> Page Manager</a>
         <a href="#"><i class="bi bi-layout-text-window-reverse"></i> Section Builder</a>
         <a href="#"><i class="bi bi-list"></i> Menu Manager</a>
         <a href="#"><i class="bi bi-images"></i> Media Library</a>
