@@ -10,4 +10,5 @@ Route::get('/', HomeController::class)->name('home');
 Route::prefix('admin')->middleware(['auth'])->group(function (): void {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
     Route::get('/theme-settings', ThemeSettingsController::class)->name('admin.theme-settings');
+    Route::put('/theme-settings/{brand}', [ThemeSettingsController::class, 'update'])->name('admin.theme-settings.update');
 });

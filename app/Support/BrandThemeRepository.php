@@ -2,69 +2,53 @@
 
 namespace App\Support;
 
+use RuntimeException;
+
 class BrandThemeRepository
 {
     public function get(string $brand = 'eros'): array
     {
-        $themes = [
-            'eros' => [
-                'brand' => [
-                    'code' => 'EROS',
-                    'name' => 'New Delhi',
-                    'property_name' => 'Eros Hotel New Delhi',
-                    'address' => '19, Ashoka Road, Connaught Place, New Delhi 110001',
-                    'phone' => '+91 11 4119 1919',
-                ],
-                'appearance' => [
-                    'primary' => '#b6945f',
-                    'secondary' => '#0f1217',
-                    'surface' => '#f5f2eb',
-                    'header_style' => 'glass-dark',
-                    'hero_overlay' => 'dark-luxury',
-                ],
-                'menus' => [
-                    ['label' => 'Stay', 'anchor' => '#stay'],
-                    ['label' => 'Dining', 'anchor' => '#dining'],
-                    ['label' => 'Offers', 'anchor' => '#offers'],
-                    ['label' => 'Wellness', 'anchor' => '#wellness'],
-                    ['label' => 'Gallery', 'anchor' => '#gallery'],
-                    ['label' => 'Contact', 'anchor' => '#contact'],
-                ],
-                'hero' => [
-                    'eyebrow' => 'Shangri-La Inspired Experience',
-                    'title' => 'Urban Luxury in the Heart of New Delhi',
-                    'subtitle' => 'An elevated recreation of the Shangri-La visual language with conversion-focused UX and premium storytelling.',
-                    'primary_cta' => ['label' => 'Explore Offers', 'target' => '#offers'],
-                    'secondary_cta' => ['label' => 'View Rooms', 'target' => '#stay'],
-                ],
-                'rooms' => [
-                    ['name' => 'Deluxe Room', 'size' => '42 sqm', 'view' => 'City view', 'price' => 'From ₹18,000'],
-                    ['name' => 'Horizon Club Room', 'size' => '52 sqm', 'view' => 'Skyline view', 'price' => 'From ₹24,000'],
-                    ['name' => 'Executive Suite', 'size' => '76 sqm', 'view' => 'Panoramic view', 'price' => 'From ₹38,000'],
-                ],
-                'offers' => [
-                    ['title' => 'Signature Staycation', 'description' => 'Luxury suites, breakfast for two, and evening high tea in a serene setting.', 'tag' => 'Best Seller'],
-                    ['title' => 'Wellness Escape', 'description' => 'Daily yoga, spa therapies, and curated nutrition menus for complete balance.', 'tag' => 'Spa'],
-                    ['title' => 'Delhi Discovery', 'description' => 'Private guided city tour paired with fine dining and premium airport transfers.', 'tag' => 'City Tour'],
-                ],
-                'dining' => [
-                    ['name' => 'Sorrento', 'type' => 'Italian Fine Dining'],
-                    ['name' => 'Tamra', 'type' => 'Global Interactive Kitchen'],
-                    ['name' => 'Grappa', 'type' => 'Cocktail & Lounge Bar'],
-                ],
-                'features' => [
-                    ['title' => 'Airport Transfers', 'description' => 'Luxury arrival and departure support.'],
-                    ['title' => 'Club Lounge Access', 'description' => 'Private check-in and curated evening service.'],
-                    ['title' => 'Personalized Concierge', 'description' => 'Experiences tailored to guest preferences.'],
-                ],
-            ],
-        ];
+        $path = $this->themePath($brand);
 
-        return $themes[$brand] ?? $themes['eros'];
+        if (! is_file($path)) {
+            $path = $this->themePath('eros');
+        }
+
+        $decoded = json_decode((string) file_get_contents($path), true);
+
+        if (! is_array($decoded)) {
+            throw new RuntimeException('Theme JSON is invalid for brand: '.$brand);
+        }
+
+        return $decoded;
+    }
+
+    public function update(string $brand, array $payload): void
+    {
+        $path = $this->themePath($brand);
+        file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
     public function allBrands(): array
     {
-        return ['eros' => 'Eros Hotel New Delhi'];
+        $brands = [];
+
+        foreach (glob($this->themeDirectory().'/*.json') ?: [] as $file) {
+            $key = pathinfo($file, PATHINFO_FILENAME);
+            $data = json_decode((string) file_get_contents($file), true);
+            $brands[$key] = $data['brand']['property_name'] ?? ucfirst($key);
+        }
+
+        return $brands;
+    }
+
+    private function themePath(string $brand): string
+    {
+        return $this->themeDirectory().'/'.$brand.'.json';
+    }
+
+    private function themeDirectory(): string
+    {
+        return base_path('storage/themes');
     }
 }
