@@ -1,248 +1,369 @@
-# Platform Completion Tasks (Missing + To-Be-Done)
+# Platform Master Gap Analysis + Execution Tasks
 
-This document lists all remaining work to make the platform production-ready, fully responsive, brand-customizable, style-aligned with the Shangri-La reference experience, and deeply integrated with OTA/PMS systems under complete admin control.
-
----
-
-## 1) Product Foundation & Architecture
-
-- [ ] Replace JSON-only theme persistence with database-backed configuration (versioned schema).
-- [ ] Add tenant/brand architecture for true multi-brand isolation (settings, media, pages, integrations).
-- [ ] Introduce environment-based secrets management for OTA/PMS credentials.
-- [ ] Add feature flags for gradual rollout of integration modules and page modules.
-- [ ] Define a robust domain model for:
-  - [ ] Properties
-  - [ ] Room types / rate plans
-  - [ ] Offers / packages
-  - [ ] Bookings / guests
-  - [ ] Inventory / availability
-  - [ ] Sync jobs / webhooks / logs
+This document is the **single source of truth** for missing work, conflicts, and execution order required to build a premium, multi-brand hotel platform inspired by Shangri-La UX, while remaining easy to operate by non-technical teams.
 
 ---
 
-## 2) Frontend Parity with Reference Styling (Shangri-La-like)
+## 0) What is currently missing (Gap Summary)
 
-- [ ] Rebuild header to support:
-  - [ ] Desktop mega-navigation
-  - [ ] Sticky transitions on scroll
-  - [ ] Utility links (sign in, join, booking, language/currency)
-  - [ ] Property switcher UI
-- [ ] Improve typography system:
-  - [ ] Brand-approved font pairing
-  - [ ] Scale tokens for heading/body/captions
-  - [ ] Better line-height and spacing rhythm
-- [ ] Implement premium interaction patterns:
-  - [ ] Hero transitions / subtle parallax
-  - [ ] Card hover states and image reveals
-  - [ ] Section entrance animations (performance-safe)
-- [ ] Add complete page set (not only homepage):
-  - [ ] Rooms listing page
-  - [ ] Room details page
-  - [ ] Dining listing and detail pages
-  - [ ] Offer details page
-  - [ ] Wellness/spa page
-  - [ ] Contact/location page
-  - [ ] Booking flow pages
-- [ ] Create design token library to guarantee consistent visual language across brands.
+### Critical Gaps Found
+- [ ] No full content model for all pages (only partial homepage-focused setup exists).
+- [ ] No true page management (create/edit/publish/unpublish/schedule/reorder/duplicate templates).
+- [ ] No central identity/brand governance across multiple properties.
+- [ ] No full SEO suite with LLM/AI-assisted SEO workflows from admin.
+- [ ] No review management platform (Google reviews import, moderation, selective display, response workflows).
+- [ ] No production-level media/gallery manager.
+- [ ] No non-technical setup wizard for buyers without in-house IT teams.
+- [ ] No advanced performance optimization framework and no measurable SLO dashboard.
+- [ ] No OTA/PMS connector contracts implemented end-to-end with operator UX.
+- [ ] No role-specific admin experience tuned for non-technical operators.
+
+### Conflicts / Risks Identified
+- [ ] JSON-backed theme + enterprise multi-brand scaling conflict (risk: manual drift, no revision governance).
+- [ ] Custom flexibility vs consistency conflict (risk: brand breakage without guardrails).
+- [ ] Rich visuals vs performance conflict (risk: poor Core Web Vitals).
+- [ ] AI-generated SEO at scale vs factual correctness conflict (risk: inaccurate metadata/content).
+- [ ] Auto-imported reviews vs legal/compliance and trust conflict (risk: manipulated/unauthorized display).
+- [ ] Full admin freedom vs non-tech usability conflict (risk: complexity overload).
 
 ---
 
-## 3) Responsiveness & Device Quality
+## 1) Product Governance & Central Identity Control
 
-- [ ] Define breakpoint strategy (xs/sm/md/lg/xl/2xl) and apply across all components.
-- [ ] Ensure every page/section is fully responsive:
-  - [ ] Header and navigation
-  - [ ] Hero and CTA blocks
-  - [ ] Cards/grids/tables
-  - [ ] Forms and booking widgets
-  - [ ] Admin dashboards
-- [ ] Add responsive image pipeline:
-  - [ ] WebP/AVIF support
-  - [ ] srcset sizes
-  - [ ] lazy-loading with placeholders
-- [ ] Test and fix for major devices:
-  - [ ] iOS Safari
-  - [ ] Android Chrome
-  - [ ] Tablet landscape/portrait
-  - [ ] Desktop resolutions (1366, 1440, 1920)
-- [ ] Accessibility responsiveness:
-  - [ ] zoom at 200%
-  - [ ] keyboard-only navigation
-  - [ ] focus visibility and skip links
+### 1.1 Central Product Identity Layer
+- [ ] Build a global **Identity Control Center** in admin:
+  - [ ] Master brand profile (logo, wordmark, tone, typography family, color rails).
+  - [ ] Property hierarchy (group > brand > property > outlet).
+  - [ ] Locale identity controls (language, currency, region-specific legal pages).
+  - [ ] Identity lock rules (what local property admins can/cannot override).
+- [ ] Add brand governance policy engine:
+  - [ ] Mandatory brand token ranges.
+  - [ ] Safe component variants only.
+  - [ ] Fallback theme if invalid customization applied.
+
+### 1.2 Multi-Brand Maintainability
+- [ ] Replace JSON storage with DB + versioned config objects.
+- [ ] Add migrations and seeders for initial brand/property bootstrap.
+- [ ] Add revision history + compare + rollback for every setting change.
+- [ ] Add audit trail with actor, timestamp, change diff, and reason notes.
 
 ---
 
-## 4) Admin CMS – Complete Customization Control
+## 2) Mobile-First UX Parity with Shangri-La-style Experience
 
-- [ ] Build complete admin module for brand customization:
-  - [ ] Live preview before publish
-  - [ ] Draft/publish workflow
-  - [ ] Scheduled publishing
-  - [ ] Rollback/version history
-- [ ] Create dynamic menu manager:
-  - [ ] Nested menus
-  - [ ] drag-and-drop ordering
-  - [ ] visibility rules per device/brand
-- [ ] Create section/page builder:
-  - [ ] Reorder sections
-  - [ ] Enable/disable sections
-  - [ ] Per-section variants/templates
-  - [ ] Content blocks (text/media/CTA/listings)
-- [ ] Add media library:
-  - [ ] Tagging and folders
-  - [ ] Crop presets for hero/card/gallery
-  - [ ] CDN-ready asset URLs
-- [ ] Add form validation UX in admin (inline errors, helper text, required markers).
-- [ ] Add role-based permissions:
-  - [ ] Super admin
-  - [ ] Brand admin
-  - [ ] Content editor
-  - [ ] Revenue manager
-  - [ ] Integration manager
+### 2.1 Header/Nav Parity
+- [ ] Mobile-first sticky header with progressive states:
+  - [ ] Transparent on hero
+  - [ ] Compact sticky after scroll
+  - [ ] Utility drawer (phone, book-now, language/currency)
+  - [ ] Multi-level menu + quick-book CTA always visible
+- [ ] Desktop mega-nav with destination cards, offers, and featured dining links.
+- [ ] Property switcher + date/guest quick search in header module.
 
----
+### 2.2 Design System
+- [ ] Build tokenized design system (colors, typography, radius, spacing, shadows, motion).
+- [ ] Add luxury/premium component kit:
+  - [ ] Hero variants
+  - [ ] Offer cards
+  - [ ] Room cards
+  - [ ] Magazine-style editorial blocks
+  - [ ] Testimonial/reviews sections
+  - [ ] Gallery masonry/lightbox
+- [ ] Define strict accessibility baseline (WCAG 2.2 AA).
 
-## 5) Booking Engine & Conversion UX
-
-- [ ] Implement complete booking funnel:
-  - [ ] Availability search
-  - [ ] Room/rate selection
-  - [ ] Add-ons and upsells
-  - [ ] Guest details
-  - [ ] Payment + confirmation
-- [ ] Add pricing logic support:
-  - [ ] Base rates
-  - [ ] occupancy rules
-  - [ ] tax and fee breakdown
-  - [ ] promo codes and member rates
-- [ ] Add abandoned booking recovery flows (email/SMS).
-- [ ] Add analytics events for funnel performance.
+### 2.3 Responsive Quality Matrix
+- [ ] Device matrix QA for iOS/Android/tablet/desktop.
+- [ ] Orientation-specific breakpoints and component fallback behavior.
+- [ ] Touch targets and thumb-zone optimization.
 
 ---
 
-## 6) OTA Integration (Channel Management)
+## 3) Complete Page Model + Page Management
 
-- [ ] Support OTA integrations via adapters (e.g., Booking.com, Expedia, Agoda, MakeMyTrip, Goibibo where relevant).
-- [ ] Implement bidirectional sync:
-  - [ ] Room inventory
-  - [ ] Rates
-  - [ ] Restrictions (CTA/CTD/min stay)
-  - [ ] Reservations (new/modify/cancel)
-- [ ] Build rate-mapping and room-mapping UI in admin.
-- [ ] Create integration health dashboard:
-  - [ ] Last sync timestamp
-  - [ ] Failures and retries
-  - [ ] Per-channel status
-- [ ] Add webhook ingestion and queue-based retry strategy.
-- [ ] Add conflict resolution policy and manual override tools.
-- [ ] Add audit logs for every OTA push/pull action.
+### 3.1 Pages to Build (Must-have)
+- [ ] Home
+- [ ] Rooms listing
+- [ ] Room details
+- [ ] Dining listing
+- [ ] Restaurant details
+- [ ] Offers listing
+- [ ] Offer details
+- [ ] Wellness/Spa
+- [ ] Meetings & Events
+- [ ] Weddings
+- [ ] Gallery
+- [ ] Experiences/Local attractions
+- [ ] About / Brand Story
+- [ ] Contact / Maps / Directions
+- [ ] FAQ
+- [ ] Sustainability / CSR
+- [ ] Press / Media
+- [ ] Careers
+- [ ] Terms / Privacy / Cookie policy
+- [ ] Booking funnel pages (search, availability, checkout, confirmation)
 
----
-
-## 7) PMS Integration (Property Management System)
-
-- [ ] Build PMS adapter layer for common systems (implementation via connector contracts).
-- [ ] Sync core entities:
-  - [ ] Reservations
-  - [ ] Guest profiles
-  - [ ] Room status (clean/dirty/out-of-order)
-  - [ ] Folio/payment status (where API permits)
-- [ ] Add real-time + scheduled sync modes.
-- [ ] Add admin controls for PMS:
-  - [ ] Credential setup
-  - [ ] Field mapping
-  - [ ] sync frequency
-  - [ ] sandbox/live toggle
-- [ ] Ensure idempotency and duplicate booking protection.
-- [ ] Add reconciliation report between platform and PMS.
-
----
-
-## 8) Unified Sync Orchestration (OTA + PMS + Booking Engine)
-
-- [ ] Implement central sync orchestrator service.
-- [ ] Queue architecture for reliability:
-  - [ ] Prioritized queues
-  - [ ] dead-letter queue
-  - [ ] exponential backoff retries
-- [ ] Distributed locking per property/room to avoid race conditions.
-- [ ] Event sourcing or structured sync event logs.
-- [ ] Admin sync command center:
-  - [ ] Force sync now
-  - [ ] Sync scope selection
-  - [ ] Pause/resume connectors
-  - [ ] Replay failed jobs
+### 3.2 Page Management Admin
+- [ ] Visual page manager with:
+  - [ ] Create/Edit/Delete
+  - [ ] Draft/Review/Publish states
+  - [ ] Schedule publish/unpublish
+  - [ ] Clone page
+  - [ ] Locale variants per page
+  - [ ] URL slug manager + redirects
+- [ ] Section builder with drag/drop ordering and enable/disable toggles.
+- [ ] Template library (prebuilt premium hotel layouts).
+- [ ] Component-level permissions for non-technical editors.
 
 ---
 
-## 9) Security, Compliance & Reliability
+## 4) Advanced SEO + LLM-Supported SEO (Admin Controlled)
 
-- [ ] Secure all integration secrets with encryption-at-rest.
-- [ ] Add request signing/validation for webhook endpoints.
-- [ ] Implement rate limiting and bot protection on booking endpoints.
-- [ ] Add complete audit trails for admin actions and integration actions.
-- [ ] Add backup/restore strategy for brand config and booking data.
-- [ ] Define RPO/RTO and disaster recovery runbooks.
+### 4.1 Technical SEO Foundation
+- [ ] Auto-generated XML sitemaps (index + pages + images + locales).
+- [ ] Robots rules manager from admin.
+- [ ] Canonical URL management.
+- [ ] hreflang management for multilingual pages.
+- [ ] Structured data suite:
+  - [ ] Hotel
+  - [ ] LodgingBusiness
+  - [ ] Offer
+  - [ ] Breadcrumb
+  - [ ] FAQ
+  - [ ] Review/AggregateRating (policy compliant)
+- [ ] Redirect manager (301/302) + broken link monitor.
 
----
+### 4.2 On-Page SEO Suite
+- [ ] Admin fields on every page:
+  - [ ] SEO title
+  - [ ] Meta description
+  - [ ] OG title/description/image
+  - [ ] Twitter cards
+  - [ ] Focus keyword(s)
+  - [ ] Internal linking suggestions
+- [ ] SERP preview tool in admin.
+- [ ] SEO score + actionable recommendations panel.
 
-## 10) Performance & SEO
+### 4.3 LLM SEO Operations (Best-in-class)
+- [ ] AI assistant in admin for:
+  - [ ] Meta generation by page intent + audience
+  - [ ] Schema suggestion generation
+  - [ ] FAQ extraction from page context
+  - [ ] Internal linking map suggestions
+  - [ ] Content gap discovery vs top competitors (human-approved)
+- [ ] AI governance:
+  - [ ] Approval workflow before publish
+  - [ ] Fact-check checklist
+  - [ ] Brand tone constraints
+  - [ ] Hallucination risk prompts
+- [ ] SEO experiments framework:
+  - [ ] A/B test metadata variants
+  - [ ] CTR tracking
+  - [ ] Auto-winner recommendation
 
-- [ ] Optimize Core Web Vitals:
-  - [ ] LCP target <= 2.5s
-  - [ ] CLS target <= 0.1
-  - [ ] INP target <= 200ms
-- [ ] Add structured data (Hotel, Offer, Breadcrumb, FAQ where applicable).
-- [ ] Generate dynamic metadata and social sharing tags per page/brand.
-- [ ] Implement server-side caching strategy and cache invalidation on publish.
-
----
-
-## 11) QA & Testing Strategy
-
-- [ ] Add automated unit tests for repository, validation, and integration adapters.
-- [ ] Add feature tests for:
-  - [ ] Admin customization save/publish
-  - [ ] Page rendering by brand
-  - [ ] Booking flow
-  - [ ] Sync workflows
-- [ ] Add browser E2E tests for responsive states and admin operations.
-- [ ] Add contract tests for OTA/PMS connectors.
-- [ ] Add load tests for availability and booking endpoints.
-
----
-
-## 12) Observability & Operations
-
-- [ ] Centralized logs with correlation IDs across sync pipelines.
-- [ ] Metrics dashboard:
-  - [ ] bookings
-  - [ ] conversion
-  - [ ] sync success rate
-  - [ ] connector latency
-- [ ] Alerting policies for failed syncs and booking errors.
-- [ ] Admin notifications center for integration incidents.
-
----
-
-## 13) Immediate Sprint Priorities (Recommended Order)
-
-1. [ ] Database-backed theme/settings + migrations + admin CRUD.
-2. [ ] Complete responsive UI audit + header parity improvements.
-3. [ ] Page builder + menu manager + media library MVP.
-4. [ ] Booking engine MVP with rates/inventory model.
-5. [ ] OTA adapter framework + one OTA connector end-to-end.
-6. [ ] PMS adapter framework + one PMS connector end-to-end.
-7. [ ] Unified sync orchestrator + admin sync command center.
-8. [ ] QA automation + observability baseline.
+### 4.4 Local SEO + Google Ecosystem
+- [ ] Google Business Profile alignment module:
+  - [ ] NAP consistency checks
+  - [ ] Category/tag consistency
+  - [ ] UTM campaign link management
+- [ ] Local landing pages by neighborhood/landmark/search intent.
 
 ---
 
-## Definition of Done (Platform-Level)
+## 5) Reviews Management (Google + Multi-source)
 
-- [ ] Fully responsive across mobile/tablet/desktop with verified QA matrix.
-- [ ] Brand styling and UX aligned with premium hotel standard and reference experience.
-- [ ] 100% admin-controlled customization for menus, header, sections, content, tokens, and media.
-- [ ] OTA and PMS integrations operational with monitored, auditable, controllable sync.
-- [ ] Stable booking flow with integration-safe inventory/rate consistency.
-- [ ] Production-grade security, performance, and observability in place.
+### 5.1 Review Ingestion
+- [ ] Google reviews import connector.
+- [ ] Optional connectors for TripAdvisor/Booking.com/internal feedback.
+- [ ] Scheduled ingestion + webhook ingestion where available.
+
+### 5.2 Review Control in Admin
+- [ ] Moderation queue:
+  - [ ] Approve for display
+  - [ ] Pin featured reviews
+  - [ ] Hide/show per page
+  - [ ] Tag by sentiment/topic (service, room, dining)
+- [ ] Display rules:
+  - [ ] Minimum rating thresholds
+  - [ ] Recent-first / curated ordering
+  - [ ] Locale-aware display
+- [ ] Fraud/abuse detection flags.
+
+### 5.3 Review Response & Reporting
+- [ ] Internal response workflow and assignment.
+- [ ] SLA dashboard for unanswered reviews.
+- [ ] Reputation analytics (trend, sentiment, topic clusters).
+
+---
+
+## 6) Media + Gallery Management
+
+### 6.1 Media Library
+- [ ] Central DAM-like library:
+  - [ ] Foldering + tags + search
+  - [ ] Usage references (where image is used)
+  - [ ] Rights/license metadata + expiry alerts
+- [ ] Smart presets for hero/card/gallery/crop focal points.
+- [ ] Automatic optimization pipeline:
+  - [ ] AVIF/WebP generation
+  - [ ] responsive renditions
+  - [ ] lazy loading + placeholder blur
+
+### 6.2 Gallery Experiences
+- [ ] Curated gallery modules:
+  - [ ] Property gallery
+  - [ ] Room gallery
+  - [ ] Dining gallery
+  - [ ] Event/wedding gallery
+- [ ] Lightbox with keyboard and swipe support.
+- [ ] Video gallery with optimized streaming strategy.
+
+---
+
+## 7) Booking Engine + Revenue Controls
+
+- [ ] Complete booking flow with conversion UX and trust signals.
+- [ ] Rate plans, occupancy controls, taxes/fees, coupon engine.
+- [ ] Add-on merchandising (spa, transfers, dining, experiences).
+- [ ] Multi-currency and localized payment methods.
+- [ ] Cart recovery automation (email/WhatsApp/SMS).
+
+---
+
+## 8) OTA + PMS Integration & Sync Control
+
+### 8.1 OTA Support
+- [ ] Adapter architecture + at least one production connector first.
+- [ ] Mapping UI (room/rate/restriction/channel).
+- [ ] Bidirectional reservation/inventory/rate sync.
+- [ ] Conflict resolution rules + manual override controls.
+
+### 8.2 PMS Support
+- [ ] PMS connector contracts and sandbox/live environments.
+- [ ] Reservation/guest/room-status sync.
+- [ ] Idempotency + reconciliation report center.
+
+### 8.3 Unified Sync Command Center (Admin)
+- [ ] Live sync status board.
+- [ ] Queue health, retry queues, dead-letter visibility.
+- [ ] Force sync / pause connector / replay failed jobs.
+- [ ] Incident timeline + root cause notes.
+
+---
+
+## 9) Admin Experience for Non-Technical Buyers
+
+### 9.1 No-IT Setup Wizard
+- [ ] Guided onboarding wizard:
+  - [ ] Brand details
+  - [ ] Property details
+  - [ ] Theme preset
+  - [ ] Menus/pages
+  - [ ] Booking settings
+  - [ ] OTA/PMS credentials
+  - [ ] SEO baseline setup
+- [ ] One-click starter templates by hotel type (business, resort, luxury city).
+- [ ] Explainers/tooltips and “recommended defaults” mode.
+
+### 9.2 Usability-first Admin
+- [ ] Plain-language labels (avoid technical jargon).
+- [ ] Context help on each setting.
+- [ ] Undo/redo for content and theme changes.
+- [ ] Safe mode preview before publishing.
+- [ ] In-app guided tours and quick actions.
+
+### 9.3 Supportability
+- [ ] Export/import backup bundles for settings/content/media mapping.
+- [ ] Health checks and diagnostics page.
+- [ ] One-click support package generation (logs + config snapshot).
+
+---
+
+## 10) Performance, Optimization, and Google-friendliness
+
+- [ ] Core Web Vitals budget enforcement in CI.
+- [ ] Critical CSS and script splitting strategy.
+- [ ] Image CDN + edge caching.
+- [ ] Smart prefetch and preconnect strategy.
+- [ ] Server-side caching + cache invalidation on publish.
+- [ ] Compression and brotli/gzip setup.
+- [ ] JS payload control and component-level hydration strategy.
+
+---
+
+## 11) Security, Compliance, and Data Trust
+
+- [ ] RBAC + granular permissions.
+- [ ] SSO/OAuth support for enterprise buyers.
+- [ ] Data encryption at rest/in transit for integrations.
+- [ ] Review/legal policy compliance for displayed ratings.
+- [ ] Consent management (cookie + analytics compliance by region).
+
+---
+
+## 12) Observability, QA, and Maintainability
+
+### 12.1 QA
+- [ ] Unit tests: settings, repository, validators, connectors.
+- [ ] Feature tests: page management, SEO workflows, review moderation, integrations.
+- [ ] E2E tests: booking funnel, admin workflows, responsive states.
+
+### 12.2 Observability
+- [ ] Metrics dashboards (SEO, conversion, sync, reviews, performance).
+- [ ] Structured logs + tracing for integration failures.
+- [ ] Alerting and escalation policies.
+
+### 12.3 Maintainability
+- [ ] Modular architecture docs and coding standards.
+- [ ] Upgrade policy for connectors and dependencies.
+- [ ] Internal admin handbook and SOPs.
+
+---
+
+## 13) Implementation Conflicts + Resolutions
+
+### Conflict A: Maximum Customization vs Brand Consistency
+- [ ] Resolution: policy-based theme constraints + approved component variants.
+
+### Conflict B: Rich Visual Design vs Speed
+- [ ] Resolution: media optimization pipeline + strict performance budgets.
+
+### Conflict C: AI SEO Automation vs Accuracy
+- [ ] Resolution: mandatory human approval + fact-check workflow + change history.
+
+### Conflict D: Non-technical UX vs Feature Depth
+- [ ] Resolution: simple mode (guided) + advanced mode (expert).
+
+### Conflict E: Multi-source reviews vs Compliance
+- [ ] Resolution: source tagging, moderation, policy-compliant display logic.
+
+---
+
+## 14) Phased Delivery Plan (Practical)
+
+### Phase 1 (Foundation)
+- [ ] DB-backed identity/settings + page management core + admin usability baseline.
+
+### Phase 2 (Experience)
+- [ ] Full page set + mobile-first parity + gallery/media manager + theme controls.
+
+### Phase 3 (Growth)
+- [ ] Advanced SEO suite + LLM SEO assistant + reviews management.
+
+### Phase 4 (Operations)
+- [ ] OTA + PMS connectors + sync command center + reconciliation reports.
+
+### Phase 5 (Scale)
+- [ ] Enterprise governance, localization scale, advanced analytics, automation.
+
+---
+
+## 15) Final Definition of Done
+
+- [ ] Full platform is responsive and mobile-first with verified QA matrix.
+- [ ] Visual quality aligns with premium Shangri-La-like hospitality standards.
+- [ ] All pages and sections are admin-manageable without developer intervention.
+- [ ] SEO (technical + on-page + LLM-assisted) is fully operational from admin.
+- [ ] Reviews are auto-imported, moderated, and selectively publishable.
+- [ ] Gallery/media system is complete, optimized, rights-aware, and maintainable.
+- [ ] OTA/PMS sync is reliable, auditable, and fully controllable from admin.
+- [ ] Setup and daily operations are manageable for non-technical buyers.
