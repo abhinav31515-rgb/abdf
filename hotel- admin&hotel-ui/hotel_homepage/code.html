@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grand Horizon | Luxury Hotels &amp; Resorts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "accent-gold": "#c5a059",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Georgia", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(16, 22, 34, 0.4) 0%, rgba(16, 22, 34, 0.9) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Top Utility Bar -->
+<div class="hidden lg:flex w-full bg-background-dark border-b border-white/10 px-6 py-2 justify-between items-center text-[11px] uppercase tracking-widest font-semibold text-slate-400">
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">call</span> Contact Us
+            </a>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Find a Hotel
+            </a>
+</div>
+<div class="flex gap-6 items-center">
+<div class="flex gap-4 border-r border-white/10 pr-6">
+<a class="hover:text-primary transition-colors" href="#">English</a>
+<a class="hover:text-primary transition-colors" href="#">USD</a>
+</div>
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">person</span> Sign In / Join
+            </a>
+</div>
+</div>
+<!-- Main Navigation -->
+<header class="sticky top-0 z-50 w-full bg-background-dark/80 backdrop-blur-md border-b border-white/5 px-6 lg:px-12 py-4 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined">high_quality</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter uppercase">Grand Horizon</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8 text-[13px] font-medium uppercase tracking-wider text-slate-300">
+<div class="relative group">
+<button class="flex items-center gap-1 hover:text-white transition-colors">
+                        Our Properties <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<a class="hover:text-white transition-colors" href="#">Rooms &amp; Suites</a>
+<a class="hover:text-white transition-colors" href="#">Dining</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Offers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-white">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<button class="hidden lg:flex bg-primary hover:bg-primary/90 text-white px-8 py-2.5 rounded text-[13px] font-bold uppercase tracking-widest transition-all">
+                Book Now
+            </button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[85vh] w-full flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Luxurious resort infinity pool overlooking the ocean at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrrh2fdVC4hHeyvY78eT7QwlqmYXR1bPdQ_UePOdpNntlTUgsJ_mbVXpe7oBvSW-P_prlQtu0syPuQhBa8vmbmXZ6SUBoa77Tr9NP5EgyI1NAwPpUC5_0BarfgUHFD8pOK4gh3xoI3UVDA9dQq2r9k1xi-7HiOuylNJ4ITAQ7ihuunMYgyXH9tvnSOyTO599CHSc_N5kihh0kY73oGJOyqLjrjAnNT-T8E01gg2nMzX9_xLskSq19d5G_kUgihcdao-NWoqAI2PjA"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto space-y-6">
+<h4 class="text-accent-gold uppercase tracking-[0.4em] text-sm font-bold">The Art of Living</h4>
+<h2 class="text-5xl lg:text-7xl font-serif leading-tight text-white">Experience Unrivaled Luxury</h2>
+<p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Discover a world of refined elegance and personalized service in our exquisite global destinations. Your journey to perfection starts here.
+            </p>
+</div>
+<!-- Booking Widget Overlay -->
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-4 hidden lg:block z-20">
+<div class="bg-surface-dark border border-white/10 shadow-2xl rounded-xl p-8 grid grid-cols-4 gap-6 items-end">
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Check-In</label>
+<div class="flex items-center gap-3 bg-background-dark/50 border border-white/10 p-3 rounded text-sm text-white">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span>Oct 12, 2023</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Check-Out</label>
+<div class="flex items-center gap-3 bg-background-dark/50 border border-white/10 p-3 rounded text-sm text-white">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span>Oct 18, 2023</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Guests &amp; Rooms</label>
+<div class="flex items-center gap-3 bg-background-dark/50 border border-white/10 p-3 rounded text-sm text-white">
+<span class="material-symbols-outlined text-primary">group</span>
+<span>2 Adults, 1 Room</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 h-[46px] text-white font-bold uppercase tracking-widest text-sm rounded shadow-lg shadow-primary/20 transition-all">
+                    Check Availability
+                </button>
+</div>
+</div>
+</section>
+<!-- Content Sections -->
+<main class="mt-20 lg:mt-40 px-6 lg:px-12 max-w-7xl mx-auto space-y-32 pb-32">
+<!-- Section 1: Featured Rooms -->
+<section>
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div class="space-y-4">
+<h3 class="text-accent-gold uppercase tracking-widest text-xs font-bold">Accommodations</h3>
+<h2 class="text-3xl lg:text-4xl font-serif">Sanctuaries of Serenity</h2>
+</div>
+<button class="text-primary hover:text-white flex items-center gap-2 font-bold text-sm uppercase tracking-widest transition-colors">
+                    View All Rooms <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Room Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Elegant hotel bedroom with plush white bedding and sunset views" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy4GMs6KiiGJDBo37x3ybmtJ9KEN1E8ZVVkBiptIQvlyoAed6z2FvZMaaJ4OUeKuWM0Lx_1R0OoUwHLbvFdRBD763_uiel2TtLO3WF5bC5eKn2dadueV_JxZrXTOAIc_-t5_qF3JXl5E_Y5jp0DaHw8-I7RCuTOEUbWTEkUxMq6446ijXGskCCMxEslz1oN3ioYwrKhthdWFtipRc4YLjTKsKef5fdvsm1Y7_RQZEAasagfARVcCBvofckL45cFoBpzgXZpV7OHIg"/>
+<div class="absolute top-4 left-4 bg-background-dark/80 backdrop-blur px-3 py-1 rounded text-[10px] uppercase tracking-widest font-bold">From $540 / Night</div>
+</div>
+<h4 class="text-xl font-serif mb-2">Grand Deluxe Ocean Suite</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">Spacious living area with panoramic floor-to-ceiling views of the turquoise horizon.</p>
+<button class="border border-white/20 hover:border-primary px-6 py-2 text-[11px] uppercase tracking-widest font-bold transition-all group-hover:bg-primary">Explore Room</button>
+</div>
+<!-- Room Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern minimalist luxury hotel room with wood accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4qpNlBHQzGe_aeSiwv1kGD6u8zoZk5HUJZw6oM95RObExFw2PfEJZkirbjKD41StsaWDkl8eeVTCzjzqIIaUUQux8LWK0xv7XYYfGE9euuFiYbqfBRuwtYxMAoBH9sdt8MfXvAnvw_un5uSG5HuAuoDBiknTF0BBHtJj5n4xix-p7qqXo1579rbY6A_eAu3pDUptM_8890g4QqXWN4okkjBYBCnq8A3uih936AiXaVnlBk8BsibmoyrFYJgSrHlh2aG0iiXSoVS4"/>
+<div class="absolute top-4 left-4 bg-background-dark/80 backdrop-blur px-3 py-1 rounded text-[10px] uppercase tracking-widest font-bold">From $320 / Night</div>
+</div>
+<h4 class="text-xl font-serif mb-2">Heritage Garden Villa</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">Traditional architecture meets modern comfort, nestled in lush private gardens.</p>
+<button class="border border-white/20 hover:border-primary px-6 py-2 text-[11px] uppercase tracking-widest font-bold transition-all group-hover:bg-primary">Explore Room</button>
+</div>
+<!-- Room Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Ultra-modern presidential suite living room with white marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAll2QZXq9TAjzmLnqagrmDcoLBOF1IZ2Pw5eVqonyQ5Tx9Gw5iFeD1hICajQHJ81Z6-TcrMbUcCcHMxuGiJ51P5GSk2ZZhCU4SVsnXsv2grmrLoM3hwfZwFQ7J0MRbRweE52TmXdJR1MiC_K_otwpEbyL89vsLQlg6qhbuddb3-7H2vAktwbboU8FN9xJFPfhZsGDT887iYH4bFkeZqCbbasWfdbGHivoAcjP8PxE6PPYBWOMaPmTLBCu-zcubEsbYRiIbgiGy7OQ"/>
+<div class="absolute top-4 left-4 bg-background-dark/80 backdrop-blur px-3 py-1 rounded text-[10px] uppercase tracking-widest font-bold">From $1,200 / Night</div>
+</div>
+<h4 class="text-xl font-serif mb-2">The Royal Penthouse</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">The ultimate in exclusivity with private butler service and a personal rooftop pool.</p>
+<button class="border border-white/20 hover:border-primary px-6 py-2 text-[11px] uppercase tracking-widest font-bold transition-all group-hover:bg-primary">Explore Room</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Featured Offers -->
+<section class="bg-surface-dark rounded-2xl p-8 lg:p-16 border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[400px] text-primary -mr-32 -mt-32">star_rate</span>
+</div>
+<div class="relative z-10 grid lg:grid-cols-3 gap-12">
+<div class="lg:col-span-1 space-y-6">
+<h3 class="text-accent-gold uppercase tracking-widest text-xs font-bold">Exclusive Invitations</h3>
+<h2 class="text-3xl font-serif">Special Curated Offers</h2>
+<p class="text-slate-400 font-light">Elevate your stay with our seasonal packages designed to provide even more value to your luxury escape.</p>
+<button class="bg-primary/20 text-primary border border-primary/30 px-8 py-3 rounded font-bold uppercase tracking-widest text-xs">View All Offers</button>
+</div>
+<div class="lg:col-span-2 grid md:grid-cols-2 gap-6">
+<!-- Offer 1 -->
+<div class="bg-background-dark/50 border border-white/10 p-8 rounded-xl flex flex-col justify-between group hover:border-primary/50 transition-all">
+<div>
+<span class="text-[10px] bg-primary/20 text-primary px-3 py-1 rounded-full uppercase font-bold tracking-tighter">Limited Time</span>
+<h4 class="text-lg font-serif mt-4 mb-2">Winter Sun Retreat</h4>
+<p class="text-sm text-slate-400 mb-6">Book 3 nights and receive the 4th night complimentary plus $100 resort credit.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-white/5">
+<span class="text-[11px] text-slate-500 italic">Valid until Dec 31, 2023</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Offer 2 -->
+<div class="bg-background-dark/50 border border-white/10 p-8 rounded-xl flex flex-col justify-between group hover:border-primary/50 transition-all">
+<div>
+<span class="text-[10px] bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full uppercase font-bold tracking-tighter">Gastronomy</span>
+<h4 class="text-lg font-serif mt-4 mb-2">Gourmet Escape</h4>
+<p class="text-sm text-slate-400 mb-6">A curated dinner for two at our Michelin-star restaurant and daily champagne breakfast.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-white/5">
+<span class="text-[11px] text-slate-500 italic">Valid until Nov 15, 2023</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Dining Highlights -->
+<section>
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<img class="rounded-lg h-64 w-full object-cover" data-alt="Exquisite plate of fine dining food with artistic presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLJ8fqCdN5obhlQr7mBDJwgQCslBN_QTa9d5O_5v1cYS_k-JLyylyLUfe3S8sLzMgQeK-EpsFXW3O2f7cXExBs0DN_ALDZIiz37DBKphjriJb-Pfh4OydNkKs9k-vqCbzf50oEVlo-ybd7KlXS7N7NpuMxEQf8HCUyyiH411NINdx5NvGVtTAlS-ToAtrAzpBG5uyJ2aqum16DSm_2HM1Miqpd1QT-lq3LMv_A4X8RfdIcjcBdSutPwNDGYhmIRytoo4v-22nT8I4"/>
+<img class="rounded-lg h-80 w-full object-cover" data-alt="Chic hotel bar with low lighting and crystal glassware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyMj-mbK8f0YyR0PwPUjxkD1ObiKTTMu1i90UnK86TbLxjpVmYSkmgxobwd21GeoQp3vH3Ce0WQ1wkvjabzZSdRz7d_cGTRCEp0pRnuvF3EXAyMdZVV374vLE1SYrhR5-TaJfc3hZK29HBJaENV3J6PB8OLlWqEsP_pOrC_YKhZ6iduHzrG6e-GtevRFffvwG8AcOt-iGsHnA47joEgvv5XByjV5EPL2Q9oc1WeBPh1vlQsDS0HdTmRx0tn2eAn2PXUfHOZNSKgWQ"/>
+</div>
+<div class="space-y-4 pt-12">
+<img class="rounded-lg h-80 w-full object-cover" data-alt="Luxury breakfast spread on a balcony overlooking the sea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHzystKDwCBvJIO-AKa6Qph7T358v-Sru4SBxqCuecw_xzZX796T0pB_aGiDYp1j6VVw0VlADeWwsKG8tT8OA5nIQChpIOUeJFJ9I0Dlq281hQSJkvw8TgoBgC26MSiRg-jbvrKZg06hdEzn9rK8AwW_RtUDMgZZHaElE6pax9cXeLnO_5s96zOxBGbi9odo4-dz24epvoslgkjv-SIpZNel6gOGdboJRUSI7QeCSxIQgiDC9q5LAkmq-8fmvYvTjW4MxIBmvVPdY"/>
+<img class="rounded-lg h-64 w-full object-cover" data-alt="Professional bartender crafting a premium cocktail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTAZAQaDe02LMyCPv1qUEpyEVL5R4vq5wXjG9NJhcEvbNCqrMRU0thXBcTyl1Zb-DZCpFTMoqmuWvmxrUil6T8QWnLLOIllQVgs3F2LEOsm6vOIM4TeKU1dxYz_1CSpkUdbNyf3tDkPEQZyL91Ejbdga6_k8dAD8rrt_ui0ubZivXzWzeSTq0e5k6x5HZp0MUzfHuEvkKXWWbRfTR4HQYAL5WSqZfsEpmQ4lnPv7jRtNNB47eRk7Ufxy6LjSP2LHG8Lb2O2xmMd54"/>
+</div>
+</div>
+<div class="space-y-8">
+<h3 class="text-accent-gold uppercase tracking-widest text-xs font-bold">Gastronomy</h3>
+<h2 class="text-4xl lg:text-5xl font-serif leading-tight">A Culinary Journey Across Continents</h2>
+<p class="text-slate-400 font-light text-lg leading-relaxed">
+                        From Michelin-starred excellence to casual beachfront dining, our signature restaurants celebrate local flavors and international techniques. Each meal is a masterfully choreographed performance of taste and aesthetics.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+<div>
+<h5 class="font-bold text-white uppercase text-xs tracking-widest">L'Azure Fine Dining</h5>
+<p class="text-sm text-slate-500">Modern French cuisine with ocean-to-table ingredients.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">local_bar</span>
+<div>
+<h5 class="font-bold text-white uppercase text-xs tracking-widest">Skyview Mixology Lab</h5>
+<p class="text-sm text-slate-500">Hand-crafted cocktails on the 45th-floor terrace.</p>
+</div>
+</li>
+</ul>
+<button class="bg-white text-background-dark hover:bg-primary hover:text-white px-10 py-4 rounded font-bold uppercase tracking-widest text-xs transition-all">Explore Restaurants</button>
+</div>
+</div>
+</section>
+<!-- Section 4: Reviews Strip -->
+<section class="border-y border-white/10 py-20 overflow-hidden relative">
+<div class="flex flex-col items-center text-center space-y-12">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-accent-gold">star</span>
+<span class="material-symbols-outlined text-accent-gold">star</span>
+<span class="material-symbols-outlined text-accent-gold">star</span>
+<span class="material-symbols-outlined text-accent-gold">star</span>
+<span class="material-symbols-outlined text-accent-gold">star</span>
+</div>
+<blockquote class="text-2xl lg:text-3xl font-serif max-w-4xl italic px-4 leading-snug">
+                    "An absolute masterpiece of hospitality. From the moment we arrived until our departure, every detail was handled with grace and perfection. Truly the pinnacle of luxury."
+                </blockquote>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img data-alt="Portrait of a satisfied male luxury guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSmzNxWR8kzox_qOGjUDiuMKsRYBE0s8PA0dkxhWJfdERhVhN7qv6QYcOZWp4Nf-o2bpdmkrJb2D_3v23XbcUKp5eRpuw17XmPDSd7iInCnLK_jme87_BGP2t8sQZzCNjszRSZasEbQ-k2jcfO_mnJueXSAvbgFzZKwzo3CJ4NUrfvM5NuFRT-FLF30jHGz4zhRARndc1ZmxYh3cQxyXv8DuBIxqErdvTF4OISzlXwVNab1Oe952MWHh6a9GERHKBqwurZcCWuEgQ"/>
+</div>
+<div class="text-left">
+<p class="font-bold text-sm tracking-widest uppercase">Alexander Rothschild</p>
+<p class="text-xs text-slate-500">Member since 2018</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dark border-t border-white/5 pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-4 gap-12 mb-20">
+<!-- Brand Column -->
+<div class="space-y-6">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">high_quality</span>
+</div>
+<h1 class="text-lg font-bold tracking-tighter uppercase">Grand Horizon</h1>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed font-light">
+                    Redefining luxury hospitality with a portfolio of unique properties across the globe. Excellence is our standard, elegance is our soul.
+                </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">movie</span></a>
+</div>
+</div>
+<!-- Links Column 1 -->
+<div class="space-y-6">
+<h5 class="text-[10px] uppercase tracking-[0.2em] font-bold text-white">Guest Information</h5>
+<ul class="space-y-3 text-sm text-slate-400 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Loyalty Program</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<!-- Links Column 2 -->
+<div class="space-y-6">
+<h5 class="text-[10px] uppercase tracking-[0.2em] font-bold text-white">Support</h5>
+<ul class="space-y-3 text-sm text-slate-400 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Use</a></li>
+</ul>
+</div>
+<!-- Newsletter Column -->
+<div class="space-y-6">
+<h5 class="text-[10px] uppercase tracking-[0.2em] font-bold text-white">Newsletter</h5>
+<p class="text-xs text-slate-500">Subscribe to receive exclusive invitations and property news.</p>
+<form class="flex flex-col gap-2">
+<input class="bg-background-dark/50 border border-white/10 rounded px-4 py-2 text-sm focus:border-primary outline-none transition-all" placeholder="Email Address" type="email"/>
+<button class="bg-primary py-2.5 rounded text-[10px] uppercase font-bold tracking-widest">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest text-slate-600 font-bold">
+<p>© 2023 Grand Horizon International Hotels. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-white transition-colors" href="#">Cookie Settings</a>
+<a class="hover:text-white transition-colors" href="#">Accessibility</a>
+<a class="hover:text-white transition-colors" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

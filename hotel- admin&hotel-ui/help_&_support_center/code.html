@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Help &amp; Support Center - Hotel Admin</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "primary-hover": "#0f4bc2",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1a2234",
+              "surface-light": "#ffffff",
+              "text-secondary": "#94a3b8",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem", 
+                "lg": "0.5rem", 
+                "xl": "0.75rem", 
+                "full": "9999px"
+            },
+            boxShadow: {
+                'glow': '0 0 20px -5px rgba(19, 91, 236, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar for dark mode feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-white antialiased min-h-screen flex flex-col font-display selection:bg-primary selection:text-white">
+<!-- Navigation Bar (Simplified for context) -->
+<nav class="border-b border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex">
+<div class="flex-shrink-0 flex items-center">
+<div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center mr-3">
+<span class="material-icons-round text-white text-xl">apartment</span>
+</div>
+<span class="font-bold text-lg tracking-tight">HostPlatform</span>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8">
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:border-primary hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Dashboard</a>
+<a class="border-transparent text-gray-500 dark:text-gray-400 hover:border-primary hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Properties</a>
+<a class="border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center">
+<button class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+<span class="sr-only">View notifications</span>
+<span class="material-icons-round">notifications</span>
+</button>
+<div class="ml-3 relative flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-gray-300 dark:bg-gray-700 overflow-hidden">
+<img alt="Profile" class="h-full w-full object-cover" data-alt="User profile picture thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyQXTlhhlK0EirCEDxQAOpumtUlxhrLuahk8Wg4-ha3nPXBNMlBfdtweFF93mqnpjR_KIJvTPHldI7EE8YkNbWl3e5O9f9g5tRSXz7Eq5l6Y0UxXbPJofyQO6DCe3aEY67sxxCbH8w0sp4rKLsU1r32RHqlCh-RKluKsXS-aYWN2tfgYJMo2mdhLX33EiA2v4DWgwdCQ-oQWZ9FUTOHggJGXJQKYptk08--HElWhSWS09nWZZl7GpNdAQiRXnoOqKHxlHRBQU2768"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<main class="flex-grow">
+<!-- Hero Search Section -->
+<div class="relative bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 pt-16 pb-20">
+<!-- Decorative gradient background -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[100px]"></div>
+</div>
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+<span class="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-4">Support Center</span>
+<h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+                    How can we help you today?
+                </h1>
+<p class="text-lg text-gray-500 dark:text-text-secondary mb-10 max-w-2xl mx-auto">
+                    Search our knowledge base for answers to technical questions, integration guides, and platform tutorials.
+                </p>
+<!-- Search Component -->
+<div class="relative max-w-2xl mx-auto group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons-round text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 border-none rounded-xl leading-5 bg-background-light dark:bg-background-dark text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary shadow-lg shadow-gray-200/50 dark:shadow-none sm:text-base transition-all" placeholder="Search for articles (e.g., 'API Keys', 'Booking Sync')..." type="text"/>
+<div class="hidden sm:flex absolute inset-y-0 right-0 py-2 pr-2">
+<kbd class="inline-flex items-center border border-gray-200 dark:border-gray-700 rounded px-2 text-sm font-sans font-medium text-gray-400 dark:text-gray-500 bg-white dark:bg-gray-800">⌘ K</kbd>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Grid Layout -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="lg:grid lg:grid-cols-12 lg:gap-8">
+<!-- Left Column: Categories & Articles (8 cols) -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Categories Grid -->
+<section aria-labelledby="categories-heading">
+<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-2" id="categories-heading">
+<span class="material-icons-round text-primary">grid_view</span> Browse by Category
+                        </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Card 1: Getting Started -->
+<a class="group relative rounded-xl border border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark p-6 hover:border-primary/50 dark:hover:border-primary/50 transition-all hover:shadow-glow" href="#">
+<div class="absolute top-6 right-6 text-gray-300 dark:text-gray-700 group-hover:text-primary transition-colors">
+<span class="material-icons-round">arrow_forward</span>
+</div>
+<div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 dark:bg-primary/20 text-primary mb-4">
+<span class="material-icons-round">rocket_launch</span>
+</div>
+<h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors">Getting Started</h3>
+<p class="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+                                    Learn the basics of setting up your property, rooms, and user accounts.
+                                </p>
+</a>
+<!-- Card 2: Managing Content -->
+<a class="group relative rounded-xl border border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark p-6 hover:border-primary/50 dark:hover:border-primary/50 transition-all hover:shadow-glow" href="#">
+<div class="absolute top-6 right-6 text-gray-300 dark:text-gray-700 group-hover:text-primary transition-colors">
+<span class="material-icons-round">arrow_forward</span>
+</div>
+<div class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 mb-4">
+<span class="material-icons-round">perm_media</span>
+</div>
+<h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors">Managing Content</h3>
+<p class="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+                                    Guides on updating photos, amenities, descriptions, and policies.
+                                </p>
+</a>
+<!-- Card 3: Revenue & Bookings -->
+<a class="group relative rounded-xl border border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark p-6 hover:border-primary/50 dark:hover:border-primary/50 transition-all hover:shadow-glow" href="#">
+<div class="absolute top-6 right-6 text-gray-300 dark:text-gray-700 group-hover:text-primary transition-colors">
+<span class="material-icons-round">arrow_forward</span>
+</div>
+<div class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 mb-4">
+<span class="material-icons-round">payments</span>
+</div>
+<h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors">Revenue &amp; Bookings</h3>
+<p class="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+                                    Understand your dashboards, financial reports, and booking lifecycles.
+                                </p>
+</a>
+<!-- Card 4: Integrations -->
+<a class="group relative rounded-xl border border-gray-200 dark:border-gray-800 bg-surface-light dark:bg-surface-dark p-6 hover:border-primary/50 dark:hover:border-primary/50 transition-all hover:shadow-glow" href="#">
+<div class="absolute top-6 right-6 text-gray-300 dark:text-gray-700 group-hover:text-primary transition-colors">
+<span class="material-icons-round">arrow_forward</span>
+</div>
+<div class="flex items-center justify-center h-12 w-12 rounded-lg bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 mb-4">
+<span class="material-icons-round">hub</span>
+</div>
+<h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-primary transition-colors">Integrations</h3>
+<p class="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+                                    Connect with OTAs, Channel Managers, and third-party tools.
+                                </p>
+</a>
+</div>
+</section>
+<!-- Featured Articles -->
+<section aria-labelledby="featured-heading">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center gap-2" id="featured-heading">
+<span class="material-icons-round text-primary">star</span> Featured Articles
+                            </h2>
+<a class="text-sm font-medium text-primary hover:text-primary-hover" href="#">View all articles →</a>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden divide-y divide-gray-200 dark:divide-gray-800">
+<!-- Article Item -->
+<a class="block p-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<div class="flex items-start">
+<div class="flex-shrink-0 pt-1">
+<span class="material-icons-round text-gray-400 text-lg">article</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-medium text-gray-900 dark:text-white">How to setup 2-way XML synchronization with Booking.com</p>
+<p class="mt-1 text-xs text-gray-500 dark:text-text-secondary">Updated 2 days ago • Integrations</p>
+</div>
+</div>
+</a>
+<!-- Article Item -->
+<a class="block p-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<div class="flex items-start">
+<div class="flex-shrink-0 pt-1">
+<span class="material-icons-round text-gray-400 text-lg">article</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-medium text-gray-900 dark:text-white">Understanding commission rates and net payments</p>
+<p class="mt-1 text-xs text-gray-500 dark:text-text-secondary">Updated 1 week ago • Revenue</p>
+</div>
+</div>
+</a>
+<!-- Article Item -->
+<a class="block p-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<div class="flex items-start">
+<div class="flex-shrink-0 pt-1">
+<span class="material-icons-round text-gray-400 text-lg">article</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-medium text-gray-900 dark:text-white">Configuring dynamic pricing rules for holidays</p>
+<p class="mt-1 text-xs text-gray-500 dark:text-text-secondary">Updated 3 weeks ago • Management</p>
+</div>
+</div>
+</a>
+<!-- Article Item -->
+<a class="block p-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<div class="flex items-start">
+<div class="flex-shrink-0 pt-1">
+<span class="material-icons-round text-gray-400 text-lg">article</span>
+</div>
+<div class="ml-4">
+<p class="text-sm font-medium text-gray-900 dark:text-white">Troubleshooting image upload errors</p>
+<p class="mt-1 text-xs text-gray-500 dark:text-text-secondary">Updated 1 month ago • Technical</p>
+</div>
+</div>
+</a>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar (4 cols) -->
+<div class="lg:col-span-4 mt-12 lg:mt-0 space-y-6">
+<!-- Quick Support Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Support</h3>
+<p class="text-sm text-gray-500 dark:text-text-secondary mb-6">
+                            Can't find what you're looking for? Our support team is here to help 24/7.
+                        </p>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+<span class="material-icons-round mr-2 text-lg">chat</span>
+                                Start Live Chat
+                            </button>
+<a class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors" href="mailto:support@hostplatform.com">
+<span class="material-icons-round mr-2 text-lg">email</span>
+                                Email Support
+                            </a>
+</div>
+</div>
+<!-- System Status -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">System Status</h3>
+<a class="text-xs text-primary hover:text-primary-hover" href="#">View Details</a>
+</div>
+<div class="flex items-center space-x-3 mb-4">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+</span>
+<span class="text-sm font-medium text-green-600 dark:text-green-400">All Systems Operational</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-xs">
+<span class="text-gray-500 dark:text-text-secondary">Booking Engine</span>
+<span class="text-green-600 dark:text-green-400 font-medium">99.99%</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+<div class="flex justify-between items-center text-xs pt-2">
+<span class="text-gray-500 dark:text-text-secondary">API Latency</span>
+<span class="text-green-600 dark:text-green-400 font-medium">45ms</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 95%"></div>
+</div>
+</div>
+</div>
+<!-- Top Tags (Extra content filler for sidebar) -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+<h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Popular Topics</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition-colors">#cancellation</span>
+<span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition-colors">#refunds</span>
+<span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition-colors">#api v2</span>
+<span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition-colors">#channel manager</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 mt-12">
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h4 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Developer Resources</h4>
+<div class="mt-4 flex space-x-6">
+<a class="text-base text-gray-500 hover:text-primary dark:text-text-secondary dark:hover:text-white transition-colors flex items-center gap-2" href="#">
+<span class="material-icons-round text-sm">code</span> API Documentation
+                        </a>
+<a class="text-base text-gray-500 hover:text-primary dark:text-text-secondary dark:hover:text-white transition-colors flex items-center gap-2" href="#">
+<span class="material-icons-round text-sm">forum</span> Community Forum
+                        </a>
+<a class="text-base text-gray-500 hover:text-primary dark:text-text-secondary dark:hover:text-white transition-colors flex items-center gap-2" href="#">
+<span class="material-icons-round text-sm">webhook</span> Webhooks
+                        </a>
+</div>
+</div>
+<div class="md:text-right">
+<p class="text-base text-gray-400 dark:text-gray-600">
+                        © 2023 HostPlatform Inc. All rights reserved.
+                    </p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script to toggle focus ring on keydown for visual completeness
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                document.querySelector('input[type="text"]').focus();
+            }
+        });
+    </script>
+</body></html>

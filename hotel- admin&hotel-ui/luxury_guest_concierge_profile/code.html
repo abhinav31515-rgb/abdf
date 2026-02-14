@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Guest Concierge Profile</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1a170d", // Deep obsidian/warm dark
+                        "card-dark": "#221e12", // Slightly lighter for cards
+                        "border-gold": "#4a3b10", // Darker gold for subtle borders
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"]
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #f2b90d 0%, #b3880a 100%)',
+                        'obsidian-pattern': 'radial-gradient(circle at top right, rgba(34, 30, 18, 0.8), rgba(26, 23, 13, 1))'
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for ultra-luxury feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a170d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a3b10;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f2b90d;
+        }
+        
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(242, 185, 13, 0.15);
+        }
+        
+        .gold-border-gradient {
+            border-image: linear-gradient(to bottom, #f2b90d, rgba(242, 185, 13, 0.1)) 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen">
+<!-- Mobile Header -->
+<nav class="lg:hidden flex items-center justify-between p-4 border-b border-primary/20 bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary text-3xl">diamond</span>
+<span class="text-xl font-bold tracking-widest text-primary uppercase">Aurum</span>
+</div>
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-icons-round text-3xl">menu</span>
+</button>
+</nav>
+<!-- Main Layout -->
+<div class="max-w-[1600px] mx-auto p-4 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+<!-- Left Sidebar: Guest Identity -->
+<aside class="lg:col-span-3 space-y-6">
+<!-- Profile Card -->
+<div class="bg-card-dark rounded-xl p-8 border border-primary/20 gold-glow flex flex-col items-center text-center relative overflow-hidden group">
+<!-- Decorative background elements -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-all duration-700"></div>
+<div class="w-32 h-32 rounded-full p-1 bg-gradient-to-br from-primary via-[#b3880a] to-primary shadow-2xl relative z-10">
+<img alt="Portrait of a distinguished man" class="w-full h-full rounded-full object-cover border-2 border-background-dark" data-alt="Portrait of a distinguished man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBUz0QYcqkv55-EapuQ6KGQpAtR1KyM4OKfz41z6gy1XOax2Y_lnb9wsQ3s8GpnB2OtW_MiZJhd4MW5bHBhTCg98-LAymLY_3HzEP46-EoPCOrtEdrkSfFQb8760PEvnffzRMarXCoeuCgLHj1YEb7N_k8XRsG_dClGurBVaDW6TyPY3XrzK0sbqHhfUt0NrmEVodKBm3mhAQshXaLOk_VvDxsHURClI5aClUOXx-hz9J9SjZU1aPyI7yYsXEgghKUt5KiqcdNzug"/>
+</div>
+<div class="absolute bottom-0 right-0 z-20 bg-primary text-background-dark rounded-full p-1.5 shadow-lg border-2 border-background-dark">
+<span class="material-icons-round text-sm font-bold block">verified</span>
+</div>
+</div>
+<h1 class="text-2xl font-bold text-white mb-1 tracking-wide">Alistair Sterling</h1>
+<p class="text-primary/80 italic text-sm mb-6">Member since 2018</p>
+<div class="w-full border-t border-primary/10 my-4"></div>
+<div class="flex flex-col items-center gap-2 mb-6">
+<span class="text-xs uppercase tracking-[0.2em] text-gray-400">Current Tier</span>
+<span class="text-xl text-primary font-serif italic">Royal Diamond</span>
+<div class="flex gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary/30"></span>
+</div>
+</div>
+</div>
+<!-- Stats Card -->
+<div class="bg-card-dark rounded-xl p-6 border border-primary/10 relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<h3 class="text-sm uppercase tracking-widest text-gray-400 mb-6">Lifetime Value</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="text-3xl font-light text-white">$482,000</span>
+<span class="text-primary text-sm flex items-center gap-1">
+<span class="material-icons-round text-sm">trending_up</span> +12%
+                            </span>
+</div>
+<div class="text-xs text-gray-500 font-light">Total Spend</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-primary/5 rounded border border-primary/10">
+<div class="text-xl text-primary mb-1">24</div>
+<div class="text-xs text-gray-400">Total Stays</div>
+</div>
+<div class="p-3 bg-primary/5 rounded border border-primary/10">
+<div class="text-xl text-primary mb-1">4.9</div>
+<div class="text-xs text-gray-400">Avg Rating</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Upcoming Reservation Mini-Widget -->
+<div class="bg-gradient-to-br from-primary/20 to-card-dark rounded-xl p-6 border border-primary/30 relative">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-primary font-medium italic">Approaching Arrival</h3>
+<span class="bg-primary text-background-dark text-xs font-bold px-2 py-0.5 rounded uppercase">T-2 Days</span>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-icons-round text-white">apartment</span>
+<span class="text-white text-lg">The Ritz, Paris</span>
+</div>
+<p class="text-sm text-gray-400 font-light mb-4">Oct 24 - Oct 28, 2023</p>
+<button class="w-full py-2 border border-primary text-primary hover:bg-primary hover:text-background-dark transition-colors rounded text-sm uppercase tracking-wider">
+                    Prepare Welcome
+                </button>
+</div>
+</aside>
+<!-- Center Content: Concierge Card -->
+<main class="lg:col-span-6 flex flex-col gap-6">
+<!-- Tabs Navigation -->
+<div class="flex overflow-x-auto pb-2 scrollbar-hide border-b border-primary/20 gap-8">
+<button class="group flex items-center gap-2 pb-3 border-b-2 border-primary text-primary transition-all whitespace-nowrap">
+<span class="material-icons-round text-lg">edit_note</span>
+<span class="uppercase tracking-widest text-sm font-semibold">Private Notes</span>
+</button>
+<button class="group flex items-center gap-2 pb-3 border-b-2 border-transparent text-gray-500 hover:text-primary hover:border-primary/50 transition-all whitespace-nowrap">
+<span class="material-icons-round text-lg">diamond</span>
+<span class="uppercase tracking-widest text-sm font-semibold">Bespoke Preferences</span>
+</button>
+<button class="group flex items-center gap-2 pb-3 border-b-2 border-transparent text-gray-500 hover:text-primary hover:border-primary/50 transition-all whitespace-nowrap">
+<span class="material-icons-round text-lg">history_edu</span>
+<span class="uppercase tracking-widest text-sm font-semibold">Voyage History</span>
+</button>
+</div>
+<!-- Main Content Area -->
+<div class="bg-card-dark rounded-xl border border-primary/10 min-h-[600px] p-8 relative">
+<!-- Subtle texture overlay -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMDAiLz4KPC9zdmc+');"></div>
+<!-- Section: Bespoke Preferences (Active View) -->
+<div class="space-y-8 relative z-10">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl text-white font-light italic mb-2">The Sterling Standard</h2>
+<p class="text-gray-400 text-sm font-light max-w-md">Curated requirements for every stay. Last updated by Concierge Marie, 2 days ago.</p>
+</div>
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-icons-round">edit</span>
+</button>
+</div>
+<!-- Highlighted Preferences Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Dietary -->
+<div class="group bg-background-dark p-6 rounded-lg border border-primary/20 hover:border-primary/60 transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-icons-round">wine_bar</span>
+</div>
+<h4 class="text-primary font-serif italic text-lg mb-2">Dietary &amp; Libations</h4>
+<ul class="text-sm text-gray-300 space-y-2 font-light">
+<li class="flex items-start gap-2">
+<span class="text-red-400 text-xs mt-1">●</span>
+<span>Severe Shellfish Allergy</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Prefers Vintage Dom Perignon (2008)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Vegan Breakfast Options</span>
+</li>
+</ul>
+</div>
+<!-- Room/Sleep -->
+<div class="group bg-background-dark p-6 rounded-lg border border-primary/20 hover:border-primary/60 transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-icons-round">bed</span>
+</div>
+<h4 class="text-primary font-serif italic text-lg mb-2">Sanctuary &amp; Sleep</h4>
+<ul class="text-sm text-gray-300 space-y-2 font-light">
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Mulberry Silk Pillowcases</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Ambient Temp: 21°C</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Blackout Curtains Secured</span>
+</li>
+</ul>
+</div>
+<!-- Fragrance/Ambience -->
+<div class="group bg-background-dark p-6 rounded-lg border border-primary/20 hover:border-primary/60 transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-icons-round">spa</span>
+</div>
+<h4 class="text-primary font-serif italic text-lg mb-2">Scent &amp; Ambience</h4>
+<ul class="text-sm text-gray-300 space-y-2 font-light">
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Sandalwood &amp; Oud Diffuser</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Fresh White Lilies (No Roses)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary text-xs mt-1">●</span>
+<span>Jazz Playlist on Entry</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Note Input Area -->
+<div class="mt-8 pt-8 border-t border-primary/10">
+<h4 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Concierge Shift Notes</h4>
+<div class="bg-background-dark p-1 rounded-lg border border-primary/20 focus-within:border-primary/60 transition-colors">
+<textarea class="w-full bg-transparent border-0 text-gray-200 placeholder-gray-600 focus:ring-0 p-4 font-serif leading-relaxed h-32 resize-none" placeholder="Add a private note for the next shift... e.g. Guest mentioned anniversary on Tuesday."></textarea>
+<div class="flex justify-end p-2 border-t border-primary/5">
+<button class="text-xs uppercase tracking-wider font-bold text-primary hover:text-white transition-colors px-4 py-2">
+                                    Save Note
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Sidebar: Actions & Context -->
+<aside class="lg:col-span-3 space-y-6">
+<!-- Quick Actions Panel -->
+<div class="bg-card-dark rounded-xl p-6 border border-primary/20">
+<h3 class="text-sm uppercase tracking-widest text-gray-400 mb-6 flex items-center gap-2">
+<span class="material-icons-round text-base">bolt</span>
+                    Concierge Actions
+                </h3>
+<div class="space-y-3">
+<button class="w-full group relative overflow-hidden rounded-lg p-[1px] focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#1a170d_0%,#f2b90d_50%,#1a170d_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+<div class="relative flex items-center justify-between w-full bg-background-dark group-hover:bg-[#2a261a] rounded-lg px-4 py-3 border border-primary/30 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-primary">chat</span>
+<span class="text-sm font-medium text-white">Direct Chat</span>
+</div>
+<span class="material-icons-round text-gray-500 group-hover:text-primary text-sm">arrow_forward</span>
+</div>
+</button>
+<button class="w-full group relative overflow-hidden rounded-lg p-[1px] focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span class="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#1a170d_0%,#f2b90d_50%,#1a170d_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+<div class="relative flex items-center justify-between w-full bg-background-dark group-hover:bg-[#2a261a] rounded-lg px-4 py-3 border border-primary/30 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-primary">stars</span>
+<span class="text-sm font-medium text-white">VIP Upgrade</span>
+</div>
+<span class="material-icons-round text-gray-500 group-hover:text-primary text-sm">arrow_forward</span>
+</div>
+</button>
+<button class="w-full group relative overflow-hidden rounded-lg p-[1px] focus:outline-none focus:ring-2 focus:ring-primary/50">
+<div class="relative flex items-center justify-between w-full bg-background-dark group-hover:bg-[#2a261a] rounded-lg px-4 py-3 border border-gray-700 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-gray-400 group-hover:text-primary">card_giftcard</span>
+<span class="text-sm font-medium text-gray-300 group-hover:text-white">Send Amenity</span>
+</div>
+<span class="material-icons-round text-gray-500 group-hover:text-primary text-sm">arrow_forward</span>
+</div>
+</button>
+<button class="w-full group relative overflow-hidden rounded-lg p-[1px] focus:outline-none focus:ring-2 focus:ring-primary/50">
+<div class="relative flex items-center justify-between w-full bg-background-dark group-hover:bg-[#2a261a] rounded-lg px-4 py-3 border border-gray-700 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-icons-round text-gray-400 group-hover:text-primary">history</span>
+<span class="text-sm font-medium text-gray-300 group-hover:text-white">View Logs</span>
+</div>
+<span class="material-icons-round text-gray-500 group-hover:text-primary text-sm">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Associate Access List -->
+<div class="bg-card-dark rounded-xl p-6 border border-primary/10">
+<h3 class="text-sm uppercase tracking-widest text-gray-400 mb-4">Team Access</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Concierge staff member portrait" class="w-8 h-8 rounded-full object-cover border border-gray-600" data-alt="Concierge staff member portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcB7KsaTebpoSjHdFs7MlDuQ-tz-2dgbPPvQKC2LDQjCZybbIsn-EMKTH_lUWxD3ub7x60xwIAQGMd-7j7PFUTWFxGxG4_YWwHA3XVtEjYTwMkHrGps5CBhKpbLbNF1vvSkirZ5dnKhOU8zIRGqw2Q5ViZhndRbpea7Z_euSjnRD8QTztcO5QrWiudemZX-l2plCqa8t7C6fZspRG1l2L8jux7Qv0hQGWCO1Rk5Why7SrBL1Zc2KcB0Nl_V8y_CCRFeHX5q6s_jT0"/>
+<div class="flex flex-col">
+<span class="text-sm text-white">Sarah Jenkins</span>
+<span class="text-xs text-gray-500">London, UK</span>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Concierge staff member portrait" class="w-8 h-8 rounded-full object-cover border border-gray-600" data-alt="Concierge staff member portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClWCuzN_J2yUCT_I38REUF0t1lAbkby4VSlq8Y_1lAt4k-cMB2-dOohzEYPW_SiEyius--y-XUKbvjWmMDCyeQ0JI7YQU_MMCRJpnPrPyGDwbxigJKXRTJSS5Hzt18t1tYTmsjz4t0Sav_e_p2fIUOj5IrnsMEBz-7ki178ImWWN_2-9D9ya-DEq9eqQEI6KpgAxd-sFbkLgyb1J7Z11pNtscblW3zVmA4jcRFp0pA1TYoSX3vby-soYO-vqQY0knayPEeELkJbQc"/>
+<div class="flex flex-col">
+<span class="text-sm text-white">Marcus Chen</span>
+<span class="text-xs text-gray-500">Paris, FR</span>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-gray-500"></span>
+</li>
+</ul>
+<button class="w-full mt-4 text-xs text-primary hover:text-white text-center py-2 border-t border-primary/10 transition-colors">
+                    Manage Access
+                </button>
+</div>
+<!-- Promotion / Ad Space (Internal) -->
+<div class="relative rounded-xl overflow-hidden min-h-[180px] group cursor-pointer">
+<img alt="Luxury gold texture background" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Luxury gold texture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByjpfiDiWHFViCNWOoszr5LAXhtB6gH2Na7Jd4bnE6PsUK8skEEG8NQkTTFG9yBH92OG0niSk0mXw_bsiv4rcSvInXehW2VCmdcOpMRkNhOgTYoEfOXa_UtsrPT3WTZKFTw91Omb2nalNaEbBVruHJ6V_Opl5NpTjJNwNRpZO_28WT-C1OZ3QRJxnswOseFvD-9d0jm6JnR7E9AXH2Z3obxfP8rp06cyqaz5kfmAa_9APrdx4cdjHXCslsOAmz4XfXuuUKWENBcJs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<p class="text-primary text-xs uppercase tracking-widest mb-1">Exclusive Offer</p>
+<h4 class="text-white font-serif text-lg leading-tight mb-2">Summer in the Mediterranean</h4>
+<span class="text-xs text-gray-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Suggest Itinerary <span class="material-icons-round text-xs">arrow_forward</span>
+</span>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

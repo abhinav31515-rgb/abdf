@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Library Assets - Hotel Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0f4bc4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                        "surface-hover": "#232d42",
+                        "border-dark": "#2a354d"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #101622; }
+        ::-webkit-scrollbar-thumb { background: #2a354d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b4966; }
+        
+        .asset-card:hover .asset-overlay { opacity: 1; }
+        .selected-ring { box-shadow: 0 0 0 3px #135bec; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden font-display">
+<!-- Sidebar Navigation (Simplified for context) -->
+<aside class="w-64 bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-border-dark hidden xl:flex flex-col z-20">
+<div class="h-16 flex items-center px-6 border-b border-slate-200 dark:border-border-dark">
+<span class="text-primary font-bold text-xl tracking-tight">HotelOS<span class="text-slate-400 font-light">.Admin</span></span>
+</div>
+<nav class="flex-1 px-3 py-6 space-y-1 overflow-y-auto">
+<a class="flex items-center px-3 py-2 text-slate-600 dark:text-slate-400 rounded-lg hover:bg-slate-100 dark:hover:bg-surface-hover transition-colors" href="#">
+<span class="material-icons text-[20px] mr-3">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2 text-slate-600 dark:text-slate-400 rounded-lg hover:bg-slate-100 dark:hover:bg-surface-hover transition-colors" href="#">
+<span class="material-icons text-[20px] mr-3">domain</span>
+<span class="text-sm font-medium">Properties</span>
+</a>
+<a class="flex items-center px-3 py-2 text-slate-600 dark:text-slate-400 rounded-lg hover:bg-slate-100 dark:hover:bg-surface-hover transition-colors" href="#">
+<span class="material-icons text-[20px] mr-3">calendar_today</span>
+<span class="text-sm font-medium">Bookings</span>
+</a>
+<div class="pt-4 pb-2 px-3">
+<p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Content</p>
+</div>
+<a class="flex items-center px-3 py-2 bg-primary/10 text-primary dark:text-white rounded-lg transition-colors" href="#">
+<span class="material-icons text-[20px] mr-3">photo_library</span>
+<span class="text-sm font-medium">Media Library</span>
+</a>
+<a class="flex items-center px-3 py-2 text-slate-600 dark:text-slate-400 rounded-lg hover:bg-slate-100 dark:hover:bg-surface-hover transition-colors" href="#">
+<span class="material-icons text-[20px] mr-3">article</span>
+<span class="text-sm font-medium">Pages</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-border-dark">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-gradient-to-tr from-primary to-purple-500"></div>
+<div>
+<p class="text-sm font-medium">Jane Doe</p>
+<p class="text-xs text-slate-500">Content Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen relative min-w-0">
+<!-- Top Toolbar -->
+<header class="h-16 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-border-dark flex items-center justify-between px-6 shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-lg font-semibold text-slate-800 dark:text-white">Media Library</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-surface-dark border border-slate-200 dark:border-border-dark text-xs text-slate-500 font-medium">1,240 Assets</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Search -->
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-icons text-[20px]">search</span>
+</span>
+<input class="pl-10 pr-4 py-2 w-64 bg-slate-50 dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-slate-400 text-slate-200" placeholder="Search assets..." type="text"/>
+</div>
+<div class="h-6 w-px bg-slate-200 dark:bg-border-dark mx-1"></div>
+<!-- Filters -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-hover transition-colors">
+<span>Type</span>
+<span class="material-icons text-[16px] text-slate-400">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-hover transition-colors">
+<span>Size</span>
+<span class="material-icons text-[16px] text-slate-400">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-hover transition-colors">
+<span>Usage</span>
+<span class="material-icons text-[16px] text-slate-400">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="h-6 w-px bg-slate-200 dark:bg-border-dark mx-1"></div>
+<!-- View Toggle -->
+<div class="flex p-1 bg-slate-100 dark:bg-surface-dark rounded-lg border border-slate-200 dark:border-border-dark">
+<button class="p-1 rounded bg-white dark:bg-primary text-primary dark:text-white shadow-sm transition-all">
+<span class="material-icons text-[20px]">grid_view</span>
+</button>
+<button class="p-1 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all">
+<span class="material-icons text-[20px]">view_list</span>
+</button>
+</div>
+<!-- Upload Action -->
+<button class="ml-2 flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg text-sm font-medium shadow-lg shadow-primary/20 transition-all active:scale-95">
+<span class="material-icons text-[18px]">cloud_upload</span>
+<span>Upload</span>
+</button>
+</div>
+</header>
+<!-- Main Workspace -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Asset Grid -->
+<div class="flex-1 overflow-y-auto p-6 scroll-smooth">
+<!-- Date Group -->
+<div class="mb-8">
+<h2 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wider">Today</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+<!-- Card 1 (Selected) -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-primary dark:border-primary overflow-hidden cursor-pointer selected-ring transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Modern hotel lobby with warm lighting" class="w-full h-full object-cover" data-alt="Modern hotel lobby with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOkjnHCuxO2j4A6uZR7gCtDNwHmC8e5XvQ_8VxFf746WNw3py8lHLr7PHVNthGbgj-o4bWV9wmTHZclPCMZwiJkbhUHRL5L2hn20WVzKgRpQqBWdfsJhSel0xVb7tgHR-QGcNHZ-VsKTH7xPVCdZYESOZJY2AC_x5OhfedAAaumYIuUi17bnbs93L45zUZIp6porNXerJQzzpyrijhhzr5Z5U4PtIciw60Z3SoDroTjQhwGyeeRsFWfpGO8UpvotJi7rbmAzEoG8I"/>
+<div class="absolute top-2 right-2">
+<span class="flex items-center justify-center w-6 h-6 bg-primary text-white rounded-full">
+<span class="material-icons text-[16px]">check</span>
+</span>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">lobby-hero-v2.jpg</p>
+<span class="flex-shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-500 font-medium border border-green-500/20">In Use</span>
+</div>
+<p class="text-[10px] text-slate-400">2.4 MB • 1920x1080</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Luxury hotel room interior with ocean view" class="w-full h-full object-cover" data-alt="Luxury hotel room interior with ocean view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7gB2KY1tsPmSTRD15bes52on7RVr5JyxrTXXQNuHZJAPca2_wrhsHnq-o-zM8EjhD-TioL6eSUS1DRJvguktNdnJzwFpLu2MlI545oCksKfI6GVzgl5mDNT8OirjQvxOng8W8x3Odk33cAKd7s3YTQmnRy8V9l6wnzbqliQvaTavtD2idybnSgW51o416okvnh5DNm4_bwYjSRwXulVG-mw-U_rT5aEIETR2vbrCHQgVtMPmDeY3w2jATO7xM42j2qQYWnv-12k0"/>
+<!-- Hover Overlay -->
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">ocean-suite-master.jpg</p>
+</div>
+<p class="text-[10px] text-slate-400">3.1 MB • 2400x1600</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Resort swimming pool at sunset" class="w-full h-full object-cover" data-alt="Resort swimming pool at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWiu9zCiOu5lIA-ifqnvJ0rBmbeBuuQplTy3ZK9UloYoXGSVDNSYFOEZ_AgeRN8JpFYbkXWhSKpAMzsKdpr9yHunMuoS4xY5qU4aKVWDl_nXMFplMxNivdWAE5axMCQV3P4yQiTx9yyaPK2qZ6wt72kSh0zKgV_ix11VEdnKFLHJOercG7i5Nyts43VdFn8FumEWw1eKbMXGupFWtZWDNYFMdUjUJRQDYXFNKBvh8v_30JgtzFZH1nlNKsyprQDcq54Ojf17j790"/>
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">pool-sunset.jpg</p>
+<span class="flex-shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-500 font-medium border border-green-500/20">In Use</span>
+</div>
+<p class="text-[10px] text-slate-400">1.8 MB • 1920x1280</p>
+</div>
+</div>
+<!-- Card 4 (Video) -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-900 relative">
+<div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-icons text-white">play_arrow</span>
+</div>
+</div>
+<img alt="Video thumbnail of hotel exterior" class="w-full h-full object-cover opacity-80" data-alt="Video thumbnail of hotel exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUsAg-0JjYBDDmjJOV-DnWNKO2zKkPVUngysPcafEP3pVgUvJZptAVYuMNOoJgQJKDa58BsXDm5lQh_R7kkUegfk0-hE5YNnexZM84hzuMhh2L5y7NwEy66L15yW6LxnzmJdNKb_fYI9P2RPmSgitYvtGIHOqoqOIFN2vU8p5up29oFB7kqARWyfPQtzs5BBQSZtEQ4usy901sxo-ShW47KyPGDr0l2vkqmlGl_mWNyZ5vPAM0X34Q8MhXhCUwWFGTo5lzCBYCbUI"/>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">exterior-drone-4k.mp4</p>
+</div>
+<p class="text-[10px] text-slate-400">45.2 MB • 00:32s</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Dining table setup with candles" class="w-full h-full object-cover" data-alt="Dining table setup with candles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQeqFNFsMaWpt8r-XWDcEVhhrVCPT_TpbXIDL212liHHppOkcaqzsC_aRn6y9VmUfCvb253ZI6JMW8_DF_iRYSJ-6KYX1ZyFODBihQJCYDA4A-uVv6yah7GcwAVB3WGArWAXVejWj8xH7x9lZvoBu4JDnaH0yZuIIRFhkZW3rmsmCiAfnXWxkTEoDqni3AcBUhSUGiZ9TtM3lbZKdd3H8JPIx5BEGBju3CmNVSjPYINwRsiirwdaTqDVEh_L2LxZk2K4zx41tzZ0k"/>
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">restaurant-mood.jpg</p>
+</div>
+<p class="text-[10px] text-slate-400">1.2 MB • 1200x800</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Group -->
+<div class="mb-8">
+<h2 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wider">Yesterday</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+<!-- Card 6 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Minimalist hotel bathroom" class="w-full h-full object-cover" data-alt="Minimalist hotel bathroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIMxa6FfyEMB6c-CO7KbNikk88hlcqaeb0n5WZT_9rIPdAnbgtlMO0Hhhzj-N7Jb2TPwKjyfKB-d6TKDYn9iWmAtYHyfWOxl2jDAVenezqydzK0G1yrJhakFdXrIlvpLhKKOQAejy0XJ395sp4k1MJhPT1mE2ct3SynxF0KPYdptETaV9p-039RDjs0jBeUZguB6pyOB2XB64-ARYILvsT2ugT-FeIvov8hCVnxhiFP9xvzMs1kn_At_hI083JgA3az8I9qXZ-zQs"/>
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">bath-details-01.jpg</p>
+<span class="flex-shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-500 font-medium border border-green-500/20">In Use</span>
+</div>
+<p class="text-[10px] text-slate-400">0.9 MB • 1080x1080</p>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Hotel gym equipment" class="w-full h-full object-cover" data-alt="Hotel gym equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcCnSadvwHQpWXmEGZ8RryAcZTQaQiYZpVhjews4BsCHRfD3dxqypwEENVwNmCYvHEEy3d3AoftCeoS-8y8J2NYxS5UV2KAHgefsKHVj5aMFvY_H8CoGqj4LLTNGCmYF52haBhzYOMXaJOWGgULgv0JnyKDcKrptI_N7i3BgMIuwSfxuXbdg7MV3K1Y3xNuy_-3teA8Nr4J1OWOKXGXEOsuuSTORUq7mHWqMAXXiUgCuMJVD9BzzHZNb4grCcjC6MNziaHvs8p6a0"/>
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">fitness-center-main.jpg</p>
+</div>
+<p class="text-[10px] text-slate-400">2.1 MB • 2048x1365</p>
+</div>
+</div>
+<!-- Card 8 -->
+<div class="asset-card group relative bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden cursor-pointer hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200">
+<div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800 relative">
+<img alt="Outdoor pool deck chairs" class="w-full h-full object-cover" data-alt="Outdoor pool deck chairs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEp-UULumT3E_SwWuQc0k7_adNcamX5NzvQob9I4Zpb0EAzBpNUz5TslUs8X2HvO3K725dxahLnWsAdbOm5168_zmzKxokS2sp4Rjx6w1YgkU8HRcUuvJY80aOT-NEe-rp86gW5Mvn9La9mVUwb3WqEMjtmhmjyp1Qk2yZAwcVwbRW0q1kmX9AGEFBPQAsZ7dPPV3re63UHZ0qY5ChJeqgA_LqM8OxnpjxHpmV0T_yxtFp-E9o3vGI82Z6mXdn74iTVPv7P99N6cA"/>
+<div class="asset-overlay absolute inset-0 bg-black/40 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-200">
+<button class="p-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">edit</span>
+</button>
+<button class="p-1.5 bg-red-500/80 hover:bg-red-500 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-icons text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="p-3">
+<div class="flex justify-between items-start mb-1">
+<p class="text-xs font-medium text-slate-900 dark:text-white truncate pr-2">pool-deck.jpg</p>
+<span class="flex-shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-green-500/10 text-green-500 font-medium border border-green-500/20">In Use</span>
+</div>
+<p class="text-[10px] text-slate-400">1.9 MB • 1920x1280</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Details Drawer -->
+<aside class="w-96 bg-white dark:bg-surface-dark border-l border-slate-200 dark:border-border-dark flex flex-col h-full shrink-0 shadow-xl z-20 overflow-y-auto">
+<!-- Drawer Header -->
+<div class="p-4 border-b border-slate-200 dark:border-border-dark flex items-center justify-between">
+<h3 class="text-sm font-semibold text-slate-800 dark:text-white">Asset Details</h3>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<!-- Preview -->
+<div class="rounded-lg overflow-hidden border border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-background-dark shadow-sm">
+<img alt="Selected asset preview showing hotel lobby" class="w-full h-auto object-contain" data-alt="Selected asset preview showing hotel lobby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH_VBFJvfF-0VCJMiM0EahfJZpBNhnGNhjKVnRH1Bt7bYppSreZlEf2r9M_H6JC6tNqUJwfJOKar38KZr6fZYptTNnjE43xkuThJnLQLduxFuTDiThG3_DP-7AyQ1FeYep8Jy9B9MJRqn3fpQXg9qUOmqx3tByowPZ10-afe-0Y0cdYg6y93DurKQTsQr39ci-rI7tXsjl8F-OjT-i1jmuBNO8Y0yKvlCYdCDvA_GERDGXgjR7I8xlk1bH4LQCi4xMvUXIXgP2Hfw"/>
+</div>
+<!-- File Info -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-base font-semibold text-slate-900 dark:text-white break-words">lobby-hero-v2.jpg</h2>
+<button class="text-primary hover:underline text-xs font-medium">Download</button>
+</div>
+<p class="text-xs text-slate-500 mb-3">Added Oct 24, 2023 by Admin</p>
+<div class="grid grid-cols-2 gap-3 text-xs">
+<div class="p-2 bg-slate-50 dark:bg-background-dark rounded border border-slate-100 dark:border-border-dark">
+<span class="block text-slate-400 mb-0.5">Dimensions</span>
+<span class="font-medium text-slate-700 dark:text-slate-200">1920 x 1080</span>
+</div>
+<div class="p-2 bg-slate-50 dark:bg-background-dark rounded border border-slate-100 dark:border-border-dark">
+<span class="block text-slate-400 mb-0.5">Size</span>
+<span class="font-medium text-slate-700 dark:text-slate-200">2.4 MB</span>
+</div>
+<div class="p-2 bg-slate-50 dark:bg-background-dark rounded border border-slate-100 dark:border-border-dark">
+<span class="block text-slate-400 mb-0.5">Type</span>
+<span class="font-medium text-slate-700 dark:text-slate-200">image/jpeg</span>
+</div>
+<div class="p-2 bg-slate-50 dark:bg-background-dark rounded border border-slate-100 dark:border-border-dark">
+<span class="block text-slate-400 mb-0.5">Ratio</span>
+<span class="font-medium text-slate-700 dark:text-slate-200">16:9</span>
+</div>
+</div>
+</div>
+<div class="h-px bg-slate-200 dark:bg-border-dark"></div>
+<!-- Metadata Form -->
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Alt Text (SEO)</label>
+<input class="w-full text-sm bg-white dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg px-3 py-2 text-slate-700 dark:text-slate-200 focus:ring-1 focus:ring-primary outline-none" type="text" value="Modern hotel lobby with warm lighting"/>
+<p class="mt-1 text-[10px] text-slate-400">Describe the image for visually impaired users.</p>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Caption</label>
+<textarea class="w-full text-sm bg-white dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg px-3 py-2 text-slate-700 dark:text-slate-200 focus:ring-1 focus:ring-primary outline-none" rows="2">Our signature lobby featuring marble floors and ambient lighting.</textarea>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Rights / Credits</label>
+<input class="w-full text-sm bg-white dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg px-3 py-2 text-slate-700 dark:text-slate-200 focus:ring-1 focus:ring-primary outline-none" type="text" value="Internal Photography Team"/>
+</div>
+</div>
+<div class="h-px bg-slate-200 dark:bg-border-dark"></div>
+<!-- Used In Section -->
+<div>
+<h4 class="text-xs font-semibold text-slate-800 dark:text-white uppercase tracking-wide mb-3">Used In (2 Pages)</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-background-dark transition-colors group cursor-pointer">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons text-[16px]">home</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 truncate group-hover:text-primary transition-colors">Homepage</p>
+<p class="text-xs text-slate-400">Hero Section</p>
+</div>
+<span class="material-icons text-[16px] text-slate-300">open_in_new</span>
+</li>
+<li class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-background-dark transition-colors group cursor-pointer">
+<div class="w-8 h-8 rounded bg-purple-500/10 flex items-center justify-center text-purple-500">
+<span class="material-icons text-[16px]">hotel</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 truncate group-hover:text-primary transition-colors">About Us</p>
+<p class="text-xs text-slate-400">Gallery Widget</p>
+</div>
+<span class="material-icons text-[16px] text-slate-300">open_in_new</span>
+</li>
+</ul>
+</div>
+<!-- Danger Zone -->
+<div class="pt-2">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border border-red-500/30 text-red-500 hover:bg-red-500/10 text-sm font-medium transition-colors">
+<span class="material-icons text-[18px]">delete_outline</span>
+                            Delete Permanently
+                        </button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

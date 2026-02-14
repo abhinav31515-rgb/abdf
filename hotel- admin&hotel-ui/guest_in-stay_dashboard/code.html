@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guest In-Stay Dashboard - HotelOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #192233;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #324467;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-3">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">domain</span>
+<h2 class="text-xl font-bold tracking-tight">HotelOS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dining</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Amenities</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">My Stay</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="bg-slate-200 dark:bg-slate-800/50 border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/50" placeholder="Search services..." type="text"/>
+</div>
+<button class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile picture of Mr. Henderson" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClAWWa-EQND1hsQFep6TiZzP_bCoGSb2KxWtWis6Lt5FYt10KTW2cJ-wtS14Z0VM1qmWwSD2Y1lnUqXfH6wj28VwhjMCWWYXL4VjuOCaqpJ7u8xiPp9FUfXf_7ik2FtiNzn1rCskpkUyM_WicSVi7qmtW1MpMyMBy3yfxLD4gPH3ahJJnWhsPeKmgEnHXaw21Hr7sgKC50Mq4tsADw3JIJEsCqyH5aPs21F8oOuLMTu3RnyC0upBcD5s3jU_B6Ok7MEZGGqC_w4s0"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto px-6 lg:px-20 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Guest Info & Actions -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Personalized Welcome -->
+<section class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/20 p-8">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div>
+<h1 class="text-3xl font-bold mb-2">Welcome back, Mr. Henderson</h1>
+<div class="flex flex-wrap gap-4 text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">meeting_room</span> Suite 402 • Deluxe King</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">event_available</span> Checkout: Oct 24, 11:00 AM</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined">info</span>
+                            View Stay Details
+                        </button>
+</div>
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+</section>
+<!-- Quick Actions Grid -->
+<section>
+<h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                        Quick Actions
+                    </h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<button class="flex flex-col items-start p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-primary/50 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<span class="font-bold text-lg">Order Food</span>
+<span class="text-sm text-slate-500">Browse 24/7 menu</span>
+</button>
+<button class="flex flex-col items-start p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-primary/50 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+<span class="material-symbols-outlined">cleaning_services</span>
+</div>
+<span class="font-bold text-lg">Housekeeping</span>
+<span class="text-sm text-slate-500">Request room cleaning</span>
+</button>
+<button class="flex flex-col items-start p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-primary/50 transition-all group">
+<div class="w-12 h-12 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center mb-4 group-hover:bg-amber-500 group-hover:text-white transition-all">
+<span class="material-symbols-outlined">report</span>
+</div>
+<span class="font-bold text-lg">Report Issue</span>
+<span class="text-sm text-slate-500">Maintenance &amp; Support</span>
+</button>
+</div>
+</section>
+<!-- Restaurant Menu Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                            Restaurant Menu
+                        </h3>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-medium">All Day</button>
+<button class="px-4 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-primary/10 hover:text-primary transition-colors">Breakfast</button>
+<button class="px-4 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-primary/10 hover:text-primary transition-colors">Drinks</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Menu Item 1 -->
+<div class="flex gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Gourmet wagyu beef burger with fries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLFU3p4rU8g3ga4btsaN6YJtSNfc1UnqGzwJU6ppHoACcWpSIoFww1kaH1npH8vPF_3puXiPiaQck9to4GTGj1QlqtuRWKEubJrwaiECWxd107XZBKfEWPkRihnkrN6tsrOeQ-lPa8o07NM1VsncQTIbszNV1zKKCz-nPNfRi1AwzBqg75HNyc7_5cLX4yLPPRKFTBqNrCLshEDxK7RyCePT5-LA0vA0Va22HoKUp8zwdKKczBMWYQstraXSMkp13PbCNm-DdpZFg"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold">Signature Wagyu Burger</h4>
+<span class="text-primary font-bold">$24</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2">Truffle aioli, caramelized onions, aged cheddar on brioche.</p>
+<button class="mt-3 text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add to Order
+                                </button>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="flex gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Fresh mediterranean salad bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSu83ULMmwKm5C0IMdKdQkDTb95c33WKU_YC_1_eeBxVeJwtycOJSJD1YwOh3r9Bq8hIMKubhgYGrIHe5tWEMkaDnxShyBTD3miyqrTFzBIIZX7J1vnOBy1tDL1U249JTQ2t9XntsthFJRh698mBjU0_Lmgu7gDgS2sduwmXf01x4xWnCSPKTfG7yZ1W6JO0RuzXRaancWS0Lomkt1AW62GKTv9d1Apo8BiaZVP3y1NYyWKTsF4eHzpCW58Ygy25M1mzIsR1VbzOM"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold">Mediterranean Bowl</h4>
+<span class="text-primary font-bold">$18</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2">Quinoa, roasted chickpeas, feta, lemon tahini dressing.</p>
+<button class="mt-3 text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add to Order
+                                </button>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="flex gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Penne pasta with tomato and basil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQfTH_PSC-ucVwLFIEEVY1SsRX8XDl2l2d469KFQZoQjmeeUS8ean0r32xwlkEQmN3OM1RouPLd7tidITqohYjKDfRrwd9hzAPZtl7hWRC26GZifxvnwl_rtNpSSJMJS7B-OC5BDMwqxTjIr4kL39Zgx2R2QJvdrQ7AcphGE9na_UsE7D2xRPmgIYCfl99sRStX_kDWs0eU0CahKYkZi6UBhHkptGVk8zy99ZQ-thsjMS2SwLbwPl3ffinc5m-T6m0vAElLI1QUAc"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold">Truffle Penne</h4>
+<span class="text-primary font-bold">$22</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2">Wild mushrooms, cream sauce, fresh parmesan.</p>
+<button class="mt-3 text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add to Order
+                                </button>
+</div>
+</div>
+<!-- Menu Item 4 -->
+<div class="flex gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Handcrafted classic cocktail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsJ10ZSDyAconOaO2HzJLMurLKrLrmisrtX3pYV-x9N1lnbOKxjuEj-FheCH6T_Hp2Aay0yW2_sDNojX64AGEO-z8c0tVIMxrjw58-_rBy9VYbUGE32w6qKIZggxDZSrTg4urF7oLcj9tyvMTXOa5-LT4yo7VjHX4x9VJnp8NSsfXdtvHGCow-YBAa6SLx-aztL8auKgnZL93gQw2EbyngivQdj_I4qlseE_fqsJIvlYuCcq3v0AaGuXdcQmF0U1_XlKu3-tpRZuM"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold">Signature Old Fashioned</h4>
+<span class="text-primary font-bold">$16</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 line-clamp-2">House-infused bourbon, maple syrup, orange peel.</p>
+<button class="mt-3 text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add to Order
+                                </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Request Tracker & Chat -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Active Request Tracker -->
+<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6">
+<h3 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">track_changes</span>
+                        Active Requests
+                    </h3>
+<div class="space-y-4">
+<div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border-l-4 border-primary">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-bold">Housekeeping</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary uppercase tracking-wider font-bold">In Progress</span>
+</div>
+<p class="text-xs text-slate-500">Scheduled for 2:30 PM Today</p>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border-l-4 border-emerald-500">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-bold">Extra Towels</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-500 uppercase tracking-wider font-bold">Delivered</span>
+</div>
+<p class="text-xs text-slate-500">Delivered by Staff at 11:15 AM</p>
+</div>
+</div>
+</div>
+<!-- Support Chat Interface -->
+<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col h-[400px]">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div>
+<h4 class="text-sm font-bold">Concierge Support</h4>
+<span class="text-[10px] text-emerald-500 font-medium">Online 24/7</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+<div class="flex flex-col gap-1 max-w-[80%]">
+<div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-xl rounded-tl-none text-sm">
+                                Hello Mr. Henderson! How can I assist you with your stay today?
+                            </div>
+<span class="text-[10px] text-slate-500 ml-1">11:30 AM</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%] self-end">
+<div class="bg-primary text-white p-3 rounded-xl rounded-tr-none text-sm">
+                                I'd like to book a taxi for 7 PM.
+                            </div>
+<span class="text-[10px] text-slate-500 mr-1 text-right">11:32 AM</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[80%]">
+<div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-xl rounded-tl-none text-sm">
+                                Certainly! I've scheduled a premium sedan for you. It will be at the main entrance.
+                            </div>
+<span class="text-[10px] text-slate-500 ml-1">11:33 AM</span>
+</div>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="relative">
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-4 pr-12 py-2.5 text-sm focus:ring-1 focus:ring-primary/50" placeholder="Type a message..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-primary p-1">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Current Bill/Order Summary -->
+<div class="rounded-xl bg-slate-900 dark:bg-primary/10 border border-primary/20 p-6">
+<h3 class="font-bold text-white mb-4 flex items-center justify-between">
+<span>Current Stay Total</span>
+<span class="text-primary">$442.50</span>
+</h3>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs text-slate-400">
+<span>Room (2 Nights)</span>
+<span>$380.00</span>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>In-Room Dining</span>
+<span>$42.50</span>
+</div>
+<div class="flex justify-between text-xs text-slate-400">
+<span>Services (Laundry)</span>
+<span>$20.00</span>
+</div>
+</div>
+<button class="w-full py-2.5 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg text-sm font-bold transition-all">
+                        View Detailed Invoice
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Support FAB for mobile -->
+<button class="fixed bottom-6 right-6 lg:hidden w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</button>
+</body></html>
