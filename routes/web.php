@@ -1,0 +1,32 @@
+<?php
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PageManagementController;
+use App\Http\Controllers\Admin\ThemeSettingsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitePagesController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', HomeController::class)->name('home');
+Route::get('/rooms', [SitePagesController::class, 'rooms'])->name('site.rooms');
+Route::get('/rooms/{slug}', [SitePagesController::class, 'roomDetail'])->name('site.rooms.detail');
+Route::get('/offers', [SitePagesController::class, 'offers'])->name('site.offers');
+Route::get('/offers/{slug}', [SitePagesController::class, 'offerDetail'])->name('site.offers.detail');
+Route::get('/dining', [SitePagesController::class, 'dining'])->name('site.dining');
+Route::get('/dining/{slug}', [SitePagesController::class, 'diningDetail'])->name('site.dining.detail');
+Route::get('/gallery', [SitePagesController::class, 'gallery'])->name('site.gallery');
+Route::get('/contact', [SitePagesController::class, 'contact'])->name('site.contact');
+
+Route::prefix('admin')->middleware(['auth'])->group(function (): void {
+    Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
+    Route::get('/theme-settings', ThemeSettingsController::class)->name('admin.theme-settings');
+    Route::put('/theme-settings/{brand}', [ThemeSettingsController::class, 'update'])->name('admin.theme-settings.update');
+
+    Route::get('/pages', [PageManagementController::class, 'index'])->name('admin.pages.index');
+    Route::get('/pages/create', [PageManagementController::class, 'create'])->name('admin.pages.create');
+    Route::post('/pages', [PageManagementController::class, 'store'])->name('admin.pages.store');
+    Route::get('/pages/{id}/edit', [PageManagementController::class, 'edit'])->name('admin.pages.edit');
+    Route::put('/pages/{id}', [PageManagementController::class, 'update'])->name('admin.pages.update');
+    Route::post('/pages/{id}/clone', [PageManagementController::class, 'clone'])->name('admin.pages.clone');
+    Route::delete('/pages/{id}', [PageManagementController::class, 'destroy'])->name('admin.pages.destroy');
+});
