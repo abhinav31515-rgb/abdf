@@ -67,6 +67,83 @@ class SitePagesController extends Controller
         return view('pages.contact', compact('brandKey', 'theme'));
     }
 
+    public function wellness(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.wellness');
+    }
+
+    public function meetings(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.meetings-events');
+    }
+
+    public function weddings(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.weddings');
+    }
+
+    public function experiences(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.experiences');
+    }
+
+    public function about(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.about');
+    }
+
+    public function faq(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.faq');
+    }
+
+    public function sustainability(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.sustainability');
+    }
+
+    public function press(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.press');
+    }
+
+    public function careers(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.careers');
+    }
+
+    public function legal(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.legal');
+    }
+
+    public function bookingSearch(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.booking-search');
+    }
+
+    public function bookingAvailability(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.booking-availability');
+    }
+
+    public function bookingCheckout(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.booking-checkout');
+    }
+
+    public function bookingConfirmation(BrandThemeRepository $themes): View
+    {
+        return $this->page($themes, 'pages.booking-confirmation');
+    }
+
+    private function page(BrandThemeRepository $themes, string $view): View
+    {
+        [$brandKey, $theme] = $this->resolveTheme($themes);
+
+        return view($view, compact('brandKey', 'theme'));
+    }
+
     private function resolveTheme(BrandThemeRepository $themes): array
     {
         $brandKey = request()->query('brand', 'eros');

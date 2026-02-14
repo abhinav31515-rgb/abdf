@@ -88,19 +88,19 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [x] Restaurant details
 - [x] Offers listing
 - [x] Offer details
-- [ ] Wellness/Spa
-- [ ] Meetings & Events
-- [ ] Weddings
+- [x] Wellness/Spa
+- [x] Meetings & Events
+- [x] Weddings
 - [x] Gallery
-- [ ] Experiences/Local attractions
-- [ ] About / Brand Story
+- [x] Experiences/Local attractions
+- [x] About / Brand Story
 - [x] Contact / Maps / Directions
-- [ ] FAQ
-- [ ] Sustainability / CSR
-- [ ] Press / Media
-- [ ] Careers
-- [ ] Terms / Privacy / Cookie policy
-- [ ] Booking funnel pages (search, availability, checkout, confirmation)
+- [x] FAQ
+- [x] Sustainability / CSR
+- [x] Press / Media
+- [x] Careers
+- [x] Terms / Privacy / Cookie policy
+- [x] Booking funnel pages (search, availability, checkout, confirmation)
 
 ### 3.2 Page Management Admin
 - [ ] Visual page manager with:
@@ -128,7 +128,7 @@ This document is the **single source of truth** for missing work, conflicts, and
   - [ ] LodgingBusiness
   - [ ] Offer
   - [ ] Breadcrumb
-  - [ ] FAQ
+  - [x] FAQ
   - [ ] Review/AggregateRating (policy compliant)
 - [ ] Redirect manager (301/302) + broken link monitor.
 
@@ -147,7 +147,7 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [ ] AI assistant in admin for:
   - [ ] Meta generation by page intent + audience
   - [ ] Schema suggestion generation
-  - [ ] FAQ extraction from page context
+  - [x] FAQ extraction from page context
   - [ ] Internal linking map suggestions
   - [ ] Content gap discovery vs top competitors (human-approved)
 - [ ] AI governance:

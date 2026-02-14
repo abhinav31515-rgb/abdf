@@ -14,8 +14,22 @@ Route::get('/offers', [SitePagesController::class, 'offers'])->name('site.offers
 Route::get('/offers/{slug}', [SitePagesController::class, 'offerDetail'])->name('site.offers.detail');
 Route::get('/dining', [SitePagesController::class, 'dining'])->name('site.dining');
 Route::get('/dining/{slug}', [SitePagesController::class, 'diningDetail'])->name('site.dining.detail');
+Route::get('/wellness', [SitePagesController::class, 'wellness'])->name('site.wellness');
+Route::get('/meetings-events', [SitePagesController::class, 'meetings'])->name('site.meetings');
+Route::get('/weddings', [SitePagesController::class, 'weddings'])->name('site.weddings');
+Route::get('/experiences', [SitePagesController::class, 'experiences'])->name('site.experiences');
+Route::get('/about', [SitePagesController::class, 'about'])->name('site.about');
+Route::get('/faq', [SitePagesController::class, 'faq'])->name('site.faq');
+Route::get('/sustainability', [SitePagesController::class, 'sustainability'])->name('site.sustainability');
+Route::get('/press', [SitePagesController::class, 'press'])->name('site.press');
+Route::get('/careers', [SitePagesController::class, 'careers'])->name('site.careers');
+Route::get('/legal', [SitePagesController::class, 'legal'])->name('site.legal');
 Route::get('/gallery', [SitePagesController::class, 'gallery'])->name('site.gallery');
 Route::get('/contact', [SitePagesController::class, 'contact'])->name('site.contact');
+Route::get('/booking/search', [SitePagesController::class, 'bookingSearch'])->name('site.booking.search');
+Route::get('/booking/availability', [SitePagesController::class, 'bookingAvailability'])->name('site.booking.availability');
+Route::get('/booking/checkout', [SitePagesController::class, 'bookingCheckout'])->name('site.booking.checkout');
+Route::get('/booking/confirmation', [SitePagesController::class, 'bookingConfirmation'])->name('site.booking.confirmation');
 
 Route::prefix('admin')->middleware(['auth'])->group(function (): void {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');
