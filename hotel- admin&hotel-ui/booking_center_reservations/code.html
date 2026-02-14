@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Center Reservations</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "primary-dark": "#104abf",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1a2234",
+              "surface-border": "#2d3648",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a2234; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3648; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b465c; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 h-screen overflow-hidden flex font-display transition-colors duration-200">
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-surface-dark border-r border-gray-200 dark:border-surface-border hidden md:flex flex-col z-20">
+<div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-surface-border">
+<div class="flex items-center gap-2 text-primary font-bold text-xl tracking-tight">
+<span class="material-icons-outlined text-2xl">grid_view</span>
+<span>HotelOS</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider">Operations</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-icons-outlined">calendar_month</span>
+<span class="font-medium text-sm">Bookings Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">bedroom_parent</span>
+<span class="font-medium text-sm">Room Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">people</span>
+<span class="font-medium text-sm">Guests &amp; Loyalty</span>
+</a>
+<div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider">Management</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">domain</span>
+<span class="font-medium text-sm">Properties</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">bar_chart</span>
+<span class="font-medium text-sm">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<span class="material-icons-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-200 dark:border-surface-border">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+                    JD
+                </div>
+<div>
+<div class="text-sm font-medium dark:text-white">Jane Doe</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Admin Manager</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 bg-white dark:bg-background-dark/80 backdrop-blur border-b border-gray-200 dark:border-surface-border flex items-center justify-between px-6 z-10 shrink-0">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-gray-500 dark:text-slate-400 hover:text-primary">
+<span class="material-icons-outlined">menu</span>
+</button>
+<h1 class="text-lg font-semibold dark:text-white">Reservations</h1>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20">1,248 Total</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-500 dark:text-slate-400 hover:text-primary hover:bg-gray-100 dark:hover:bg-surface-dark rounded-full transition-colors relative">
+<span class="material-icons-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-primary/25">
+<span class="material-icons-outlined text-lg">add</span>
+<span>New Booking</span>
+</button>
+</div>
+</header>
+<!-- Main Body Area -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Panel: Table & Filters -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Toolbar -->
+<div class="p-6 pb-4">
+<!-- Quick Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-surface-border flex flex-col">
+<span class="text-xs text-gray-500 dark:text-slate-400 font-medium uppercase">Arrivals Today</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-bold dark:text-white">24</span>
+<span class="text-xs text-emerald-500 flex items-center gap-0.5"><span class="material-icons-outlined text-sm">arrow_upward</span> 12%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-surface-border flex flex-col">
+<span class="text-xs text-gray-500 dark:text-slate-400 font-medium uppercase">Departures Today</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-bold dark:text-white">18</span>
+<span class="text-xs text-slate-500 flex items-center gap-0.5">On time</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-surface-border flex flex-col">
+<span class="text-xs text-gray-500 dark:text-slate-400 font-medium uppercase">In-House</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-bold dark:text-white">156</span>
+<span class="text-xs text-emerald-500 flex items-center gap-0.5">85% Occ</span>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-surface-border flex flex-col">
+<span class="text-xs text-gray-500 dark:text-slate-400 font-medium uppercase">Pending Actions</span>
+<div class="flex items-end justify-between mt-1">
+<span class="text-2xl font-bold dark:text-white">5</span>
+<span class="text-xs text-orange-500 flex items-center gap-0.5">Needs Review</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="flex flex-col sm:flex-row gap-3 items-center justify-between">
+<div class="relative w-full sm:w-96">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<span class="material-icons-outlined">search</span>
+</span>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 dark:border-surface-border rounded-lg leading-5 bg-white dark:bg-surface-dark text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm shadow-sm" placeholder="Search guest, confirmation #, or email..." type="text"/>
+</div>
+<div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
+<button class="inline-flex items-center px-3 py-2 border border-gray-200 dark:border-surface-border rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-border transition-colors whitespace-nowrap gap-2">
+<span class="material-icons-outlined text-lg text-gray-400">filter_list</span>
+<span>Status: All</span>
+<span class="material-icons-outlined text-base text-gray-400">expand_more</span>
+</button>
+<button class="inline-flex items-center px-3 py-2 border border-gray-200 dark:border-surface-border rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-border transition-colors whitespace-nowrap gap-2">
+<span class="material-icons-outlined text-lg text-gray-400">date_range</span>
+<span>Dates</span>
+<span class="material-icons-outlined text-base text-gray-400">expand_more</span>
+</button>
+<button class="inline-flex items-center px-3 py-2 border border-gray-200 dark:border-surface-border rounded-lg text-sm font-medium text-primary bg-primary/10 border-transparent hover:bg-primary/20 transition-colors whitespace-nowrap">
+<span class="material-icons-outlined text-lg mr-1">tune</span>
+<span>Advanced</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-auto px-6 pb-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-border rounded-xl shadow-sm overflow-hidden min-w-[800px]">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-surface-border">
+<thead class="bg-gray-50 dark:bg-surface-dark sticky top-0 z-10">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider w-12" scope="col">
+<input class="rounded border-gray-300 text-primary focus:ring-primary dark:bg-background-dark dark:border-surface-border" type="checkbox"/>
+</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Guest</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Stay Dates</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Room Type</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Amount</th>
+<th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wider" scope="col">Status</th>
+<th class="relative px-6 py-3" scope="col"><span class="sr-only">Actions</span></th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-surface-dark divide-y divide-gray-200 dark:divide-surface-border">
+<!-- Row 1 (Active/Selected) -->
+<tr class="bg-primary/5 dark:bg-primary/10 border-l-4 border-l-primary cursor-pointer transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary dark:bg-background-dark dark:border-surface-border" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="flex-shrink-0 h-10 w-10">
+<img alt="Profile picture of James Smith" class="h-10 w-10 rounded-full object-cover border-2 border-white dark:border-surface-border" data-alt="Portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhUP_afLPhjyyOJ3xVA2DVncDnHzh0qCiX8M_ZOU5DSeiJFpcXRbi_Pm6NXq1XrEX4r6jfx5aFYPZEM175uiNDHf3bk9QRJMjdqdkh1oJIgy4unw6yivHJos6TCMZkFC3XZUiPPPjZ7RNomMEtIM-7DSwcRcP_TfYfSExOzuVavDr077U8nK1EKWcLLovYPhm0cHuhz6CM_pHE8rZBpWEkYLZsZdZhjVfoihBXhscGx4YEoD-b04qz0JJSPRwtCGPZOXf_8oMpmDM"/>
+</div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900 dark:text-white">James Smith</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">#RES-8823</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Oct 24 - Oct 28</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">4 Nights</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Deluxe King</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Ocean View</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900 dark:text-white">$1,240.00</div>
+<div class="flex items-center gap-1 text-xs text-emerald-500">
+<span class="material-icons-outlined text-[10px]">credit_card</span>
+                                            Paid
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800">
+                                            Confirmed
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-border/30 cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary dark:bg-background-dark dark:border-surface-border" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 font-bold text-sm">
+                                                AL
+                                            </div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900 dark:text-white">Anna Larson</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">#RES-8901</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Oct 25 - Oct 27</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">2 Nights</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Standard Double</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">City View</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900 dark:text-white">$450.00</div>
+<div class="flex items-center gap-1 text-xs text-orange-500">
+<span class="material-icons-outlined text-[10px]">pending</span>
+                                            Pending
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-800">
+                                            Check-in
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-border/30 cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary dark:bg-background-dark dark:border-surface-border" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="flex-shrink-0 h-10 w-10">
+<img alt="Profile picture of Sarah Wilson" class="h-10 w-10 rounded-full object-cover border-2 border-white dark:border-surface-border" data-alt="Portrait of a smiling woman with long hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgtRwil0qBHj8IOWPSQDTxQVpvgGJ8ycYvyqX0JPiF-BAFYqsx8vfO4Fy2pLdTV0ur31zAGz0GQtejthtcg7J5ntLuClf8PJ6N8Hpu1z6luYvoldbsnED4_idIMEHWBw7cATBdTpojMRaQIM6y9XXiWaXLAkra1hYAHIVZk5p5lrUSWFxRPs6LK5uFyyzkWje-yecaCizhX7CYnTjl1uEWAZusABBtsg3A7_l64Y_1q9_IWJVmaCwSGOxaTrqqgR47uv4uQyjO3W4"/>
+</div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900 dark:text-white">Sarah Wilson</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">#RES-8766</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Oct 26 - Oct 30</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">4 Nights</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Suite</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Penthouse</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900 dark:text-white">$2,800.00</div>
+<div class="flex items-center gap-1 text-xs text-emerald-500">
+<span class="material-icons-outlined text-[10px]">credit_card</span>
+                                            Paid
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700/50 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                                            Checked-out
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-surface-border/30 cursor-pointer transition-colors border-l-4 border-l-transparent">
+<td class="px-6 py-4 whitespace-nowrap">
+<input class="rounded border-gray-300 text-primary focus:ring-primary dark:bg-background-dark dark:border-surface-border" type="checkbox"/>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 font-bold text-sm">
+                                                MR
+                                            </div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900 dark:text-white">Michael Ross</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">#RES-8954</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Nov 01 - Nov 05</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">4 Nights</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-900 dark:text-slate-200">Standard King</div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Garden View</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900 dark:text-white">$0.00</div>
+<div class="flex items-center gap-1 text-xs text-red-500">
+<span class="material-icons-outlined text-[10px]">info</span>
+                                            Voided
+                                        </div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border border-red-200 dark:border-red-800">
+                                            Cancelled
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-gray-50 dark:bg-surface-dark border-t border-gray-200 dark:border-surface-border flex items-center justify-between">
+<div class="text-sm text-gray-500 dark:text-slate-400">
+                                Showing <span class="font-medium text-gray-900 dark:text-white">1</span> to <span class="font-medium text-gray-900 dark:text-white">10</span> of <span class="font-medium text-gray-900 dark:text-white">1,248</span> results
+                            </div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-gray-300 dark:border-surface-border rounded-md text-sm font-medium text-gray-700 dark:text-slate-300 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-border disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+                                    Previous
+                                </button>
+<button class="px-3 py-1 border border-gray-300 dark:border-surface-border rounded-md text-sm font-medium text-gray-700 dark:text-slate-300 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-border">
+                                    Next
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Details Drawer (Fixed width) -->
+<div class="w-96 bg-white dark:bg-surface-dark border-l border-gray-200 dark:border-surface-border flex flex-col h-full shadow-2xl z-20 overflow-y-auto">
+<!-- Drawer Header -->
+<div class="p-6 border-b border-gray-200 dark:border-surface-border flex items-start justify-between bg-gray-50 dark:bg-surface-dark sticky top-0 z-10">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h2 class="text-xl font-bold dark:text-white">James Smith</h2>
+<span class="material-icons-outlined text-primary text-sm" title="Gold Member">verified</span>
+</div>
+<div class="text-sm text-gray-500 dark:text-slate-400 flex items-center gap-2">
+<span>#RES-8823</span>
+<span class="w-1 h-1 rounded-full bg-gray-400"></span>
+<span class="text-primary font-medium">Gold Member</span>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-icons-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Actions -->
+<div class="p-4 grid grid-cols-3 gap-2 border-b border-gray-200 dark:border-surface-border">
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-surface-border transition-colors text-gray-600 dark:text-slate-300">
+<span class="material-icons-outlined">edit</span>
+<span class="text-xs font-medium">Modify</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-surface-border transition-colors text-gray-600 dark:text-slate-300">
+<span class="material-icons-outlined">print</span>
+<span class="text-xs font-medium">Print</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-surface-border transition-colors text-gray-600 dark:text-slate-300">
+<span class="material-icons-outlined">mail</span>
+<span class="text-xs font-medium">Email</span>
+</button>
+</div>
+<!-- Drawer Content -->
+<div class="p-6 space-y-8">
+<!-- Stay Info -->
+<div>
+<h3 class="text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-4">Stay Information</h3>
+<div class="bg-background-light dark:bg-background-dark p-4 rounded-xl space-y-4">
+<div class="flex justify-between items-center">
+<div class="text-center w-1/3">
+<div class="text-xs text-gray-500 dark:text-slate-400 mb-1">Check-in</div>
+<div class="text-sm font-bold dark:text-white">Oct 24</div>
+<div class="text-xs text-gray-400">3:00 PM</div>
+</div>
+<div class="flex-1 flex flex-col items-center px-2">
+<div class="text-xs text-primary font-medium mb-1">4 Nights</div>
+<div class="w-full h-1 bg-gray-200 dark:bg-surface-border rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="text-center w-1/3">
+<div class="text-xs text-gray-500 dark:text-slate-400 mb-1">Check-out</div>
+<div class="text-sm font-bold dark:text-white">Oct 28</div>
+<div class="text-xs text-gray-400">11:00 AM</div>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-surface-border"/>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Guests</div>
+<div class="text-sm font-medium dark:text-white mt-1">2 Adults, 1 Child</div>
+</div>
+<div>
+<div class="text-xs text-gray-500 dark:text-slate-400">Room</div>
+<div class="text-sm font-medium dark:text-white mt-1">Deluxe King</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Summary -->
+<div>
+<h3 class="text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-4">Payment Summary</h3>
+<div class="bg-background-light dark:bg-background-dark p-4 rounded-xl space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-gray-500 dark:text-slate-400">Room Charges</span>
+<span class="font-medium dark:text-slate-200">$1,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500 dark:text-slate-400">Taxes &amp; Fees (14%)</span>
+<span class="font-medium dark:text-slate-200">$140.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500 dark:text-slate-400">Resort Fee</span>
+<span class="font-medium dark:text-slate-200">$100.00</span>
+</div>
+<hr class="border-gray-200 dark:border-surface-border border-dashed my-2"/>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold text-gray-900 dark:text-white">Total</span>
+<span class="text-lg font-bold text-primary">$1,240.00</span>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-200 dark:border-surface-border flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-white dark:bg-white/10 p-1 rounded border border-gray-200 dark:border-transparent">
+<img alt="Mastercard Logo" class="h-4 w-6 object-contain" data-alt="Mastercard logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd-li7zOLomPZmOpLayPhdPCkfo6zx2Bz47K4ypY55T5OBYzd6DOsifTfiwrOq6Dkmw47mbA9ybjmxPslsCluDBE4-wvDVWoVD9Ewz_EtQ3cpJLLh_CtvNIYGTz2hz0ztawJOSVoB6rA_YtzWcgOE4n0H9L8B2Zwk39FqKu0zAT6Gk5NzHB2x5BsdolY7Npo6HqtmJxzk8wJfYifNHNCPdoG8PhPYMEY9mTKVTWTnH1X0fIlnNRCtvq_whAV5YeXyRz9U4_YdJ_VE"/>
+</div>
+<span class="text-sm text-gray-600 dark:text-slate-300">•••• 4242</span>
+</div>
+<span class="text-xs px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded font-medium">Paid</span>
+</div>
+</div>
+</div>
+<!-- Internal Notes -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider">Internal Notes</h3>
+<button class="text-primary text-xs font-medium hover:underline">+ Add Note</button>
+</div>
+<div class="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-900/30 p-4 rounded-xl">
+<p class="text-sm text-yellow-800 dark:text-yellow-200">
+                                Guest requested early check-in if possible. Celebrated 10th anniversary, leave welcome amenity in room.
+                            </p>
+<div class="mt-2 text-xs text-yellow-600 dark:text-yellow-500 flex items-center gap-1">
+<span class="material-icons-outlined text-xs">schedule</span>
+                                Oct 15, 2023 by System
+                            </div>
+</div>
+</div>
+<div class="pb-6">
+<button class="w-full py-3 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                            Cancel Reservation
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

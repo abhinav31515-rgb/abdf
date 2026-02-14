@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detailed Recent Activity Feed - Hotel Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1a2230",
+              "surface-light": "#ffffff",
+              "border-dark": "#2d3748",
+              "border-light": "#e2e8f0",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for better look in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+        
+        .timeline-line {
+            position: absolute;
+            top: 3.5rem;
+            bottom: -1.5rem;
+            left: 2rem;
+            width: 2px;
+            background-color: #2d3748;
+            z-index: 0;
+        }
+        
+        /* Last item shouldn't have a line extending down indefinitely */
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen">
+<!-- Navbar / Header -->
+<header class="h-16 border-b border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex items-center justify-between px-6 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
+                H
+            </div>
+<nav class="hidden md:flex text-sm font-medium text-slate-500 dark:text-slate-400 gap-2">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span>/</span>
+<span class="text-slate-900 dark:text-white">Activity Log</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 relative text-slate-500 dark:text-slate-400">
+<span class="material-icons text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="flex items-center gap-2">
+<img alt="Admin Profile" class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700" data-alt="Admin user avatar showing a smiling person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSrSDRheUUTU_5a3X_aFJtV8Y-F3vrsF-2tiCtArHIKF2Fxd656FI7o0Kcr7zRmy-L-9m0OHDq0O_TwOyZhgCjctrMpRBziqmT2VdkcPR8C-VZrbdrjxtNcWRBAJAOgbBieoyVQ-ZlqvuViQ_Pl-6sr7Uv9AIKjPxkaTtTaG3y3KW_QD_0sk8WJaa0GYRT-mo475SaaOooxHGgs1Oq583g3wXicrcrfoaFUeE1IsbUakfxrTp_daL1dc2UiH8xf1zC4VYR__7afJA"/>
+<span class="text-sm font-medium hidden sm:block">Admin User</span>
+</div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row max-w-[1600px] mx-auto min-h-[calc(100vh-64px)]">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-72 border-b lg:border-b-0 lg:border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark flex-shrink-0 p-6 sticky lg:top-16 h-auto lg:h-[calc(100vh-64px)] overflow-y-auto">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Filters</h2>
+<button class="text-xs text-primary hover:text-blue-400 font-medium">Reset All</button>
+</div>
+<!-- Date Range -->
+<div class="mb-6">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Time Range</label>
+<div class="space-y-2">
+<button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-slate-100 dark:bg-background-dark border border-transparent hover:border-slate-300 dark:hover:border-slate-600 text-sm">
+<span>Last 7 Days</span>
+<span class="material-icons text-base">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Action Type -->
+<div class="mb-6">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Action Type</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox w-4 h-4 text-primary rounded border-slate-300 dark:border-slate-600 dark:bg-background-dark focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors">Content Updates</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox w-4 h-4 text-primary rounded border-slate-300 dark:border-slate-600 dark:bg-background-dark focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors">Rate Changes</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox w-4 h-4 text-primary rounded border-slate-300 dark:border-slate-600 dark:bg-background-dark focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors">User Management</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox w-4 h-4 text-primary rounded border-slate-300 dark:border-slate-600 dark:bg-background-dark focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-700 dark:text-slate-300 group-hover:text-white transition-colors">Integrations &amp; API</span>
+</label>
+</div>
+</div>
+<!-- Brands -->
+<div class="mb-6">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Brand</label>
+<div class="relative">
+<select class="w-full bg-slate-100 dark:bg-background-dark border-none rounded-lg text-sm px-3 py-2.5 focus:ring-1 focus:ring-primary cursor-pointer text-slate-700 dark:text-slate-200 appearance-none">
+<option>All Brands</option>
+<option>Marriott International</option>
+<option>Hilton Hotels</option>
+<option>Hyatt Regency</option>
+<option>Independent Collection</option>
+</select>
+<span class="material-icons absolute right-3 top-2.5 text-slate-400 pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Users -->
+<div class="mb-6">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">User</label>
+<div class="flex items-center gap-2 mb-2 p-2 rounded-lg bg-primary/10 border border-primary/30">
+<img class="w-6 h-6 rounded-full" data-alt="Avatar of Sarah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjJiLm1Odqzl1uINLUT1s-bl9hPm3utiDHPKA8C9fC9A7mOfpbzWPKBMZzoKmp-_5r6CRipG-vqHgJsrhfd3zTtQ9BYuuOugXixNMxepW1rYDPJdYR1fA_TDOgSNP2ABA5Gz2rQxu73s1WUm-hPEWiqfpjhDFt4hcbw7QiEfgzDREUJVSv9s8Uc-dEzJYjJovsG-eqbhxBu7Sqdge2gboJUzpWXju-1w-Ljq0Ny7iHmJRjyHEf2MMvg8bEGFuTUYwCkYSf_iqg7rU"/>
+<span class="text-sm text-primary font-medium">Sarah Jenkins</span>
+<button class="ml-auto text-primary hover:text-blue-300">
+<span class="material-icons text-sm">close</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-icons absolute left-3 top-2.5 text-slate-400 text-base">search</span>
+<input class="w-full pl-9 bg-slate-100 dark:bg-background-dark border-none rounded-lg text-sm py-2 focus:ring-1 focus:ring-primary placeholder-slate-500" placeholder="Search users..." type="text"/>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-10">
+<!-- Global Search & Stats -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="relative w-full md:max-w-xl">
+<span class="material-icons absolute left-4 top-3.5 text-slate-400">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent text-slate-900 dark:text-white placeholder-slate-500 transition-all" placeholder="Search activity, guest names, or property IDs..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-slate-500 dark:text-slate-400">Showing <span class="text-slate-900 dark:text-white font-semibold">1-15</span> of <span class="text-slate-900 dark:text-white font-semibold">2,403</span> events</span>
+<div class="flex rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark overflow-hidden">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 border-r border-border-light dark:border-border-dark">
+<span class="material-icons text-slate-500 text-sm">chevron_left</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-icons text-slate-500 text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Timeline Feed -->
+<div class="space-y-0 relative">
+<!-- Timeline Header: Today -->
+<div class="relative z-10 flex items-center gap-4 mb-6">
+<div class="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider rounded-full border border-slate-300 dark:border-slate-700">
+                        Today
+                    </div>
+<div class="h-px bg-border-light dark:border-border-dark flex-1"></div>
+</div>
+<!-- Item 1: Expanded Rate Update -->
+<div class="timeline-item relative pb-8 group">
+<div class="timeline-line"></div>
+<div class="flex gap-4 sm:gap-6">
+<!-- Avatar Column -->
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full p-1 bg-surface-light dark:bg-background-dark z-10 border-2 border-primary/20 group-hover:border-primary transition-colors">
+<img class="w-full h-full rounded-full object-cover" data-alt="Sarah Jenkins profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2UiV4imPNlVLWRak-NtWPK9ufAyCt36VNcVNGQQWxADTB5mskXXaMiNhPY-ajFuXyVABzUYj0VotC18exPFcFZC9ukXl5C24-Tdam_Xv_SOyNf8UBzE5WWthzTjDC1U66z06DQ_cBSUpdHoSyThjNmwxH6Lb0PcAwEvQDNsssWa-IFvum79V5qlsf54kFyM1dHzFU7FuncajsbLUY0rURu9ToPceiJ5YXoJBxxZWrrMmDxMzIQMtPQf7xgNPWuNwR_299e9hvVg8"/>
+</div>
+</div>
+<!-- Content Column -->
+<div class="flex-1 bg-white dark:bg-surface-dark rounded-xl border border-primary/40 shadow-lg overflow-hidden transition-all">
+<!-- Header -->
+<div class="p-5 border-b border-border-light dark:border-border-dark flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-primary/5">
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">Sarah Jenkins</span>
+<span class="text-slate-500 dark:text-slate-400">updated rates for</span>
+<a class="text-primary hover:underline font-medium" href="#">Deluxe Suite Ocean View</a>
+</div>
+<div class="flex items-center gap-3 text-xs">
+<span class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+<span class="material-icons text-[14px]">apartment</span>
+                                            Grand Hotel NYC
+                                        </span>
+<span class="w-1 h-1 rounded-full bg-slate-500"></span>
+<span class="text-slate-500 dark:text-slate-400">2 hours ago</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium border border-green-500/20">Rates</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-primary">
+<span class="material-icons">expand_less</span>
+</button>
+</div>
+</div>
+<!-- Expanded Details: Diff View -->
+<div class="p-5 bg-slate-50 dark:bg-[#151b26]">
+<h4 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Changes Detected</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Before -->
+<div class="bg-white dark:bg-background-dark rounded-lg p-4 border border-red-200 dark:border-red-900/30 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-red-600 dark:text-red-400 uppercase">Original Value</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Seasonal Rate:</span>
+<span class="font-mono text-slate-700 dark:text-slate-300 line-through">$250.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Min Stay:</span>
+<span class="font-mono text-slate-700 dark:text-slate-300">2 Nights</span>
+</div>
+</div>
+</div>
+<!-- After -->
+<div class="bg-white dark:bg-background-dark rounded-lg p-4 border border-green-200 dark:border-green-900/30 relative overflow-hidden shadow-sm">
+<div class="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium text-green-600 dark:text-green-400 uppercase">New Value</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Seasonal Rate:</span>
+<span class="font-mono font-bold text-green-600 dark:text-green-400">$295.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Min Stay:</span>
+<span class="font-mono text-slate-700 dark:text-slate-300">2 Nights</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Content Update (Collapsed) -->
+<div class="timeline-item relative pb-8 group">
+<div class="timeline-line"></div>
+<div class="flex gap-4 sm:gap-6">
+<!-- Avatar -->
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full p-1 bg-surface-light dark:bg-background-dark z-10 border-2 border-border-light dark:border-slate-700 group-hover:border-primary/50 transition-colors">
+<div class="w-full h-full rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-xl">
+                                    M
+                                </div>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 bg-white dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">Mark Daniels</span>
+<span class="text-slate-500 dark:text-slate-400">uploaded 3 new images for</span>
+<a class="text-primary hover:underline font-medium" href="#">Mountain Lodge</a>
+</div>
+<div class="flex items-center gap-3 text-xs">
+<span class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+<span class="material-icons text-[14px]">landscape</span>
+                                            Mountain Lodge Aspen
+                                        </span>
+<span class="w-1 h-1 rounded-full bg-slate-500"></span>
+<span class="text-slate-500 dark:text-slate-400">4 hours ago</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-medium border border-purple-500/20">Content</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400">
+<span class="material-icons">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: System Integration -->
+<div class="timeline-item relative pb-8 group">
+<div class="timeline-line"></div>
+<div class="flex gap-4 sm:gap-6">
+<!-- Avatar -->
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full p-1 bg-surface-light dark:bg-background-dark z-10 border-2 border-border-light dark:border-slate-700 group-hover:border-primary/50 transition-colors">
+<div class="w-full h-full rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-icons text-slate-500 text-2xl">dns</span>
+</div>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 bg-white dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">System API</span>
+<span class="text-slate-500 dark:text-slate-400">synced inventory levels</span>
+</div>
+<div class="flex items-center gap-3 text-xs">
+<span class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+<span class="material-icons text-[14px]">hub</span>
+                                            Seaside Resort
+                                        </span>
+<span class="w-1 h-1 rounded-full bg-slate-500"></span>
+<span class="text-slate-500 dark:text-slate-400">5 hours ago</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium border border-blue-500/20">Integration</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400">
+<span class="material-icons">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Header: Yesterday -->
+<div class="relative z-10 flex items-center gap-4 mb-6 mt-2">
+<div class="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider rounded-full border border-slate-300 dark:border-slate-700">
+                        Yesterday
+                    </div>
+<div class="h-px bg-border-light dark:border-border-dark flex-1"></div>
+</div>
+<!-- Item 4: User Management -->
+<div class="timeline-item relative pb-8 group">
+<div class="timeline-line"></div>
+<div class="flex gap-4 sm:gap-6">
+<!-- Avatar -->
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full p-1 bg-surface-light dark:bg-background-dark z-10 border-2 border-border-light dark:border-slate-700 group-hover:border-primary/50 transition-colors">
+<img class="w-full h-full rounded-full object-cover" data-alt="David Lee profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm7_2uzceg30tiCxst4TphrIRCrxX49CGkpGldasAAlEZxvl9wRJihm393vceSKMBd5O__WOfsJ1A2xKgJdAz3m3FyLgoF3YdoN6bCTlpYN_QHteEuJ76DyYdGn8whqbeZCm9wwt01Xo7JbO6DPe7ukDIT4aok6ubIKvoBQNCvgdsHjnrOSTL0kwzXOYP98f4MMcuZxInHfaX42shRGDQwaWQqyun13ZMwgItsgZWuZudagsta3LHJXuuWstmjjD4PkMv2iYIkcLc"/>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 bg-white dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary/30 transition-all cursor-pointer">
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">David Lee</span>
+<span class="text-slate-500 dark:text-slate-400">granted admin access to</span>
+<a class="text-primary hover:underline font-medium" href="#">Emily White</a>
+</div>
+<div class="flex items-center gap-3 text-xs">
+<span class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+<span class="material-icons text-[14px]">security</span>
+                                            Global Settings
+                                        </span>
+<span class="w-1 h-1 rounded-full bg-slate-500"></span>
+<span class="text-slate-500 dark:text-slate-400">Yesterday, 4:30 PM</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-pink-500/10 text-pink-600 dark:text-pink-400 text-xs font-medium border border-pink-500/20">User Mgmt</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400">
+<span class="material-icons">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center mt-8 pb-10">
+<button class="px-6 py-2.5 bg-white dark:bg-surface-dark border border-border-light dark:border-border-dark text-slate-600 dark:text-slate-300 font-medium rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-all shadow-sm">
+                        Load Older Activity
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

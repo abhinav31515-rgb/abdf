@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LuxeStay | The Art of Refined Living</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#1a1a1a',
+            cream: '#f9f7f2',
+            gold: {
+              light: '#d4af37',
+              DEFAULT: '#c5a028',
+              dark: '#a6851e'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f7f2; /* Cream */
+      color: #1a1a1a; /* Obsidian */
+    }
+    h1, h2, h3, .serif-font {
+      font-family: 'Playfair Display', serif;
+    }
+    .letter-spacing-widest {
+      letter-spacing: 0.2em;
+    }
+  </style>
+<style data-purpose="animations-and-effects">
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .booking-bar-shadow {
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+    .hover-gold-border {
+      transition: border-color 0.3s ease;
+    }
+    .hover-gold-border:hover {
+      border-color: #c5a028;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- BEGIN: Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-gradient-to-b from-black/50 to-transparent text-white">
+<div class="flex-1">
+<button class="uppercase text-xs tracking-[0.3em] font-light">Menu</button>
+</div>
+<div class="flex-1 text-center">
+<a class="text-2xl serif-font tracking-[0.15em] font-bold" href="#">LUXESTAY</a>
+</div>
+<div class="flex-1 text-right">
+<a class="uppercase text-xs tracking-[0.3em] font-light" href="#">Reservations</a>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: HeroSection -->
+<section class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+<!-- Hero Image Placeholder - Using a serene ocean-front visual -->
+<img alt="Serene ocean-front suite at sunset" class="absolute inset-0 w-full h-full object-cover brightness-[0.85]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNGzC_mJjWohoE86UKdsOYa5Q6kzs1GCQxjN3KURtzVYTGn08zZlAFOo8yLWBK2U_PMtMwRcMeopjHP4Uw6m8-gWy7SRlbVbdP5xaS8qeRl6UigZEXqFOi8aGDaP2YuwoGHe4qdyr67DSyyZqmbdihUE28Xiz7p7iRyVKoV0WnkTtAJ6yQSN21hSv_wXhRs-elgwg5P6BIg0lWxPj5kRoFWOKWiuXh7Y9nFX-7R89QzXMhHxmwTxh5-kuNr2zocIq6_EOkQmkF2gg"/>
+<div class="relative z-10 text-center text-white px-4">
+<span class="block uppercase text-xs tracking-[0.5em] mb-6 opacity-90">Experience the Extraordinary</span>
+<h1 class="text-5xl md:text-8xl font-normal leading-tight italic">The Art of Refined Living</h1>
+</div>
+<!-- Floating Booking Bar -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 z-20">
+<div class="bg-white/95 backdrop-blur-sm p-2 flex flex-col md:flex-row items-stretch booking-bar-shadow">
+<div class="flex-1 border-r border-gray-100 px-6 py-4 flex flex-col justify-center">
+<label class="uppercase text-[10px] tracking-widest text-gray-400 mb-1">Check In</label>
+<input class="border-none p-0 text-sm focus:ring-0 placeholder-obsidian" placeholder="Add Date" type="text"/>
+</div>
+<div class="flex-1 border-r border-gray-100 px-6 py-4 flex flex-col justify-center">
+<label class="uppercase text-[10px] tracking-widest text-gray-400 mb-1">Check Out</label>
+<input class="border-none p-0 text-sm focus:ring-0 placeholder-obsidian" placeholder="Add Date" type="text"/>
+</div>
+<div class="flex-1 border-r border-gray-100 px-6 py-4 flex flex-col justify-center">
+<label class="uppercase text-[10px] tracking-widest text-gray-400 mb-1">Guests</label>
+<input class="border-none p-0 text-sm focus:ring-0 placeholder-obsidian" placeholder="2 Adults" type="text"/>
+</div>
+<button class="bg-obsidian text-gold-light uppercase text-xs tracking-[0.3em] px-10 py-5 transition-colors hover:bg-gold-dark hover:text-white">
+          Check Availability
+        </button>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: WelcomeSection -->
+<section class="py-32 px-8 bg-cream">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-4xl md:text-5xl mb-8 leading-snug">A sanctuary of quiet luxury and timeless elegance.</h2>
+<p class="text-lg font-light leading-relaxed text-gray-700 max-w-2xl mx-auto">
+        LuxeStay is not merely a destination, but a state of being. Designed for the discerning traveler, our properties offer an intimate connection with the world’s most breathtaking landscapes, harmonizing modern minimalism with centuries of tradition.
+      </p>
+<div class="mt-12">
+<a class="inline-block border-b border-obsidian pb-2 text-xs uppercase tracking-[0.3em] hover:text-gold transition-colors" href="#">Discover Our Story</a>
+</div>
+</div>
+</section>
+<!-- END: WelcomeSection -->
+<!-- BEGIN: SignatureExperiences -->
+<section class="bg-obsidian text-cream py-32">
+<div class="container mx-auto px-8">
+<div class="flex justify-between items-end mb-20">
+<div>
+<span class="uppercase text-xs tracking-[0.5em] text-gold-light block mb-4">Curated Moments</span>
+<h2 class="text-5xl serif-font">Signature Experiences</h2>
+</div>
+</div>
+<!-- Asymmetrical Layout 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center mb-40">
+<div class="md:col-span-7 overflow-hidden">
+<div class="parallax-bg h-[600px] w-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgJSNIrASyUBJ7TBdxNUFX_WJlimhT5Y-HnnqMHCJAZaVhomtbV7O5lhuwWwaEfHaHhzN_nh6rve3tzjwRg5lOW3iOWNXkXlCB8FuM2VURvMr02C0vPvGg9D5VTKjVAwHoccRVfn2QvScPYfelxFyPj0Hx3zGwHmg4k6DffF2zOM4icfMTytr1MSS7_wZxjg_GzQ80sx3o5QV9QXt1CXvzu4aGkCpYsDn16c0slFxU5K429NADgmAKtVGNPWQoeL1F0Aan16PADMQ');"></div>
+</div>
+<div class="md:col-span-5 md:pl-12">
+<span class="text-gold uppercase text-[10px] tracking-widest">Wellness</span>
+<h3 class="text-3xl mt-4 mb-6 italic">Elemental Spa Rituals</h3>
+<p class="text-gray-400 leading-relaxed mb-8">
+            Embark on a journey of restoration. Our spa therapies are rooted in ancient healing traditions, utilizing locally sourced minerals and botanical extracts to realign body and soul.
+          </p>
+<a class="text-xs uppercase tracking-widest border-b border-gold-light pb-2 text-gold-light" href="#">Explore Wellness</a>
+</div>
+</div>
+<!-- Asymmetrical Layout 2 (Reversed) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-5 md:pr-12 order-2 md:order-1">
+<span class="text-gold uppercase text-[10px] tracking-widest">Gastronomy</span>
+<h3 class="text-3xl mt-4 mb-6 italic">The Zenith Dining</h3>
+<p class="text-gray-400 leading-relaxed mb-8">
+            Experience the art of seasonal cuisine. Our Michelin-starred chefs curate a dialogue between global techniques and the freshest local terroir.
+          </p>
+<a class="text-xs uppercase tracking-widest border-b border-gold-light pb-2 text-gold-light" href="#">View Menus</a>
+</div>
+<div class="md:col-span-7 overflow-hidden order-1 md:order-2">
+<div class="parallax-bg h-[600px] w-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7dsVUFhrOe5VheZ9z4kXvwyedH-GkB7xCCv0zsb7UV_fnifI1_5DO94SPn5T2VghXn1xkPVQiwLQZoK-Lh9GOQxcaHXJnSNnPQtkfar03fcdAjCbX11XKbirR0HkYYolJx82Xri7xnbIiai7lyaqxPfl9UBP3TmY9bXtbCtBrxMDyFKv7QMeYha3gM6LhdTW5eRA8I5Ofzhla13T7EQThgtB4PxDdskG7_PT01J7VcqmVt2VgyGteVm_22YmPKUvJTiKLBW3Y60A');"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SignatureExperiences -->
+<!-- BEGIN: Accommodations -->
+<section class="py-32 px-8 bg-cream">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-5xl serif-font mb-4">The Collection</h2>
+<p class="text-gray-600 uppercase text-xs tracking-[0.4em]">Refined Sanctuaries</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Suite 1 -->
+<div class="group cursor-pointer">
+<div class="overflow-hidden mb-6 aspect-[4/5]">
+<img alt="The Azure Pavilion" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSn_lAw8t8GABoFbD_Fj_Zorjo9l6oVVCPRdDCgBH3PAKgXOvdiQ5VAv_HVV9Z4WNNgy647Fon1VBgKI6X1MfSlAqnvoYdDmJBZXp0a1lQ-S7fguraz7xW4RmpZ9c_7J1ZygNXnapfkzDIo9BjYimKhWnnJFnETWufU79jkvM9FELD_BL4NtD898W-TsUzfz5e6og4-oGtOoz-LeaxVDGRPGZlhV7425tv6ROaAR-k8keD3F7mzT_gbj0xB5CcFMXMeegx8mj9UQU"/>
+</div>
+<h4 class="text-xl serif-font italic">The Azure Pavilion</h4>
+<p class="text-gray-500 text-xs uppercase tracking-widest mt-2">Oceanfront • 120sqm</p>
+</div>
+<!-- Suite 2 -->
+<div class="group cursor-pointer">
+<div class="overflow-hidden mb-6 aspect-[4/5]">
+<img alt="Celestial Penthouse" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXJbZmPIrQORhAl9_SnKhFtEO65TQYJe_JMHNrSIltwPXbC6ypA_bXFXO1L9pyhdlZQqjh2_ENiSxTqAws1IY2fMrLZPTFq3G2UpmlFSryImc3bClIDG5tw1G7z6LmJRysk8-wLA-L5xeQx4Vk2Wmjriqm4awp5UL4l49AmA0XQhD5eZjpwicKa1-RFo-oj--ITN2IDLClM83UnQkzh0BbXeJ__IJZVI6uhcA94hkHLdnp0-nV5CjWEYLXDK3Eb6394oj6mb28gss"/>
+</div>
+<h4 class="text-xl serif-font italic">Celestial Penthouse</h4>
+<p class="text-gray-500 text-xs uppercase tracking-widest mt-2">Private Terrace • 350sqm</p>
+</div>
+<!-- Suite 3 -->
+<div class="group cursor-pointer">
+<div class="overflow-hidden mb-6 aspect-[4/5]">
+<img alt="The Garden Atelier" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-iX_YluHsaccPDKTCZt9dD7xh5EFPEn8oBiVryBxjFzmNq3wDSzFotogg5Ugr_jmMv9Z-bSrRF3x7slBMac6OZ_BoulN0xYEiR-jTtII2CM3OpPDEqgQlo3LaJM3evMBETQGIqTEULJQwi3ruhW6O_sCWFkdTDEC5azOO2WNm-q-kKVvFqoSl4x6DjyG9moKo0BH92j-zOH89A7WeUU0n2Ob9UPAX6E7B7_uNHZT_jGfRqIBQRR59t5w_zBZU9dgyMe_KhJSugc0"/>
+</div>
+<h4 class="text-xl serif-font italic">The Garden Atelier</h4>
+<p class="text-gray-500 text-xs uppercase tracking-widest mt-2">Tropical Seclusion • 95sqm</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Accommodations -->
+<!-- BEGIN: Footer -->
+<footer class="bg-obsidian text-white pt-24 pb-12 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+<div class="md:col-span-1">
+<a class="text-2xl serif-font tracking-[0.2em] font-bold" href="#">LUXESTAY</a>
+<p class="mt-8 text-gray-500 text-sm leading-loose">
+            Global Headquarters<br/>
+            Avenue des Étoiles, 75008<br/>
+            Paris, France
+          </p>
+</div>
+<div>
+<h5 class="uppercase text-[10px] tracking-widest text-gold-light mb-8">Destinations</h5>
+<ul class="space-y-4 text-sm font-light text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Maldives</a></li>
+<li><a class="hover:text-white transition-colors" href="#">St. Moritz</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Kyoto</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tuscany</a></li>
+</ul>
+</div>
+<div>
+<h5 class="uppercase text-[10px] tracking-widest text-gold-light mb-8">Experience</h5>
+<ul class="space-y-4 text-sm font-light text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Boutique</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Wellness</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Gastronomy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+</ul>
+</div>
+<div>
+<h5 class="uppercase text-[10px] tracking-widest text-gold-light mb-8">Newsletter</h5>
+<p class="text-sm font-light text-gray-400 mb-6">Receive curated insights into the world of LuxeStay.</p>
+<div class="border-b border-gray-700 pb-2 flex">
+<input class="bg-transparent border-none text-sm w-full focus:ring-0 placeholder-gray-600" placeholder="Email Address" type="email"/>
+<button class="text-gold-light ml-2">→</button>
+</div>
+</div>
+</div>
+<div class="pt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600">
+<p>© 2024 LuxeStay Collection. All Rights Reserved.</p>
+<div class="flex space-x-8 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Cookies</a>
+<a class="hover:text-white" href="#">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

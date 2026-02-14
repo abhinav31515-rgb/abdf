@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gallery Collections Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "primary-hover": "#0e4ac2",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1a2233",
+              "surface-hover": "#222c40",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation / Header -->
+<header class="h-16 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-dark flex items-center justify-between px-6 shrink-0 z-20">
+<div class="flex items-center gap-4">
+<button class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-icons">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-icons text-sm">photo_library</span>
+</div>
+<h1 class="text-lg font-semibold tracking-tight">Gallery Manager</h1>
+</div>
+<div class="h-6 w-px bg-gray-200 dark:bg-gray-700 mx-2"></div>
+<div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+<span>Grand Plaza Hotel &amp; Spa</span>
+<span class="material-icons text-base mx-1">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">search</span>
+<input class="bg-gray-100 dark:bg-background-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 text-gray-900 dark:text-white placeholder-gray-500" placeholder="Search collections..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-primary/20">
+<span class="material-icons text-sm">add</span>
+                Create Collection
+            </button>
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-purple-500 border-2 border-white dark:border-gray-800 cursor-pointer relative">
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white dark:border-surface-dark rounded-full"></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 flex flex-col shrink-0 hidden lg:flex">
+<div class="p-6">
+<h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Contexts</h2>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-medium" href="#">
+<span class="material-icons text-lg">grid_view</span>
+                        All Collections
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">apartment</span>
+                        Property
+                        <span class="ml-auto text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full">4</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">bed</span>
+                        Rooms &amp; Suites
+                        <span class="ml-auto text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full">12</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">restaurant</span>
+                        Dining
+                        <span class="ml-auto text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full">6</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">celebration</span>
+                        Events &amp; Meetings
+                        <span class="ml-auto text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full">3</span>
+</a>
+</nav>
+<h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 mt-8">Media Sources</h2>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">cloud_upload</span>
+                        Uploads
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">share</span>
+                        Instagram Feed
+                    </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors" href="#">
+<span class="material-icons text-lg">folder_shared</span>
+                        Brand Assets
+                    </a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-gray-200 dark:border-gray-800">
+<div class="bg-gray-100 dark:bg-background-dark rounded-xl p-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+<span class="material-icons text-sm">storage</span>
+</div>
+<span class="text-sm font-medium">Storage Usage</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mb-2">
+<div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">12.5 GB of 15 GB used</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-6 lg:p-10 relative">
+<!-- Breadcrumbs / Top Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">All Collections</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400">Manage and organize your property's visual assets across all channels.</p>
+</div>
+<div class="flex items-center gap-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-1 shadow-sm">
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-primary">
+<span class="material-icons">grid_view</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400">
+<span class="material-icons">view_list</span>
+</button>
+<div class="w-px h-4 bg-gray-200 dark:bg-gray-700 mx-1"></div>
+<button class="flex items-center gap-1 px-2 py-1 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+<span class="material-icons text-base">sort</span>
+                        Sort
+                    </button>
+</div>
+</div>
+<!-- Collections Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+<!-- Collection Card 1 -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/50 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Luxury hotel exterior with palm trees at dusk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxury hotel exterior with palm trees at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCugMdf2dzB75zaaj5wexueNpLlE0A_pX-uRIUp5rqqQoRB7AM8k7gnW5GSLdc2ppMxgx9pmjIwdgD9p7SUFjtZL0iim-AvP3oxm_SjmhLCJo3WeF0JrtjLEjQmkcbMMGr0aKM38R5N7VU1bp_oVpVVdOVW4nkfuwZfTNtTwJ6Bl-rUOpsOBCRDV-ZCbguFL3ReddXJ0nu8Tk58_ABwKpY8rDeuB6JBjMGFST6sRmCA86L4iMkhQmHwuIbGKOcUl6caxbGpRf1Wrkg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<span class="material-icons text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="bg-primary/90 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Property</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-start justify-between mb-2">
+<h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">Main Exterior</h3>
+<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-background-dark px-2 py-1 rounded">12 Assets</span>
+</div>
+<div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+<span>Updated 2 hrs ago</span>
+<div class="flex -space-x-2">
+<div class="w-5 h-5 rounded-full bg-gray-300 border border-white dark:border-surface-dark"></div>
+<div class="w-5 h-5 rounded-full bg-gray-400 border border-white dark:border-surface-dark"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Collection Card 2 -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/50 transition-all duration-300 cursor-pointer relative ring-2 ring-primary ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">ACTIVE EDIT</span>
+</div>
+<div class="relative aspect-video overflow-hidden">
+<img alt="Interior of a luxury hotel suite bedroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Interior of a luxury hotel suite bedroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN2s-5z99zCBxmnD0f5sOgkAiNqfZPT2S1b9VZCMe7VUI9ED45VWM_Di4EvO19Rl2tsWpjCrXkSTWX4k3OzZ-kIPvz6Z4cSLUe6srNDGAKNekPi96ol0lSsaWTChpQb5TVKJyFmpMbDxOZtz_b3_Y27XDkIZgDWaZqGMAWmiERrdhABsNLdMmY00nqrhuXrXZ_ZiMISmvi0FcPkDJseMlaAtvjUCyTe77HE096-jNaQ7KmNIt5wJmcrjqDSWYD-eRNTeDaKgpJTgg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<span class="material-icons text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="bg-indigo-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Rooms</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-start justify-between mb-2">
+<h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">Deluxe King Suite</h3>
+<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-background-dark px-2 py-1 rounded">8 Assets</span>
+</div>
+<div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+<span>Updated 1 day ago</span>
+<span class="text-green-500 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Live</span>
+</div>
+</div>
+</div>
+<!-- Collection Card 3 -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/50 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Cocktails on a bar counter with blurred background" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cocktails on a bar counter with blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo2M5JJaZmKb_TJwBErrTUU5Tz7aGT-ACWZZCGf6dVctK7osj4GhdJJo33Iem6kZtgSSlJT_M6EcOcV-O5G1NEri0bW0OIHfMPPg3sQwhxnzzwrf4_uB7sDy8Rx6ybHB8re_b2fYLlD4Odnhl-buIceAMd-Z84MVcJPinEQpIkb2MqRuEkXX2RBxHlmPIHNrM35pTaCQTQXwk11iC__vEucdzDG1N3mLKjVdcatDj7lfP_0Tb5Oi9-1SZdufhtLoeP37X_stH0Upw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<span class="material-icons text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="bg-orange-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Dining</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-start justify-between mb-2">
+<h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">Skyline Bar</h3>
+<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-background-dark px-2 py-1 rounded">24 Assets</span>
+</div>
+<div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+<span>Updated 3 days ago</span>
+<div class="flex -space-x-2">
+<div class="w-5 h-5 rounded-full bg-gray-300 border border-white dark:border-surface-dark"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Collection Card 4 -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/50 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Grand ballroom set up for a conference" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Grand ballroom set up for a conference" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_8AgLYdPy4QRUijuFiI-iROL4UvYbSjFEaYO9jVkC9mk943U6gfAIBjIK2tC49VxkrHdgcZViL-hz19FEP2zseSgkZFmlAFOOX80IPZLKFqjuQ5lx7aiqXsAfUbqs0LfSd35rRehzGR3U6-uVsjoW-s_MAkwVqWHuBG5oSxzKyOE-pfVIb-TxrJr2B90CkG64Z3LAkXdag14yofqvLqS70Ls8K6btsXGiBgZeGdAciHol9yyJdKTvd2LNvhJYS--X3yh7x-yX5UQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<span class="material-icons text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="bg-purple-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Events</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-start justify-between mb-2">
+<h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">Grand Ballroom</h3>
+<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-background-dark px-2 py-1 rounded">45 Assets</span>
+</div>
+<div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+<span>Updated 1 week ago</span>
+</div>
+</div>
+</div>
+<!-- Collection Card 5 -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/50 transition-all duration-300 cursor-pointer">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Luxury spa treatment room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxury spa treatment room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0fKlWyWmQLuv1PRP2_sV3fy-4blm-2b40LNbErqzkmJqdWTZ2OTfl3D7E_LhH4sRD1RKIf6fjSd-t_NnphhjfDR14DrX-iaSJr8Xp0Kc_F1krvWFcPKmXzFNLNDL6M3mi_kIHxiKJGWTvJcJp2-0zhI8I7kyRTsCOunvO2kDfiPwZs5kM7KdY8vGyLLwgZCve8CImMcJk9IcHGDAULFFm-8MWTCDaDlX1A98mxNpK3fo18d0jiOP_eeDkfK-sUUYANGE7C9GA4gE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-primary transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+<span class="material-icons text-sm">more_horiz</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="bg-teal-500/90 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Amenities</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-start justify-between mb-2">
+<h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">The Oasis Spa</h3>
+<span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-background-dark px-2 py-1 rounded">16 Assets</span>
+</div>
+<div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+<span>Updated 2 weeks ago</span>
+</div>
+</div>
+</div>
+<!-- Add New Placeholder -->
+<div class="group border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl flex flex-col items-center justify-center p-6 hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer min-h-[280px]">
+<div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 group-hover:text-primary group-hover:bg-primary/10 transition-colors mb-3">
+<span class="material-icons">add</span>
+</div>
+<h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">New Collection</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 text-center max-w-[150px]">Create a new gallery for a room type or amenity</p>
+</div>
+</div>
+<!-- Detailed View Panel (Representing the "Active" state of the selected card) -->
+<section class="mt-12 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-xl">
+<!-- Header of Detailed View -->
+<div class="p-6 border-b border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Currently Editing</span>
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+</div>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">Deluxe King Suite</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400">8 images selected • Drag to reorder</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-gray-100 dark:bg-background-dark rounded-lg p-1">
+<button class="px-3 py-1.5 text-xs font-medium rounded-md bg-white dark:bg-surface-hover shadow-sm text-gray-900 dark:text-white">Manual</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Newest</button>
+</div>
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors">
+<span class="material-icons text-sm">save</span>
+                            Save Order
+                        </button>
+</div>
+</div>
+<!-- Drag & Drop Area -->
+<div class="p-6 bg-background-light dark:bg-background-dark/50">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+<!-- Featured Item -->
+<div class="col-span-2 row-span-2 relative group cursor-move">
+<div class="absolute top-3 left-3 z-10">
+<span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-icons text-xs">star</span> FEATURED
+                                </span>
+</div>
+<img alt="Main bedroom view" class="w-full h-full object-cover rounded-xl shadow-sm border-2 border-primary" data-alt="Main bedroom view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOy85Bd2In0V5Tbc40Tzt522RYOO6JSVeKH2U5R_kbdrNxNmXUHin6UaonDdi46iKuHoLOrH9Ou-P1SkliXVofwdQWNRkvhR5B6ltlcHpbP04JkQ-iXllTfeV1SK15QjMwQDV74qij2zY6ITmH9sPhUxClK5XUCVBE-BVrnOn4JiWoUI3scvM0PCumOlCHYALT1esG972KbY1WeLpBCcjdYmA2Xqa53495pIlXdhweO6e8pMM42KyVsoNAP1jIUe3YS3iZ5WnEU80"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center gap-2">
+<button class="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md"><span class="material-icons text-sm">edit</span></button>
+<button class="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md"><span class="material-icons text-sm">fullscreen</span></button>
+</div>
+</div>
+<!-- Grid Items -->
+<div class="relative group cursor-move aspect-square">
+<img alt="Bathroom detail shot" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Bathroom detail shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSPq4T8MFp4Fc585G_No7LkJ3lloej9mhSyw811RShnbP5x5V85rd6wYK3hRVi370RQFiBFZPrs5hTor5cY0k-pZwhbRRPx3kxDlfla9QPWW6yT1-KvLDqcJRooKXbfT5BoZBiGGVQtw6O2YoSOrmkwNrZ4teFKTaCwSpqj_a56Rnl9J4ZueV483rfzjZacG5jk8396D0OlVcZ5lipwvbLZzGYcYmVmyQFRpUwLLIEBQuEWP7F-xMe3p6OGwKYXiSYu8uUN1GZVJY"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+<div class="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-primary text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm transition-colors">Set Feature</button>
+</div>
+</div>
+<div class="relative group cursor-move aspect-square">
+<img alt="Balcony view" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Balcony view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOXCMuMXhRDllVjp5lOmfT4nnXnQMU_9_bFKGUhxELPwjya5LVVM4qezxyhXav2vbMlISsahNdAQMN0SUySNz9EtLDoR1fLaDonfHhsPWI7pgveJ0GP-4BxXOx_VNn0Fd-F3ELhsIfxDkapzN3EcEUQEQCAowdKEuAQwddQ6lasUVvqheGRXPk5DTAX9laATKWc3bTQ_u7LN3zdFQUr9KKq56MXZD7AA1zCjZ701GgqNtnQqeejF0WSXLhj9dMuBzxKYl_c21H1yE"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+</div>
+<div class="relative group cursor-move aspect-square">
+<img alt="Work desk setup" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Work desk setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1sCy76PJRAYlYaAGJbLHzLtTB0wwFNksyCB11TOTsSgbAmFCOFqx4W-AG4owDlSCKJz17NCPTyg1ZCwpObClphGfebWzBDbkAb1JgSgnCu5gardzX-CM2w6d8DmPRihP88jBtgYU2CgzI1_BI3Oz1qzk3pzhL24lZt2CX8ozypoiXncSeAJHK9faeYNPeuZ44V9nUmvKqW6f97ZWiRa4gRp7Bs29RxIVZM61m4ltDponuWNmYQUKfd-uPG9i1ffJPwYz4FF45bps"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+</div>
+<div class="relative group cursor-move aspect-square">
+<img alt="Living area seating" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Living area seating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-ipX9EC5f5vST74t-yy9ayMPZXlOj7lbtmXDCI-KbI-vM5TG4nPJy3H7zU-YhkIcRZQLB_qkc6nTaErVWeBGWP_TJXnlhIqFvtLcKFhbC5czyXU0171A-ZfnVDQyKMqEq4tb9JhZSWshIBqa1MtR1vU5SBjVcvxpyvAiHHTIzrgjPGIH4o0p4VGtR2MRxmE468x08LzGtDLp_nLOyZiVlMXPoPLAw2t0B51uQDTLxgfdXMml4_RCtD2WTJQu8hHD_6XS6L2ObclY"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+</div>
+<div class="relative group cursor-move aspect-square">
+<img alt="Bedroom from another angle" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Bedroom from another angle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-nhjG8HE9-n8UF96pP0lELlBaBoLIqQbPousYwd6RzoHhWMNFmhze7xqPoM8vE2F5dAcNJBLMTxZaqcMsWe6Itk19Ig1KtcSgBxGG1E-jolu4WBX-Xv1reJdiIYIL5VSXCfb--JAoOLrKFB_LuYwPohzonTk7ATG2UbghtZlqKyk7jGYykgTAJdaPj0wqRktDQEDyUFr2TeOeGIR5JprkFRHdzY7Suk5i0qmp9uYl4NGo3X-WYMwAefcumkomsZU4AW_z_rf7viM"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+</div>
+<div class="relative group cursor-move aspect-square">
+<img alt="Mini bar detail" class="w-full h-full object-cover rounded-xl shadow-sm border border-transparent hover:border-gray-400 dark:hover:border-gray-600" data-alt="Mini bar detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4trFKpm97rRrrXKT9X_kwRGyvFi8SCDUTW09DVUc3dPyLy4BnjX5bI5GhLvwXmPKFtA-MOyQbhCfnF2W6h89amJahGHbMLplXCQ92QTGpwjxVvmeXA9SafDHt-FBZQYsApeNpHMpD7j3d_ZniV-trPE3dG8Kjbm93fTGQL3jPTTduDzzXWMGl2Z0KwzzwbdedVsh5E6RAfOsUbZs2rePBlPWRo0o_FO16hyPWp52rBKXFDaqNDJWVx5eZUV-PdE-Bqsew6t6WVkk"/>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/50 hover:bg-red-500 text-white p-1 rounded backdrop-blur-sm transition-colors"><span class="material-icons text-xs block">close</span></button>
+</div>
+</div>
+<!-- Upload Area -->
+<div class="relative aspect-square border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl flex flex-col items-center justify-center p-4 hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer group">
+<span class="material-icons text-gray-400 group-hover:text-primary mb-2 text-3xl transition-colors">cloud_upload</span>
+<span class="text-xs text-center text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">Drop files or click to upload</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="mt-12 text-center text-xs text-gray-500 pb-6">
+                © 2023 Grand Plaza Gallery Manager. All rights reserved.
+            </footer>
+</main>
+</div>
+</body></html>

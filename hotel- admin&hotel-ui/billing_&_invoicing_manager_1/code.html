@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hotel Admin Pro - Billing &amp; Invoicing Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1a2233",
+                        "border-dark": "#2d3a54"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .invoice-paper {
+            background-color: white;
+            color: #1a2233;
+        }
+        @media print {
+            .no-print { display: none; }
+            .invoice-paper { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-card-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-3xl">domain</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Hotel Admin Pro</h2>
+</div>
+<nav class="flex items-center gap-9">
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-white text-sm font-medium border-b-2 border-primary pb-1" href="#">Reservations</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Billing</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Inventory</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-background-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-background-dark text-white focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg pl-2 text-sm" placeholder="Search invoices..."/>
+</div>
+</label>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-background-dark text-white hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary bg-cover bg-center" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDfeRhg3NQdieMCyRbtPxgKA0p4HANYOAH_848POeTEICEOAKqMVWSohKDLR9NwnDAe0I74I0WwjAzzv5luoZEfZ-3lxpghSo5e1qNmsznH1XCW15hN2bRa3JjXoXftAK4NqdtS1TRYj5CCIqEc_G2eK-pxIoYJwsW0X19Ei3gUlgjIJaKx8T1gdPedkt1d7X8fZQzEHjVvRewTX156d8d1wFBMp6afhh8NLgfhfdng1IIe1PEVXTzbeD3m5f5PgiwFmk_irayRR8w')"></div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row min-h-[calc(100vh-64px)]">
+<!-- Left Sidebar: Controls & Customization -->
+<aside class="w-full lg:w-80 bg-card-dark border-r border-border-dark p-6 space-y-8 no-print overflow-y-auto max-h-[calc(100vh-64px)]">
+<!-- Quick Actions -->
+<section>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Quick Actions</h3>
+<div class="grid grid-cols-1 gap-3">
+<button class="flex items-center gap-3 w-full px-4 py-2.5 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        Create Offline Booking
+                    </button>
+<button class="flex items-center gap-3 w-full px-4 py-2.5 bg-background-dark border border-border-dark text-slate-300 rounded-lg font-semibold text-sm hover:bg-slate-800 transition-all">
+<span class="material-symbols-outlined text-sm">print</span>
+                        Print Invoice
+                    </button>
+</div>
+</section>
+<!-- Tax Management -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Tax Management</h3>
+<span class="material-symbols-outlined text-sm text-primary cursor-pointer">edit</span>
+</div>
+<div class="space-y-4 bg-background-dark/50 p-4 rounded-xl border border-border-dark">
+<div>
+<label class="block text-xs text-slate-400 mb-1">GST / VAT Rate (%)</label>
+<input class="w-full bg-background-dark border-border-dark rounded text-white text-sm focus:ring-primary focus:border-primary" type="number" value="18"/>
+</div>
+<div>
+<label class="block text-xs text-slate-400 mb-1">Service Charge (%)</label>
+<input class="w-full bg-background-dark border-border-dark rounded text-white text-sm focus:ring-primary focus:border-primary" type="number" value="5"/>
+</div>
+<div class="flex items-center gap-2">
+<input checked="" class="rounded bg-background-dark border-border-dark text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs text-slate-300">Apply tax on F&amp;B</span>
+</div>
+</div>
+</section>
+<!-- Bill Customization -->
+<section>
+<h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Appearance</h3>
+<div class="space-y-4">
+<div class="p-4 border-2 border-dashed border-border-dark rounded-xl flex flex-col items-center justify-center text-center hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary mb-2">image</span>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Update Hotel Logo</p>
+</div>
+<div>
+<label class="block text-xs text-slate-400 mb-1">Unique Bill Format</label>
+<div class="flex items-center gap-2 bg-background-dark border border-border-dark rounded p-2 text-xs font-mono text-primary">
+<span>{YYYYMMDD}-{USERID}-{SEQ}</span>
+</div>
+</div>
+<div>
+<label class="block text-xs text-slate-400 mb-1">Invoice Footer Note</label>
+<textarea class="w-full bg-background-dark border-border-dark rounded text-white text-sm focus:ring-primary focus:border-primary" rows="2">Thank you for staying with us!</textarea>
+</div>
+</div>
+</section>
+<!-- User History Integration -->
+<section class="bg-primary/10 p-4 rounded-xl border border-primary/20">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">history</span>
+<div>
+<h4 class="text-sm font-bold text-white mb-1">Guest Insights</h4>
+<p class="text-xs text-slate-400 leading-relaxed">This guest has 4 previous stays. Frequent visitor of 'The Blue Bar'.</p>
+<button class="mt-2 text-primary text-xs font-bold hover:underline">View CRM Profile</button>
+</div>
+</div>
+</section>
+</aside>
+<!-- Main Workspace: Detailed Bill View -->
+<main class="flex-1 p-4 lg:p-8 overflow-y-auto">
+<div class="max-w-5xl mx-auto">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 no-print">
+<div>
+<div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+<span>Admin</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Billing</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-white">Active Bill</span>
+</div>
+<h1 class="text-3xl font-black text-white flex items-center gap-3">
+                            Bill #20231012-ADM01
+                            <span class="px-3 py-1 bg-green-500/10 text-green-500 text-xs font-bold rounded-full border border-green-500/20">Active Session</span>
+</h1>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-background-dark border border-border-dark text-white rounded-lg text-sm font-bold hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">save</span>
+                            Save Draft
+                        </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                            Finalize &amp; Pay
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start">
+<!-- Real-time Bill Preview (The "Paper" View) -->
+<div class="xl:col-span-2 space-y-6">
+<div class="invoice-paper rounded-xl shadow-2xl p-8 min-h-[800px] relative">
+<!-- Paper Header -->
+<div class="flex justify-between items-start border-b border-slate-200 pb-8 mb-8">
+<div class="flex items-center gap-4">
+<div class="size-16 bg-slate-100 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-3xl">add_photo_alternate</span>
+</div>
+<div>
+<h2 class="text-2xl font-black tracking-tight uppercase">Blue Horizon Resort</h2>
+<p class="text-sm text-slate-500">123 Coastal Road, Maldives</p>
+<p class="text-sm text-slate-500 font-bold">GSTIN: 22AAAAA0000A1Z5</p>
+</div>
+</div>
+<div class="text-right">
+<h3 class="text-lg font-bold text-slate-400">INVOICE</h3>
+<p class="text-3xl font-black text-primary">#20231012-01</p>
+<p class="text-sm text-slate-500 mt-1">Date: Oct 12, 2023</p>
+</div>
+</div>
+<!-- Guest & Account Details -->
+<div class="grid grid-cols-2 gap-8 mb-10">
+<div>
+<p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Guest Information</p>
+<h4 class="font-bold text-lg">Johnathan Doe</h4>
+<p class="text-slate-600 text-sm">Room 402 - Presidential Suite</p>
+<p class="text-slate-600 text-sm">john.doe@email.com</p>
+<p class="text-slate-600 text-sm">+1 (555) 000-1234</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Stay Duration</p>
+<p class="font-bold text-slate-800">Check-in: 10 Oct, 2023</p>
+<p class="font-bold text-slate-800">Check-out: 13 Oct, 2023</p>
+<p class="text-sm text-slate-500 italic mt-1">3 Nights / 4 Days</p>
+</div>
+</div>
+<!-- Ledger Table -->
+<div class="mb-10">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 text-[10px] font-bold uppercase text-slate-400 border-y border-slate-100">
+<th class="py-3 px-4">Service Description</th>
+<th class="py-3 px-4 text-center">Type</th>
+<th class="py-3 px-4 text-center">Qty/Days</th>
+<th class="py-3 px-4 text-right">Rate</th>
+<th class="py-3 px-4 text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-slate-100">
+<td class="py-4 px-4 font-semibold">Presidential Suite - Room Charges</td>
+<td class="py-4 px-4 text-center"><span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-bold">ROOM</span></td>
+<td class="py-4 px-4 text-center">3</td>
+<td class="py-4 px-4 text-right">$450.00</td>
+<td class="py-4 px-4 text-right font-bold">$1,350.00</td>
+</tr>
+<tr class="border-b border-slate-100 bg-slate-50/30">
+<td class="py-4 px-4">
+<div class="font-semibold">Dinner Service - Room Service</div>
+<div class="text-[10px] text-slate-400">Order ID: #F&amp;B-9921 (Automated)</div>
+</td>
+<td class="py-4 px-4 text-center"><span class="px-2 py-0.5 bg-orange-50 text-orange-600 rounded text-[10px] font-bold">FOOD</span></td>
+<td class="py-4 px-4 text-center">1</td>
+<td class="py-4 px-4 text-right">$85.00</td>
+<td class="py-4 px-4 text-right font-bold">$85.00</td>
+</tr>
+<tr class="border-b border-slate-100">
+<td class="py-4 px-4">
+<div class="font-semibold">Mini-bar Restock</div>
+<div class="text-[10px] text-slate-400">Order ID: #F&amp;B-9945 (Automated)</div>
+</td>
+<td class="py-4 px-4 text-center"><span class="px-2 py-0.5 bg-orange-50 text-orange-600 rounded text-[10px] font-bold">FOOD</span></td>
+<td class="py-4 px-4 text-center">1</td>
+<td class="py-4 px-4 text-right">$42.00</td>
+<td class="py-4 px-4 text-right font-bold">$42.00</td>
+</tr>
+<tr class="border-b border-slate-100 no-print group">
+<td class="py-4 px-4 italic text-slate-400">Manual Charge Entry...</td>
+<td class="py-4 px-4 text-center">
+<select class="bg-transparent border-none text-[10px] font-bold p-0 focus:ring-0 cursor-pointer text-slate-400">
+<option>OTHER</option>
+<option>ROOM</option>
+<option>SPA</option>
+</select>
+</td>
+<td class="py-4 px-4 text-center"><input class="w-12 bg-transparent border-none p-0 text-center text-slate-400" type="number" value="1"/></td>
+<td class="py-4 px-4 text-right"><input class="w-20 bg-transparent border-none p-0 text-right text-slate-400" placeholder="0.00" type="number"/></td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Final Calculation and QR -->
+<div class="flex justify-between items-end mt-12 border-t pt-8">
+<div class="flex gap-6 items-center">
+<div class="bg-slate-100 p-2 rounded-lg border border-slate-200">
+<div class="size-24 bg-cover bg-center" data-alt="Unique payment QR code" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgqQDNjsVA9ZiMtbHT2dWSGrlQeGwD436waPcivmkrW9TD_o7dumICqyw6bhCIQkkxZ_ioFZGkHALlhWyut5tmRyxt6uWg9r3DCSH4xxq5HtZYNDSix4AI0XgCAfc8MXKtX1QOq2FIiIuElWQTZgIyf1fwNVdvTrZInwirQinn_qJk_n55jXJ8jPRQEmZpzjuHkIALNzuTxRg8e6STGmH2CRwV4v-2eeBpopcMCf8Tata99gTT8ojYiou-en9I_hk6zeXmXibY0LM')"></div>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Scan to Pay</p>
+<p class="text-xs text-slate-500 max-w-[150px] leading-tight mt-1">Accepts UPI, Visa, Mastercard &amp; Amex.</p>
+</div>
+</div>
+<div class="w-64 space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Subtotal</span>
+<span class="font-bold">$1,477.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">GST (18%)</span>
+<span class="font-bold">$265.86</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Service Charge (5%)</span>
+<span class="font-bold">$73.85</span>
+</div>
+<div class="flex justify-between text-xl font-black border-t border-slate-200 pt-4 mt-4 text-primary">
+<span>Total</span>
+<span>$1,816.71</span>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center text-[10px] text-slate-400 uppercase font-bold tracking-[0.2em] border-t border-slate-100 pt-4">
+                                This is a computer generated invoice. No signature required.
+                            </div>
+</div>
+</div>
+<!-- Right Column: Sidebar Panels -->
+<div class="space-y-6 no-print">
+<!-- Guest Summary Card -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-5 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary/40 text-6xl rotate-12">account_circle</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Guest Snapshot</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="size-12 rounded-full bg-primary flex items-center justify-center text-white font-black text-xl">JD</div>
+<div>
+<p class="font-bold text-white">Johnathan Doe</p>
+<p class="text-xs text-slate-400">Loyalty Level: Gold</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-xs py-2 border-b border-border-dark/50">
+<span class="text-slate-400">Total Spent (Lifetime)</span>
+<span class="text-white font-bold">$12,450.00</span>
+</div>
+<div class="flex justify-between text-xs py-2 border-b border-border-dark/50">
+<span class="text-slate-400">Pending Dues</span>
+<span class="text-orange-500 font-bold">$1,816.71</span>
+</div>
+<div class="flex justify-between text-xs py-2">
+<span class="text-slate-400">Preferred Method</span>
+<span class="text-white">Credit Card (Amex)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Manual Charge Controls -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-5">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Add Extra Charges</h3>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="p-3 border border-border-dark rounded-lg flex flex-col items-center gap-2 hover:bg-primary/10 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">king_bed</span>
+<span class="text-[10px] font-bold text-slate-300">Extra Bed</span>
+</button>
+<button class="p-3 border border-border-dark rounded-lg flex flex-col items-center gap-2 hover:bg-primary/10 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">spa</span>
+<span class="text-[10px] font-bold text-slate-300">Spa Service</span>
+</button>
+<button class="p-3 border border-border-dark rounded-lg flex flex-col items-center gap-2 hover:bg-primary/10 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">local_taxi</span>
+<span class="text-[10px] font-bold text-slate-300">Airport Taxi</span>
+</button>
+<button class="p-3 border border-border-dark rounded-lg flex flex-col items-center gap-2 hover:bg-primary/10 hover:border-primary transition-all group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">more_horiz</span>
+<span class="text-[10px] font-bold text-slate-300">Custom Fee</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notifications / Logs -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-5">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Activity Log</h3>
+<div class="space-y-4">
+<div class="flex gap-3 text-xs">
+<div class="size-2 mt-1 rounded-full bg-green-500 shrink-0"></div>
+<div>
+<p class="text-slate-300"><span class="font-bold">System</span> auto-fetched Dinner Order #F&amp;B-9921</p>
+<p class="text-slate-500 mt-0.5">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-xs">
+<div class="size-2 mt-1 rounded-full bg-primary shrink-0"></div>
+<div>
+<p class="text-slate-300"><span class="font-bold">Admin (Me)</span> updated GST settings</p>
+<p class="text-slate-500 mt-0.5">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Create Offline Booking Modal (Hidden by default, shown for structure) -->
+<div class="fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-4 pointer-events-none opacity-0 overflow-hidden transition-all">
+<div class="bg-card-dark border border-border-dark rounded-2xl w-full max-w-md p-8 shadow-2xl scale-95 transition-transform">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-white">New Offline Booking</h3>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">close</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2">Guest Name</label>
+<input class="w-full bg-background-dark border-border-dark rounded-lg text-white p-3 focus:ring-primary focus:border-primary" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2">Room Type</label>
+<select class="w-full bg-background-dark border-border-dark rounded-lg text-white p-3 focus:ring-primary focus:border-primary">
+<option>Standard Deluxe</option>
+<option>Executive Suite</option>
+<option>Penthouse</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2">Check-in</label>
+<input class="w-full bg-background-dark border-border-dark rounded-lg text-white p-3 focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-400 uppercase mb-2">Nights</label>
+<input class="w-full bg-background-dark border-border-dark rounded-lg text-white p-3 focus:ring-primary focus:border-primary" type="number" value="1"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-lg mt-4 shadow-lg shadow-primary/30">Generate Account &amp; Reserve</button>
+</div>
+</div>
+</div>
+</body></html>

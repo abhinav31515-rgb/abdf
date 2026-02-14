@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Champagne Minimalist Luxury Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221e10",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #221e10; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f2b90d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4a00b; 
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(242, 185, 13, 0.3);
+        }
+        .spa-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f2b90d' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display selection:bg-primary selection:text-background-dark overflow-x-hidden">
+<!-- Navigation -->
+<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold tracking-widest text-primary">AURELIA</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Suites</a>
+<a class="hover:text-primary transition-colors" href="#">Dining</a>
+<a class="hover:text-primary transition-colors" href="#">Wellness</a>
+<a class="hover:text-primary transition-colors" href="#">Events</a>
+</div>
+<button class="bg-primary hover:bg-yellow-400 text-background-dark px-6 py-2 rounded-full font-medium transition-all text-sm uppercase tracking-wide">
+                Book Stay
+            </button>
+</div>
+</nav>
+<!-- 1. Split-screen Hero -->
+<header class="relative min-h-screen flex flex-col md:flex-row pt-20">
+<!-- Left: Visual -->
+<div class="w-full md:w-1/2 h-[50vh] md:h-auto relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" data-alt="Elegant hotel lobby with golden lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwf_YWzd9xwCrkzZHsGMkvhZuKeLoaFE5Ajdfc_suS3DV8LxHc4yOGBS1NsxE7CLtDytmFQMJnKjbop4X-hYq2O1ze-rML2jSHSkbHe9px1b7IW-boUjymgEtoWi87OF4nEGtNwiaknm9kzRRJw7LfY3fcn1ma92epq-YJpXcU8OQ2MWSlj5l892kQI-jrdteYUOxH-PXGv-tujPA-Mdskc3oAEdwZoZNA_LnfDmVOpVrH6LMDAcyqOmz174Xf1DQPcJ0Wy645dWs');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent md:hidden"></div>
+</div>
+<!-- Right: Content -->
+<div class="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-20 py-16 bg-background-light dark:bg-background-dark">
+<span class="text-primary text-sm uppercase tracking-[0.3em] mb-4">Welcome to Aurelia</span>
+<h1 class="text-5xl md:text-7xl font-light mb-8 leading-tight">
+                Silence. <br/>
+<span class="italic text-primary">Serenity.</span> <br/>
+                Service.
+            </h1>
+<p class="text-gray-500 dark:text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
+                Experience the pinnacle of urban luxury where every detail is curated for the discerning traveler.
+            </p>
+<!-- Booking Widget Inline -->
+<div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/20 backdrop-blur-sm">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="space-y-1">
+<label class="text-xs uppercase text-primary tracking-widest">Check In</label>
+<input class="w-full bg-transparent border-b border-gray-600 focus:border-primary text-sm py-2 outline-none" type="date"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs uppercase text-primary tracking-widest">Check Out</label>
+<input class="w-full bg-transparent border-b border-gray-600 focus:border-primary text-sm py-2 outline-none" type="date"/>
+</div>
+<div class="col-span-2 md:col-span-1 flex items-end">
+<button class="w-full bg-transparent border border-primary text-primary hover:bg-primary hover:text-background-dark transition-all py-2 rounded uppercase text-xs tracking-widest h-[42px]">
+                            Check Availability
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 9. Floating Social Media Bar (Fixed) -->
+<div class="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 hidden lg:flex flex-col gap-6 bg-background-dark/80 backdrop-blur border border-primary/20 p-3 rounded-full">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="material-icons text-xl">share</span></a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><i class="material-icons text-xl">camera_alt</i></a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><i class="material-icons text-xl">facebook</i></a>
+</div>
+<!-- 10. Press & Awards -->
+<div class="bg-primary/5 border-y border-primary/10 py-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary text-4xl">star</span>
+<div class="text-xs uppercase tracking-widest leading-tight">Michelin Guide<br/>2023 Distinction</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary text-4xl">hotel</span>
+<div class="text-xs uppercase tracking-widest leading-tight">Forbes Travel Guide<br/>Five Star Award</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary text-4xl">workspace_premium</span>
+<div class="text-xs uppercase tracking-widest leading-tight">Condé Nast Traveler<br/>Gold List</div>
+</div>
+</div>
+</div>
+<!-- 2. The Collection -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<span class="text-primary text-sm uppercase tracking-widest">Accommodations</span>
+<h2 class="text-4xl md:text-5xl mt-3 italic font-light">The Collection</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Room 1 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
+<img alt="Luxury suite interior" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100 grayscale group-hover:grayscale-0" data-alt="Modern dark luxury bedroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBLLVhp-cpt08mXm33qUFIu28UT_bff4muT3KvBYo-zLAvoeHpE5UZFaH5jprjREB9orUUdeKqkugR8aiS5u47UguYGFlN9h3diKV_UfdLUpYmkKTVZbmPVLZhAEhI1ONpZPCpBmzjG8HbXdvuWSREPwJlz44jmNOyPZZStR_pBVBc92SaLfGNHEvOrhEel69P_tnpyuNsT4fHzWz7YsrdgkhTSzlzxe5K8GKN3wK2aAFv30__lJ18vcsNeXF-DlXBe4v8WFowtL8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-2 font-light">The Royal Penthouse</h3>
+<p class="text-primary/90 text-sm tracking-widest uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity delay-100">From $2,400 / Night</p>
+<span class="text-white/80 text-sm border-b border-primary pb-1 inline-block">View Details</span>
+</div>
+</div>
+<!-- Room 2 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer lg:mt-12">
+<img alt="Cozy hotel room with view" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100 grayscale group-hover:grayscale-0" data-alt="Hotel room with large window and view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhFRs42mwsXMzAPf5U9G8B70mwpu17x1d8Ja0WN2Py5U3JB7bpezjZ5zc8sehL11Z0tX8jBmE4n8sz4gk-PpxLyFtS_-WLyEk0h_AA0jVa9gswY_4WXkg5Yl748kjbVlf8H3rDxIsq5dP6XFz-QOWutNM83x52XLSYmQkRGcCULfNNeq-IOsCTxoJfEVMIvytrBfKPiTDK__GmKBp5frwBO0V3Iouwyw9SrT9mtf11Eu4kkvguAHeq3OU61di9gtu7jNcqqisRJQc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-2 font-light">Signature Suite</h3>
+<p class="text-primary/90 text-sm tracking-widest uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity delay-100">From $950 / Night</p>
+<span class="text-white/80 text-sm border-b border-primary pb-1 inline-block">View Details</span>
+</div>
+</div>
+<!-- Room 3 -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
+<img alt="Bright spacious hotel room" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100 grayscale group-hover:grayscale-0" data-alt="Light colored luxury hotel room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqC7eyyQauoVM5GHau_95Evg1WWEaavaChq1CA4O-cjwuISR49rsUMrY1aUZ4CJRh4lWBx8v49FTDNiQ9zW70MublQnln4O--a3lFkUP-DbKf1yEJzDbVWLw9o0TsME6DgHMeHBsf5S3PNLHrkO8sMGo2H-sPkW-e41oZHyOE7H_I_lQgv8AFpRebj7BOW4EPDyymbzJPWG0NTRwwdRofP8UYWo6gzSWccy1vg5tO6OTFSwgssOeANzkoj9uavn0SoIoE0dToiSSg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-2 font-light">Executive Villa</h3>
+<p class="text-primary/90 text-sm tracking-widest uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity delay-100">From $1,800 / Night</p>
+<span class="text-white/80 text-sm border-b border-primary pb-1 inline-block">View Details</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Gastronomy -->
+<section class="py-24 bg-background-light dark:bg-zinc-900/50 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 blur-3xl rounded-full transform translate-x-1/2"></div>
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/2 space-y-8 z-10">
+<span class="text-primary text-sm uppercase tracking-widest">Gastronomy</span>
+<h2 class="text-4xl md:text-6xl font-light">Taste the <span class="italic text-primary">Extraordinary</span></h2>
+<p class="text-gray-500 text-lg leading-relaxed">
+                    Led by Michelin-starred Chef Antoine Dubois, our culinary journey explores locally sourced ingredients transformed into edible art.
+                </p>
+<div class="space-y-6 mt-8">
+<div class="group cursor-pointer border-b border-gray-700 pb-4 hover:border-primary transition-colors">
+<div class="flex justify-between items-center">
+<h4 class="text-xl group-hover:text-primary transition-colors">Le Jardin Secret</h4>
+<span class="text-sm opacity-50">French Fusion</span>
+</div>
+<p class="text-sm text-gray-500 mt-2 h-0 overflow-hidden group-hover:h-auto transition-all duration-300">An intimate garden setting serving classic French cuisine with a modern twist.</p>
+</div>
+<div class="group cursor-pointer border-b border-gray-700 pb-4 hover:border-primary transition-colors">
+<div class="flex justify-between items-center">
+<h4 class="text-xl group-hover:text-primary transition-colors">The Gold Bar</h4>
+<span class="text-sm opacity-50">Cocktails &amp; Jazz</span>
+</div>
+<p class="text-sm text-gray-500 mt-2 h-0 overflow-hidden group-hover:h-auto transition-all duration-300">Signature cocktails infused with rare spirits, accompanied by live jazz every evening.</p>
+</div>
+<div class="group cursor-pointer border-b border-gray-700 pb-4 hover:border-primary transition-colors">
+<div class="flex justify-between items-center">
+<h4 class="text-xl group-hover:text-primary transition-colors">Sora Omakase</h4>
+<span class="text-sm opacity-50">Japanese Fine Dining</span>
+</div>
+<p class="text-sm text-gray-500 mt-2 h-0 overflow-hidden group-hover:h-auto transition-all duration-300">A 12-seat counter offering a seasonal tasting menu flown in directly from Tokyo.</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative h-[600px]">
+<div class="absolute inset-0 border border-primary/20 rounded-t-full transform rotate-3"></div>
+<div class="absolute inset-0 overflow-hidden rounded-t-full">
+<img alt="Gourmet plated dish" class="w-full h-full object-cover hover:scale-110 transition-transform duration-1000" data-alt="Fancy cocktail and appetizers on a dark table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe21G19TboIcAgL3QuCI2lrXniMuobbkDDD_oXcIpYSRbXEbtMxLPR-rXcgGQDR1fIyNywpRpSxQnaP0it9xnc2pg5zw53lNzb0n_bErT_QJnqsjF-bc_nVnQ1OsItmridk_vbVP4bn4VzMt3l2tasqKez8i_pTtgbQmmkBz1oSkSWB8FdzdlL41IpUofFBRLqerpGmkw-YMVQJhD5f0E2aIc4IERE3hbIlh6tnFCuuSjfZ8lMjGvV2I-pFWqFWu55X6bSDVuOhRA"/>
+</div>
+<!-- Floating Plate Effect -->
+<div class="absolute -bottom-10 -left-10 w-48 h-48 rounded-full overflow-hidden border-4 border-background-dark shadow-2xl animate-pulse">
+<img alt="Highlight dish" class="w-full h-full object-cover" data-alt="Close up of gourmet food plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyN8fmwVPB09IySp7STaYQpevP9Krrjm92mQSf3aEjPhBGSo5LC0WmlLCscN1Qpp-l7Ths2u9w435zrXF9pqT8czYoHXFo-n-f5BR8gDz7vmcJ_XOna-t3D8cdy-d14gUZkYe_04xaEgz8FZl2t8g-lZKdKYPaIHm3ynIJjcDvUJlm4URhVkx57Ur2ofaROjdrHKYdw5l_2jdXsCtMvvyzVBmspS2Zyvbr-0f6Nh1FzMti4LGu_K3QHEgpvkBvwsQCxUJsHezcM6s"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Sanctuary Spa -->
+<section class="py-24 bg-background-dark spa-pattern relative">
+<div class="absolute inset-0 bg-background-dark/95"></div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+<span class="text-primary text-sm uppercase tracking-widest">Wellness</span>
+<h2 class="text-4xl md:text-5xl mt-3 mb-12 font-light">Sanctuary Spa</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-primary/20 border border-primary/20 rounded-lg overflow-hidden">
+<div class="bg-background-dark p-10 hover:bg-background-dark/80 transition-colors group">
+<span class="material-icons text-primary text-4xl mb-6 font-thin">spa</span>
+<h3 class="text-xl mb-3">Holistic Treatments</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Ancient techniques meet modern science to rejuvenate your body.</p>
+</div>
+<div class="bg-background-dark p-10 hover:bg-background-dark/80 transition-colors group">
+<span class="material-icons text-primary text-4xl mb-6 font-thin">self_improvement</span>
+<h3 class="text-xl mb-3">Mindfulness Studio</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Private meditation and yoga sessions tailored to your energy.</p>
+</div>
+<div class="bg-background-dark p-10 hover:bg-background-dark/80 transition-colors group">
+<span class="material-icons text-primary text-4xl mb-6 font-thin">pool</span>
+<h3 class="text-xl mb-3">Thermal Suite</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Experience our hydrotherapy pools, saunas, and steam rooms.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. The Concierge Recommends -->
+<section class="py-24 bg-zinc-900">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div>
+<span class="text-primary text-sm uppercase tracking-widest">Local Guide</span>
+<h2 class="text-3xl md:text-4xl mt-3 font-light">Curated by Concierge</h2>
+</div>
+<a class="text-primary border-b border-primary text-sm pb-1 mt-4 md:mt-0 hover:text-white hover:border-white transition-colors" href="#">View All Experiences</a>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-8 snap-x">
+<div class="min-w-[300px] md:min-w-[400px] snap-center group relative rounded-lg overflow-hidden">
+<div class="aspect-[4/3]">
+<img alt="Opera house interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Grand opera house interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGx3YqlaYXzZHG9oaoYA4s4ms8D__I6AvzC5jAmFKDHQuXm_v_a41Pc7dHDvAskmeB2aPfSrvC8xcFmB4WLzhZcZOdwnB9hsZwE6tlx4-QQsqixFJ4rd48nvUlWlsZAleugJiLnIVRN242fKbGLCSwJYCicV_AzOW692YaKSeHQdh4BTEH0aZSzV4Rnim0BuALGOeEZnc4mgYFhSY7kqyNC4UiUDCdWHpP02o8rx8GKChLl_KcmmmjBDdUEB-3mLK0dNPaCpnaffk"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background-dark p-6">
+<span class="text-primary text-xs uppercase tracking-wider block mb-1">Culture</span>
+<h3 class="text-lg text-white">Private Opera Box Access</h3>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[400px] snap-center group relative rounded-lg overflow-hidden">
+<div class="aspect-[4/3]">
+<img alt="Luxury yacht on water" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="White yacht on blue ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXCWK5I9UwXOC7Y5MZiHNXk0TjFKDcTvyMAQUAHicfff9mQAO3iwqWEjqEyDub_ofBljt7-2uUFZ8pfYjBfiOU2yWCoHAXLLxqqxdsBjcirkDvfwPHEq5AqFj6LHLrFic3SDjZFQRsXaqWf70IFH605DZaqmMtTvXlR-TKELYCpyryzq-DQvkQwJwfEuGGXsUsjWkkn7iT0lVBWiy3Ch00CMcuz7Q8kexwp1oHi-IYp0EsM5E-zQpbBD5NPcQrED_zGp_SxIywaq0"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background-dark p-6">
+<span class="text-primary text-xs uppercase tracking-wider block mb-1">Adventure</span>
+<h3 class="text-lg text-white">Sunset Yacht Charter</h3>
+</div>
+</div>
+<div class="min-w-[300px] md:min-w-[400px] snap-center group relative rounded-lg overflow-hidden">
+<div class="aspect-[4/3]">
+<img alt="Shopping bags in hand" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Person holding luxury shopping bags" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWo9j8Mrc5Y04dh7aetbYstVr8DO9_S-qJkMBZ-pzPL3lrE-qVE9EeNFZDDDLPBQvPoRY1zYnUvXL_3OUFF57Gy3hNbk00zNbjTrKP4CKIy3vumsu3Kn6QXADhUyFwyKtkX9klFhR9xpp_7gdUyruAQzG4G8YvSDb4TSvtev0aWwiOq8KSchgVUaseLxBpW-10L4TdSsS_2HBwhpOOe3Vh0PHTL2P-ATyEFYj860H5_EW2ovCg2SN0P3LR6xIqIICb7zX-9hAIP5U"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background-dark p-6">
+<span class="text-primary text-xs uppercase tracking-wider block mb-1">Shopping</span>
+<h3 class="text-lg text-white">Personal Shopper Service</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Brand Heritage Timeline -->
+<section class="py-24 bg-background-light dark:bg-background-dark border-y border-primary/10">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<span class="text-primary text-sm uppercase tracking-widest">Our Legacy</span>
+<h2 class="text-3xl md:text-4xl mt-3 mb-12 font-light italic">A Century of Excellence</h2>
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-primary/20"></div>
+<div class="space-y-12">
+<div class="relative flex items-center justify-between">
+<div class="w-5/12 text-right pr-8">
+<span class="text-primary font-bold text-xl">1924</span>
+<h3 class="text-lg">The Grand Opening</h3>
+<p class="text-sm text-gray-500 mt-1">Opened doors to the European aristocracy.</p>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background-dark z-10"></div>
+<div class="w-5/12 pl-8 text-left opacity-0"></div>
+</div>
+<div class="relative flex items-center justify-between">
+<div class="w-5/12 text-right pr-8 opacity-0"></div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background-dark z-10"></div>
+<div class="w-5/12 pl-8 text-left">
+<span class="text-primary font-bold text-xl">1965</span>
+<h3 class="text-lg">Royal Patronage</h3>
+<p class="text-sm text-gray-500 mt-1">Hosted the Royal Family for the Jubilee.</p>
+</div>
+</div>
+<div class="relative flex items-center justify-between">
+<div class="w-5/12 text-right pr-8">
+<span class="text-primary font-bold text-xl">2023</span>
+<h3 class="text-lg">Renovation Complete</h3>
+<p class="text-sm text-gray-500 mt-1">Modernized by architect Jean Nouvel.</p>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background-dark z-10"></div>
+<div class="w-5/12 pl-8 text-left opacity-0"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Private Events -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="w-full lg:w-1/2">
+<img alt="Ballroom setup" class="rounded-lg shadow-xl mb-6" data-alt="Elegant ballroom set up for a wedding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqOtVyaEdaajaCCSYQCCqINadJ71TTqS4pp1GtwxjTqtI6zuFWljXFQ9OxNVSlVuUB9o7jVv-V_HGHCSJjdntmGSh-Cbz40xyJgAjrlu_MdZJbd1ThTgtZZ88hVrGQpxlfSDuTNvPbfQPI62a_vSJdRxEbEXfwWITOeY0jXVwxHsphNt-H6gA7znyqme7szOasszqbm39tseVbjcexPdQACvP6mvgDLGfVvP7_mIqJktUsaI4hsAHOSP_6IqY-7leLeLD-wtziE5A"/>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-zinc-900 p-4 rounded border border-gray-800 text-center">
+<span class="text-primary text-xs uppercase block mb-2">Grand Ballroom</span>
+<div class="w-full h-24 bg-gray-800 rounded relative overflow-hidden group">
+<!-- Abstract Floor Plan Representation -->
+<div class="absolute inset-0 flex items-center justify-center border border-gray-600 m-2 rounded opacity-50 group-hover:opacity-100 transition-opacity">
+<span class="text-[10px] text-gray-400">Floor Plan Preview</span>
+</div>
+<div class="absolute inset-x-4 top-4 h-px bg-gray-600"></div>
+<div class="absolute inset-x-4 bottom-4 h-px bg-gray-600"></div>
+</div>
+</div>
+<div class="bg-zinc-900 p-4 rounded border border-gray-800 text-center">
+<span class="text-primary text-xs uppercase block mb-2">Garden Terrace</span>
+<div class="w-full h-24 bg-gray-800 rounded relative overflow-hidden group">
+<!-- Abstract Floor Plan Representation -->
+<div class="absolute inset-0 flex items-center justify-center border border-gray-600 m-2 rounded opacity-50 group-hover:opacity-100 transition-opacity">
+<span class="text-[10px] text-gray-400">Floor Plan Preview</span>
+</div>
+<div class="absolute inset-4 rounded-full border border-gray-600 border-dashed"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 space-y-6">
+<span class="text-primary text-sm uppercase tracking-widest">Gatherings</span>
+<h2 class="text-4xl font-light">Events &amp; Weddings</h2>
+<p class="text-gray-500 text-lg leading-relaxed">
+                    From intimate board meetings to lavish weddings, our dedicated event specialists ensure every detail is flawless. Our venues offer state-of-the-art technology seamlessly blended with historic charm.
+                </p>
+<ul class="space-y-3 text-gray-400">
+<li class="flex items-center gap-3"><span class="text-primary material-icons text-sm">check_circle</span> Capacity up to 500 guests</li>
+<li class="flex items-center gap-3"><span class="text-primary material-icons text-sm">check_circle</span> Custom culinary menus</li>
+<li class="flex items-center gap-3"><span class="text-primary material-icons text-sm">check_circle</span> Dedicated event concierge</li>
+</ul>
+<button class="border border-primary text-primary px-8 py-3 rounded hover:bg-primary hover:text-background-dark transition-all uppercase text-xs tracking-widest mt-4">
+                    Inquire Now
+                </button>
+</div>
+</div>
+</section>
+<!-- 8. Loyalty Circle -->
+<section class="py-24 px-6">
+<div class="max-w-5xl mx-auto relative rounded-2xl overflow-hidden p-1">
+<!-- Gradient Border -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/60 to-primary/10"></div>
+<div class="relative bg-background-dark rounded-xl p-12 md:p-20 text-center">
+<span class="material-icons text-primary text-5xl mb-6">diamond</span>
+<h2 class="text-3xl md:text-5xl font-light mb-6">The Aurelia Inner Circle</h2>
+<p class="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
+                    Unlock a world of privileges including complimentary room upgrades, late checkout, and exclusive access to our private member's lounge.
+                </p>
+<button class="bg-primary text-background-dark px-10 py-4 rounded-full font-medium tracking-widest hover:bg-white transition-all uppercase text-sm">
+                    Become a Member
+                </button>
+</div>
+</div>
+</section>
+<!-- 12. Newsletter 'Invitation' -->
+<section class="py-24 bg-background-light dark:bg-[#1a170c]">
+<div class="max-w-2xl mx-auto px-6">
+<div class="border border-primary/30 p-8 md:p-12 text-center relative bg-background-dark shadow-2xl">
+<!-- Decorative corners -->
+<div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-primary"></div>
+<div class="absolute top-2 right-2 w-4 h-4 border-t border-r border-primary"></div>
+<div class="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-primary"></div>
+<div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-primary"></div>
+<span class="text-primary text-xs uppercase tracking-[0.2em] mb-4 block">An Invitation</span>
+<h3 class="text-2xl font-serif italic mb-6">Join our correspondence list</h3>
+<p class="text-gray-500 text-sm mb-8">Receive curated offers and news from the Aurelia estate.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-1 bg-transparent border-b border-gray-600 focus:border-primary px-4 py-2 outline-none text-center sm:text-left transition-colors" placeholder="Your Email Address" type="email"/>
+<button class="text-primary hover:text-white uppercase text-xs tracking-widest border-b border-transparent hover:border-white transition-all pb-1 sm:self-end" type="button">
+                        RSVP
+                    </button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-primary/10 py-16 text-center md:text-left">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div>
+<span class="text-2xl font-bold tracking-widest text-primary block mb-6">AURELIA</span>
+<address class="not-italic text-gray-500 text-sm space-y-2">
+<p>12 Avenue Montaigne</p>
+<p>75008 Paris, France</p>
+<p class="mt-4">+33 1 44 55 66 77</p>
+<p>concierge@aureliahotel.com</p>
+</address>
+</div>
+<div>
+<h4 class="text-white text-sm uppercase tracking-widest mb-6">Explore</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-primary transition-colors" href="#">Accommodations</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Dining</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Wellness</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gallery</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white text-sm uppercase tracking-widest mb-6">Legal</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div class="flex flex-col justify-between">
+<div class="flex justify-center md:justify-start gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-gray-400" href="#">
+<i class="material-icons text-sm">facebook</i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-gray-400" href="#">
+<i class="material-icons text-sm">camera_alt</i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-gray-400" href="#">
+<i class="material-icons text-sm">alternate_email</i>
+</a>
+</div>
+<p class="text-xs text-gray-600 mt-8 md:mt-0">© 2023 Aurelia Hotel Group. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<!-- 11. Live Chat Concierge (Sticky) -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="bg-primary text-background-dark rounded-full p-4 shadow-lg hover:scale-110 transition-transform flex items-center gap-2 pr-6 group">
+<span class="material-icons">chat</span>
+<span class="font-medium text-sm hidden group-hover:inline-block transition-all">Concierge</span>
+</button>
+</div>
+</body></html>
