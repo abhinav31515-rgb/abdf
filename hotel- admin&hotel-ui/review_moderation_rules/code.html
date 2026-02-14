@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Moderation Rules - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0e4bca",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#182030", // Slightly lighter than background-dark for cards
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen antialiased flex flex-col">
+<!-- Top Navigation -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark sticky top-0 z-20 px-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-bold">H</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-900 dark:text-white" href="#">Properties</a>
+<a class="hover:text-primary transition-colors" href="#">Guests</a>
+<a class="hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200">
+<span class="material-icons text-xl">notifications</span>
+</button>
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700 object-cover" data-alt="Admin user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtFsRNOfFjPCnMRsQRwKSary6Q8cLtp0JM6uqlj1oW6M1rIZ4R71-AiE3C2w98Q8ZRMT0yHlnLKLl3RcRZbLuQYukiVFahE3iCqYA17FNJGsbYiiAppk9Ov52aNsIsTawS45v-qVOmA_eFcIkFsHcuvkkPZHXoJhyzHOaCUo-dXuE3tr8LRAuFUMQtQbK3mTGIDh6pKktR4Mh_krMeJUDHE2q_162XtEZWKMWh0FBTkvaYrPN4yHqw2b4aBes882w6l5QXaDIZ6w0"/>
+<span class="hidden md:inline text-sm font-medium">Alex Morgan</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden max-h-[calc(100vh-4rem)]">
+<!-- Left Panel: Configuration -->
+<div class="flex-1 overflow-y-auto p-6 lg:p-10 space-y-8 pb-32">
+<!-- Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-semibold text-slate-900 dark:text-white">Review Moderation Rules</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Configure automated filters and AI logic for <span class="text-primary font-medium">The Grand Horizon Hotel</span>.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        Discard
+                    </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-hover shadow-lg shadow-primary/25 transition-colors flex items-center gap-2">
+<span class="material-icons text-sm">save</span>
+                        Save Changes
+                    </button>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- Core Rules Section -->
+<section class="space-y-5">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-icons text-primary">tune</span>
+<h2 class="text-lg font-medium text-slate-900 dark:text-white">Basic Filters</h2>
+</div>
+<!-- Rule Card: Min Rating -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 transition-all hover:border-primary/30">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="p-3 rounded-lg bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400">
+<span class="material-icons">star_rate</span>
+</div>
+<div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Minimum Rating Threshold</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-lg">
+                                    Automatically hide reviews that fall below a specific star rating. These reviews will be flagged for manual inspection.
+                                </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Expanded Settings -->
+<div class="mt-6 pl-16 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Show Reviews Rated</label>
+<select class="w-full bg-background-light dark:bg-background-dark border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5">
+<option>3 Stars &amp; Up</option>
+<option selected="">4 Stars &amp; Up</option>
+<option>5 Stars Only</option>
+</select>
+</div>
+<div class="flex items-end">
+<div class="text-xs text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-3 py-2 rounded-lg flex items-center gap-2 w-full">
+<span class="material-icons text-sm">info</span>
+                                12% of reviews from last month would be hidden.
+                            </div>
+</div>
+</div>
+</div>
+<!-- Rule Card: Verified Only -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 transition-all hover:border-primary/30">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="p-3 rounded-lg bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400">
+<span class="material-icons">verified_user</span>
+</div>
+<div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Verified Stays Only</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-lg">
+                                    Only display reviews that are linked to a confirmed booking ID in the system.
+                                </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Rule Card: Profanity Filter -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl p-6 transition-all hover:border-primary/30">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="p-3 rounded-lg bg-red-100 dark:bg-red-500/10 text-red-600 dark:text-red-400">
+<span class="material-icons">explicit</span>
+</div>
+<div>
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Auto-Hide Profanity</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-lg">
+                                    Automatically filter out reviews containing hate speech, profanity, or banned keywords.
+                                </p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- AI Section -->
+<section class="space-y-5">
+<div class="flex items-center gap-2 mb-2 mt-8">
+<span class="material-icons text-primary">psychology</span>
+<h2 class="text-lg font-medium text-slate-900 dark:text-white">AI Intelligence</h2>
+</div>
+<div class="bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-icons text-9xl text-primary">auto_awesome</span>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                                AI Sentiment Moderation
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary text-white uppercase">Beta</span>
+</h3>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+                            Our AI analyzes the tone of the review. Set a confidence threshold for auto-approval. High confidence means the AI is very certain the review is positive.
+                        </p>
+<div class="bg-white/50 dark:bg-background-dark/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700/50 backdrop-blur-sm">
+<div class="flex justify-between mb-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-200">Confidence Threshold</label>
+<span class="text-sm font-bold text-primary">85%</span>
+</div>
+<input class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer dark:bg-slate-700 accent-primary" max="100" min="0" type="range" value="85"/>
+<div class="flex justify-between mt-2 text-xs text-slate-500 dark:text-slate-400">
+<span>Loose (More Approvals)</span>
+<span>Strict (Fewer Approvals)</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Auto-Flag Specific Topics</label>
+<div class="flex flex-wrap gap-2 p-2 bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-700 rounded-lg min-h-[50px]">
+<span class="bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 px-2 py-1 rounded text-sm flex items-center gap-1">
+                                    Bed Bugs <button class="hover:text-red-900 dark:hover:text-white"><span class="material-icons text-xs">close</span></button>
+</span>
+<span class="bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 px-2 py-1 rounded text-sm flex items-center gap-1">
+                                    Refund <button class="hover:text-red-900 dark:hover:text-white"><span class="material-icons text-xs">close</span></button>
+</span>
+<span class="bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 px-2 py-1 rounded text-sm flex items-center gap-1">
+                                    Safety <button class="hover:text-red-900 dark:hover:text-white"><span class="material-icons text-xs">close</span></button>
+</span>
+<input class="bg-transparent border-none text-sm focus:ring-0 p-1 text-slate-900 dark:text-white placeholder-slate-400 w-24" placeholder="Add topic..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Panel: Simulation Sidebar -->
+<div class="w-full lg:w-[400px] xl:w-[450px] bg-white dark:bg-surface-dark border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-800 flex flex-col shadow-xl z-10">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-surface-dark">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Rule Simulation</h2>
+<span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Live Preview
+                    </span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-background-dark p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-center">
+<div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Projected Approval</div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white">82%</div>
+<div class="text-[10px] text-red-500 flex items-center justify-center gap-0.5">
+<span class="material-icons text-[10px]">arrow_downward</span> 5% vs current
+                        </div>
+</div>
+<div class="bg-white dark:bg-background-dark p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-center">
+<div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Auto-Flagged</div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white">43</div>
+<div class="text-[10px] text-slate-400">Reviews / mo</div>
+</div>
+</div>
+</div>
+<!-- Feed -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4 bg-background-light dark:bg-[#0d121c]">
+<!-- Review Item: Approved -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border-l-4 border-l-green-500 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="flex text-yellow-400 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<span class="text-xs text-slate-400">2h ago</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-500/30">APPROVED</span>
+</div>
+<p class="text-sm text-slate-800 dark:text-slate-200 line-clamp-2">
+                        Absolutely loved the ocean view suite! The service was impeccable and breakfast was delicious. Will return.
+                    </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-icons text-xs text-blue-400">verified</span> Verified Guest
+                        </div>
+<div class="text-[10px] text-slate-400">AI Confidence: 98%</div>
+</div>
+</div>
+<!-- Review Item: Hidden (Rating) -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border-l-4 border-l-slate-400 opacity-75 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="flex text-yellow-400 text-xs opacity-50">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-xs text-slate-400">5h ago</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-600">HIDDEN: LOW RATING</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 italic">
+                        The AC was quite noisy and kept me up half the night. Not what I expected for the price.
+                    </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-icons text-xs text-blue-400">verified</span> Verified Guest
+                        </div>
+</div>
+</div>
+<!-- Review Item: Flagged (AI Topic) -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border-l-4 border-l-orange-500 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="flex text-yellow-400 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-xs text-slate-400">1d ago</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-500/30">FLAGGED: TOPIC</span>
+</div>
+<p class="text-sm text-slate-800 dark:text-slate-200 line-clamp-2">
+                        I am requesting a full <span class="bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-1 rounded">refund</span>. The shower was cold for two days straight.
+                    </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-icons text-xs text-blue-400">verified</span> Verified Guest
+                        </div>
+<div class="text-[10px] text-orange-400">Topic: Refund</div>
+</div>
+</div>
+<!-- Review Item: Hidden (Profanity) -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border-l-4 border-l-red-500 opacity-75 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="flex text-yellow-400 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+<span class="material-icons text-sm text-slate-300 dark:text-slate-600">star</span>
+</div>
+<span class="text-xs text-slate-400">2d ago</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-500/30">BLOCKED: PROFANITY</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 blur-[2px] hover:blur-none transition-all cursor-help select-none">
+                        This place is absolute ****! The staff was rude and the room smelled like ****. Never again!
+                    </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-icons text-xs text-slate-400">no_accounts</span> Unverified
+                        </div>
+</div>
+</div>
+<!-- Review Item: Approved -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-lg border-l-4 border-l-green-500 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="flex text-yellow-400 text-xs">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<span class="text-xs text-slate-400">3d ago</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-500/30">APPROVED</span>
+</div>
+<p class="text-sm text-slate-800 dark:text-slate-200 line-clamp-2">
+                        Great location near the city center. Very convenient for business trips.
+                    </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-icons text-xs text-blue-400">verified</span> Verified Guest
+                        </div>
+<div class="text-[10px] text-slate-400">AI Confidence: 92%</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark text-center">
+<button class="text-xs text-primary hover:text-primary-hover font-medium flex items-center justify-center gap-1">
+                    View full simulation log <span class="material-icons text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

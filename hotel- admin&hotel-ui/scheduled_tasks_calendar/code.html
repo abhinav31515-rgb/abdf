@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scheduled Tasks - Hotel Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "border-dark": "#334155",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-rows: minmax(120px, 1fr);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Global Admin Shell Layout -->
+<div class="flex h-screen overflow-hidden">
+<!-- Left Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-border-dark flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-1.5 text-white">
+<span class="material-symbols-outlined block">apartment</span>
+</div>
+<div>
+<h1 class="font-bold text-sm tracking-tight">Hotel Admin</h1>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Global Shell</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm font-medium">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">bed</span>
+<span class="text-sm font-medium">Property Mgmt</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-border-dark">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Admin User" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDofSp39N2uXw6WCECjWc9nVtlM5n0jkG11_9171rJjCJFuCMhnahEGjpwGcltM0T3WDKKoxFQu8EOnpF_TStFMXLcA-MvPX54ZbIQFAd6xtDA3qA5RQItMt7nx782I0f2KhchrWWojNIsbwF9nyC0pW9SQjYmYKDLoW36_6wH0BSLlhKIKY7MeVTT16lsmVnFyEIhLq9up335jtysqD0xL56QRM8IeL0qfL74gVQXlgQL-mYmYhCp9cyhkEKDvU0xtMY9lzFOzUXI"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold truncate">Alex Rivera</p>
+<p class="text-[10px] text-slate-500 truncate">Senior Admin</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">unfold_more</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-hidden">
+<!-- Header -->
+<header class="h-16 flex-shrink-0 flex items-center justify-between px-8 border-b border-slate-200 dark:border-border-dark bg-white/50 dark:bg-surface-dark/50 backdrop-blur-md z-10">
+<div class="flex items-center gap-4">
+<nav class="flex items-center gap-2 text-xs font-medium text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Admin</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Marketing</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-slate-900 dark:text-white">Scheduled Tasks</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+<span class="material-symbols-outlined text-lg">search</span>
+</span>
+<input class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary transition-all" placeholder="Search tasks..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Create Task
+                    </button>
+</div>
+</header>
+<!-- Workspace Content -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Calendar Section -->
+<div class="flex-1 flex flex-col overflow-y-auto p-8 custom-scrollbar">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">October 2023</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Manage and monitor content deployments.</p>
+</div>
+<div class="flex items-center bg-white dark:bg-surface-dark rounded-xl p-1 border border-slate-200 dark:border-border-dark shadow-sm">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-4 py-1 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">Today</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid Header -->
+<div class="grid grid-cols-7 mb-2">
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Sun</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Mon</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Tue</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Wed</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Thu</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Fri</div>
+<div class="text-center text-xs font-bold uppercase tracking-widest text-slate-400 pb-2">Sat</div>
+</div>
+<!-- Calendar Grid Body -->
+<div class="calendar-grid border-l border-t border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark/30 rounded-xl overflow-hidden shadow-sm">
+<!-- Empty cells for start of month -->
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 bg-slate-50/50 dark:bg-slate-900/50 opacity-40">24</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 bg-slate-50/50 dark:bg-slate-900/50 opacity-40">25</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 bg-slate-50/50 dark:bg-slate-900/50 opacity-40">26</div>
+<!-- Oct 1 to Oct 31 -->
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">1</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">2</span>
+<div class="mt-2 space-y-1">
+<div class="bg-emerald-500/10 border-l-4 border-emerald-500 p-1.5 rounded-sm cursor-pointer hover:bg-emerald-500/20 transition-all">
+<p class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 leading-tight">Publish: Summer Promo</p>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">3</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">4</span>
+</div>
+<!-- Current Day -->
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 bg-primary/5 ring-1 ring-inset ring-primary relative">
+<span class="text-xs font-bold text-primary">5</span>
+<div class="mt-2 space-y-1">
+<div class="bg-primary/10 border-l-4 border-primary p-1.5 rounded-sm cursor-pointer hover:bg-primary/20 transition-all">
+<p class="text-[10px] font-bold text-primary dark:text-primary leading-tight">Social: Grand Opening</p>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">6</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">7</span>
+<div class="mt-2 space-y-1">
+<div class="bg-amber-500/10 border-l-4 border-amber-500 p-1.5 rounded-sm cursor-pointer hover:bg-amber-500/20 transition-all">
+<p class="text-[10px] font-bold text-amber-600 dark:text-amber-400 leading-tight">Unpublish: Winter Deals</p>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">8</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">9</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">10</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors">
+<span class="text-xs font-bold text-slate-400">11</span>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2 group hover:bg-primary/5 transition-colors text-right">
+<span class="text-xs font-bold text-slate-400">12</span>
+</div>
+<!-- Repeat similar cells for the rest of the month -->
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">13</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">14</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">15</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2">
+<span class="text-xs font-bold text-slate-400">16</span>
+<div class="mt-2 space-y-1">
+<div class="bg-emerald-500/10 border-l-4 border-emerald-500 p-1.5 rounded-sm cursor-pointer">
+<p class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">Newsletter Batch A</p>
+</div>
+<div class="bg-primary/10 border-l-4 border-primary p-1.5 rounded-sm cursor-pointer">
+<p class="text-[10px] font-bold text-primary">IG Reels Launch</p>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">17</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">18</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">19</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">20</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">21</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">22</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2">
+<span class="text-xs font-bold text-slate-400">23</span>
+<div class="mt-2 space-y-1">
+<div class="bg-amber-500/10 border-l-4 border-amber-500 p-1.5 rounded-sm cursor-pointer">
+<p class="text-[10px] font-bold text-amber-600 dark:text-amber-400">Flash Sale Start</p>
+</div>
+</div>
+</div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">24</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">25</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">26</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">27</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">28</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">29</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">30</span></div>
+<div class="border-r border-b border-slate-200 dark:border-border-dark p-2"><span class="text-xs font-bold text-slate-400">31</span></div>
+</div>
+</div>
+<!-- Right Sidebar Control Panel -->
+<aside class="w-80 flex-shrink-0 border-l border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark flex flex-col">
+<!-- Pending Tasks Queue -->
+<div class="p-6 border-b border-slate-200 dark:border-border-dark">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-lg">pending_actions</span>
+                                Pending Tasks
+                            </h3>
+<span class="bg-amber-500/10 text-amber-600 text-[10px] px-1.5 py-0.5 rounded font-bold">2 Items</span>
+</div>
+<div class="space-y-3">
+<div class="bg-slate-50 dark:bg-background-dark border border-dashed border-slate-300 dark:border-slate-700 p-3 rounded-lg group cursor-grab active:cursor-grabbing hover:border-primary transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[9px] uppercase font-bold text-slate-400">Draft Content</span>
+<span class="material-symbols-outlined text-[14px] text-slate-300">drag_indicator</span>
+</div>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-300 leading-tight">Q4 Seasonal Newsletter Update</p>
+<p class="text-[10px] text-slate-500 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Added 2 days ago
+                                </p>
+</div>
+<div class="bg-slate-50 dark:bg-background-dark border border-dashed border-slate-300 dark:border-slate-700 p-3 rounded-lg group cursor-grab active:cursor-grabbing hover:border-primary transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[9px] uppercase font-bold text-slate-400">Marketing Draft</span>
+<span class="material-symbols-outlined text-[14px] text-slate-300">drag_indicator</span>
+</div>
+<p class="text-xs font-semibold text-slate-700 dark:text-slate-300 leading-tight">Loyalty Member Tier Upgrade Notice</p>
+<p class="text-[10px] text-slate-500 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Added 5 hours ago
+                                </p>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Brand Filter -->
+<div>
+<h4 class="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-3">Filter by Brand</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Grand Luxor</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Coastal Retreat</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Urban Suite</span>
+</label>
+</div>
+</div>
+<!-- Task Type Filter -->
+<div>
+<h4 class="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-3">Task Type</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Content</span>
+<input checked="" class="ml-auto rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Offers</span>
+<input checked="" class="ml-auto rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Marketing</span>
+<input checked="" class="ml-auto rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Status Filter -->
+<div>
+<h4 class="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-3">Execution Status</h4>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-sm py-1">
+<span class="text-slate-600 dark:text-slate-400">Scheduled</span>
+<span class="font-bold text-slate-900 dark:text-white">12</span>
+</div>
+<div class="flex items-center justify-between text-sm py-1">
+<span class="text-slate-600 dark:text-slate-400">In Progress</span>
+<span class="font-bold text-primary">2</span>
+</div>
+<div class="flex items-center justify-between text-sm py-1">
+<span class="text-slate-600 dark:text-slate-400">Completed</span>
+<span class="font-bold text-slate-500">45</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Controls -->
+<div class="p-4 bg-slate-50 dark:bg-background-dark/30 border-t border-slate-200 dark:border-border-dark mt-auto">
+<button class="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+                            Export Calendar (.ics)
+                        </button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Task Popover (Simulated) -->
+<div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl shadow-2xl z-50 p-5">
+<div class="flex items-start justify-between mb-4">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded-full uppercase">Marketing Task</span>
+<button class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined text-[20px]">close</span></button>
+</div>
+<h3 class="text-lg font-bold leading-tight mb-2 text-slate-900 dark:text-white">Social: Grand Opening Post</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Post high-resolution images of the new rooftop pool and lounge to Instagram and Facebook feeds.</p>
+<div class="space-y-2 mb-5">
+<div class="flex items-center gap-3 text-xs">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">apartment</span>
+<span class="font-medium">Grand Luxor Hotel &amp; Spa</span>
+</div>
+<div class="flex items-center gap-3 text-xs">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">schedule</span>
+<span class="font-medium">Oct 5, 2023 at 10:00 AM</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-primary text-white text-xs font-bold rounded-lg">Edit Task</button>
+<button class="px-3 py-2 border border-slate-200 dark:border-border-dark rounded-lg text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</body></html>

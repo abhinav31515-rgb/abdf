@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page Manager List - Hotel Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        // Deriving neutrals from primary hue (220)
+                        "neutral-800": "#1e293b", // Slate-800 equivalent but tweaked slightly if needed
+                        "neutral-900": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for dark mode */
+        .dark ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; 
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen flex overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#151b2b] flex flex-col transition-all duration-300">
+<!-- Logo Area -->
+<div class="h-16 flex items-center px-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 text-primary font-bold text-xl tracking-tight">
+<span class="material-icons-outlined">maps_home_work</span>
+<span>LuxStay</span>
+</div>
+</div>
+<!-- User Profile Snippet -->
+<div class="p-4 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden relative" data-alt="User profile avatar">
+<img alt="Admin User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEMgNuugx_Qzl9fZNEL0YQVC_ALIv8aD7AoPhQslyZ9R721-xlItR3AIfFc7AUp1uprg_hrWjRRr5A5l35Cn3p2JDdBM2ZQgPi2V2C7E6ZMhc1pjsC9WqCY3AUk3XAxLaINumN-l5578hhZx8Xjfcdj2HKbhPlwMOQIY0NsZeow-Sr4m023LnAL3o-XxMKJcuKkRUHqLx3uobCvX1oshJQDeUX0GNBDZKbdlfGclQbAz0MDfEFNO-XgJMOiEsjcOcK3R9CxCWmGH4"/>
+</div>
+<div>
+<p class="text-sm font-medium dark:text-white">Alex Morgan</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Grand Hotel NYC</p>
+</div>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-[20px]">apartment</span>
+                Brands &amp; Properties
+            </a>
+<div class="pt-2 pb-1">
+<p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Management</p>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary dark:text-primary dark:bg-primary/20" href="#">
+<span class="material-icons-outlined text-[20px]">article</span>
+                    Content
+                </a>
+<!-- Submenu for Content -->
+<div class="pl-10 space-y-1 mt-1">
+<a class="block px-3 py-1.5 text-sm font-medium text-primary dark:text-white" href="#">Pages</a>
+<a class="block px-3 py-1.5 text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300" href="#">Blog Posts</a>
+<a class="block px-3 py-1.5 text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300" href="#">Media Library</a>
+</div>
+<a class="mt-1 flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-[20px]">calendar_month</span>
+                    Bookings
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-[20px]">integration_instructions</span>
+                    Integrations
+                </a>
+</div>
+</nav>
+<!-- Footer -->
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-icons-outlined text-[20px]">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-hidden">
+<!-- Top Bar -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#151b2b]/50 backdrop-blur-sm z-10">
+<nav class="flex items-center text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Content</a>
+<span class="material-icons-outlined text-base mx-2">chevron_right</span>
+<span class="text-slate-800 dark:text-white">Page Manager</span>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-slate-400 text-lg">search</span>
+</span>
+<input class="pl-10 pr-4 py-2 w-64 rounded-lg border-none bg-slate-100 dark:bg-slate-800 text-sm focus:ring-2 focus:ring-primary text-slate-800 dark:text-slate-200 placeholder-slate-400" placeholder="Global search..." type="text"/>
+</div>
+<button class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
+<span class="material-icons-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 border border-white dark:border-background-dark"></span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Pages</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Manage website structure, SEO content, and templates for <span class="text-slate-700 dark:text-slate-300 font-medium">Grand Hotel NYC</span>.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+<span class="material-icons-outlined text-lg">cloud_upload</span>
+                            Import
+                        </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-icons-outlined text-lg">add</span>
+                            Create New Page
+                        </button>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="bg-white dark:bg-[#151b2b] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex flex-col sm:flex-row gap-3 flex-1">
+<div class="relative flex-1 max-w-md">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-slate-400 text-lg">search</span>
+</span>
+<input class="pl-10 pr-4 py-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent text-sm focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800 dark:text-slate-200 placeholder-slate-400" placeholder="Search pages by title or slug..." type="text"/>
+</div>
+<div class="flex gap-3">
+<select class="pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent text-sm text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-primary focus:border-transparent">
+<option>All Statuses</option>
+<option>Published</option>
+<option>Draft</option>
+<option>Archived</option>
+</select>
+<select class="pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent text-sm text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-primary focus:border-transparent">
+<option>All Locales</option>
+<option>en-US</option>
+<option>fr-FR</option>
+<option>es-ES</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 border-l border-slate-200 dark:border-slate-700 pl-4">
+<button class="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-1 disabled:opacity-50" disabled="">
+<span class="material-icons-outlined text-lg">checklist</span>
+                            Bulk Actions
+                        </button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">refresh</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-[#151b2b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+<th class="py-4 px-6 w-12 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Page Title</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider hidden md:table-cell">Slug</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Template</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider hidden lg:table-cell">Locale</th>
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right hidden sm:table-cell">Last Edited</th>
+<th class="py-4 px-6 w-12"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<a class="font-medium text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2" href="#">
+                                            Homepage V2
+                                            <span class="material-icons-outlined text-sm text-slate-400 opacity-0 group-hover:opacity-100">edit</span>
+</a>
+<div class="text-xs text-slate-500 dark:text-slate-400 md:hidden mt-1">/</div>
+</td>
+<td class="py-4 px-6 text-sm text-slate-600 dark:text-slate-300 hidden md:table-cell font-mono">/</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+                                            Front Page
+                                        </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm text-green-700 dark:text-green-400">Published</span>
+</div>
+</td>
+<td class="py-4 px-6 hidden lg:table-cell">
+<div class="flex items-center gap-2">
+<img alt="US" class="w-5 h-auto rounded-sm shadow-sm" data-alt="US Flag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6JCWt7sh1npg816TQK2CXaLEjY5i7EHw58jtAzrQM6QT9qACX24kHtmKnIEj3bm7Ey_MNzUY5j0N9GgOPZwHZdL5NEw9uHivWh8KX9D-R_TdH31EdnVxdDSOwVekM8tXzSID8vfge-9K7bzC6fhUL5YCyT2DqkDKMnF1-r51BY7Y-Dc8j3KeJMeO5JsZDI4aLrBa6bB3i2V8tnaHrb0mN7TFwRucz1XEni4zXPV_Q59MgVTNIp64wfiN9V8Ywwqwpz4xB5pw9euk"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">en-US</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right hidden sm:table-cell">
+<span class="text-sm text-slate-500 dark:text-slate-400">2 mins ago</span>
+<div class="text-xs text-slate-400 dark:text-slate-500">by Alex Morgan</div>
+</td>
+<td class="py-4 px-6 text-right relative">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<a class="font-medium text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2" href="#">
+                                            Fine Dining &amp; Bar
+                                        </a>
+<div class="text-xs text-slate-500 dark:text-slate-400 md:hidden mt-1">/dining</div>
+</td>
+<td class="py-4 px-6 text-sm text-slate-600 dark:text-slate-300 hidden md:table-cell font-mono">/dining</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+                                            Standard Page
+                                        </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm text-green-700 dark:text-green-400">Published</span>
+</div>
+</td>
+<td class="py-4 px-6 hidden lg:table-cell">
+<div class="flex items-center gap-2">
+<img alt="US" class="w-5 h-auto rounded-sm shadow-sm" data-alt="US Flag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC-LzIgva-wY0U8msiJJx5chadM89z1FySeJynOQ5yvi0tArd3pESGvZGLUxzwxzmHQknMf7buSsaQqxz1HXpktMW4Vhzue8HsYzhuHOWDtVFwQPBepQ_dbzcHQtCZXd6GrCQjXWJXvB4z7FY5u1e3PNy0-zp6XjwQ6gdlWWmBFykxFYCww_vOoWD8Ei4THFlU48TQVK4rSt9oaV62A5ssDNE0_3U5wxoq9YCCqT_QuaRd95ztX-G56iRRB3u3zKllvHbAovl3oaM"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">en-US</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right hidden sm:table-cell">
+<span class="text-sm text-slate-500 dark:text-slate-400">2 hours ago</span>
+<div class="text-xs text-slate-400 dark:text-slate-500">by Sarah Jenkins</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<a class="font-medium text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2" href="#">
+                                            Offre d'été (Summer Special)
+                                        </a>
+<div class="text-xs text-slate-500 dark:text-slate-400 md:hidden mt-1">/fr/offres/ete</div>
+</td>
+<td class="py-4 px-6 text-sm text-slate-600 dark:text-slate-300 hidden md:table-cell font-mono">/fr/offres/ete</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+                                            Offer Detail
+                                        </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+<span class="text-sm text-yellow-700 dark:text-yellow-400">Draft</span>
+</div>
+</td>
+<td class="py-4 px-6 hidden lg:table-cell">
+<div class="flex items-center gap-2">
+<img alt="FR" class="w-5 h-auto rounded-sm shadow-sm" data-alt="French Flag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJdWNzu4CqyMlTyuf_9Sx579rZ_gfKaMUhztnbPjCKSP7lfJp7CDuu02NTAEgRRaHdQEiOZXaBpwdvC1Wk5MmpDe-Jw1eNoubDPDf5oUHhJM9jgEJgjZbydBSw2CTAP71Gzk0eQQXsWq2A6eBytLq75-t1cUWWUqSR3LtgvKGS6Fnm6r_mWqM6Wqcoa3diktguL2e0kjqNRIr9PnNe0tkM8yrqo2T3-kwoV-54gjz4cS6vqBGUJLnfJ_9CLckISUh_ymy2QhcJAVs"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">fr-FR</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right hidden sm:table-cell">
+<span class="text-sm text-slate-500 dark:text-slate-400">Yesterday</span>
+<div class="text-xs text-slate-400 dark:text-slate-500">by Jean Dupont</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<a class="font-medium text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2" href="#">
+                                            Luxury Suites
+                                        </a>
+<div class="text-xs text-slate-500 dark:text-slate-400 md:hidden mt-1">/rooms/suites</div>
+</td>
+<td class="py-4 px-6 text-sm text-slate-600 dark:text-slate-300 hidden md:table-cell font-mono">/rooms/suites</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+                                            Room Category
+                                        </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-sm text-green-700 dark:text-green-400">Published</span>
+</div>
+</td>
+<td class="py-4 px-6 hidden lg:table-cell">
+<div class="flex items-center gap-2">
+<img alt="US" class="w-5 h-auto rounded-sm shadow-sm" data-alt="US Flag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUMGulwVXxPDIPwtFdKodkD1LObDMlfyd57tuAS_-JAroPXnXBi9Zbdwiooyq3LdgdliyQN22-WOmv3OMCbOMPY3bl9TUkESmRSaoO6kAYZMSffBfklykoZODivEQsjEpKKS8ZTDmQKg9t9nnalV-4RuT5yiG8bUo7BnNqonkWWdHnvQwJkr0JAjJV9cDhBLbeAi2wKHSNs8gsG3IK4zf9dqyd33WaPEPGWljxZIvBDeD6uO6cTnQOoc2qWK8xKgXimpS3o3O1q-g"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">en-US</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right hidden sm:table-cell">
+<span class="text-sm text-slate-500 dark:text-slate-400">3 days ago</span>
+<div class="text-xs text-slate-400 dark:text-slate-500">by Alex Morgan</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<input class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-transparent" type="checkbox"/>
+</td>
+<td class="py-4 px-6">
+<a class="font-medium text-slate-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2" href="#">
+                                            Terms &amp; Conditions
+                                        </a>
+<div class="text-xs text-slate-500 dark:text-slate-400 md:hidden mt-1">/legal/terms</div>
+</td>
+<td class="py-4 px-6 text-sm text-slate-600 dark:text-slate-300 hidden md:table-cell font-mono">/legal/terms</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
+                                            Legal
+                                        </span>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span class="text-sm text-slate-600 dark:text-slate-400">Archived</span>
+</div>
+</td>
+<td class="py-4 px-6 hidden lg:table-cell">
+<div class="flex items-center gap-2">
+<img alt="US" class="w-5 h-auto rounded-sm shadow-sm" data-alt="US Flag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8QrchrUz1R-yb4eQSYyOhWPiwVCo2ruLJGdQJ1nAJK5-d6Njo24VWt0_2xmeP58UywBhqnqS46zf2RI4dEa0eNgMIoj7FM0RrkP3cApyGF63zDEPq_g9Cp7k-K0RuMnw0-1KGQGgIC0KvCZa2ULBIy8cLnPSGiELEeA7peJq3Jc1kR9p0omdvAne8v_9DulFmgYElN-s8_a3oM9v7VfSP_8kVb-DguN_sY4ZlUx2pOpxlw_dn4Pg7gKb13F-QiiTBpGfCJOEXZc0"/>
+<span class="text-sm text-slate-600 dark:text-slate-300">en-US</span>
+</div>
+</td>
+<td class="py-4 px-6 text-right hidden sm:table-cell">
+<span class="text-sm text-slate-500 dark:text-slate-400">Oct 24, 2023</span>
+<div class="text-xs text-slate-400 dark:text-slate-500">by System</div>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-icons-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-sm text-slate-500 dark:text-slate-400">Showing</span>
+<select class="form-select text-sm py-1 pl-2 pr-8 border-slate-200 dark:border-slate-700 rounded bg-transparent focus:ring-primary dark:text-slate-300">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+<span class="text-sm text-slate-500 dark:text-slate-400">of 42 pages</span>
+</div>
+<div class="flex items-center gap-2 ml-auto">
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50" disabled="">Previous</button>
+<div class="flex items-center">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-sm font-medium">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-colors">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-colors">5</button>
+</div>
+<button class="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
