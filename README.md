@@ -49,6 +49,8 @@ This scaffold is structured for **reusability across multiple hotel brands** wit
 - `/wellness`, `/meetings-events`, `/weddings`, `/experiences`
 - `/about`, `/faq`, `/sustainability`, `/press`, `/careers`, `/legal`
 - `/gallery`, `/contact`
-- `/booking/search`, `/booking/availability`, `/booking/checkout`, `/booking/confirmation`
+- `/booking/search`, `/booking/availability`, `/booking/checkout`, `/booking/confirmation`, `/booking/manage`
+- `/account/signin`, `/account/signup`, `/account/forgot-password`, `/account/profile`, `/account/loyalty`
+- `/system/404`, `/system/500`, `/system/maintenance`, `/system/search-results`, `/system/sitemap`
 
 These are wired to Blade pages under `resources/views/pages/*` and use shared brand/theme payloads.

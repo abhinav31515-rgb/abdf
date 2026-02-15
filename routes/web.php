@@ -26,10 +26,30 @@ Route::get('/careers', [SitePagesController::class, 'careers'])->name('site.care
 Route::get('/legal', [SitePagesController::class, 'legal'])->name('site.legal');
 Route::get('/gallery', [SitePagesController::class, 'gallery'])->name('site.gallery');
 Route::get('/contact', [SitePagesController::class, 'contact'])->name('site.contact');
-Route::get('/booking/search', [SitePagesController::class, 'bookingSearch'])->name('site.booking.search');
-Route::get('/booking/availability', [SitePagesController::class, 'bookingAvailability'])->name('site.booking.availability');
-Route::get('/booking/checkout', [SitePagesController::class, 'bookingCheckout'])->name('site.booking.checkout');
-Route::get('/booking/confirmation', [SitePagesController::class, 'bookingConfirmation'])->name('site.booking.confirmation');
+
+Route::prefix('booking')->group(function (): void {
+    Route::get('/search', [SitePagesController::class, 'bookingSearch'])->name('site.booking.search');
+    Route::get('/availability', [SitePagesController::class, 'bookingAvailability'])->name('site.booking.availability');
+    Route::get('/checkout', [SitePagesController::class, 'bookingCheckout'])->name('site.booking.checkout');
+    Route::get('/confirmation', [SitePagesController::class, 'bookingConfirmation'])->name('site.booking.confirmation');
+    Route::get('/manage', [SitePagesController::class, 'bookingManage'])->name('site.booking.manage');
+});
+
+Route::prefix('account')->group(function (): void {
+    Route::get('/signin', [SitePagesController::class, 'signIn'])->name('site.account.signin');
+    Route::get('/signup', [SitePagesController::class, 'signUp'])->name('site.account.signup');
+    Route::get('/forgot-password', [SitePagesController::class, 'forgotPassword'])->name('site.account.forgot');
+    Route::get('/profile', [SitePagesController::class, 'profile'])->name('site.account.profile');
+    Route::get('/loyalty', [SitePagesController::class, 'loyalty'])->name('site.account.loyalty');
+});
+
+Route::prefix('system')->group(function (): void {
+    Route::get('/404', [SitePagesController::class, 'system404'])->name('site.system.404');
+    Route::get('/500', [SitePagesController::class, 'system500'])->name('site.system.500');
+    Route::get('/maintenance', [SitePagesController::class, 'maintenance'])->name('site.system.maintenance');
+    Route::get('/search-results', [SitePagesController::class, 'searchResults'])->name('site.system.search');
+    Route::get('/sitemap', [SitePagesController::class, 'sitemap'])->name('site.system.sitemap');
+});
 
 Route::prefix('admin')->middleware(['auth'])->group(function (): void {
     Route::get('/dashboard', DashboardController::class)->name('admin.dashboard');

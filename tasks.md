@@ -102,6 +102,19 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [x] Terms / Privacy / Cookie policy
 - [x] Booking funnel pages (search, availability, checkout, confirmation)
 
+### 3.1.b Wireframe Account & Utility Pages
+- [x] Sign In
+- [x] Sign Up / Join
+- [x] Forgot Password
+- [x] Profile Dashboard
+- [x] Loyalty / Member Benefits
+- [x] 404
+- [x] 500
+- [x] Maintenance
+- [x] Search Results
+- [x] Sitemap (human-readable)
+- [x] Manage Booking
+
 ### 3.2 Page Management Admin
 - [ ] Visual page manager with:
   - [x] Create/Edit/Delete
