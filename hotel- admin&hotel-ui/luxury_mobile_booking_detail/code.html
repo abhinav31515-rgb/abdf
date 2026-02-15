@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Mobile Booking Detail</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2b90d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221e10",
+                        // Deriving neutrals from Primary hue (approx 45deg)
+                        "neutral-900": "#1a1605", // Deepest obsidian
+                        "neutral-800": "#2c2612", // Card bg
+                        "neutral-700": "#453d20", // Borders
+                        "neutral-400": "#9e8e58", // Muted text
+                        "neutral-100": "#fcf9eb", // High contrast text
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Inter", "sans-serif"] // Fallback for small labels
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    backgroundImage: {
+                        'silk-pattern': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMmMyNjEyIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMzNDJjMTYiLz4KPC9zdmc+')",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1605; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #453d20; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f2b90d; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4 selection:bg-primary selection:text-neutral-900 overflow-hidden relative">
+<!-- Background Ambient Blur -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[60%] rounded-full bg-primary/10 blur-[100px]"></div>
+</div>
+<!-- Desktop Background Visual (Abstract) -->
+<div class="absolute inset-0 z-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&amp;w=2000&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay" data-alt="Dark elegant marble texture background"></div>
+<!-- Main Mobile Container -->
+<main class="relative z-10 w-full max-w-[420px] h-[90vh] bg-neutral-900 dark:bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-700/50 flex flex-col overflow-hidden ring-1 ring-white/5">
+<!-- Status Bar Simulation -->
+<div class="h-6 w-full bg-neutral-900 flex items-center justify-between px-4 pt-2 text-[10px] text-neutral-400 z-20 select-none">
+<span>9:41</span>
+<div class="flex gap-1.5">
+<span class="material-icons-outlined text-[12px]">signal_cellular_alt</span>
+<span class="material-icons-outlined text-[12px]">wifi</span>
+<span class="material-icons-outlined text-[12px]">battery_full</span>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto pb-24 scroll-smooth">
+<!-- Hero Image Header -->
+<div class="relative h-64 w-full group">
+<img alt="Luxury hotel suite interior" class="w-full h-full object-cover" data-alt="Luxury hotel suite interior with modern furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJQWRXKCUsZbBxXW7WrPNiY_T5mHjyh_6l4pz4UWqG7QsH1jJjcS0mMP6mZ6Dp9T2-G8XbxJx6mY8m4es2QZV_7H7CBezZHrli4-vwjfZylnFSLP2rTirM_ol2qlItSO_7Dlb6lTATj9V03IUPCxSYdOUqmQ8dPBHxYLTTRaDWFxzgZX9aIvxCaePGOSmdihBzaIllhYlg0mgmx3G3FfI0beIcHM5wmCV5tm-ToE_llD6HzOtAS5T0TSl7WyIj-QtbqvbCDJd1P7k"/>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/60 to-transparent"></div>
+<!-- Top Nav -->
+<div class="absolute top-4 left-0 w-full px-4 flex justify-between items-center text-white">
+<button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center hover:bg-primary/20 transition-colors">
+<span class="material-icons-outlined text-sm">arrow_back</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center hover:bg-primary/20 transition-colors">
+<span class="material-icons-outlined text-sm">more_horiz</span>
+</button>
+</div>
+<!-- VIP Ribbon -->
+<div class="absolute top-6 right-0 bg-primary text-neutral-900 text-xs font-bold py-1 px-3 rounded-l shadow-lg transform translate-x-1 group-hover:translate-x-0 transition-transform flex items-center gap-1">
+<span class="material-icons text-[14px]">star</span> VIP GUEST
+                </div>
+<!-- Guest Name Overlay -->
+<div class="absolute bottom-6 left-6 right-6">
+<span class="inline-block px-2 py-0.5 border border-primary/40 rounded text-[10px] uppercase tracking-widest text-primary mb-2 bg-black/30 backdrop-blur-sm">Diamond Elite</span>
+<h1 class="text-3xl font-display text-white leading-tight">Mr. Alexander Sterling</h1>
+</div>
+</div>
+<!-- Booking Details Content -->
+<div class="px-5 pt-6 space-y-6">
+<!-- Quick Stats Row -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-neutral-800 p-3 rounded-xl border border-neutral-700/50 flex flex-col items-center text-center">
+<span class="text-neutral-400 text-xs font-sans uppercase tracking-wide mb-1">Check In</span>
+<span class="text-neutral-100 font-display text-lg">Oct 12</span>
+<span class="text-primary text-xs">14:00 PM</span>
+</div>
+<div class="bg-neutral-800 p-3 rounded-xl border border-neutral-700/50 flex flex-col items-center text-center">
+<span class="text-neutral-400 text-xs font-sans uppercase tracking-wide mb-1">Check Out</span>
+<span class="text-neutral-100 font-display text-lg">Oct 15</span>
+<span class="text-primary text-xs">11:00 AM</span>
+</div>
+</div>
+<!-- Room Info Card -->
+<div class="group relative overflow-hidden rounded-xl bg-neutral-800 border border-primary/20 p-5 transition-all hover:border-primary/40">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs text-neutral-400 uppercase tracking-widest mb-1">Room Type</p>
+<h3 class="text-xl text-white font-display">Royal Penthouse Suite</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons-outlined">king_bed</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-sm text-neutral-300 border-t border-neutral-700 pt-4">
+<div class="flex items-center gap-1.5">
+<span class="material-icons-outlined text-primary text-base">people</span>
+<span>2 Adults</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons-outlined text-primary text-base">square_foot</span>
+<span>120m²</span>
+</div>
+<div class="flex items-center gap-1.5 ml-auto font-sans font-medium text-primary">
+<span>$2,450</span>
+<span class="text-neutral-500 text-xs font-normal">/night</span>
+</div>
+</div>
+</div>
+<!-- Concierge Notes (Silk Texture) -->
+<div class="rounded-xl p-5 border border-neutral-700 bg-silk-pattern relative overflow-hidden">
+<div class="absolute inset-0 bg-neutral-800/90"></div> <!-- darken pattern -->
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-icons-outlined text-primary">assignment</span>
+<h3 class="text-sm font-bold uppercase tracking-widest text-neutral-200">Concierge Notes</h3>
+</div>
+<p class="text-neutral-300 text-sm leading-relaxed italic font-serif">
+                            "Guest requests hypoallergenic pillows (down-free). Pre-stock minibar with chilled Dom Pérignon '08. Late arrival expected (approx 22:00)."
+                        </p>
+<div class="mt-4 flex gap-2">
+<span class="px-2 py-1 rounded border border-neutral-600 text-[10px] text-neutral-400 uppercase">Alert Housekeeping</span>
+<span class="px-2 py-1 rounded border border-neutral-600 text-[10px] text-neutral-400 uppercase">VIP Amenities</span>
+</div>
+</div>
+</div>
+<!-- Payment Summary Mini -->
+<div class="bg-neutral-800/50 rounded-lg p-4 flex justify-between items-center border border-neutral-700/30">
+<div class="flex items-center gap-3">
+<div class="bg-neutral-700 w-10 h-6 rounded flex items-center justify-center">
+<div class="w-4 h-4 bg-white/80 rounded-full opacity-70 transform -translate-x-1"></div>
+<div class="w-4 h-4 bg-white/80 rounded-full opacity-70 transform translate-x-[-8px]"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-neutral-400">Payment Method</span>
+<span class="text-sm text-neutral-200 font-sans tracking-wide">•••• 8842</span>
+</div>
+</div>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">PRE-AUTH</span>
+</div>
+</div>
+</div>
+<!-- Sticky Action Bar -->
+<div class="absolute bottom-0 left-0 w-full bg-neutral-900/95 backdrop-blur-md border-t border-neutral-700 p-5 pb-8 z-30 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-yellow-400 text-neutral-900 font-bold py-3.5 px-4 rounded-lg shadow-[0_0_20px_-5px_rgba(242,185,13,0.4)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-icons text-lg">check_circle</span>
+                Check-in Guest
+            </button>
+<button class="w-full bg-transparent border border-primary/30 hover:border-primary text-primary font-medium py-3.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 hover:bg-primary/5">
+<span class="material-icons-outlined text-lg">upgrade</span>
+                Upgrade to Suite
+            </button>
+</div>
+</main>
+<!-- Desktop Context Elements (Outside Mobile View) -->
+<div class="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block max-w-xs">
+<div class="text-primary/60 text-sm uppercase tracking-widest mb-2 font-sans font-bold">Admin Dashboard</div>
+<h2 class="text-4xl text-neutral-100 font-display mb-4 leading-tight">Manage <br/>Reservations</h2>
+<p class="text-neutral-400 text-sm leading-relaxed mb-8 font-sans">
+            Access real-time guest details, preferences, and payment status directly from the concierge tablet interface.
+        </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-neutral-900 transition-all cursor-pointer">
+<span class="material-icons-outlined">calendar_today</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-neutral-900 transition-all cursor-pointer">
+<span class="material-icons-outlined">notifications</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-neutral-900 transition-all cursor-pointer">
+<span class="material-icons-outlined">settings</span>
+</div>
+</div>
+</div>
+<div class="absolute right-8 bottom-8 hidden lg:flex flex-col items-end gap-2 text-neutral-500">
+<span class="text-xs uppercase tracking-widest font-sans">Current Location</span>
+<div class="flex items-center gap-2 text-neutral-300">
+<span class="material-icons text-primary text-sm">place</span>
+<span class="font-display">Monaco, Monte Carlo</span>
+</div>
+</div>
+</body></html>

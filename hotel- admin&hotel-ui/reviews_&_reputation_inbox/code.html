@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reviews &amp; Reputation Inbox - Hotel Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                        "surface-darker": "#151c2a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-20 lg:w-64 bg-white dark:bg-surface-darker border-r border-slate-200 dark:border-slate-800 flex-shrink-0 flex flex-col transition-all duration-300">
+<div class="h-16 flex items-center justify-center lg:justify-start lg:px-6 border-b border-slate-200 dark:border-slate-800">
+<div class="w-8 h-8 rounded bg-gradient-to-br from-primary to-blue-400 flex items-center justify-center text-white font-bold text-xl">H</div>
+<span class="ml-3 font-semibold text-lg hidden lg:block dark:text-white">Hostly</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 space-y-1">
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons text-2xl group-hover:text-primary">dashboard</span>
+<span class="ml-3 font-medium hidden lg:block">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons text-2xl group-hover:text-primary">hotel</span>
+<span class="ml-3 font-medium hidden lg:block">Bookings</span>
+</a>
+<a class="relative flex items-center px-4 py-3 bg-primary/10 text-primary border-r-4 border-primary transition-colors" href="#">
+<span class="material-icons text-2xl">reviews</span>
+<span class="ml-3 font-medium hidden lg:block">Inbox</span>
+<span class="absolute right-4 bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full hidden lg:block">12</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons text-2xl group-hover:text-primary">store</span>
+<span class="ml-3 font-medium hidden lg:block">Properties</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons text-2xl group-hover:text-primary">analytics</span>
+<span class="ml-3 font-medium hidden lg:block">Analytics</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-icons text-2xl group-hover:text-primary">settings</span>
+<span class="ml-3 font-medium hidden lg:block">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center">
+<img class="h-9 w-9 rounded-full object-cover border border-slate-200 dark:border-slate-700" data-alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4RpnJKDcNBMxe8sAMOHh-xyu2mTg6yeMkjQKpQyQwUDtK1P1x7RdAzn3JQmfWMvvo07jsXD87zmmqyw7zgSOuxJVdXQBjwtmxvNZOQNBrxK029ignHMej6XLuUQopGA9WzGSTil4gtqgEO1BDqRyxz250_anc3sDhXhx9dNeqrnMNkMDbIeeVJNioQxXw8vibMCYqe0SQCYVO-0PUx_XfiDR_uW67X0A9kvTyGyopnWYOPuRPwJ-XWk3ZM-v3Ao-twE4Sfbe7lgQ"/>
+<div class="ml-3 hidden lg:block">
+<p class="text-sm font-medium dark:text-white">Alex Morgan</p>
+<p class="text-xs text-slate-500">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 flex-shrink-0">
+<div>
+<h1 class="text-xl font-bold dark:text-white">Review Inbox</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Manage reputation across all channels</p>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-icons">notifications_none</span>
+</button>
+<button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors">
+<span class="material-icons text-base mr-2">add</span>
+                    Manual Review
+                </button>
+</div>
+</header>
+<!-- Main Scroll Area -->
+<div class="flex-1 overflow-y-auto p-6 scrollbar-hide">
+<!-- SLA Stats Panel -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<!-- Stat Card 1 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Response Time</p>
+<h3 class="text-2xl font-bold dark:text-white mt-1">2h 15m</h3>
+</div>
+<div class="h-10 w-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500">
+<span class="material-icons">timer</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 h-full w-1 bg-orange-500"></div>
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Pending Reviews</p>
+<h3 class="text-2xl font-bold dark:text-white mt-1">12</h3>
+</div>
+<div class="h-10 w-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-icons">pending_actions</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Response Rate</p>
+<h3 class="text-2xl font-bold dark:text-white mt-1">94%</h3>
+</div>
+<div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons">trending_up</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Rating</p>
+<h3 class="text-2xl font-bold dark:text-white mt-1">4.8 <span class="text-sm font-normal text-slate-500">/ 5.0</span></h3>
+</div>
+<div class="h-10 w-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500">
+<span class="material-icons">star</span>
+</div>
+</div>
+</div>
+<!-- Filter Toolbar -->
+<div class="sticky top-0 z-10 bg-background-light dark:bg-background-dark pt-2 pb-4">
+<div class="bg-white dark:bg-surface-dark p-3 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap gap-3 items-center justify-between">
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+<!-- Search -->
+<div class="relative group">
+<span class="absolute left-3 top-2.5 text-slate-400 material-icons text-sm">search</span>
+<input class="pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 w-full sm:w-64" placeholder="Search keywords..." type="text"/>
+</div>
+<!-- Divider -->
+<div class="hidden sm:block w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
+<!-- Dropdowns -->
+<select class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-md py-2 pl-3 pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option>All Sources</option>
+<option>Google Reviews</option>
+<option>Booking.com</option>
+<option>TripAdvisor</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-md py-2 pl-3 pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option>All Ratings</option>
+<option>5 Stars</option>
+<option>4 Stars</option>
+<option>3 Stars &amp; Below</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm rounded-md py-2 pl-3 pr-8 focus:ring-1 focus:ring-primary focus:border-primary">
+<option>Sentiment: Any</option>
+<option>Positive</option>
+<option>Neutral</option>
+<option>Negative</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500 dark:text-slate-400">Sort by:</span>
+<button class="flex items-center text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-colors">
+                            Newest First <span class="material-icons text-base ml-1">arrow_drop_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Review Feed -->
+<div class="space-y-4">
+<!-- Card 1 (Pending Response) -->
+<article class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden group hover:border-primary/50 transition-colors">
+<div class="p-5">
+<!-- Header -->
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-start space-x-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXQnqKLoDZkJQWdF-v61Xy2PzuT9ZLHuMNs4Gj2vrAZk0HiawwvZ-1WRTLfDPSDiMJejORw6ztq5fOze3viIoxMifD-Ec1dYYPs_sHo_tbzOlMw4Q44xs2oD64klCTJy0U64R7Bx7I2xXr830RwP2_6mM6j8dZcCyuJ7qxcvtzxgg25cHEpwAYmIKCuXUBELkPg6iyvjkKcU8GXxq8sQ_oQkd_zQfHJgO2Kd4EGsIpnWYP4Zh6rgufl1KNZgfMqDHig1s5MT3xuVM"/>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-surface-dark p-0.5 rounded-full">
+<div class="bg-blue-600 text-white rounded-full p-0.5 w-4 h-4 flex items-center justify-center text-[10px] font-bold">B</div>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-semibold text-slate-900 dark:text-white">Sarah Jenkins</h3>
+<span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">Booking.com</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Stayed at <span class="text-slate-700 dark:text-slate-300 font-medium">The Grand Hotel</span> • Deluxe Suite</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+</div>
+<span class="text-xs text-slate-400 mt-1">2 hours ago</span>
+</div>
+</div>
+<!-- Content -->
+<div class="ml-13 pl-0 md:pl-13 mb-4">
+<p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                Absolutely loved the spa facilities, the atmosphere was incredibly relaxing. The room was spacious and clean. However, the <span class="bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300 px-1 rounded">check-in process was a bit slow</span> and the front desk seemed understaffed for a Friday evening.
+                            </p>
+<div class="flex gap-2 mt-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>Positive Sentiment
+                                </span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-2 gap-3 sm:gap-0">
+<div class="flex items-center space-x-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none justify-center bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-lg shadow-blue-500/20">
+                                    Reply
+                                </button>
+<button class="flex-1 sm:flex-none justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-200 dark:border-slate-700">
+                                    Assign to...
+                                </button>
+</div>
+<div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+<button class="text-slate-500 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium px-3 py-1.5 rounded hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors flex items-center">
+<span class="material-icons text-sm mr-1.5">public</span> Approve for Web
+                                </button>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 (Negative, Assigned) -->
+<article class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+<div class="p-5">
+<!-- Header -->
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-start space-x-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-sm">JD</div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-surface-dark p-0.5 rounded-full">
+<div class="bg-white border border-slate-200 p-0.5 w-4 h-4 flex items-center justify-center rounded-full">
+<img class="w-3 h-3" data-alt="Google logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9xPQrqEz2yeDJG8B8QRc3eiKYxEPjd7KlszgogYh6bJB5T0d36qv5VATyEPn7HCD_Lg7pin06Dh0Z_0AaSYlDz2348ctU2fp_zIlIqSLBkVl9uT_NK7EgFseOi_RNbzBjaMXDQR4ff30FpBdIOVP6EmhAMJCLnslqp6uoL9xSb70U_MX-imFVpN46kmMy11uyY4C3eOUchi7-PIYfc1k06KRWtEJG_Wm-nxKkKAAZ9O7K13-TEl4vjjZDOBsPgP3HHCCgegWIq1Y"/>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-semibold text-slate-900 dark:text-white">John Doe</h3>
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">Google</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Stayed at <span class="text-slate-700 dark:text-slate-300 font-medium">Seaside Resort</span></p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex text-slate-300 dark:text-slate-600 text-sm">
+<span class="material-icons text-base text-yellow-400">star</span>
+<span class="material-icons text-base text-yellow-400">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+</div>
+<span class="text-xs text-slate-400 mt-1">Yesterday</span>
+</div>
+</div>
+<!-- Content -->
+<div class="ml-13 pl-0 md:pl-13 mb-4">
+<p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                Noise levels were unacceptable. Construction started at 7am right outside our window. No warning given at check-in.
+                            </p>
+<div class="flex gap-2 mt-3 items-center">
+<span class="inline-flex items-center px-2 py-1 rounded bg-red-50 dark:bg-red-900/20 text-xs text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/30">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></span>Negative
+                                </span>
+<span class="text-xs text-slate-400 mx-1">•</span>
+<div class="flex items-center text-xs text-slate-500 dark:text-slate-400">
+<img class="w-4 h-4 rounded-full mr-1.5" data-alt="Manager Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUxLr0UPLn_zSd1gmXUK03fQ2j-grk80pXiWVqNiYhBcBkiheYybJCLGk_cEBT54G631g-5E3qvef8eak6abM2Zt44LoPX-B6IEL7_VamKg1IjKaCls0K28HWmSbFahSUURI0W6WbVYfCwp0Yzmhmb-RFEiRTTmmorBulNP1oUTdifj2m-c8FEPEsSCjRZUTybXiy8Ow-pH9y3i1COqxNPmRtxX2jmiBqpfaJTkMbqkkmWmQ_uBaK9pIedaQ-hRtx9SkvTDPnbLF8"/>
+                                    Assigned to <span class="font-medium ml-1 text-slate-700 dark:text-slate-300">Mark T. (GM)</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-2 gap-3 sm:gap-0">
+<div class="flex items-center space-x-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none justify-center border border-primary text-primary hover:bg-primary/5 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    Draft Reply
+                                </button>
+<button class="flex-1 sm:flex-none justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-200 dark:border-slate-700">
+                                    Reassign
+                                </button>
+</div>
+<div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+<button class="text-slate-500 hover:text-red-600 dark:hover:text-red-400 text-sm font-medium px-3 py-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors flex items-center">
+<span class="material-icons text-sm mr-1.5">visibility_off</span> Hide
+                                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 (Replied) -->
+<article class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
+<div class="p-5">
+<!-- Header -->
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-start space-x-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover grayscale" data-alt="Portrait of Emily R." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0t8UiemY4jKnXsIkoKaTtVcZIcbq8RSTSQBrON1K3Et4q6ilCkocbXZK2-klyI-vKQ8_zmjwBTK1jqR99D9aVMIZv-kI09gyAXyK9QZ5OYbsALn4TKkuCmHglnkCwdVrlOCYRFW3KGGv1N4E7zQfbLO1Gtku7aE6eV67uxAI2MycuQaGj1yL0JnRKZuY-0B8Ny45Ea2p0-l6oU0IYdsQtj3UjP0lbcO4fIFpKnBetlYxppFJD1ZRcT-mMT_MnpW58hK_xUGbu77c"/>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-surface-dark p-0.5 rounded-full">
+<div class="bg-[#00AF87] text-white rounded-full p-0.5 w-4 h-4 flex items-center justify-center text-[10px] font-bold">
+<img class="w-full h-full object-contain filter brightness-0 invert" data-alt="Tripadvisor Icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlWNZ0p3yuUCl8tAtUCh7u-hk-YnknAcxOqhFxv8lKP-Q2MYC24ihIGkIpqksZufn4s2WIsOvJPZvufrf6qdvGXdAvJsQ9mZdUzqMjShUd5YgLdfsWVwUEb_U3uVPHJ2_K0h00aI9-nf0ipsyrAaIRY1flytVUhN0cTZAyiGo8_MoKgeaF_KPv5Wp2buqL8fqsMQNSLUn3fvSVpCXNEbQrjy9mWk_vi-51SrN31kLl1SL5uttMGfuQdcDRbgt70jpYQVVPbqKit4w"/>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-semibold text-slate-900 dark:text-white">Emily R.</h3>
+<span class="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">TripAdvisor</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Stayed at <span class="text-slate-700 dark:text-slate-300 font-medium">The Grand Hotel</span></p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+<span class="material-icons text-base">star</span>
+</div>
+<span class="text-xs text-slate-400 mt-1">2 days ago</span>
+</div>
+</div>
+<!-- Content -->
+<div class="ml-13 pl-0 md:pl-13 mb-4">
+<p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                                Best breakfast buffet I've had in years! The omelette station chef was delightful.
+                            </p>
+<!-- Reply Thread -->
+<div class="mt-4 pl-4 border-l-2 border-primary/30">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Replied by <span class="text-slate-700 dark:text-slate-300 font-medium">Alex Morgan</span> • 1 day ago</p>
+<p class="text-sm text-slate-600 dark:text-slate-400 italic">"Thank you Emily! We'll pass your compliments to Chef Mario. Hope to see you again soon!"</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end border-t border-slate-100 dark:border-slate-800 pt-3 mt-2">
+<div class="flex items-center space-x-2">
+<span class="text-green-500 text-xs font-medium flex items-center mr-4">
+<span class="material-icons text-sm mr-1">check_circle</span> Replied
+                                </span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-sm font-medium px-3 py-1.5 rounded transition-colors">
+                                    Edit Reply
+                                </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="py-6 flex justify-center">
+<button class="text-sm text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary font-medium flex items-center transition-colors">
+                    Load more reviews <span class="material-icons ml-1 text-base">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Right Drawer: Quick Reply (Contextual) -->
+<!-- Positioned absolutely to simulate a drawer opening for the first card -->
+<!-- Hidden by default in this demo structure, but implying it could slide in -->
+</body></html>

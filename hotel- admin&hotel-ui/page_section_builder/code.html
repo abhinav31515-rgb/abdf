@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Page Section Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0e45b5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2234",
+                        "surface-darker": "#151b2b",
+                        "border-dark": "#2a3447"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #151b2b; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3447; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a4760; 
+        }
+        
+        .drag-ghost {
+            opacity: 0.5;
+            background: #135bec;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="h-16 bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-border-dark flex items-center justify-between px-6 z-20 shrink-0">
+<div class="flex items-center gap-4">
+<div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="hover:text-primary cursor-pointer transition-colors">Dashboard</span>
+<span class="material-icons-round text-lg mx-1">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Pages</span>
+<span class="material-icons-round text-lg mx-1">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Homepage V2</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs text-slate-400 font-medium px-2 py-1 rounded bg-slate-100 dark:bg-surface-darker border border-gray-200 dark:border-border-dark">Autosaved 2m ago</span>
+<button class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-lg hover:bg-slate-50 dark:hover:bg-surface-darker transition-colors flex items-center gap-2">
+<span class="material-icons-round text-lg">visibility</span>
+                Preview
+            </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
+                Publish
+            </button>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden">
+<!-- LEFT SIDEBAR: Component Library -->
+<aside class="w-72 bg-white dark:bg-surface-dark border-r border-gray-200 dark:border-border-dark flex flex-col z-10 shrink-0">
+<div class="p-4 border-b border-gray-200 dark:border-border-dark">
+<h2 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Components</h2>
+<div class="relative">
+<span class="material-icons-round absolute left-3 top-2.5 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-slate-400 dark:text-white transition-all" placeholder="Search components..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Category: Media -->
+<div>
+<h3 class="text-xs font-medium text-slate-400 mb-3 flex items-center gap-2">
+<span class="material-icons-round text-sm">perm_media</span> Media &amp; Layout
+                    </h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-icons-round">web_asset</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Hero Header</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-orange-500/10 text-orange-500 flex items-center justify-center">
+<span class="material-icons-round">collections</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Gallery</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-purple-500/10 text-purple-500 flex items-center justify-center">
+<span class="material-icons-round">view_carousel</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Slider</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-pink-500/10 text-pink-500 flex items-center justify-center">
+<span class="material-icons-round">grid_view</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Grid</span>
+</div>
+</div>
+</div>
+<!-- Category: Conversion -->
+<div>
+<h3 class="text-xs font-medium text-slate-400 mb-3 flex items-center gap-2">
+<span class="material-icons-round text-sm">bolt</span> Conversion
+                    </h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+<span class="material-icons-round">calendar_month</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Booking</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-blue-500/10 text-blue-500 flex items-center justify-center">
+<span class="material-icons-round">call_to_action</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Call to Action</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded bg-yellow-500/10 text-yellow-500 flex items-center justify-center">
+<span class="material-icons-round">reviews</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Testimonials</span>
+</div>
+</div>
+</div>
+<!-- Category: Content -->
+<div>
+<h3 class="text-xs font-medium text-slate-400 mb-3 flex items-center gap-2">
+<span class="material-icons-round text-sm">article</span> Content
+                    </h3>
+<div class="space-y-2">
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex items-center gap-3">
+<div class="w-6 h-6 rounded bg-slate-500/10 text-slate-500 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-sm">title</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Section Title</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex items-center gap-3">
+<div class="w-6 h-6 rounded bg-slate-500/10 text-slate-500 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-sm">notes</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Rich Text Block</span>
+</div>
+<div class="group cursor-grab active:cursor-grabbing bg-slate-50 dark:bg-surface-darker p-3 rounded-lg border border-transparent hover:border-primary/50 hover:shadow-md transition-all flex items-center gap-3">
+<div class="w-6 h-6 rounded bg-slate-500/10 text-slate-500 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-sm">list</span>
+</div>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Features List</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- CENTER: Live Canvas -->
+<section class="flex-1 bg-slate-100 dark:bg-background-dark relative flex flex-col min-w-0">
+<!-- Toolbar -->
+<div class="h-14 flex items-center justify-center border-b border-gray-200 dark:border-border-dark px-4 bg-white dark:bg-surface-dark shrink-0">
+<div class="flex items-center bg-slate-100 dark:bg-surface-darker p-1 rounded-lg border border-gray-200 dark:border-border-dark">
+<button class="p-1.5 rounded bg-white dark:bg-surface-dark text-primary shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+<span class="material-icons-round text-lg block">desktop_windows</span>
+</button>
+<button class="p-1.5 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-icons-round text-lg block">tablet_mac</span>
+</button>
+<button class="p-1.5 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-icons-round text-lg block">smartphone</span>
+</button>
+</div>
+<div class="absolute right-4 flex items-center gap-3">
+<span class="text-xs text-slate-400">100%</span>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">zoom_out</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons-round text-lg">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Canvas Area -->
+<div class="flex-1 overflow-y-auto p-8 flex justify-center">
+<!-- Simulating a browser window/viewport -->
+<div class="w-full max-w-4xl bg-white dark:bg-black shadow-2xl shadow-black/50 rounded-lg overflow-hidden flex flex-col border border-gray-200 dark:border-border-dark h-fit relative min-h-[800px]">
+<!-- Selected Section Overlay/Highlight -->
+<div class="absolute top-0 left-0 w-full h-[500px] border-2 border-primary z-10 pointer-events-none flex items-start justify-end p-2 opacity-100 transition-opacity">
+<div class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-lg">Hero Section</div>
+</div>
+<!-- HERO Component -->
+<div class="relative group cursor-pointer h-[500px]">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Modern luxury hotel lobby with warm lighting and plush seating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB31lZNXiASgeLuQ8ndc3XdTQ2dpqi9Lox-oktmUivVZwkcOqkkEk-USDubekTvL6dv2qIBhXOHSydVmwPXJZQurfTncmtZBwLgmRzFKEVbKFjevkqI1tMJVXqerM2Tpkb2IePJ7Qs5RHRpi8kb6rnAXQFfTnzNQd4czgQI8Hr8pRUR4gE-ft7-jjsR2QOHefgd8kcBD81xDM9DFD0XYIzaO0Yx_wk-ncOAcrQdtCJCYscSufbE6LSZah68ZnzLA03605Su9I_wMPo"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<!-- Content -->
+<div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 md:px-12">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 drop-shadow-md">
+                                Experience Unrivaled Luxury
+                            </h1>
+<p class="text-lg md:text-xl text-white/90 max-w-2xl mb-8 drop-shadow-sm font-light">
+                                Discover a sanctuary of serenity in the heart of the city. Where modern elegance meets timeless tradition.
+                            </p>
+<button class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-md font-medium text-lg transition-transform transform hover:scale-105 shadow-lg shadow-primary/30">
+                                Book Your Stay
+                            </button>
+</div>
+<!-- Hover Controls for Canvas Element -->
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2 z-20">
+<button class="w-8 h-8 rounded bg-white dark:bg-surface-dark text-slate-700 dark:text-slate-300 shadow-md flex items-center justify-center hover:bg-slate-50">
+<span class="material-icons-round text-sm">edit</span>
+</button>
+<button class="w-8 h-8 rounded bg-white dark:bg-surface-dark text-slate-700 dark:text-slate-300 shadow-md flex items-center justify-center hover:bg-slate-50">
+<span class="material-icons-round text-sm">drag_handle</span>
+</button>
+<button class="w-8 h-8 rounded bg-white dark:bg-surface-dark text-red-500 shadow-md flex items-center justify-center hover:bg-red-50">
+<span class="material-icons-round text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- FEATURE Component -->
+<div class="py-20 px-8 bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-border-dark group relative">
+<!-- Hover Controls for Canvas Element -->
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2 z-20">
+<button class="w-8 h-8 rounded bg-white dark:bg-surface-dark text-slate-700 dark:text-slate-300 shadow-md flex items-center justify-center hover:bg-slate-50 border border-gray-200 dark:border-border-dark">
+<span class="material-icons-round text-sm">edit</span>
+</button>
+<button class="w-8 h-8 rounded bg-white dark:bg-surface-dark text-slate-700 dark:text-slate-300 shadow-md flex items-center justify-center hover:bg-slate-50 border border-gray-200 dark:border-border-dark">
+<span class="material-icons-round text-sm">drag_handle</span>
+</button>
+</div>
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center p-6">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-icons-round text-3xl">spa</span>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-slate-900 dark:text-white">World Class Spa</h3>
+<p class="text-slate-600 dark:text-slate-400">Rejuvenate your body and mind with our award-winning treatments.</p>
+</div>
+<div class="text-center p-6">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-icons-round text-3xl">restaurant</span>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-slate-900 dark:text-white">Gourmet Dining</h3>
+<p class="text-slate-600 dark:text-slate-400">Savor exquisite flavors prepared by our Michelin-star chefs.</p>
+</div>
+<div class="text-center p-6">
+<div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-icons-round text-3xl">pool</span>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-slate-900 dark:text-white">Infinity Pool</h3>
+<p class="text-slate-600 dark:text-slate-400">Relax with breathtaking views from our rooftop infinity pool.</p>
+</div>
+</div>
+</div>
+<!-- Drop Zone Placeholder -->
+<div class="h-24 m-4 border-2 border-dashed border-primary/40 bg-primary/5 rounded-lg flex items-center justify-center text-primary/60 text-sm font-medium gap-2">
+<span class="material-icons-round">add_circle_outline</span>
+                        Drag components here
+                    </div>
+</div>
+</div>
+</section>
+<!-- RIGHT SIDEBAR: Property Editor -->
+<aside class="w-80 bg-white dark:bg-surface-dark border-l border-gray-200 dark:border-border-dark flex flex-col z-10 shrink-0">
+<!-- Header -->
+<div class="h-14 border-b border-gray-200 dark:border-border-dark flex items-center justify-between px-4 bg-slate-50 dark:bg-surface-darker">
+<span class="font-semibold text-sm text-slate-700 dark:text-slate-200">Hero Section</span>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-icons-round text-sm">delete_outline</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto">
+<!-- Layout Group -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark">
+<button class="flex items-center justify-between w-full text-left mb-3 group">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide group-hover:text-primary transition-colors">Layout</span>
+<span class="material-icons-round text-slate-400 text-sm">expand_less</span>
+</button>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Height</label>
+<select class="w-full bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded text-xs py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-primary focus:border-primary">
+<option>Auto</option>
+<option>Full Screen</option>
+<option selected="">Custom (500px)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Alignment</label>
+<div class="flex bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded p-0.5">
+<button class="flex-1 flex items-center justify-center py-1.5 hover:bg-white dark:hover:bg-surface-dark rounded shadow-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons-round text-sm">format_align_left</span>
+</button>
+<button class="flex-1 flex items-center justify-center py-1.5 bg-white dark:bg-surface-dark rounded shadow text-primary">
+<span class="material-icons-round text-sm">format_align_center</span>
+</button>
+<button class="flex-1 flex items-center justify-center py-1.5 hover:bg-white dark:hover:bg-surface-dark rounded shadow-sm text-slate-600 dark:text-slate-300">
+<span class="material-icons-round text-sm">format_align_right</span>
+</button>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1.5">
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400">Padding Y</label>
+<span class="text-xs text-slate-400">80px</span>
+</div>
+<input class="w-full h-1 bg-gray-200 dark:bg-border-dark rounded-lg appearance-none cursor-pointer accent-primary" max="200" min="0" type="range" value="80"/>
+</div>
+</div>
+</div>
+<!-- Content Group -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark">
+<button class="flex items-center justify-between w-full text-left mb-3 group">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide group-hover:text-primary transition-colors">Content</span>
+<span class="material-icons-round text-slate-400 text-sm">expand_less</span>
+</button>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Heading</label>
+<input class="w-full bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded text-xs py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-primary focus:border-primary" type="text" value="Experience Unrivaled Luxury"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">Subheading</label>
+<textarea class="w-full bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded text-xs py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-primary focus:border-primary" rows="3">Discover a sanctuary of serenity in the heart of the city. Where modern elegance meets timeless tradition.</textarea>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">CTA Text</label>
+<input class="w-full bg-slate-50 dark:bg-surface-darker border border-gray-200 dark:border-border-dark rounded text-xs py-2 px-3 text-slate-700 dark:text-slate-300 focus:ring-1 focus:ring-primary focus:border-primary" type="text" value="Book Your Stay"/>
+</div>
+</div>
+</div>
+<!-- Background Group -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark">
+<button class="flex items-center justify-between w-full text-left mb-3 group">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide group-hover:text-primary transition-colors">Background</span>
+<span class="material-icons-round text-slate-400 text-sm">expand_less</span>
+</button>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-2">Image</label>
+<div class="relative w-full h-32 rounded-lg overflow-hidden border border-gray-200 dark:border-border-dark group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Thumbnail of the current background image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABH6EhMDgMtVEMD6C4VROwl_IEQK1rpNBt17UuKpQRolcK89DZFGr1GUyKz_730sl31vs_xCuqmv-85CntRaQ0jEW4POm2GYFaxh5Q_29CN9RrURmpRtWjqMzBTI1xl_wy7A1YOo5BKrAGf2f3JSck7XG3279tzlNQy9nGQWAamqJPnhJ-O724ID9vrV2Gca-GcNxdr38_ZadU6nuTUdPJMB8JjnHYHAI_CeqbI6intsFpDKAc3gcws3t_70WTrCsC0IcyXVcX1hM"/>
+<div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-round text-white mb-1">cloud_upload</span>
+<span class="text-[10px] text-white font-medium">Change Image</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1.5">
+<label class="block text-xs font-medium text-slate-600 dark:text-slate-400">Overlay Opacity</label>
+<span class="text-xs text-slate-400">40%</span>
+</div>
+<input class="w-full h-1 bg-gray-200 dark:bg-border-dark rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="40"/>
+</div>
+</div>
+</div>
+<!-- Typography Group (Collapsed) -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark">
+<button class="flex items-center justify-between w-full text-left group">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide group-hover:text-primary transition-colors">Typography</span>
+<span class="material-icons-round text-slate-400 text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Sticky Footer Actions -->
+<div class="p-4 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-border-dark mt-auto shrink-0 space-y-3 z-20">
+<button class="w-full py-2.5 px-4 bg-primary hover:bg-primary-dark text-white rounded font-medium text-sm transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-icons-round text-sm">save</span>
+                    Save Section
+                </button>
+<button class="w-full py-2.5 px-4 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-darker rounded font-medium text-sm transition-colors">
+                    Add to Page
+                </button>
+</div>
+</aside>
+</main>
+</body></html>

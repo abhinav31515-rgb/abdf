@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Admin Dashboard Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "obsidian": "#0a0a0c",
+                        "charcoal": "#1c1c1e",
+                        "gold-accent": "#d4af37",
+                        "gold-light": "#f3e5ab",
+                        "gold-dark": "#aa8c2c",
+                        "cream": "#f5f5f0",
+                        "cream-dim": "#e0e0da",
+                        "border-gold": "#4a4025"
+                    },
+                    fontFamily: {
+                        "serif": ["Cormorant Garamond", "serif"],
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'luxury-pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%231c1c1e\\' fill-opacity=\\'0.4\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8c2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border-color: #4a4025;
+        }::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d2d30; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37; 
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-cream min-h-screen bg-luxury-pattern overflow-x-hidden selection:bg-gold-accent selection:text-obsidian">
+<header class="flex items-center justify-between border-b border-border-gold/30 bg-obsidian/95 backdrop-blur-md px-8 py-5 sticky top-0 z-50">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="size-8 flex items-center justify-center border border-gold-accent/50 rounded-sm">
+<span class="material-symbols-outlined text-gold-accent text-xl">diamond</span>
+</div>
+<h2 class="text-xl font-serif font-semibold tracking-widest uppercase text-cream">Aurelia <span class="text-gold-accent">Collection</span></h2>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-gold-accent text-xs font-medium tracking-[0.2em] uppercase border-b border-gold-accent pb-1" href="#">Overview</a>
+<a class="text-cream-dim hover:text-gold-light text-xs font-medium tracking-[0.2em] uppercase transition-colors" href="#">Properties</a>
+<a class="text-cream-dim hover:text-gold-light text-xs font-medium tracking-[0.2em] uppercase transition-colors" href="#">Concierge</a>
+<a class="text-cream-dim hover:text-gold-light text-xs font-medium tracking-[0.2em] uppercase transition-colors" href="#">Finance</a>
+<a class="text-cream-dim hover:text-gold-light text-xs font-medium tracking-[0.2em] uppercase transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:flex items-center border border-charcoal bg-charcoal/50 rounded-full px-4 py-1.5 focus-within:border-gold-dark/50 transition-colors">
+<span class="material-symbols-outlined text-gold-accent/70 text-lg">search</span>
+<input class="bg-transparent border-none text-cream placeholder-cream-dim/30 text-xs focus:ring-0 w-48 tracking-wide" placeholder="Search guests, reservations..."/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative group">
+<span class="material-symbols-outlined text-cream-dim group-hover:text-gold-accent transition-colors font-light">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-gold-accent rounded-full animate-pulse"></span>
+</button>
+<div class="h-10 w-10 rounded-full border border-gold-accent/30 p-0.5 cursor-pointer hover:border-gold-accent transition-colors">
+<div class="h-full w-full rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDfeRhg3NQdieMCyRbtPxgKA0p4HANYOAH_848POeTEICEOAKqMVWSohKDLR9NwnDAe0I74I0WwjAzzv5luoZEfZ-3lxpghSo5e1qNmsznH1XCW15hN2bRa3JjXoXftAK4NqdtS1TRYj5CCIqEc_G2eK-pxIoYJwsW0X19Ei3gUlgjIJaKx8T1gdPedkt1d7X8fZQzEHjVvRewTX156d8d1wFBMp6afhh8NLgfhfdng1IIe1PEVXTzbeD3m5f5PgiwFmk_irayRR8w')"></div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
+<aside class="w-full lg:w-72 bg-charcoal/30 border-r border-border-gold/20 p-8 space-y-10 hidden lg:block backdrop-blur-sm">
+<div class="group cursor-pointer">
+<h3 class="text-[10px] font-bold text-gold-dark tracking-[0.25em] uppercase mb-4">Selected Brand</h3>
+<div class="relative overflow-hidden rounded-lg border border-gold-accent/30 group-hover:border-gold-accent transition-all duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/50 to-transparent z-10"></div>
+<img alt="Hotel Brand" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9BmRApXpYaDerP0-3PlSmTU0T1z2HmxBXVoOgqtQIgwwScK5veLI5TtEmG8y0bnfpX_e_CEyXJsYoHiOY1zM_J2-3Phj5Si9xY8O2CFelUHUB0xS1fA4VXLQ6D_r56-jW3t1jXTRKlO4_u6Zveg7-82qerQaLE-rpPBSXuzF0P2xSvuVDu5V_e8cGnVDkHO6rGtkBYiqaurnQQe923DjTs_3Cyvz74w7bT0h7iLTaH5ST5YqrTyFQbfVYsAu1NAbvLgPlVRZGAQA"/>
+<div class="absolute bottom-4 left-4 z-20">
+<p class="font-serif text-2xl text-white italic">The Royal Obsidian</p>
+<div class="flex items-center gap-1 text-gold-accent mt-1">
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<h3 class="text-[10px] font-bold text-gold-dark tracking-[0.25em] uppercase">Executive Controls</h3>
+<ul class="space-y-3">
+<li>
+<a class="flex items-center justify-between text-sm text-cream-dim hover:text-white group p-2 hover:bg-white/5 rounded transition-all" href="#">
+<span class="font-light tracking-wide">Occupancy Overview</span>
+<span class="material-symbols-outlined text-gold-accent/0 group-hover:text-gold-accent/100 text-xs transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between text-sm text-cream-dim hover:text-white group p-2 hover:bg-white/5 rounded transition-all" href="#">
+<span class="font-light tracking-wide">VIP Arrivals</span>
+<span class="bg-gold-accent text-obsidian text-[10px] font-bold px-1.5 py-0.5 rounded">3</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between text-sm text-cream-dim hover:text-white group p-2 hover:bg-white/5 rounded transition-all" href="#">
+<span class="font-light tracking-wide">Revenue Management</span>
+<span class="material-symbols-outlined text-gold-accent/0 group-hover:text-gold-accent/100 text-xs transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between text-sm text-cream-dim hover:text-white group p-2 hover:bg-white/5 rounded transition-all" href="#">
+<span class="font-light tracking-wide">Staff Performance</span>
+<span class="material-symbols-outlined text-gold-accent/0 group-hover:text-gold-accent/100 text-xs transition-all -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-charcoal to-obsidian border border-border-gold/20 p-5 rounded-lg relative overflow-hidden group">
+<div class="absolute -right-6 -top-6 text-gold-dark/10 group-hover:text-gold-dark/20 transition-colors">
+<span class="material-symbols-outlined text-9xl">concierge</span>
+</div>
+<h4 class="font-serif text-lg text-cream mb-1 relative z-10">Concierge Desk</h4>
+<p class="text-xs text-cream-dim/60 font-light mb-4 relative z-10">4 pending requests from Penthouse Suites.</p>
+<button class="w-full py-2.5 border border-gold-accent/30 text-gold-accent hover:bg-gold-accent hover:text-obsidian text-xs tracking-widest uppercase transition-all relative z-10">View Requests</button>
+</div>
+</aside>
+<main class="flex-1 p-8 lg:p-12 overflow-y-auto">
+<div class="max-w-7xl mx-auto space-y-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+<div>
+<p class="text-gold-accent text-xs font-bold tracking-[0.3em] uppercase mb-2">Good Evening, Mr. Administrator</p>
+<h1 class="text-5xl lg:text-6xl font-serif font-medium text-cream leading-tight">
+                        Global Performance <br/>
+<span class="text-cream-dim/40 italic">Dashboard</span>
+</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-4 py-2 bg-charcoal/50 border border-white/5 rounded text-xs text-cream-dim">
+<span class="text-gold-dark mr-2">●</span> Live Data
+                    </div>
+<div class="text-right">
+<p class="text-3xl font-serif text-cream">Oct 12</p>
+<p class="text-xs text-cream-dim uppercase tracking-widest">Saturday</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="col-span-1 md:col-span-2 relative h-80 rounded-xl overflow-hidden group card-hover-effect border border-white/5">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/80 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-gold-light text-sm tracking-[0.2em] uppercase mb-1">Total Occupancy</h3>
+<p class="text-xs text-cream-dim/60 font-light">Across all 5 properties</p>
+</div>
+<span class="material-symbols-outlined text-cream/20 text-3xl">apartment</span>
+</div>
+<div>
+<div class="flex items-baseline gap-4 mb-2">
+<span class="text-6xl font-serif text-cream">87<span class="text-3xl text-gold-accent">%</span></span>
+<span class="text-green-400 text-sm flex items-center gap-1 bg-green-900/30 px-2 py-0.5 rounded border border-green-800/50">
+<span class="material-symbols-outlined text-xs">trending_up</span> +4.2%
+                                </span>
+</div>
+<div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-gold-accent h-full w-[87%] shadow-[0_0_10px_rgba(212,175,55,0.5)]"></div>
+</div>
+<div class="flex justify-between text-xs text-cream-dim mt-2 font-light">
+<span>Suites: 92%</span>
+<span>Deluxe: 84%</span>
+<span>Standard: 79%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 relative h-80 bg-charcoal/40 rounded-xl border border-gold-accent/10 p-8 flex flex-col justify-between card-hover-effect backdrop-blur-sm">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-8xl">payments</span>
+</div>
+<div>
+<h3 class="text-gold-light text-sm tracking-[0.2em] uppercase mb-1">RevPAR</h3>
+<p class="text-xs text-cream-dim/60 font-light">Revenue Per Available Room</p>
+</div>
+<div class="relative z-10">
+<p class="text-5xl font-serif text-cream mb-2">$482</p>
+<p class="text-xs text-green-400 mb-6 font-mono">+12% vs last week</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm border-b border-white/5 pb-2">
+<span class="text-cream-dim font-light">ADR</span>
+<span class="font-serif text-cream text-lg">$650</span>
+</div>
+<div class="flex justify-between items-center text-sm border-b border-white/5 pb-2">
+<span class="text-cream-dim font-light">F&amp;B Rev</span>
+<span class="font-serif text-cream text-lg">$12.4k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="col-span-2 bg-charcoal/20 border border-white/5 rounded-xl p-8 backdrop-blur-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-serif text-cream">Recent Transactions</h3>
+<button class="text-xs text-gold-accent hover:text-white uppercase tracking-widest transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] uppercase text-cream-dim/50 tracking-wider border-b border-white/5">
+<th class="pb-4 font-normal">Guest Name</th>
+<th class="pb-4 font-normal">Room</th>
+<th class="pb-4 font-normal">Status</th>
+<th class="pb-4 font-normal text-right">Amount</th>
+<th class="pb-4 font-normal text-right">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm font-light">
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 border-b border-white/5 text-cream flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgqQDNjsVA9ZiMtbHT2dWSGrlQeGwD436waPcivmkrW9TD_o7dumICqyw6bhCIQkkxZ_ioFZGkHALlhWyut5tmRyxt6uWg9r3DCSH4xxq5HtZYNDSix4AI0XgCAfc8MXKtX1QOq2FIiIuElWQTZgIyf1fwNVdvTrZInwirQinn_qJk_n55jXJ8jPRQEmZpzjuHkIALNzuTxRg8e6STGmH2CRwV4v-2eeBpopcMCf8Tata99gTT8ojYiou-en9I_hk6zeXmXibY0LM')"></div>
+                                        Johnathan Doe
+                                    </td>
+<td class="py-4 border-b border-white/5 text-cream-dim">Presidential Suite (402)</td>
+<td class="py-4 border-b border-white/5">
+<span class="px-2 py-1 rounded bg-yellow-900/30 text-yellow-500 text-[10px] uppercase tracking-wide border border-yellow-700/30">Pending</span>
+</td>
+<td class="py-4 border-b border-white/5 text-right text-cream font-serif text-lg">$1,816.71</td>
+<td class="py-4 border-b border-white/5 text-right">
+<button class="text-gold-accent hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 border-b border-white/5 text-cream flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-300">AS</div>
+                                        Amelia Sinclair
+                                    </td>
+<td class="py-4 border-b border-white/5 text-cream-dim">Ocean Villa (105)</td>
+<td class="py-4 border-b border-white/5">
+<span class="px-2 py-1 rounded bg-green-900/30 text-green-500 text-[10px] uppercase tracking-wide border border-green-700/30">Paid</span>
+</td>
+<td class="py-4 border-b border-white/5 text-right text-cream font-serif text-lg">$3,450.00</td>
+<td class="py-4 border-b border-white/5 text-right">
+<button class="text-gold-accent hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 text-cream flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-300">RK</div>
+                                        Robert King
+                                    </td>
+<td class="py-4 text-cream-dim">Executive Suite (204)</td>
+<td class="py-4">
+<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-400 text-[10px] uppercase tracking-wide border border-blue-700/30">Check-out</span>
+</td>
+<td class="py-4 text-right text-cream font-serif text-lg">$920.50</td>
+<td class="py-4 text-right">
+<button class="text-gold-accent hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-gradient-to-b from-charcoal/40 to-obsidian/40 border border-gold-accent/10 rounded-xl p-8 backdrop-blur-sm flex flex-col h-full">
+<h3 class="text-xl font-serif text-cream mb-6">Live Activity</h3>
+<div class="space-y-6 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="w-[1px] h-full bg-white/10 mb-1 group-first:mt-2"></div>
+<div class="size-2 rounded-full bg-gold-accent shrink-0 shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
+<div class="w-[1px] h-full bg-white/10 mt-1 group-last:mb-2"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs text-gold-light mb-1 font-medium">Just Now</p>
+<p class="text-sm text-cream font-light">VIP Check-in: <span class="font-normal text-white">Mrs. Vanderbilt</span> at The Royal Obsidian.</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="w-[1px] h-full bg-white/10 mb-1"></div>
+<div class="size-2 rounded-full bg-cream-dim/30 shrink-0"></div>
+<div class="w-[1px] h-full bg-white/10 mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs text-cream-dim/50 mb-1">15 mins ago</p>
+<p class="text-sm text-cream font-light">Housekeeping Alert: Room 402 requested turn-down service.</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="w-[1px] h-full bg-white/10 mb-1"></div>
+<div class="size-2 rounded-full bg-cream-dim/30 shrink-0"></div>
+<div class="w-[1px] h-full bg-white/10 mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs text-cream-dim/50 mb-1">42 mins ago</p>
+<p class="text-sm text-cream font-light">Concierge: Private Jet transfer booked for Guest #1029.</p>
+</div>
+</div>
+<div class="flex gap-4 group">
+<div class="flex flex-col items-center">
+<div class="w-[1px] h-full bg-white/10 mb-1"></div>
+<div class="size-2 rounded-full bg-cream-dim/30 shrink-0"></div>
+<div class="w-[1px] h-full bg-white/10 mt-1"></div>
+</div>
+<div class="pb-2">
+<p class="text-xs text-cream-dim/50 mb-1">1 hour ago</p>
+<p class="text-sm text-cream font-light">System: Daily audit report generated successfully.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-white/10 hover:border-gold-accent text-cream hover:text-gold-accent text-xs tracking-[0.2em] uppercase transition-colors rounded">View Full Log</button>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-serif text-cream mb-6">Management Tools</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="bg-charcoal/30 hover:bg-gold-accent/10 border border-white/5 hover:border-gold-accent/50 p-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all group h-32">
+<span class="material-symbols-outlined text-cream-dim group-hover:text-gold-accent text-3xl transition-colors">add_card</span>
+<span class="text-xs uppercase tracking-widest text-cream font-medium">New Invoice</span>
+</button>
+<button class="bg-charcoal/30 hover:bg-gold-accent/10 border border-white/5 hover:border-gold-accent/50 p-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all group h-32">
+<span class="material-symbols-outlined text-cream-dim group-hover:text-gold-accent text-3xl transition-colors">bedroom_parent</span>
+<span class="text-xs uppercase tracking-widest text-cream font-medium">Room Allocation</span>
+</button>
+<button class="bg-charcoal/30 hover:bg-gold-accent/10 border border-white/5 hover:border-gold-accent/50 p-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all group h-32">
+<span class="material-symbols-outlined text-cream-dim group-hover:text-gold-accent text-3xl transition-colors">settings_account_box</span>
+<span class="text-xs uppercase tracking-widest text-cream font-medium">Guest Profiles</span>
+</button>
+<button class="bg-charcoal/30 hover:bg-gold-accent/10 border border-white/5 hover:border-gold-accent/50 p-6 rounded-xl flex flex-col items-center justify-center gap-3 transition-all group h-32">
+<span class="material-symbols-outlined text-cream-dim group-hover:text-gold-accent text-3xl transition-colors">campaign</span>
+<span class="text-xs uppercase tracking-widest text-cream font-medium">Promotions</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

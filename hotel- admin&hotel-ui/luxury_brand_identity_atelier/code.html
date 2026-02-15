@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Brand Identity Atelier</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f2b90d",
+              "primary-dark": "#b3880a",
+              "background-light": "#f8f8f5",
+              "background-dark": "#121214", /* Modified to be deeper obsidian */
+              "surface-dark": "#1c1c1f",
+              "surface-darker": "#161618",
+              "border-gold": "#f2b90d40",
+            },
+            fontFamily: {
+              "display": ["Noto Serif", "serif"],
+              "serif": ["Playfair Display", "serif"],
+            },
+            backgroundImage: {
+              'silk-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f2b90d' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            boxShadow: {
+              'gold-glow': '0 0 15px rgba(242, 185, 13, 0.15)',
+              'gold-glow-hover': '0 0 25px rgba(242, 185, 13, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121214;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f2b90d;
+        }
+
+        /* Silk Texture Gradient Overlay */
+        .silk-texture {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.01) 100%);
+        }
+
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #f2b90d;
+            cursor: pointer;
+            margin-top: -7px;
+            box-shadow: 0 0 10px rgba(242, 185, 13, 0.5);
+            border: 2px solid #121214;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            cursor: pointer;
+            background: #333;
+            border-radius: 1px;
+        }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen bg-silk-pattern relative selection:bg-primary selection:text-black">
+<!-- Main Gradient Overlay for Depth -->
+<div class="fixed inset-0 pointer-events-none silk-texture z-0 opacity-40"></div>
+<div class="fixed inset-0 pointer-events-none bg-gradient-to-br from-primary/5 via-transparent to-transparent z-0 opacity-20"></div>
+<!-- Navigation & Brand Atelier Selector -->
+<nav class="relative z-10 border-b border-primary/10 bg-background-dark/80 backdrop-blur-md sticky top-0">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center space-x-8">
+<div class="flex flex-col">
+<span class="text-xs uppercase tracking-[0.2em] text-primary/80 font-serif">Control Center</span>
+<h1 class="text-xl text-white font-serif italic tracking-wide">Luxury Brand Atelier</h1>
+</div>
+<!-- Vertical Divider -->
+<div class="h-8 w-px bg-primary/20 hidden md:block"></div>
+<!-- Portfolio Selector -->
+<div class="relative group hidden md:block">
+<button class="flex items-center space-x-3 text-sm text-gray-300 hover:text-primary transition-colors duration-300 focus:outline-none">
+<span class="material-icons-outlined text-primary/70">apartment</span>
+<span class="uppercase tracking-widest text-xs font-semibold">The Kensington Portfolio</span>
+<span class="material-icons-outlined text-xs">expand_more</span>
+</button>
+<!-- Dropdown (Visual only for layout) -->
+<div class="absolute top-full left-0 mt-2 w-64 bg-surface-dark border border-primary/20 shadow-gold-glow rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 p-1 z-50">
+<div class="p-2 hover:bg-white/5 rounded cursor-pointer flex items-center space-x-3">
+<img class="w-8 h-8 rounded object-cover grayscale opacity-70" data-alt="Dark moody luxury hotel lobby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB67ZprHcmLSn61MGJqYeyWWU3RNA00ToUqOdV-E4eNC31SMYRIYeKsVUALsXqt9K4C9vBcHHQ95Lu5AOrhn7qMiaeo4anUnlsrAZI92WRQb1dSUyn9EPDgGQn1Q4KbO2LvrfS9k3KlLXj21Jg6yjWz2d_EzpW7hAhCe_TGWKWd9i9LHGPE3JOjWUQNDEiykJIHBCfdRz_32_A6SaSWh1WF2keCVoT6FtigH_CHmwfsGQBQSTAyoQLgvCn4siN05D4klQ8n5qGtZc"/>
+<span class="text-xs tracking-wider">The Kensington</span>
+</div>
+<div class="p-2 hover:bg-white/5 rounded cursor-pointer flex items-center space-x-3">
+<img class="w-8 h-8 rounded object-cover grayscale opacity-70" data-alt="Modern architectural hotel exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoSGWE7pAwg8457Mhm0ofjv-36V4wSRMG-aZ16Fmdzqd1HKJk2Fk_2jSBVJkK4fmdX-vzY7npjYJdusrRS-2Q6mqTyPzvpXi_LlJSBaBDalBWQ2jjn3eFcafnMYD5Vn7JqBjkfJr3o_rgoN1PvEjSXErzbbK9pEKuCsosUJTd1B4iXBlgBDhusjYfLRt2QFgHUtHF3Wjc917IZmOOnRXMRog_MdNpzTbpyyjZgQqEfTutSV8XfSEx8zxp4BqX7lgiJkz_QbQB-OOE"/>
+<span class="text-xs tracking-wider">Maison Dorchester</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border border-primary/30 p-0.5 relative cursor-pointer group">
+<img class="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Portrait of a distinguished man in a suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSGUaJKM0gxoa4KpSvQ7JnpO0rpOcjFrgUcR6LrdWBxPD2t4FU61CPKDrnVVBYcWr2XIIl-9qUOBBJW5alawQ1rBuvTnfin06q1y0hvsvC0gz7CJBihAaMv0hQwX7T2hEsU8jkZGMyhuaDWeHgmAevSSwgy9fFbfjcKA6RmFf80eMuw3oe7pjwdqVw7UfuH6IHbQdPX8ttxM-5VY0qaJKJYspycBvpdVPtVf51_foUEIlNY4OfATJBDIZZADMgW3OKhbfyCAjoPwo"/>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full border border-background-dark"></div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="relative z-10 max-w-7xl mx-auto px-6 py-12 space-y-16">
+<!-- 1. Visual DNA Section -->
+<section class="space-y-8 animate-fade-in-up">
+<header class="flex items-end justify-between border-b border-primary/10 pb-4">
+<div>
+<span class="text-primary text-xs font-serif italic mb-1 block">Chapter I</span>
+<h2 class="text-3xl font-serif font-light text-white">Visual DNA</h2>
+</div>
+<button class="text-xs text-primary/60 hover:text-primary uppercase tracking-widest border border-primary/20 px-4 py-2 rounded hover:border-primary/50 transition-all duration-300">
+                    Export Assets
+                </button>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Logo Variants -->
+<div class="lg:col-span-7 space-y-6">
+<h3 class="text-sm uppercase tracking-widest text-gray-500 font-semibold mb-4">Logomark Hierarchy</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Primary Mark -->
+<div class="group relative bg-surface-dark border border-primary/20 rounded-lg p-8 flex flex-col items-center justify-center min-h-[240px] transition-all duration-500 hover:border-primary/60 hover:shadow-gold-glow">
+<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-outlined text-primary cursor-pointer">edit</span>
+</div>
+<img class="h-24 w-auto object-contain drop-shadow-lg mb-6" data-alt="Abstract geometric gold logo on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn7yZfvlzZ2hR5BTbYaLbQ4bZPOuAhx5z4BFGCzY8pDM20DEZvgu7umW7_HJgBpkcGyVSnUuaCOfkeiAX8aeiv2APSq6fsEIgZK0uheXtK6V-NZTMXoPti6VPL7bxscQVNpW9lAdXcI9KY3JsnQ3XMJZNJcDIe71UFqclfwlQRy28SaA1gkY0tnErZ4nyotPKCDCYcq4n_kN8zol_CDJCtrwEA4TuI-FzQdrxEXM4V35U3CK88-ftaKCyIjw9_TmzKizfTbJJ7904"/>
+<span class="text-xs text-gray-500 tracking-[0.2em] uppercase mt-auto">Primary Lockup</span>
+</div>
+<!-- Secondary / Icon -->
+<div class="grid grid-rows-2 gap-6">
+<div class="group relative bg-surface-dark border border-primary/10 rounded-lg p-4 flex items-center justify-center transition-all duration-500 hover:border-primary/40">
+<span class="text-4xl font-serif text-white italic">K.</span>
+<span class="absolute bottom-2 right-3 text-[10px] text-gray-600 tracking-widest uppercase">Monogram</span>
+</div>
+<div class="group relative bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-center transition-all duration-500">
+<span class="text-4xl font-serif text-black italic">K.</span>
+<span class="absolute bottom-2 right-3 text-[10px] text-gray-400 tracking-widest uppercase">Print Ink</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Royal Palette -->
+<div class="lg:col-span-5 space-y-6">
+<h3 class="text-sm uppercase tracking-widest text-gray-500 font-semibold mb-4">The Royal Palette</h3>
+<div class="bg-surface-dark border border-primary/10 rounded-xl p-6 relative overflow-hidden">
+<!-- Decorative Shine -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="space-y-5">
+<!-- Primary Gold -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-primary shadow-lg ring-1 ring-white/10 group-hover:ring-primary/50 transition-all duration-300 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent"></div>
+</div>
+<div>
+<p class="text-white font-serif text-lg leading-none">Imperial Gold</p>
+<p class="text-xs text-gray-500 mt-1 font-mono">PANTONE 110 C</p>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity bg-background-dark px-2 py-1 rounded border border-primary/20 text-primary font-mono text-xs">
+                                    #F2B90D
+                                </div>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<!-- Obsidian -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-[#151515] shadow-lg ring-1 ring-white/10 group-hover:ring-gray-500/50 transition-all duration-300"></div>
+<div>
+<p class="text-white font-serif text-lg leading-none">Deep Obsidian</p>
+<p class="text-xs text-gray-500 mt-1 font-mono">PANTONE BLACK 6 C</p>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity bg-background-dark px-2 py-1 rounded border border-white/10 text-gray-400 font-mono text-xs">
+                                    #151515
+                                </div>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<!-- Silk -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded bg-[#f8f8f5] shadow-lg ring-1 ring-white/10 group-hover:ring-white/50 transition-all duration-300"></div>
+<div>
+<p class="text-white font-serif text-lg leading-none">Raw Silk</p>
+<p class="text-xs text-gray-500 mt-1 font-mono">PANTONE 11-0601 TCX</p>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity bg-background-dark px-2 py-1 rounded border border-white/10 text-gray-400 font-mono text-xs">
+                                    #F8F8F5
+                                </div>
+</div>
+</div>
+<button class="mt-8 w-full py-3 border border-dashed border-primary/30 rounded text-primary/60 text-xs uppercase tracking-widest hover:bg-primary/5 hover:text-primary hover:border-primary transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-icons-outlined text-sm">add</span> Add Token
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Typographic Heritage Section -->
+<section class="space-y-8">
+<header class="flex items-end justify-between border-b border-primary/10 pb-4">
+<div>
+<span class="text-primary text-xs font-serif italic mb-1 block">Chapter II</span>
+<h2 class="text-3xl font-serif font-light text-white">Typographic Heritage</h2>
+</div>
+</header>
+<div class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden flex flex-col lg:flex-row">
+<!-- Controls Panel -->
+<div class="lg:w-1/3 bg-surface-darker border-r border-white/5 p-8 space-y-8">
+<!-- Font Selector -->
+<div class="space-y-3">
+<label class="text-xs uppercase tracking-widest text-primary/80 block">Primary Typeface</label>
+<div class="relative">
+<select class="w-full bg-[#222] border border-white/10 text-white rounded p-3 appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-serif text-lg">
+<option>Noto Serif Display</option>
+<option>Playfair Display</option>
+<option>Cormorant Garamond</option>
+</select>
+<span class="material-icons-outlined absolute right-3 top-3.5 text-gray-500 pointer-events-none">expand_more</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">Serif</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] text-gray-400 border border-white/5">Display</span>
+</div>
+</div>
+<!-- Secondary Font Selector -->
+<div class="space-y-3 pt-4 border-t border-white/5">
+<label class="text-xs uppercase tracking-widest text-gray-500 block">Secondary Typeface</label>
+<div class="relative">
+<select class="w-full bg-[#222] border border-white/10 text-gray-300 rounded p-2.5 appearance-none focus:border-primary/50 outline-none text-sm font-sans">
+<option>Inter</option>
+<option>Lato</option>
+<option>Montserrat</option>
+</select>
+<span class="material-icons-outlined absolute right-3 top-3 text-gray-500 pointer-events-none text-sm">expand_more</span>
+</div>
+</div>
+<!-- Metrics -->
+<div class="space-y-4 pt-4 border-t border-white/5">
+<div class="flex justify-between items-center">
+<label class="text-xs text-gray-500">Base Size</label>
+<span class="text-xs text-primary font-mono">16px</span>
+</div>
+<input class="accent-primary" max="24" min="12" type="range" value="16"/>
+<div class="flex justify-between items-center mt-2">
+<label class="text-xs text-gray-500">Letter Spacing (Display)</label>
+<span class="text-xs text-primary font-mono">-0.02em</span>
+</div>
+<input class="accent-primary" max="0.1" min="-0.05" step="0.01" type="range" value="-0.02"/>
+</div>
+</div>
+<!-- Live Preview Panel -->
+<div class="lg:w-2/3 p-12 bg-[#1a1a1c] relative flex items-center justify-center">
+<!-- Preview Paper BG -->
+<div class="absolute inset-0 bg-silk-pattern opacity-50 pointer-events-none"></div>
+<div class="relative z-10 max-w-lg mx-auto text-center space-y-6">
+<p class="text-primary text-sm tracking-[0.3em] uppercase font-medium">The Experience</p>
+<h1 class="text-5xl md:text-6xl font-serif text-white leading-tight">
+                            Elegance is the only beauty that never fades.
+                        </h1>
+<p class="text-gray-400 font-sans leading-relaxed max-w-md mx-auto">
+                            Experience the pinnacle of luxury hospitality. Every detail curated, every moment crafted for the discerning traveler seeking sanctuary in the heart of the metropolis.
+                        </p>
+<div class="pt-8">
+<button class="bg-transparent border border-primary text-primary px-8 py-3 uppercase text-xs tracking-[0.2em] hover:bg-primary hover:text-black transition-all duration-500">
+                                Discover More
+                            </button>
+</div>
+</div>
+<!-- Grid Lines for "Technical" Feel -->
+<div class="absolute inset-0 pointer-events-none border border-primary/5 m-8"></div>
+<div class="absolute top-8 left-8 w-2 h-2 border-l border-t border-primary/40"></div>
+<div class="absolute top-8 right-8 w-2 h-2 border-r border-t border-primary/40"></div>
+<div class="absolute bottom-8 left-8 w-2 h-2 border-l border-b border-primary/40"></div>
+<div class="absolute bottom-8 right-8 w-2 h-2 border-r border-b border-primary/40"></div>
+</div>
+</div>
+</section>
+<!-- 3. Brand Tone Section -->
+<section class="space-y-8 pb-12">
+<header class="flex items-end justify-between border-b border-primary/10 pb-4">
+<div>
+<span class="text-primary text-xs font-serif italic mb-1 block">Chapter III</span>
+<h2 class="text-3xl font-serif font-light text-white">Voice &amp; Personality</h2>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tone Card 1 -->
+<div class="bg-surface-dark border border-white/5 rounded-xl p-8 space-y-6 relative hover:border-primary/20 transition-colors duration-300">
+<div class="flex justify-between text-xs text-gray-500 uppercase tracking-widest font-semibold">
+<span>Reserved</span>
+<span>Warm</span>
+</div>
+<input class="w-full" type="range" value="75"/>
+<p class="text-center text-white/80 font-serif italic text-lg mt-2">"Attentive, yet unobtrusive."</p>
+</div>
+<!-- Tone Card 2 -->
+<div class="bg-surface-dark border border-white/5 rounded-xl p-8 space-y-6 relative hover:border-primary/20 transition-colors duration-300">
+<div class="flex justify-between text-xs text-gray-500 uppercase tracking-widest font-semibold">
+<span>Classic</span>
+<span>Modern</span>
+</div>
+<input class="w-full" type="range" value="30"/>
+<p class="text-center text-white/80 font-serif italic text-lg mt-2">"Timeless heritage tailored for today."</p>
+</div>
+<!-- Tone Card 3 -->
+<div class="bg-surface-dark border border-white/5 rounded-xl p-8 space-y-6 relative hover:border-primary/20 transition-colors duration-300">
+<div class="flex justify-between text-xs text-gray-500 uppercase tracking-widest font-semibold">
+<span>Minimal</span>
+<span>Descriptive</span>
+</div>
+<input class="w-full" type="range" value="60"/>
+<p class="text-center text-white/80 font-serif italic text-lg mt-2">"Evocative storytelling."</p>
+</div>
+</div>
+<!-- Contextual Help / AI Integration Hint -->
+<div class="bg-gradient-to-r from-surface-dark to-transparent border-l-2 border-primary p-4 rounded-r mt-4 flex items-start gap-4 max-w-2xl">
+<span class="material-icons-outlined text-primary mt-0.5">auto_awesome</span>
+<div>
+<h4 class="text-white text-sm font-medium mb-1">AI Copywriter Calibrated</h4>
+<p class="text-gray-400 text-xs leading-relaxed">Changes to these sliders will immediately affect the tone of generated marketing emails and concierge responses.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-white/5 bg-background-dark py-8 mt-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+<p>© 2023 Luxury Brand Identity Atelier. All rights reserved.</p>
+<div class="flex items-center space-x-6 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<span class="flex items-center gap-1 text-gray-700"><span class="w-2 h-2 rounded-full bg-green-500/50"></span> System Operational</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Property Comparison Report - Hotel Admin Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0e4ac4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#182132",
+                        "surface-dark-lighter": "#202b40",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for table */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #182132;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        /* Bar chart CSS bars */
+        .bar-height-1 { height: 65%; }
+        .bar-height-2 { height: 45%; }
+        .bar-height-3 { height: 85%; }
+        .bar-height-4 { height: 55%; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Navigation Bar (Simplified) -->
+<nav class="bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">H</div>
+<span class="font-semibold text-lg tracking-tight">Hotelify<span class="text-primary">.Admin</span></span>
+</div>
+<div class="hidden md:flex ml-10 items-baseline space-x-4">
+<a class="px-3 py-2 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="px-3 py-2 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Properties</a>
+<a aria-current="page" class="bg-primary/10 text-primary px-3 py-2 rounded-md text-sm font-medium" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none">
+<span class="material-icons-round">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-tr from-primary to-purple-500 overflow-hidden ring-2 ring-surface-dark border border-white/10" data-alt="User profile avatar gradient">
+<!-- Abstract Avatar -->
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Header & Controls -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+<span>Reports</span>
+<span class="material-icons-round text-xs">chevron_right</span>
+<span>Performance</span>
+<span class="material-icons-round text-xs">chevron_right</span>
+<span class="text-primary font-medium">Comparison</span>
+</div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Property Comparison Report</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl">Analyze and compare performance metrics across your selected hotel portfolio.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors shadow-sm">
+<span class="material-icons-round text-base">download</span>
+                    Export CSV
+                </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors shadow-sm">
+<span class="material-icons-round text-base">share</span>
+                    Share
+                </button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+<div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+<!-- Property Selector -->
+<div class="relative group w-full md:w-72">
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Properties</label>
+<button class="w-full flex items-center justify-between px-3 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-left focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+<span class="truncate text-slate-700 dark:text-slate-200">Azure Bay, Grand Plaza, City Loft...</span>
+<span class="material-icons-round text-slate-400">expand_more</span>
+</button>
+</div>
+<!-- Date Range -->
+<div class="relative w-full md:w-64">
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Date Range</label>
+<div class="relative">
+<span class="absolute left-3 top-2.5 material-icons-round text-slate-400 text-lg">calendar_today</span>
+<input class="w-full pl-10 pr-3 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" readonly="" type="text" value="Jan 01, 2024 - Jan 31, 2024"/>
+</div>
+</div>
+</div>
+<button class="w-full md:w-auto mt-2 md:mt-0 px-6 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg text-sm font-medium transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-icons-round text-lg">analytics</span>
+                Update Report
+            </button>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Chart Section (Spans full width on mobile/tablet, 3 cols on XL if needed, but here sticking to full top row for visual balance) -->
+<div class="col-span-1 xl:col-span-3 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Total Revenue Comparison</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Based on ADR and Occupancy metrics</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Current Period</span>
+</div>
+</div>
+<!-- Chart Visualization (CSS Bars) -->
+<div class="relative h-64 w-full flex items-end justify-between gap-4 sm:gap-12 px-2 sm:px-8 border-b border-slate-200 dark:border-slate-700 pb-2">
+<!-- Y Axis Labels (Absolute positioning for simplicity in this pure CSS implementation) -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-slate-400 pointer-events-none -translate-x-full pr-2 pb-6 w-12 text-right">
+<span>$200k</span>
+<span>$150k</span>
+<span>$100k</span>
+<span>$50k</span>
+<span>$0</span>
+</div>
+<!-- Bar Group 1 -->
+<div class="group relative flex-1 flex flex-col justify-end items-center gap-2 h-full cursor-pointer">
+<div class="relative w-full max-w-[80px] bg-surface-dark-lighter dark:bg-background-dark rounded-t-lg overflow-hidden h-full flex items-end">
+<div class="w-full bg-primary/80 group-hover:bg-primary transition-all duration-300 bar-height-1 rounded-t-lg relative">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity z-10">$124,500</div>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Azure Bay</span>
+</div>
+<!-- Bar Group 2 -->
+<div class="group relative flex-1 flex flex-col justify-end items-center gap-2 h-full cursor-pointer">
+<div class="relative w-full max-w-[80px] bg-surface-dark-lighter dark:bg-background-dark rounded-t-lg overflow-hidden h-full flex items-end">
+<div class="w-full bg-sky-500/80 group-hover:bg-sky-500 transition-all duration-300 bar-height-2 rounded-t-lg relative">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity z-10">$85,200</div>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Grand Plaza</span>
+</div>
+<!-- Bar Group 3 -->
+<div class="group relative flex-1 flex flex-col justify-end items-center gap-2 h-full cursor-pointer">
+<div class="relative w-full max-w-[80px] bg-surface-dark-lighter dark:bg-background-dark rounded-t-lg overflow-hidden h-full flex items-end">
+<div class="w-full bg-indigo-500/80 group-hover:bg-indigo-500 transition-all duration-300 bar-height-3 rounded-t-lg relative">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity z-10">$168,900</div>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">City Loft</span>
+</div>
+<!-- Bar Group 4 -->
+<div class="group relative flex-1 flex flex-col justify-end items-center gap-2 h-full cursor-pointer">
+<div class="relative w-full max-w-[80px] bg-surface-dark-lighter dark:bg-background-dark rounded-t-lg overflow-hidden h-full flex items-end">
+<div class="w-full bg-teal-500/80 group-hover:bg-teal-500 transition-all duration-300 bar-height-4 rounded-t-lg relative">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded whitespace-nowrap transition-opacity z-10">$105,400</div>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Seaside Inn</span>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="col-span-1 xl:col-span-3 bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white">Detailed Metrics</h3>
+<div class="flex items-center gap-2 text-xs">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500/20 ring-1 ring-emerald-500"></span> Top Performer</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500/20 ring-1 ring-rose-500"></span> Needs Attention</span>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full min-w-[800px] text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-surface-dark-lighter border-b border-slate-200 dark:border-slate-700">
+<th class="py-4 px-6 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider sticky left-0 bg-slate-50 dark:bg-surface-dark-lighter z-10 w-64 shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]">Metric</th>
+<th class="py-4 px-6 text-sm font-semibold text-slate-900 dark:text-white text-right w-1/4">
+<div class="flex flex-col items-end">
+<span>Azure Bay Resort</span>
+<span class="text-xs font-normal text-slate-500">Miami, FL</span>
+</div>
+</th>
+<th class="py-4 px-6 text-sm font-semibold text-slate-900 dark:text-white text-right w-1/4">
+<div class="flex flex-col items-end">
+<span>Grand Plaza Hotel</span>
+<span class="text-xs font-normal text-slate-500">New York, NY</span>
+</div>
+</th>
+<th class="py-4 px-6 text-sm font-semibold text-slate-900 dark:text-white text-right w-1/4">
+<div class="flex flex-col items-end">
+<span>City Loft Boutique</span>
+<span class="text-xs font-normal text-slate-500">Chicago, IL</span>
+</div>
+</th>
+<th class="py-4 px-6 text-sm font-semibold text-slate-900 dark:text-white text-right w-1/4">
+<div class="flex flex-col items-end">
+<span>Seaside Inn</span>
+<span class="text-xs font-normal text-slate-500">San Diego, CA</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-700/50">
+<!-- Occupancy Row -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-6 font-medium text-slate-900 dark:text-slate-200 sticky left-0 bg-white dark:bg-surface-dark group-hover:bg-slate-50 dark:group-hover:bg-surface-dark-lighter transition-colors shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)] z-10">
+<div class="flex items-center gap-2">
+<span class="p-1.5 rounded-md bg-blue-500/10 text-blue-500"><span class="material-icons-round text-sm">bed</span></span>
+                                        Occupancy %
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">72.5%</td>
+<td class="py-4 px-6 text-right font-mono text-rose-500 font-medium bg-rose-500/5 dark:bg-rose-500/10 relative">
+<span class="relative z-10">45.2%</span>
+<div class="absolute inset-0 border-l-4 border-rose-500/50 opacity-0 group-hover:opacity-100"></div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-emerald-500 font-medium bg-emerald-500/5 dark:bg-emerald-500/10 relative">
+<span class="relative z-10">94.1%</span>
+<div class="absolute inset-0 border-l-4 border-emerald-500/50 opacity-0 group-hover:opacity-100"></div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">68.4%</td>
+</tr>
+<!-- ADR Row -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-6 font-medium text-slate-900 dark:text-slate-200 sticky left-0 bg-white dark:bg-surface-dark group-hover:bg-slate-50 dark:group-hover:bg-surface-dark-lighter transition-colors shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)] z-10">
+<div class="flex items-center gap-2">
+<span class="p-1.5 rounded-md bg-purple-500/10 text-purple-500"><span class="material-icons-round text-sm">attach_money</span></span>
+                                        ADR (Avg. Daily Rate)
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-emerald-500 font-medium bg-emerald-500/5 dark:bg-emerald-500/10">$245.00</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">$185.50</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">$210.00</td>
+<td class="py-4 px-6 text-right font-mono text-rose-500 font-medium bg-rose-500/5 dark:bg-rose-500/10">$145.00</td>
+</tr>
+<!-- RevPAR Row -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-6 font-medium text-slate-900 dark:text-slate-200 sticky left-0 bg-white dark:bg-surface-dark group-hover:bg-slate-50 dark:group-hover:bg-surface-dark-lighter transition-colors shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)] z-10">
+<div class="flex items-center gap-2">
+<span class="p-1.5 rounded-md bg-orange-500/10 text-orange-500"><span class="material-icons-round text-sm">trending_up</span></span>
+                                        RevPAR
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">$177.62</td>
+<td class="py-4 px-6 text-right font-mono text-rose-500 font-medium bg-rose-500/5 dark:bg-rose-500/10">$83.84</td>
+<td class="py-4 px-6 text-right font-mono text-emerald-500 font-medium bg-emerald-500/5 dark:bg-emerald-500/10">$197.61</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">$99.18</td>
+</tr>
+<!-- Direct Booking Row -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-6 font-medium text-slate-900 dark:text-slate-200 sticky left-0 bg-white dark:bg-surface-dark group-hover:bg-slate-50 dark:group-hover:bg-surface-dark-lighter transition-colors shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)] z-10">
+<div class="flex items-center gap-2">
+<span class="p-1.5 rounded-md bg-teal-500/10 text-teal-500"><span class="material-icons-round text-sm">language</span></span>
+                                        Direct Booking %
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-emerald-500 font-medium bg-emerald-500/5 dark:bg-emerald-500/10">65%</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">42%</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">38%</td>
+<td class="py-4 px-6 text-right font-mono text-rose-500 font-medium bg-rose-500/5 dark:bg-rose-500/10">22%</td>
+</tr>
+<!-- Guest Satisfaction Row -->
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 px-6 font-medium text-slate-900 dark:text-slate-200 sticky left-0 bg-white dark:bg-surface-dark group-hover:bg-slate-50 dark:group-hover:bg-surface-dark-lighter transition-colors shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)] z-10">
+<div class="flex items-center gap-2">
+<span class="p-1.5 rounded-md bg-yellow-500/10 text-yellow-500"><span class="material-icons-round text-sm">star</span></span>
+                                        GSS (Score /5)
+                                    </div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">
+<div class="flex items-center justify-end gap-2">
+<span>4.5</span>
+<div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 90%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">
+<div class="flex items-center justify-end gap-2">
+<span>3.8</span>
+<div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500" style="width: 76%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-mono font-medium text-emerald-500 bg-emerald-500/5 dark:bg-emerald-500/10">
+<div class="flex items-center justify-end gap-2">
+<span>4.9</span>
+<div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 98%"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-mono text-slate-700 dark:text-slate-300">
+<div class="flex items-center justify-end gap-2">
+<span>4.2</span>
+<div class="w-16 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary/70" style="width: 84%"></div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 pt-8 pb-4">
+<div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 dark:text-slate-400">
+<p>© 2024 Hotelify Admin Dashboard. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
