@@ -53,12 +53,12 @@ This document is the **single source of truth** for missing work, conflicts, and
 
 ### 2.1 Header/Nav Parity
 - [x] Mobile-first sticky header with progressive states (foundational scaffold):
-  - [ ] Transparent on hero
-  - [ ] Compact sticky after scroll
-  - [ ] Utility drawer (phone, book-now, language/currency)
+  - [x] Transparent on hero
+  - [x] Compact sticky after scroll
+  - [x] Utility drawer (phone, book-now, language/currency)
   - [x] Multi-level menu + quick-book CTA always visible (foundation in responsive nav + utility links)
-- [ ] Desktop mega-nav with destination cards, offers, and featured dining links.
-- [ ] Property switcher + date/guest quick search in header module.
+- [x] Desktop mega-nav with destination cards, offers, and featured dining links (foundational scaffold).
+- [x] Property switcher + date/guest quick search in header module (foundational scaffold).
 
 ### 2.2 Design System
 - [ ] Build tokenized design system (colors, typography, radius, spacing, shadows, motion).
@@ -81,7 +81,7 @@ This document is the **single source of truth** for missing work, conflicts, and
 ## 3) Complete Page Model + Page Management
 
 ### 3.1 Pages to Build (Must-have)
-- [ ] Home
+- [x] Home
 - [x] Rooms listing
 - [x] Room details
 - [x] Dining listing
