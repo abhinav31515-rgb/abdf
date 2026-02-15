@@ -70,3 +70,19 @@ code { background: rgba(255,255,255,.12); padding: 2px 6px; border-radius: 4px; 
   .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
 }
+
+.split-layout { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.form-grid { display: grid; gap: 12px; }
+.form-grid label { display: grid; gap: 6px; font-size: .92rem; color: #374151; }
+.form-grid input, .form-grid select, .form-grid textarea { width: 100%; border: 1px solid #d1d5db; border-radius: 6px; padding: 10px; font: inherit; }
+.inline-check { grid-template-columns: auto 1fr; align-items: center; gap: 8px; }
+.action-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.stack-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: #4b5563; }
+.link-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.link-list a { color: #111827; font-weight: 600; text-decoration: none; }
+.tone-soft { background: #f8fafc; border: 1px solid #e2e8f0; }
+.split-field { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+@media (min-width: 1024px) {
+  .split-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+}

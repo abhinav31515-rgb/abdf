@@ -22,9 +22,9 @@
             <div class="utility-links">
                 <a href="#">+91 11 4119 1919</a>
                 <a href="#">EN | INR</a>
-                <a href="#">Sign In</a>
-                <a href="#">Join</a>
-                <a href="#booking" class="book-link">Book Now</a>
+                <a href="{{ route('site.account.signin', ['brand' => $brandKey]) }}">Sign In</a>
+                <a href="{{ route('site.account.signup', ['brand' => $brandKey]) }}">Join</a>
+                <a href="{{ route('site.booking.search', ['brand' => $brandKey]) }}" class="book-link">Book Now</a>
             </div>
         </div>
     </div>
