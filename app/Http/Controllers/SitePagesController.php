@@ -70,6 +70,10 @@ class SitePagesController extends Controller
 
     public function bookingSearch(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-search'); }
     public function bookingAvailability(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-availability'); }
+
+    public function bookingAddons(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-addons'); }
+    public function bookingGuestDetails(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-guest-details'); }
+    public function bookingPayment(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-payment'); }
     public function bookingCheckout(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-checkout'); }
     public function bookingConfirmation(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-confirmation'); }
     public function bookingManage(BrandThemeRepository $themes): View { return $this->page($themes, 'pages.booking-manage'); }

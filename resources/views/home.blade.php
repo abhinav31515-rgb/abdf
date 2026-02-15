@@ -9,5 +9,7 @@
 @include('site.sections.dining')
 @include('site.sections.feature-highlights')
 @include('site.sections.wellness')
+@include('site.sections.reviews')
+@include('site.sections.location')
 @include('site.sections.booking')
 @endsection

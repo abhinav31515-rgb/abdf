@@ -30,6 +30,9 @@ Route::get('/contact', [SitePagesController::class, 'contact'])->name('site.cont
 Route::prefix('booking')->group(function (): void {
     Route::get('/search', [SitePagesController::class, 'bookingSearch'])->name('site.booking.search');
     Route::get('/availability', [SitePagesController::class, 'bookingAvailability'])->name('site.booking.availability');
+    Route::get('/addons', [SitePagesController::class, 'bookingAddons'])->name('site.booking.addons');
+    Route::get('/guest-details', [SitePagesController::class, 'bookingGuestDetails'])->name('site.booking.guest-details');
+    Route::get('/payment', [SitePagesController::class, 'bookingPayment'])->name('site.booking.payment');
     Route::get('/checkout', [SitePagesController::class, 'bookingCheckout'])->name('site.booking.checkout');
     Route::get('/confirmation', [SitePagesController::class, 'bookingConfirmation'])->name('site.booking.confirmation');
     Route::get('/manage', [SitePagesController::class, 'bookingManage'])->name('site.booking.manage');

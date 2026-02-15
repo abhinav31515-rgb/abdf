@@ -113,6 +113,9 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [x] Maintenance
 - [x] Search Results
 - [x] Sitemap (human-readable)
+- [x] Add-ons / Enhancements
+- [x] Guest Details
+- [x] Payment
 - [x] Manage Booking
 
 ### 3.2 Page Management Admin
