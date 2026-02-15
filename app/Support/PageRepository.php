@@ -2,7 +2,9 @@
 
 namespace App\Support;
 
+use InvalidArgumentException;
 use RuntimeException;
+use Illuminate\Support\Str;
 
 class PageRepository
 {
@@ -21,12 +23,12 @@ class PageRepository
             $publishAt = isset($page['publish_at']) && $page['publish_at'] !== '' ? strtotime((string) $page['publish_at']) : null;
             $unpublishAt = isset($page['unpublish_at']) && $page['unpublish_at'] !== '' ? strtotime((string) $page['unpublish_at']) : null;
 
-            if (($page['status'] ?? 'draft') !== 'published' && $publishAt && $publishAt <= $now) {
+            if (($pages[$index]['status'] ?? 'draft') !== 'published' && $publishAt && $publishAt <= $now) {
                 $pages[$index]['status'] = 'published';
                 $changed = true;
             }
 
-            if (($page['status'] ?? 'draft') === 'published' && $unpublishAt && $unpublishAt <= $now) {
+            if (($pages[$index]['status'] ?? 'draft') === 'published' && $unpublishAt && $unpublishAt <= $now) {
                 $pages[$index]['status'] = 'draft';
                 $changed = true;
             }
@@ -66,7 +68,7 @@ class PageRepository
                 $clone = $page;
                 $clone['id'] = $this->nextCloneId($pages, (string) $id);
                 $clone['title'] = ($page['title'] ?? 'Untitled').' (Copy)';
-                $clone['slug'] = rtrim((string) ($page['slug'] ?? '/'), '/').'-copy';
+                $clone['slug'] = ($page['slug'] ?? '/') === '/' ? '/home-copy' : rtrim((string) ($page['slug'] ?? '/'), '/').'-copy';
                 $clone['status'] = 'draft';
                 $pages[] = $clone;
                 $this->write($brand, $pages);
@@ -137,6 +139,19 @@ class PageRepository
 
     private function path(string $brand): string
     {
-        return base_path('storage/pages/'.$brand.'.json');
+        $brand = $this->normalizeBrandKey($brand);
+
+        return storage_path('pages/'.$brand.'.json');
+    }
+
+    private function normalizeBrandKey(string $brand): string
+    {
+        $brand = Str::lower(trim($brand));
+
+        if (! preg_match('/^[a-z0-9\-]+$/', $brand)) {
+            throw new InvalidArgumentException('Invalid brand key.');
+        }
+
+        return $brand;
     }
 }
