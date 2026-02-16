@@ -40,3 +40,17 @@ This scaffold is structured for **reusability across multiple hotel brands** wit
 3. Add review approval notifications and scheduling automation jobs.
 4. Add media manager with SEO image fields.
 5. Add OTA/PMS connector execution per `tasks.md`.
+
+
+### Frontend routes scaffolded
+- `/rooms`, `/rooms/{slug}`
+- `/offers`, `/offers/{slug}`
+- `/dining`, `/dining/{slug}`
+- `/wellness`, `/meetings-events`, `/weddings`, `/experiences`
+- `/about`, `/faq`, `/sustainability`, `/press`, `/careers`, `/legal`
+- `/gallery`, `/contact`
+- `/booking/search`, `/booking/availability`, `/booking/addons`, `/booking/guest-details`, `/booking/payment`, `/booking/checkout`, `/booking/confirmation`, `/booking/manage`
+- `/account/signin`, `/account/signup`, `/account/forgot-password`, `/account/profile`, `/account/loyalty`
+- `/system/404`, `/system/500`, `/system/maintenance`, `/system/search-results`, `/system/sitemap`
+
+These are wired to Blade pages under `resources/views/pages/*` and use shared brand/theme payloads.

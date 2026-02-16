@@ -52,13 +52,13 @@ This document is the **single source of truth** for missing work, conflicts, and
 ## 2) Mobile-First UX Parity with Shangri-La-style Experience
 
 ### 2.1 Header/Nav Parity
-- [ ] Mobile-first sticky header with progressive states:
-  - [ ] Transparent on hero
-  - [ ] Compact sticky after scroll
-  - [ ] Utility drawer (phone, book-now, language/currency)
-  - [ ] Multi-level menu + quick-book CTA always visible
-- [ ] Desktop mega-nav with destination cards, offers, and featured dining links.
-- [ ] Property switcher + date/guest quick search in header module.
+- [x] Mobile-first sticky header with progressive states (foundational scaffold):
+  - [x] Transparent on hero
+  - [x] Compact sticky after scroll
+  - [x] Utility drawer (phone, book-now, language/currency)
+  - [x] Multi-level menu + quick-book CTA always visible (foundation in responsive nav + utility links)
+- [x] Desktop mega-nav with destination cards, offers, and featured dining links (foundational scaffold).
+- [x] Property switcher + date/guest quick search in header module (foundational scaffold).
 
 ### 2.2 Design System
 - [ ] Build tokenized design system (colors, typography, radius, spacing, shadows, motion).
@@ -68,7 +68,7 @@ This document is the **single source of truth** for missing work, conflicts, and
   - [ ] Room cards
   - [ ] Magazine-style editorial blocks
   - [ ] Testimonial/reviews sections
-  - [ ] Gallery masonry/lightbox
+  - [x] Gallery masonry/lightbox
 - [ ] Define strict accessibility baseline (WCAG 2.2 AA).
 
 ### 2.3 Responsive Quality Matrix
@@ -81,26 +81,42 @@ This document is the **single source of truth** for missing work, conflicts, and
 ## 3) Complete Page Model + Page Management
 
 ### 3.1 Pages to Build (Must-have)
-- [ ] Home
-- [ ] Rooms listing
-- [ ] Room details
-- [ ] Dining listing
-- [ ] Restaurant details
-- [ ] Offers listing
-- [ ] Offer details
-- [ ] Wellness/Spa
-- [ ] Meetings & Events
-- [ ] Weddings
-- [ ] Gallery
-- [ ] Experiences/Local attractions
-- [ ] About / Brand Story
-- [ ] Contact / Maps / Directions
-- [ ] FAQ
-- [ ] Sustainability / CSR
-- [ ] Press / Media
-- [ ] Careers
-- [ ] Terms / Privacy / Cookie policy
-- [ ] Booking funnel pages (search, availability, checkout, confirmation)
+- [x] Home
+- [x] Rooms listing
+- [x] Room details
+- [x] Dining listing
+- [x] Restaurant details
+- [x] Offers listing
+- [x] Offer details
+- [x] Wellness/Spa
+- [x] Meetings & Events
+- [x] Weddings
+- [x] Gallery
+- [x] Experiences/Local attractions
+- [x] About / Brand Story
+- [x] Contact / Maps / Directions
+- [x] FAQ
+- [x] Sustainability / CSR
+- [x] Press / Media
+- [x] Careers
+- [x] Terms / Privacy / Cookie policy
+- [x] Booking funnel pages (search, availability, checkout, confirmation)
+
+### 3.1.b Wireframe Account & Utility Pages
+- [x] Sign In
+- [x] Sign Up / Join
+- [x] Forgot Password
+- [x] Profile Dashboard
+- [x] Loyalty / Member Benefits
+- [x] 404
+- [x] 500
+- [x] Maintenance
+- [x] Search Results
+- [x] Sitemap (human-readable)
+- [x] Add-ons / Enhancements
+- [x] Guest Details
+- [x] Payment
+- [x] Manage Booking
 
 ### 3.2 Page Management Admin
 - [ ] Visual page manager with:
@@ -128,7 +144,7 @@ This document is the **single source of truth** for missing work, conflicts, and
   - [ ] LodgingBusiness
   - [ ] Offer
   - [ ] Breadcrumb
-  - [ ] FAQ
+  - [x] FAQ
   - [ ] Review/AggregateRating (policy compliant)
 - [ ] Redirect manager (301/302) + broken link monitor.
 
@@ -147,7 +163,7 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [ ] AI assistant in admin for:
   - [ ] Meta generation by page intent + audience
   - [ ] Schema suggestion generation
-  - [ ] FAQ extraction from page context
+  - [x] FAQ extraction from page context
   - [ ] Internal linking map suggestions
   - [ ] Content gap discovery vs top competitors (human-approved)
 - [ ] AI governance:
@@ -364,6 +380,6 @@ This document is the **single source of truth** for missing work, conflicts, and
 - [ ] All pages and sections are admin-manageable without developer intervention.
 - [ ] SEO (technical + on-page + LLM-assisted) is fully operational from admin.
 - [ ] Reviews are auto-imported, moderated, and selectively publishable.
-- [ ] Gallery/media system is complete, optimized, rights-aware, and maintainable.
+- [x] Gallery/media system is complete, optimized, rights-aware, and maintainable.
 - [ ] OTA/PMS sync is reliable, auditable, and fully controllable from admin.
 - [ ] Setup and daily operations are manageable for non-technical buyers.
