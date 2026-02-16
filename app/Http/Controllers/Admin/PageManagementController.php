@@ -19,6 +19,7 @@ class PageManagementController extends Controller
             'brandKey' => $brandKey,
             'brandList' => $themes->allBrands(),
             'pages' => $pages->allWithSchedulingApplied($brandKey),
+            'theme' => $themes->get($brandKey),
         ]);
     }
 
@@ -31,6 +32,7 @@ class PageManagementController extends Controller
             'brandList' => $themes->allBrands(),
             'page' => null,
             'isCreate' => true,
+            'theme' => $themes->get($brandKey),
         ]);
     }
 
@@ -51,6 +53,7 @@ class PageManagementController extends Controller
             'brandList' => $themes->allBrands(),
             'page' => $pages->find($brandKey, $id),
             'isCreate' => false,
+            'theme' => $themes->get($brandKey),
         ]);
     }
 

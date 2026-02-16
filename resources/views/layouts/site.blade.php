@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', $theme['brand']['property_name'])</title>
     <meta name="description" content="@yield('meta_description', 'Luxury hotel experience with premium rooms, dining, and curated offers.')">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
     <style>
         :root {
             --brand-primary: {{ $theme['appearance']['primary'] }};
             --brand-secondary: {{ $theme['appearance']['secondary'] }};
             --brand-surface: {{ $theme['appearance']['surface'] }};
+            --brand-font: {{ $theme['appearance']['font_family'] ?? 'Inter, Arial, sans-serif' }};
+            --brand-radius: {{ $theme['appearance']['radius'] ?? '10px' }};
+            --brand-shadow: {{ $theme['appearance']['shadow'] ?? '0 12px 30px rgba(15,18,23,.12)' }};
         }
     </style>
 </head>
-<body>
+<body data-header-style="{{ $theme['appearance']['header_style'] ?? 'glass-dark' }}">
 <header class="site-header transparent" id="siteHeader">
     <div class="utility-bar" id="utilityBar">
         <div class="container utility-wrap">
             <span>{{ $theme['brand']['property_name'] }}</span>
             <div class="utility-links">
-                <a href="#">+91 11 4119 1919</a>
+                <a href="#">{{ $theme['brand']['phone'] }}</a>
                 <a href="#">EN | INR</a>
                 <a href="{{ route('site.account.signin', ['brand' => $brandKey]) }}">Sign In</a>
                 <a href="{{ route('site.account.signup', ['brand' => $brandKey]) }}">Join</a>
@@ -39,12 +45,9 @@
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
 
             <nav id="siteNav">
-                <a href="{{ route('site.rooms', ['brand' => $brandKey]) }}">Rooms</a>
-                <a href="{{ route('site.dining', ['brand' => $brandKey]) }}">Dining</a>
-                <a href="{{ route('site.offers', ['brand' => $brandKey]) }}">Offers</a>
-                <a href="{{ route('site.wellness', ['brand' => $brandKey]) }}">Wellness</a>
-                <a href="{{ route('site.gallery', ['brand' => $brandKey]) }}">Gallery</a>
-                <a href="{{ route('site.contact', ['brand' => $brandKey]) }}">Contact</a>
+                @foreach(($theme['menus'] ?? []) as $menu)
+                    <a href="{{ $menu['anchor'] }}">{{ $menu['label'] }}</a>
+                @endforeach
             </nav>
 
             <div class="quick-search">

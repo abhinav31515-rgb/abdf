@@ -23,6 +23,7 @@ class AdminModuleController extends Controller
             'brandList' => $themes->allBrands(),
             'moduleKey' => $module,
             'module' => $moduleConfig,
+            'theme' => $themes->get($brandKey),
         ]);
     }
 

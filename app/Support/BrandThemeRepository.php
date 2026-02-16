@@ -30,6 +30,7 @@ class BrandThemeRepository
     {
         $brand = $this->normalizeBrandKey($brand);
         $path = $this->themePath($brand);
+        $payload = $this->sanitizeTheme($payload);
         file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
@@ -74,12 +75,29 @@ class BrandThemeRepository
 
     private function sanitizeTheme(array $theme): array
     {
+        $theme['appearance'] = array_merge([
+            'primary' => '#b6945f',
+            'secondary' => '#0f1217',
+            'surface' => '#f5f2eb',
+            'header_style' => 'glass-dark',
+            'hero_overlay' => 'dark-luxury',
+            'font_family' => 'Inter, Arial, sans-serif',
+            'radius' => '10px',
+            'shadow' => '0 12px 30px rgba(15,18,23,.12)',
+        ], $theme['appearance'] ?? []);
+
         if (isset($theme['hero']['primary_cta']['target'])) {
             $theme['hero']['primary_cta']['target'] = $this->sanitizeHref((string) $theme['hero']['primary_cta']['target']);
         }
 
         if (isset($theme['hero']['secondary_cta']['target'])) {
             $theme['hero']['secondary_cta']['target'] = $this->sanitizeHref((string) $theme['hero']['secondary_cta']['target']);
+        }
+
+        if (isset($theme['menus']) && is_array($theme['menus'])) {
+            $theme['menus'] = array_values(array_filter($theme['menus'], static fn (array $menu): bool =>
+                isset($menu['label'], $menu['anchor']) && trim((string) $menu['label']) !== '' && trim((string) $menu['anchor']) !== ''
+            ));
         }
 
         return $theme;

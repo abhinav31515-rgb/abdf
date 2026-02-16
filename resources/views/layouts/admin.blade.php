@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Dashboard')</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+    <style>
+        :root {
+            --admin-primary: {{ $theme['appearance']['primary'] ?? '#135bec' }};
+            --admin-secondary: {{ $theme['appearance']['secondary'] ?? '#101622' }};
+            --admin-surface: {{ $theme['appearance']['surface'] ?? '#f6f6f8' }};
+            --admin-font: {{ $theme['appearance']['font_family'] ?? 'Inter, Arial, sans-serif' }};
+        }
+    </style>
 </head>
 <body>
 <div class="admin-shell">
@@ -57,13 +68,19 @@
                 <h1>@yield('header', 'Dashboard')</h1>
                 <small>Brand: <strong>{{ $brandList[$brandKey] ?? $brandKey }}</strong></small>
             </div>
-            <form method="get" class="brand-switcher">
-                <select name="brand" onchange="this.form.submit()">
-                    @foreach($brandList as $key => $name)
-                        <option value="{{ $key }}" @selected($brandKey === $key)>{{ $name }}</option>
-                    @endforeach
-                </select>
-            </form>
+            <div class="admin-actions">
+                <label class="admin-search">
+                    <i class="bi bi-search"></i>
+                    <input type="search" placeholder="Search pages, guests, bookings...">
+                </label>
+                <form method="get" class="brand-switcher">
+                    <select name="brand" onchange="this.form.submit()">
+                        @foreach($brandList as $key => $name)
+                            <option value="{{ $key }}" @selected($brandKey === $key)>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                </form>
+            </div>
         </header>
 
         @yield('content')
