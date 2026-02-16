@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Billing Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "obsidian": "#050505",
+                        "obsidian-light": "#111111",
+                        "gold": "#D4AF37",
+                        "gold-dim": "#8A701E",
+                        "cream": "#F9F7F2",
+                        "charcoal": "#2C2C2C",
+                        "border-thin": "#333333"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #F5DF87 50%, #D4AF37 100%)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .text-gold-foil {
+                background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-size: 200% auto;
+                animation: shine 5s linear infinite;
+            }
+            .border-gold-foil {
+                border-image: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) 1;
+            }
+            .gold-glow {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            }
+            .paper-texture {
+                background-color: #F9F7F2;
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            }
+        }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .serif-font { font-family: 'Playfair Display', serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .invoice-paper { box-shadow: none; margin: 0; width: 100%; border: none; }
+            aside { display: none; }
+            header { display: none; }
+        }::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37; 
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-neutral-400 min-h-screen flex flex-col font-light selection:bg-gold selection:text-black">
+<header class="flex items-center justify-between border-b border-border-thin bg-obsidian/95 backdrop-blur-sm px-8 py-4 sticky top-0 z-50 transition-all duration-500">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="size-8 text-gold flex items-center justify-center border border-gold/30 rounded-sm">
+<span class="material-symbols-outlined !text-xl">diamond</span>
+</div>
+<h2 class="text-white text-xl font-serif italic tracking-wide">Luxe<span class="text-gold">Admin</span></h2>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-neutral-500 hover:text-gold text-xs uppercase tracking-[0.2em] transition-colors" href="#">Concierge</a>
+<a class="text-neutral-500 hover:text-gold text-xs uppercase tracking-[0.2em] transition-colors" href="#">Suites</a>
+<a class="text-gold text-xs uppercase tracking-[0.2em] border-b border-gold pb-1" href="#">Finance</a>
+<a class="text-neutral-500 hover:text-gold text-xs uppercase tracking-[0.2em] transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block group">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-neutral-600 group-focus-within:text-gold transition-colors">search</span>
+<input class="bg-transparent border-b border-neutral-800 text-neutral-300 pl-8 pr-4 py-1 text-sm focus:outline-none focus:border-gold w-48 transition-all placeholder:text-neutral-700 font-serif italic" placeholder="Search folio..."/>
+</div>
+<button class="relative group">
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-gold transition-colors font-light">notifications_active</span>
+<span class="absolute top-0 right-0 size-2 bg-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</button>
+<div class="size-9 rounded-full border border-gold/20 p-0.5 cursor-pointer hover:border-gold transition-colors">
+<div class="w-full h-full rounded-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDfeRhg3NQdieMCyRbtPxgKA0p4HANYOAH_848POeTEICEOAKqMVWSohKDLR9NwnDAe0I74I0WwjAzzv5luoZEfZ-3lxpghSo5e1qNmsznH1XCW15hN2bRa3JjXoXftAK4NqdtS1TRYj5CCIqEc_G2eK-pxIoYJwsW0X19Ei3gUlgjIJaKx8T1gdPedkt1d7X8fZQzEHjVvRewTX156d8d1wFBMp6afhh8NLgfhfdng1IIe1PEVXTzbeD3m5f5PgiwFmk_irayRR8w')"></div>
+</div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row flex-1 overflow-hidden h-[calc(100vh-73px)]">
+<aside class="w-full lg:w-72 bg-obsidian border-r border-border-thin flex flex-col no-print overflow-y-auto z-20">
+<div class="p-8 space-y-10">
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined text-gold font-light">payments</span>
+<span class="text-xs uppercase tracking-[0.15em] text-gold">Billing Manager</span>
+</div>
+<section class="space-y-6">
+<div class="flex items-center justify-between group cursor-pointer">
+<h3 class="text-xs font-serif italic text-neutral-500 group-hover:text-white transition-colors">Taxation Rules</h3>
+<span class="material-symbols-outlined text-[16px] text-neutral-600 group-hover:text-gold transition-colors">tune</span>
+</div>
+<div class="space-y-6 pl-2 border-l border-neutral-900">
+<div class="group">
+<label class="block text-[10px] uppercase tracking-wider text-neutral-600 mb-2 group-hover:text-gold transition-colors">GST Rate</label>
+<div class="flex items-center justify-between border-b border-neutral-800 pb-1 group-hover:border-neutral-600">
+<input class="bg-transparent border-none text-neutral-300 text-sm font-light focus:ring-0 p-0 w-full" type="number" value="18"/>
+<span class="text-neutral-600 text-xs">%</span>
+</div>
+</div>
+<div class="group">
+<label class="block text-[10px] uppercase tracking-wider text-neutral-600 mb-2 group-hover:text-gold transition-colors">Service Charge</label>
+<div class="flex items-center justify-between border-b border-neutral-800 pb-1 group-hover:border-neutral-600">
+<input class="bg-transparent border-none text-neutral-300 text-sm font-light focus:ring-0 p-0 w-full" type="number" value="5"/>
+<span class="text-neutral-600 text-xs">%</span>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex items-center justify-between group cursor-pointer">
+<h3 class="text-xs font-serif italic text-neutral-500 group-hover:text-white transition-colors">Brand Identity</h3>
+<span class="material-symbols-outlined text-[16px] text-neutral-600 group-hover:text-gold transition-colors">edit_square</span>
+</div>
+<div class="relative group cursor-pointer overflow-hidden border border-neutral-800 p-6 flex flex-col items-center justify-center gap-2 hover:border-gold/30 transition-all duration-500">
+<div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-neutral-600 group-hover:text-gold font-thin text-3xl transition-colors">add_photo_alternate</span>
+<span class="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-gold transition-colors">Update Emblem</span>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] uppercase tracking-wider text-neutral-600 mb-2">Invoice Footer</label>
+<textarea class="w-full bg-obsidian-light border border-neutral-800 text-neutral-400 text-xs font-serif italic p-3 focus:ring-0 focus:border-gold/50 transition-colors resize-none" rows="3">Thank you for choosing elegance.</textarea>
+</div>
+</section>
+<section class="pt-4 border-t border-neutral-900 space-y-3">
+<button class="w-full py-3 border border-gold/30 text-gold hover:bg-gold hover:text-obsidian text-xs uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-sm transition-transform group-hover:scale-110">print</span>
+                    Print Folio
+                </button>
+<button class="w-full py-3 border border-neutral-800 text-neutral-500 hover:border-neutral-600 hover:text-neutral-300 text-xs uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                    Offline Stay
+                </button>
+</section>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-obsidian relative">
+<div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(#333 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="max-w-[1400px] mx-auto p-6 lg:p-12 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12 no-print">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-neutral-600">
+<span>Admin</span>
+<span class="text-gold">/</span>
+<span>Billing</span>
+<span class="text-gold">/</span>
+<span class="text-neutral-300">Active Folio</span>
+</div>
+<h1 class="text-4xl lg:text-5xl text-white font-serif italic">
+                        Bill <span class="text-neutral-700 font-light not-italic text-3xl">#20231012-ADM01</span>
+</h1>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 text-neutral-500 hover:text-white text-xs uppercase tracking-widest transition-colors">Save Draft</button>
+<button class="px-8 py-3 bg-white text-obsidian hover:bg-gold hover:text-black text-xs font-bold uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                        Finalize &amp; Pay
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+<div class="xl:col-span-8 perspective-1000">
+<div class="paper-texture text-charcoal shadow-2xl relative min-h-[900px] mx-auto transition-transform duration-700 invoice-paper max-w-[800px] p-12 lg:p-16">
+<div class="flex justify-between items-start border-b border-charcoal/10 pb-8 mb-10">
+<div class="flex items-center gap-6">
+<div class="size-20 border border-charcoal/20 flex items-center justify-center p-4">
+<span class="material-symbols-outlined text-charcoal/40 text-4xl font-thin">spa</span>
+</div>
+<div>
+<h2 class="text-3xl font-serif text-charcoal tracking-wide mb-1">Blue Horizon</h2>
+<p class="text-xs uppercase tracking-widest text-charcoal/60">Maldives Resort &amp; Spa</p>
+<p class="text-[10px] text-charcoal/40 mt-1 font-serif italic">GSTIN: 22AAAAA0000A1Z5</p>
+</div>
+</div>
+<div class="text-right">
+<h3 class="text-sm font-bold uppercase tracking-[0.3em] text-charcoal/40 mb-2">Invoice</h3>
+<p class="text-2xl font-serif text-charcoal">#20231012-01</p>
+<p class="text-xs font-serif italic text-charcoal/60 mt-1">October 12, 2023</p>
+</div>
+</div>
+<div class="flex justify-between mb-12">
+<div>
+<p class="text-[9px] uppercase font-bold text-charcoal/40 tracking-widest mb-3 border-b border-charcoal/10 pb-1 w-max">Guest Details</p>
+<h4 class="font-serif text-xl text-charcoal mb-1">Mr. Johnathan Doe</h4>
+<div class="text-sm text-charcoal/70 font-light leading-relaxed">
+<p>Presidential Suite • Room 402</p>
+<p>john.doe@email.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[9px] uppercase font-bold text-charcoal/40 tracking-widest mb-3 border-b border-charcoal/10 pb-1 ml-auto w-max">Stay Duration</p>
+<div class="text-sm text-charcoal/80 font-serif">
+<p><span class="italic text-charcoal/50 mr-2">In:</span> Oct 10, 2023</p>
+<p><span class="italic text-charcoal/50 mr-2">Out:</span> Oct 13, 2023</p>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-charcoal/50 mt-2">3 Nights</p>
+</div>
+</div>
+<div class="mb-12">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] uppercase tracking-widest text-charcoal/50 border-b border-charcoal text-left">
+<th class="pb-3 font-normal w-1/2">Description</th>
+<th class="pb-3 font-normal text-center">Type</th>
+<th class="pb-3 font-normal text-center">Qty</th>
+<th class="pb-3 font-normal text-right">Rate</th>
+<th class="pb-3 font-normal text-right">Total</th>
+</tr>
+</thead>
+<tbody class="text-sm font-light text-charcoal">
+<tr class="border-b border-charcoal/5">
+<td class="py-4 pr-4">
+<p class="font-medium">Presidential Suite</p>
+<p class="text-[10px] text-charcoal/50 mt-0.5">Room Charges per night</p>
+</td>
+<td class="py-4 px-2 text-center text-[10px] uppercase tracking-wider text-charcoal/40">Room</td>
+<td class="py-4 px-2 text-center font-serif">3</td>
+<td class="py-4 px-2 text-right font-serif text-charcoal/70">$450.00</td>
+<td class="py-4 pl-4 text-right font-serif">$1,350.00</td>
+</tr>
+<tr class="border-b border-charcoal/5">
+<td class="py-4 pr-4">
+<p class="font-medium">Private Dinner Service</p>
+<p class="text-[10px] text-charcoal/50 mt-0.5">Order #FB-9921</p>
+</td>
+<td class="py-4 px-2 text-center text-[10px] uppercase tracking-wider text-charcoal/40">Dining</td>
+<td class="py-4 px-2 text-center font-serif">1</td>
+<td class="py-4 px-2 text-right font-serif text-charcoal/70">$85.00</td>
+<td class="py-4 pl-4 text-right font-serif">$85.00</td>
+</tr>
+<tr class="border-b border-charcoal/5">
+<td class="py-4 pr-4">
+<p class="font-medium">Mini-bar Consumables</p>
+<p class="text-[10px] text-charcoal/50 mt-0.5">Restock #FB-9945</p>
+</td>
+<td class="py-4 px-2 text-center text-[10px] uppercase tracking-wider text-charcoal/40">F&amp;B</td>
+<td class="py-4 px-2 text-center font-serif">1</td>
+<td class="py-4 px-2 text-right font-serif text-charcoal/70">$42.00</td>
+<td class="py-4 pl-4 text-right font-serif">$42.00</td>
+</tr>
+<tr class="no-print group hover:bg-charcoal/5 transition-colors">
+<td class="py-4 pr-4">
+<input class="bg-transparent border-none p-0 text-sm placeholder:italic placeholder:text-charcoal/30 text-charcoal focus:ring-0 w-full font-light" placeholder="Add manual charge..." type="text"/>
+</td>
+<td class="py-4 px-2 text-center">
+<select class="bg-transparent border-none text-[10px] uppercase tracking-wider text-charcoal/40 p-0 focus:ring-0 cursor-pointer text-center w-full">
+<option>Misc</option>
+<option>Spa</option>
+<option>Room</option>
+</select>
+</td>
+<td class="py-4 px-2 text-center"><input class="w-12 bg-transparent border-none p-0 text-center text-charcoal font-serif" type="number" value="1"/></td>
+<td class="py-4 px-2 text-right"><input class="w-20 bg-transparent border-none p-0 text-right text-charcoal font-serif" placeholder="0.00" type="number"/></td>
+<td class="py-4 pl-4 text-right">
+<button class="text-charcoal/40 hover:text-charcoal transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex justify-between items-end pt-6 border-t border-charcoal">
+<div class="flex items-center gap-6">
+<div class="bg-white p-2 border border-charcoal/10 shadow-inner">
+<div class="size-24 bg-cover bg-center mix-blend-multiply opacity-80" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgqQDNjsVA9ZiMtbHT2dWSGrlQeGwD436waPcivmkrW9TD_o7dumICqyw6bhCIQkkxZ_ioFZGkHALlhWyut5tmRyxt6uWg9r3DCSH4xxq5HtZYNDSix4AI0XgCAfc8MXKtX1QOq2FIiIuElWQTZgIyf1fwNVdvTrZInwirQinn_qJk_n55jXJ8jPRQEmZpzjuHkIALNzuTxRg8e6STGmH2CRwV4v-2eeBpopcMCf8Tata99gTT8ojYiou-en9I_hk6zeXmXibY0LM')"></div>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-[0.2em] text-charcoal font-bold">Payment QR</p>
+<p class="text-xs font-serif italic text-charcoal/60">Scan to settle instantly</p>
+</div>
+</div>
+<div class="w-72 space-y-3">
+<div class="flex justify-between text-xs text-charcoal/60">
+<span>Subtotal</span>
+<span class="font-serif">$1,477.00</span>
+</div>
+<div class="flex justify-between text-xs text-charcoal/60">
+<span>GST (18%)</span>
+<span class="font-serif">$265.86</span>
+</div>
+<div class="flex justify-between text-xs text-charcoal/60 border-b border-charcoal/10 pb-3">
+<span>Service (5%)</span>
+<span class="font-serif">$73.85</span>
+</div>
+<div class="flex justify-between items-baseline pt-1">
+<span class="text-sm font-bold uppercase tracking-widest text-charcoal">Total</span>
+<span class="text-3xl font-serif text-charcoal font-medium">$1,816.71</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center opacity-40">
+<p class="text-[9px] uppercase tracking-[0.4em] text-gold-dim">Blue Horizon Collection</p>
+</div>
+</div>
+</div>
+<div class="xl:col-span-4 space-y-8 no-print">
+<div class="bg-obsidian-light border border-border-thin p-8 relative overflow-hidden group hover:border-gold/20 transition-colors">
+<div class="absolute -right-6 -top-6 text-neutral-800 opacity-20">
+<span class="material-symbols-outlined text-[150px] font-thin">person</span>
+</div>
+<h3 class="text-xs font-serif italic text-neutral-500 mb-6 relative z-10">Guest Profile</h3>
+<div class="flex items-center gap-4 mb-6 relative z-10">
+<div class="size-14 rounded-full bg-gradient-to-br from-gold to-yellow-700 p-[1px]">
+<div class="w-full h-full rounded-full bg-obsidian flex items-center justify-center">
+<span class="font-serif text-xl text-gold">JD</span>
+</div>
+</div>
+<div>
+<p class="text-white font-serif text-lg">Johnathan Doe</p>
+<p class="text-[10px] uppercase tracking-widest text-gold mt-1">Gold Member</p>
+</div>
+</div>
+<div class="space-y-4 relative z-10 border-t border-neutral-900 pt-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-neutral-500 uppercase tracking-wider">Lifetime Value</span>
+<span class="text-white font-serif italic">$12,450.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-neutral-500 uppercase tracking-wider">Pending</span>
+<span class="text-gold font-serif text-lg">$1,816.71</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-xs font-serif italic text-neutral-500 px-1">Quick Charge Additions</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="h-24 border border-border-thin bg-obsidian-light hover:bg-neutral-900 hover:border-gold/40 transition-all flex flex-col items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-neutral-600 group-hover:text-gold font-light text-2xl transition-colors">bed</span>
+<span class="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">Extra Bed</span>
+</button>
+<button class="h-24 border border-border-thin bg-obsidian-light hover:bg-neutral-900 hover:border-gold/40 transition-all flex flex-col items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-neutral-600 group-hover:text-gold font-light text-2xl transition-colors">spa</span>
+<span class="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">Spa</span>
+</button>
+<button class="h-24 border border-border-thin bg-obsidian-light hover:bg-neutral-900 hover:border-gold/40 transition-all flex flex-col items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-neutral-600 group-hover:text-gold font-light text-2xl transition-colors">local_taxi</span>
+<span class="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">Transport</span>
+</button>
+<button class="h-24 border border-border-thin bg-obsidian-light hover:bg-neutral-900 hover:border-gold/40 transition-all flex flex-col items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-neutral-600 group-hover:text-gold font-light text-2xl transition-colors">wine_bar</span>
+<span class="text-[10px] uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">Mini Bar</span>
+</button>
+</div>
+</div>
+<div class="pt-6 border-t border-border-thin">
+<h3 class="text-xs font-serif italic text-neutral-500 mb-4">Activity Log</h3>
+<div class="space-y-6 relative pl-2 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1px] before:bg-neutral-800">
+<div class="relative pl-6">
+<div class="absolute left-0 top-1.5 size-[7px] rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
+<p class="text-xs text-neutral-300">System auto-fetched <span class="text-white">Dinner Order #FB-9921</span></p>
+<p class="text-[10px] text-neutral-600 mt-1 font-serif italic">2 hours ago</p>
+</div>
+<div class="relative pl-6">
+<div class="absolute left-0 top-1.5 size-[7px] rounded-full bg-neutral-700"></div>
+<p class="text-xs text-neutral-300">Admin updated tax configuration</p>
+<p class="text-[10px] text-neutral-600 mt-1 font-serif italic">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

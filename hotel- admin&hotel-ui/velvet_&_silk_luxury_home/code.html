@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velvet &amp; Silk Luxury Home</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#830fbd",
+              "background-light": "#f7f6f8",
+              "background-dark": "#1c1022",
+              "gold": "#d4af37",
+              "gold-light": "#f9e58e",
+              "silk-charcoal": "#2d2433",
+            },
+            fontFamily: {
+              "display": ["Noto Serif", "serif"],
+              "sans": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'gold-pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')", // Placeholder for subtle texture
+            }
+          },
+        },
+      }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom scrollbar for luxury feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1c1022; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a3b52; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #830fbd; 
+        }
+        
+        .text-gold-gradient {
+            background: linear-gradient(to right, #d4af37, #f9e58e, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .shimmer-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, transparent 33%, rgba(255,255,255,0.05) 50%, transparent 66%);
+            background-size: 200% 100%;
+            animation: shimmer 15s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-display antialiased overflow-x-hidden transition-colors duration-300">
+<!-- 11. Multi-language/currency selector & Nav -->
+<nav class="fixed w-full z-50 transition-all duration-300 bg-background-light/90 dark:bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center gap-3">
+<span class="material-icons-outlined text-primary text-4xl">diamond</span>
+<div>
+<span class="text-2xl font-bold tracking-widest text-primary dark:text-white uppercase block leading-none">Velvet</span>
+<span class="text-sm tracking-[0.3em] text-gold uppercase block leading-none mt-1">&amp; Silk</span>
+</div>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm uppercase tracking-widest" href="#">Suites</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm uppercase tracking-widest" href="#">Dining</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm uppercase tracking-widest" href="#">Wellness</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm uppercase tracking-widest" href="#">Offers</a>
+</div>
+<!-- Utilities -->
+<div class="hidden md:flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs text-gray-400 border-r border-gray-700 pr-4">
+<button class="hover:text-primary transition-colors">EN</button>
+<span>/</span>
+<button class="hover:text-primary transition-colors">USD</button>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full text-sm uppercase tracking-widest transition-transform transform hover:scale-105 shadow-lg shadow-primary/30">
+                        Reserve
+                    </button>
+</div>
+<!-- Mobile menu button -->
+<div class="md:hidden flex items-center">
+<button class="text-gray-300 hover:text-white">
+<span class="material-icons-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- 1. Overlapping layered Hero with gold leaf patterns -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<!-- Background Image Layer -->
+<div class="absolute inset-0 z-0">
+<img alt="Luxury hotel lobby with dark velvet textures and golden lighting" class="w-full h-full object-cover opacity-60" data-alt="Dark moody luxury hotel lobby interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfekkhAqET2Wk6U_xovyxEbBp3rfb86po-bMxSrH3P3AHhYJtIXq7yiC74gdzA8pfVdcygob4tdP6j0xG4sOaN7Ed1QdaGwaqbTq3lcwMWrWGCmvE0h3GbfdJ2agmZmpmWxu5WQ5eBEurATMdAR6L4S6OHfizDhqXV9Zhizhyp6LI8GkBGJT_VR6LPbQCPO_Ra1_MIzCtpNNvKllrsfkMgor5IAZnXHbQXeWmhXIGCwyBNHqQyJC_-BU83YB4k7bidWqp2Jx5bNNI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
+</div>
+<!-- Gold Leaf Pattern Overlay -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none z-10 hidden lg:block">
+<img alt="Abstract gold leaf texture pattern" class="w-full h-full object-cover mix-blend-screen mask-image-gradient" data-alt="Abstract golden texture overlaying the right side" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3-FXEonRJ21ALfJ4601M8a07d8pgyeMWLWHxHeEaloN0tVX8hWM7prp6qY_eB1XXy_e4NZP6QNRIK3HG-YtGEladpjXFtmtvdnSDZYT4Y94DcslQ_NL0dIDJhBGHSyR6Je9iBHBK432DErK2SzsxnMtJOyX5YFm07EZ0SeEDskdRYdzqYp-FSlVA9dySMLRjls4Owy1cWK30fSDqdFpdMlCczFn2BSYH1UyQkc_RfI3F7GnF5yc99hK5pOigc8Su0hJJoqKKFVms"/>
+</div>
+<!-- Content Layer -->
+<div class="relative z-20 text-center px-4 max-w-5xl mx-auto">
+<div class="inline-block mb-6 animate-fade-in-up">
+<span class="py-1 px-4 border border-gold/30 rounded-full text-gold text-xs uppercase tracking-[0.4em] bg-black/30 backdrop-blur-sm">The Art of Living</span>
+</div>
+<h1 class="text-5xl md:text-7xl lg:text-9xl font-display text-white mb-6 leading-tight drop-shadow-2xl">
+<span class="block italic font-light opacity-90">Deep Velvet</span>
+<span class="block font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">&amp; Silk</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light italic">
+                An sanctuary of shadows and light, where every texture tells a story of unparalleled opulence.
+            </p>
+<!-- Booking Widget Overlap -->
+<div class="bg-background-dark/80 backdrop-blur-xl border border-white/10 p-2 md:p-4 rounded-xl md:rounded-full inline-flex flex-col md:flex-row gap-2 shadow-2xl shadow-primary/20 max-w-4xl mx-auto w-full">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
+<div class="bg-white/5 rounded-lg md:rounded-full px-6 py-3 text-left group hover:bg-white/10 transition-colors cursor-pointer">
+<label class="block text-[10px] uppercase tracking-widest text-primary/80 mb-1">Check In</label>
+<span class="text-sm text-white font-sans">Oct 24, 2023</span>
+</div>
+<div class="bg-white/5 rounded-lg md:rounded-full px-6 py-3 text-left group hover:bg-white/10 transition-colors cursor-pointer">
+<label class="block text-[10px] uppercase tracking-widest text-primary/80 mb-1">Check Out</label>
+<span class="text-sm text-white font-sans">Oct 29, 2023</span>
+</div>
+<div class="bg-white/5 rounded-lg md:rounded-full px-6 py-3 text-left group hover:bg-white/10 transition-colors cursor-pointer">
+<label class="block text-[10px] uppercase tracking-widest text-primary/80 mb-1">Guests</label>
+<span class="text-sm text-white font-sans">2 Adults</span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white rounded-lg md:rounded-full font-medium tracking-widest uppercase text-xs transition-all shadow-lg shadow-primary/40 h-full min-h-[50px]">
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] uppercase tracking-widest text-white">Explore</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+</div>
+</header>
+<!-- 2. 'Suite Sanctuary' video background section -->
+<section class="relative py-32 overflow-hidden bg-background-dark">
+<div class="absolute inset-0 z-0">
+<!-- Simulating Video Background with an Image for this output, usually <video> -->
+<img alt="Cinematic shot of a luxury hotel suite bedroom" class="w-full h-full object-cover opacity-30 scale-105" data-alt="Slow pan of a dark, luxurious hotel suite bedroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUL3LhV5RF0rpdojeW05RsfXqwphOSppQzhoLlstEz77mcRLfURDTOCE6lFkEMTRZqlqIUi5mODMqGZBCQV1XzyLd0atd4hcOcXP2GpBL443aY5WaxicFLM-O9_xoKvHrPWFUiBkb-SJ470EAOOc0tlhgYucQCLNr0dD3o3fSXsUPHYHG3juCoA5ysoXfw852ealSXc1-qJSmApDpGpveZJpYOWGw_pXMNcj8ATrxqg2W-5GotnRDwmGu9HcmW8hw0crjDlPouurI"/>
+</div>
+<div class="relative z-10 container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-white/10 pb-8">
+<div>
+<h2 class="text-4xl md:text-6xl text-white mb-2">Suite Sanctuary</h2>
+<p class="text-primary/80 uppercase tracking-widest text-sm">Rest in Absolute Silence</p>
+</div>
+<a class="group flex items-center gap-2 text-white mt-6 md:mt-0" href="#">
+<span class="uppercase tracking-widest text-xs group-hover:text-primary transition-colors">View All Suites</span>
+<span class="material-icons-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer">
+<img alt="The Velvet Royal Suite Interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Interior of the Velvet Royal Suite with dark walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD89-UtEMgqAZXbHzWkyriUVYseefgywnLZuVOVSR5_9Up4xZwE1vBzFvKUYS_xY8r12Ctfb8oRsr5ggQDd9j__iP3JrIg4Kt3oWrPsugUGCRw_ngFUumgufvMHjEC5eyXgdquK4AkXCNFtGIcXt9b9payymFg_MdbxrkPLLqGmgfBbJ5cimUFJJ9e8qAGuLnte9X4hMW-LocJ2qTdHvbfVWvt9GXdt76taCZEx2C9ssN6iA-EoLXX4qEkkiD-pr9ZugVpuudgrBPM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-1 italic">The Royal Velvet</h3>
+<p class="text-gray-400 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 font-sans">
+                            Featuring floor-to-ceiling silk drapes and a private terrace overlooking the city skyline.
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer mt-0 md:-mt-12">
+<img alt="Presidential Silk Suite" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Presidential suite living area with gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgDe4Vl3uwpZN7ap5ECIuCCDU4JxEGzzEdDgMbYmyMlDDDrx9TYcsgsOnfwk7LlJExF7w0FFAnww459fn8fgGM3zCBd9sQGIVZLHJGJ-Ck5FGz--p74Zk_RQIOdiep_ucSThSrMpUEcW7Zx8FonuSfPaP3nvTr6hDUlqiEn6FwqVgkpti_ggRXAIbNWJD4pADbbetMdRu8LhL2E2H8ZKsE2ZfcS7H16p4D_Drv3qH08r5oOP9OOjOGcj4ZSr86LsB7lb2kgcUsTI4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-1 italic">Presidential Silk</h3>
+<p class="text-gray-400 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 font-sans">
+                            A masterclass in design, offering a dedicated concierge and private elevator access.
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer">
+<img alt="Penthouse Loft" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern luxury penthouse bedroom with large window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1arzgZU_vd67hotEHGvlmLv16g2rayxOktLNFTxfm-cz7ASkxsNWdohSiYNSSvctmqPq2KQeMkSph_iHea_eBCUMp9Uleh5JTFYEUbSLo6jyxcH8wohyE3Rrztc0mZynPh6gmQTGmNAIKqOMXfvM2H2jAX1x3i3zIrYI_eqvf54Mf_Y1mbgLQsqf1cfBpGRb-j9RxpHCrg-HvtgNuwjas79Lgdq984ohN9EV4my_R7XLxLF-idKU2L7d1ywNi8t4Qj5ubEL06oIc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-2xl text-white mb-1 italic">Obsidian Penthouse</h3>
+<p class="text-gray-400 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 font-sans">
+                            Dramatic dark tones meet panoramic views. The ultimate expression of modern luxury.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. 'Fine Dining' with full-width parallax imagery -->
+<section class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-fixed bg-center bg-cover" data-alt="High contrast fine dining dish plating overhead shot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAR1LM3z-WkhhQiw5vwt9PFi3sP5LU3ue05Uekf7mT9wsYEPEp06e9LPqfVsDE22CatRH8eV3xkvsQHxbasN-Dy03rcdiMic9vFApB3iYDBEFlJawCB9HOwlnyrIqtGiyr6f9zx8wekbbrxnu9bTLgn8Y7dzawlEXKQk5UvHFQBIDIeWDuSbTjKP0XpxzD3N1hGfb3PLeAYEmDtlCiQc1SD6ITYC9WlrxicFT8loFc9N1liedTESy8gltyBmtWv7AFdobmvUCkXovQ');">
+<div class="absolute inset-0 bg-black/60"></div>
+<div class="relative z-10 text-center max-w-4xl px-6">
+<span class="text-gold tracking-[0.5em] uppercase text-xs mb-4 block">Gastronomy</span>
+<h2 class="text-5xl md:text-8xl text-white font-display italic mb-8">Culinary Art</h2>
+<div class="bg-background-dark/80 backdrop-blur-md p-8 md:p-12 rounded-xl max-w-2xl mx-auto border border-white/10 shadow-2xl">
+<p class="text-gray-300 mb-8 leading-relaxed font-light text-lg">
+                    Experience a symphony of flavors curated by Michelin-starred chefs. Our menus are a testament to the finest ingredients, sourced locally and prepared with passion.
+                </p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-white transition-all rounded text-sm uppercase tracking-widest">
+                        View Menu
+                    </button>
+<button class="px-8 py-3 bg-white text-background-dark hover:bg-gray-200 transition-all rounded text-sm uppercase tracking-widest">
+                        Book Table
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. 'Curated Wellness' with soft-glow ambient lighting effects -->
+<section class="relative py-32 bg-silk-charcoal overflow-hidden">
+<!-- Ambient Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 order-2 lg:order-1 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
+<img alt="Woman relaxing in a dark luxury spa pool" class="w-full h-full object-cover" data-alt="Serene spa pool with dark stone and ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzyqIKnYWXY9jxP4dzD8-uSXXU9DKuSB0ehVQTOTUySk1itQyD4BWiyKQyB50vM8_xAqpotltjdTDulEFNNV7lPW2Uo3m2-1GHmDyPpmjgQt2zTay-GTq1757HiUj1oC6sA2MAiF2bbiGK_-2NoZCtLX7auXktFk3FadWb1gHG9lzy8ZT6vmUAgSrNynS-DF0tR5MxaYyeFOnIS8UhkVTm_hhH1xfhrGOO9kNvTJ8a1XuJFYaIfkpS0zWdeaoObtgglBhz0JvccHw"/>
+</div>
+<!-- Overlapping image -->
+<div class="absolute -bottom-10 -right-10 w-2/3 rounded-xl overflow-hidden shadow-2xl border-4 border-silk-charcoal hidden md:block">
+<img alt="Massage therapy session detail" class="w-full h-full object-cover" data-alt="Close up of massage therapy with oils" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDutpJj_OGTiSvQX7s5c7jiBxeQBnaoDWSgauTHgG-q7jQtpA4nw-5j_HGfhMGmMvnqN-51KNsFmg2SlbeOCE97-olzeDJomtUCxuWYu-vIEnggDJFxt_9RTCbvsKoQF6NKFDIJdsaxz488rNeT_yso0kUvwb6w1COl6AZHm8FX0OKl6XpUOuN0LdlErZguotnKqLQ8BfQ1nKvv9yRsSopOxsuX5TrL8M2l7VBr_vl2l2ufMiMXaiMsQ601qmER252bzHjHKoyvhj8"/>
+</div>
+</div>
+<div class="lg:w-1/2 order-1 lg:order-2">
+<span class="text-primary tracking-[0.3em] uppercase text-xs mb-2 block font-bold">Wellness</span>
+<h2 class="text-4xl md:text-6xl text-white mb-6">Ethereal Spas</h2>
+<p class="text-gray-400 mb-6 font-sans font-light leading-relaxed">
+                        Surrender to tranquility in our world-class spa facilities. From hydrotherapy pools to bespoke massage treatments, find your balance in an atmosphere of pure serenity.
+                    </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-gray-300 font-light">
+<span class="material-icons-outlined text-primary mr-3 text-sm">spa</span> Holistic Therapies
+                        </li>
+<li class="flex items-center text-gray-300 font-light">
+<span class="material-icons-outlined text-primary mr-3 text-sm">pool</span> Thermal Suites
+                        </li>
+<li class="flex items-center text-gray-300 font-light">
+<span class="material-icons-outlined text-primary mr-3 text-sm">self_improvement</span> Mindfulness Studios
+                        </li>
+</ul>
+<a class="text-gold hover:text-white transition-colors border-b border-gold hover:border-white pb-1 inline-block text-sm uppercase tracking-widest" href="#">
+                        Discover Treatments
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. 'Global Destinations' map for multi-property -->
+<section class="py-24 bg-background-dark relative">
+<div class="container mx-auto px-6 text-center mb-12">
+<h2 class="text-3xl md:text-5xl text-white font-display mb-4">Our World</h2>
+<p class="text-gray-400 font-sans max-w-xl mx-auto">Iconic addresses in the world's most desirable locations.</p>
+</div>
+<div class="relative w-full h-[500px] bg-[#110a16] overflow-hidden">
+<!-- Abstract Map Image Background -->
+<img alt="World map at night from space" class="w-full h-full object-cover opacity-20 grayscale" data-alt="Dark stylized world map visualization" data-location="World Map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtGUqK7xhrrtWwktj3efpCUdOMBpVsKFqu2m4K2gUwIPHSn04ud_IL9qpIMPafW0tx8dNPAcgJ_Z96W1saql_11ak2HbA66wqmzXASl2ejuzPKOtMfPwPfKAWoEg7txSv5xPxYXTMHyDEn6wc-xS1hVXdhl2pxz6q2RViV2jthEC-9dUJJC7YM4zl-4snK8OYYuz826K8Rbq2OmI2Jue6dvI_r-tXr678nj4_etZNZCf29tByzntq7tbpaIGAr-bEJ-h63fENfhXU"/>
+<!-- Map Markers -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- Pin: Paris -->
+<div class="absolute top-[32%] left-[48%] flex flex-col items-center group pointer-events-auto cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-gold animate-pulse shadow-[0_0_15px_#d4af37]"></div>
+<div class="mt-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Paris
+                    </div>
+</div>
+<!-- Pin: Dubai -->
+<div class="absolute top-[45%] left-[58%] flex flex-col items-center group pointer-events-auto cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-primary animate-pulse shadow-[0_0_15px_#830fbd]"></div>
+<div class="mt-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Dubai
+                    </div>
+</div>
+<!-- Pin: New York -->
+<div class="absolute top-[35%] left-[28%] flex flex-col items-center group pointer-events-auto cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-gold animate-pulse shadow-[0_0_15px_#d4af37]"></div>
+<div class="mt-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        New York
+                    </div>
+</div>
+<!-- Pin: Tokyo -->
+<div class="absolute top-[38%] left-[82%] flex flex-col items-center group pointer-events-auto cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-primary animate-pulse shadow-[0_0_15px_#830fbd]"></div>
+<div class="mt-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Tokyo
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. 'Art & Culture' property gallery -->
+<section class="py-24 bg-background-light dark:bg-[#1a1020]">
+<div class="container mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-primary tracking-[0.3em] uppercase text-xs block mb-2 font-bold">Heritage</span>
+<h2 class="text-4xl text-gray-900 dark:text-white">Art &amp; Culture</h2>
+</div>
+<div class="hidden md:flex gap-2">
+<button class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all text-gray-500">
+<span class="material-icons-outlined text-sm">arrow_back</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all text-gray-500">
+<span class="material-icons-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-[600px] md:h-[500px]">
+<div class="md:col-span-2 h-full relative group overflow-hidden rounded-lg">
+<img alt="Classical statue in hallway" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Marble statue in a dimly lit hallway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJnqboRKMzdwEx-uh_-JztTO844cypGGSMTa9HGE7NiHITn1F39eUcgKJyGVFHb-Z6XZr_HOhmtnOhgUbZ3SqOdFnDdMHf7QTH2uR8uh2k4z4Zaye_3GzIi7t_dl0r7pNI_0LUl-uMj7JgJi-BkJYPYi94zIbPlRNDbOiWgPKZZ9S2URnZNi59AJ1fYLhKx1cDYmxic_NcdE_LUxS3pK_t7Mv_wblaWh9Khh11bAJL3dxir0ZGA4L9VecNdpt8-gdznWHqJfvtl-s"/>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+<p class="text-white font-display text-xl italic">The Corridor of Whispers</p>
+</div>
+</div>
+<div class="md:col-span-1 flex flex-col gap-4 h-full">
+<div class="h-1/2 relative group overflow-hidden rounded-lg">
+<img alt="Interior detail with gold frames" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Ornate gold framed mirror on dark wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiz6CffGDMBJ1FJyADWFjqTPuZqE2VS4Z8h4LbQOIeAQbS-gT1c3HpNxOP-IAbI-PcJ1K_E6T92F5mDwJI1BRcVLFFCuSPLBmbRuFCpORK6DlFH1Tfsgi3TeBU-EqmsgJHuMxRzt3U7OLQjndQ_5r9iiG65euzR9eYvhfP_7NNsyrTVR5o9-yyOF6XrLPHVh3hF-fIshF0Mczpknc81-3oqQm8tkC4P6JgpCe4rA5SbCP45QS_Jx8PXE7E2FKpxyKZUERDsclWfgk"/>
+</div>
+<div class="h-1/2 relative group overflow-hidden rounded-lg">
+<img alt="Modern art installation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Contemporary abstract sculpture in lobby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrye6o4Nv6ySLn2iDTMDydpX0jcEFth27zeh8jFIDAktBuMRSKbqvjRiSOs2uLNikShmsx2xU07zfswb8p4V9DKJf1C_Qd0fMsiAVcV4h9fj8VeIgvhbUQOSd7dAtXFySOkU0yJMm_ulSZ4gVri3DQQq4WUkVsW-PcudU_XF92qhbS515e0HxmFsqo5fKzDLFrAX--3XPJHpmrsWoG9b9tasQzqrMdZGUViwvaiJAgs5faNz7T7qtaQkSEy0noc-lbxehYYHzn0ew"/>
+</div>
+</div>
+<div class="md:col-span-1 h-full relative group overflow-hidden rounded-lg">
+<img alt="Lobby Grand Piano" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Grand piano in a luxurious lounge area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXFOhPnCvRdbTLj7OpeG_yP8STG_1KhA0o60No6TUVaZNMfOt7KI7ZsJlmhqlwEhIXw4fQpWZ2Biwd5PfrlOqnpB9tBh1rXIYbavE3_g8LTdwHvBhmK7tDT7W1dSqsUPRxHWfW4XLRT6Qnms0-rOD46bSkb6CH0PbyGdcXo20n1YUYImBnNOa8R2ia90_V9ztCv1QJznEPmk-joOyDkjuYx_p-nJedGbyN_3GUC5jWsLuSgDl0GOMRQzEMvid_tYWR7c8U8IrDgPA"/>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent">
+<p class="text-white font-display text-xl italic">Melodies at Dusk</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. 'Guest Stories' video testimonials -->
+<section class="py-24 bg-silk-charcoal text-center">
+<div class="container mx-auto px-6">
+<span class="text-gold-light opacity-80 tracking-[0.2em] uppercase text-xs mb-3 block">Testimonials</span>
+<h2 class="text-3xl md:text-4xl text-white font-display italic mb-12">Guest Chronicles</h2>
+<div class="flex flex-col md:flex-row gap-8 justify-center">
+<!-- Testimonial 1 -->
+<div class="relative group cursor-pointer w-full md:w-1/3">
+<div class="aspect-video bg-gray-800 rounded-lg overflow-hidden relative">
+<img alt="Guest portrait" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" data-alt="Silhouette of a guest looking out a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm4exXuZejgikV8PlR2iG-Dhks8v8mg55-F5DtR16jQKuoF6rLlqdOpRcaIDhxL_b31YuwAweMEaq1wc_aa_symiNgvXhW1tHxgIXsOvctzexB08elfD7DziDzL77RSna5VUNdEP6gaGxxEAZJ1A8stKxLlarkPb6HnxF7VtNPYDRNOxN4MqHgWlBX-lYse7erKyN-C9s6rYSfikCHW46ehRELosRE_5IJDL8-8DSpwZzBavMGxvZIkUN0uFTNwACeQwAVeLWA6Xs"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined text-white text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-4 text-left">
+<p class="text-white text-lg font-display">"Unforgettable serenity."</p>
+<p class="text-gray-400 text-sm mt-1">Elena R. - Stayed in Paris</p>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="relative group cursor-pointer w-full md:w-1/3">
+<div class="aspect-video bg-gray-800 rounded-lg overflow-hidden relative">
+<img alt="Guest portrait male" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" data-alt="Man smiling in a suit in the lobby" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV2i_seJgYeZ8uRTQ5Ud3ZE_3Jo2Sxypiv2jtTdXDOJMvG84gyWFQSTI8WerNp0tb5uEPFmShivaXH5jLq51C_smj1cP7bByAfCTf7EqRCvJlbdGXehHJrb1pv-Um86MlS9jtK1G-rxXjJi25IDqSjyBreKQqK_QBaQhNMpwDykfBHgIcrZ_PJQkwwjoMpidND3BLPyZrv5kj9kiMPb_UV0P0ut2vnQNlW4xCCWG071VVaUhw42WjG30cQiYM9phFjF_Gq4B4Cy28"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined text-white text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-4 text-left">
+<p class="text-white text-lg font-display">"Service beyond expectation."</p>
+<p class="text-gray-400 text-sm mt-1">James T. - Stayed in Tokyo</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. 'Bespoke Offers' with animated timers -->
+<section class="py-24 bg-gradient-to-b from-background-dark to-primary/10">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl text-white font-display mb-12 text-center">Privileged Access</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<!-- Offer Card 1 -->
+<div class="bg-[#1a1a1a] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors group">
+<div class="h-64 overflow-hidden relative">
+<img alt="Resort pool at sunset" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Luxury resort pool area at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5NJ2Hi8lmlrLwh94YbDhzlFyYFYdjQuQam3uNFc40a1fL76bd_jTIqkRbJwfiQNFaxjubvqONBneBaVpW4YsaLGyaOzEcvikilZy9z50qdpMuPsmqrU-dp8dP00-bqgcbQh-_foynA9UBeNuGsbHhDYe7E7odFmJVhqdbajmgkZ3-4v-0JcEyQ25NrSBQpPOZXRPhBJyuLXN3NtfYUYDH0vnQtcUo2Qs6Oham1rDlpQxpVB2MVvTYAY0VJwCYdqApJsmKtjhVzrM"/>
+<div class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-widest">
+                            Exclusive
+                        </div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl text-white font-display">The Autumn Escape</h3>
+<div class="text-right">
+<p class="text-xs text-gray-400 uppercase tracking-wide">Ends In</p>
+<p class="text-gold font-mono">04:12:33</p>
+</div>
+</div>
+<p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Enjoy a complimentary third night and a private dining experience when you book a suite this season.
+                        </p>
+<button class="w-full py-3 border border-white/20 text-white uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-colors rounded">
+                            Claim Offer
+                        </button>
+</div>
+</div>
+<!-- Offer Card 2 -->
+<div class="bg-[#1a1a1a] border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors group">
+<div class="h-64 overflow-hidden relative">
+<img alt="Couples massage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Relaxing couple massage setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlYO8wW6W4BK_tfF1baSnw6r7eZ_Ze2iqR5NCTOoG3U9gRTRP67vS9MIrB-ZENwgtOkTK7GXhq-k9Z3QCYkRlIh1RH0yURO9i3XYdOBky6Ii6svPMVGXGI25IerMCBLWHy64mQjWb11_UHe53A1puj54vFo4I1dccHNDJfPI8hzhPD1oS9gkjla0TtpSmaw8odqP-DNFFK95v4RMuqqfYzCHYPYlXbk3BJanUQl3yVF6SNWRV9VkR4E6rZ74sWyDZbqwF8fwBsVKc"/>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-widest">
+                            Limited
+                        </div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl text-white font-display">Wellness Retreat</h3>
+<div class="text-right">
+<p class="text-xs text-gray-400 uppercase tracking-wide">Ends In</p>
+<p class="text-gold font-mono">12:08:45</p>
+</div>
+</div>
+<p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            A curated weekend of mindfulness, spa treatments, and organic culinary delights.
+                        </p>
+<button class="w-full py-3 border border-white/20 text-white uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-colors rounded">
+                            Claim Offer
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. 'Sustainability & Ethics' block -->
+<section class="py-20 bg-background-light dark:bg-[#251e29]">
+<div class="container mx-auto px-6 flex flex-col items-center text-center">
+<span class="material-icons-outlined text-4xl text-green-700/70 mb-4">eco</span>
+<h2 class="text-2xl md:text-3xl text-gray-900 dark:text-white font-display mb-4">Conscious Luxury</h2>
+<p class="text-gray-600 dark:text-gray-300 max-w-2xl mb-8 leading-relaxed font-light">
+                We believe that true luxury lies in harmony with nature. Our commitment to sustainability ensures that your stay supports local communities and preserves the environment for generations to come.
+            </p>
+<a class="text-primary hover:text-primary/80 font-medium text-sm border-b border-primary pb-1" href="#">Read our Sustainability Report</a>
+</div>
+</section>
+<!-- 10. 'Contact the Concierge' direct link -->
+<!-- Floating Concierge Button -->
+<div class="fixed bottom-8 right-8 z-40">
+<button class="flex items-center gap-3 bg-white text-background-dark px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform group">
+<div class="flex flex-col items-start">
+<span class="text-xs uppercase tracking-widest font-bold text-primary">Concierge</span>
+<span class="text-sm font-display italic">How may we assist?</span>
+</div>
+<div class="bg-primary/10 rounded-full p-2 group-hover:bg-primary/20 transition-colors">
+<span class="material-icons-outlined text-primary">chat_bubble_outline</span>
+</div>
+</button>
+</div>
+<!-- 12. Luxury footer with property links -->
+<footer class="bg-background-dark border-t border-white/5 pt-20 pb-10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<!-- Brand -->
+<div class="md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-icons-outlined text-primary text-2xl">diamond</span>
+<span class="text-xl font-bold text-white uppercase tracking-widest">Velvet <span class="text-gold text-xs align-top">&amp; Silk</span></span>
+</div>
+<p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        An exquisite collection of luxury properties designed for the discerning traveler.
+                    </p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-icons-outlined">facebook</span></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="fab fa-instagram"></i><!-- Placeholder for custom icon if needed, using material for consistency --><span class="material-icons-outlined">photo_camera</span></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-icons-outlined">alternate_email</span></a>
+</div>
+</div>
+<!-- Links 1 -->
+<div>
+<h4 class="text-white text-sm uppercase tracking-widest mb-6">Properties</h4>
+<ul class="space-y-3 text-sm text-gray-500 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Parisian Velvet</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tokyo Silk</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Dubai Gold</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">New York Loft</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Swiss Alpine</a></li>
+</ul>
+</div>
+<!-- Links 2 -->
+<div>
+<h4 class="text-white text-sm uppercase tracking-widest mb-6">Experience</h4>
+<ul class="space-y-3 text-sm text-gray-500 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Fine Dining</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Wellness &amp; Spa</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Private Events</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Concierge Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+</ul>
+</div>
+<!-- Newsletter -->
+<div>
+<h4 class="text-white text-sm uppercase tracking-widest mb-6">Newsletter</h4>
+<p class="text-gray-500 text-xs mb-4">Subscribe for exclusive offers and updates.</p>
+<form class="flex flex-col gap-3">
+<input class="bg-white/5 border border-white/10 rounded px-4 py-2 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your Email Address" type="email"/>
+<button class="bg-primary text-white text-xs uppercase tracking-widest py-3 rounded hover:bg-primary/80 transition-colors">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-600 text-xs">© 2023 Velvet &amp; Silk Hospitality. All rights reserved.</p>
+<div class="flex gap-6 text-xs text-gray-600">
+<a class="hover:text-gray-400" href="#">Privacy Policy</a>
+<a class="hover:text-gray-400" href="#">Terms of Service</a>
+<a class="hover:text-gray-400" href="#">Cookie Settings</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

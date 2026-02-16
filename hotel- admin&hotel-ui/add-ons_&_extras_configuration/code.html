@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add-ons &amp; Extras | Hotel Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#135bec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111722;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-200 antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-[#111722] dark overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#232f48] px-10 py-3 bg-[#111722] sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-3xl">hotel_class</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">LuxeAdmin</h2>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Bookings</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Properties</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-4 mt-4" href="#">Add-ons &amp; Extras</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#92a4c9] flex border-none bg-[#232f48] items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#232f48] h-full placeholder:text-[#92a4c9] px-4 rounded-l-none pl-2 text-sm font-normal" placeholder="Search resources..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#232f48] text-white hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#232f48] text-white hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkA-5dAEOzpfVwFO5JCQwQ7bs6E1hMYHWlcOZZFxKHimXcIYgVxX3xjuhyXH62GRV28IUAcxSLBCleo1_MaHl8t8B3rNLoVI04OUrs813TVK-fiNf7-TnMNHzAj3OgVC46kAPBBqYQe_xb4PfvNxTG_avhVv1FVUmipkpjRmQwq3lUNL7gQtcNTxC_vqThmM70HZYV33l_kV1H9cyXfOv7O9f_GQzRclY0psxt0Paune5jh-B3Pjsr_9S2PSATyuNTJzoujc32CAI");'></div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-[calc(100vh-64px)] overflow-y-auto custom-scrollbar px-10 py-8">
+<!-- Header Section -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<div>
+<h1 class="text-white text-3xl font-bold tracking-tight">Add-ons &amp; Extras</h1>
+<p class="text-slate-400 mt-1">Manage supplementary services and upsell items across your properties.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Create New Extra</span>
+</button>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-6 p-2 bg-[#1a2233] rounded-xl border border-[#232f48]">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#232f48] rounded-lg border border-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-lg">filter_list</span>
+<select class="bg-transparent border-none text-sm text-white focus:ring-0 cursor-pointer pr-8">
+<option>All Categories</option>
+<option>Food &amp; Beverage</option>
+<option>Wellness</option>
+<option>Transport</option>
+<option>Room Service</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#232f48] rounded-lg border border-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-lg">sync_alt</span>
+<select class="bg-transparent border-none text-sm text-white focus:ring-0 cursor-pointer pr-8">
+<option>Status: All</option>
+<option>Active</option>
+<option>Inactive</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#232f48] rounded-lg border border-slate-700">
+<span class="material-symbols-outlined text-slate-400 text-lg">calendar_month</span>
+<span class="text-sm text-white">Date Created</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">keyboard_arrow_down</span>
+</div>
+<div class="h-6 w-px bg-slate-700 mx-2"></div>
+<button class="text-slate-400 hover:text-white text-sm font-medium transition-colors">Clear all filters</button>
+<div class="ml-auto flex items-center gap-2">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Sort by:</p>
+<select class="bg-transparent border-none text-sm text-white focus:ring-0 cursor-pointer pr-8">
+<option>Newest First</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Name A-Z</option>
+</select>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-[#1a2233] rounded-xl border border-[#232f48] overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#232f48]/50 border-b border-[#232f48]">
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Extra Name</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Base Price</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Availability</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#232f48]">
+<!-- Row 1 -->
+<tr class="hover:bg-[#232f48]/30 transition-colors cursor-pointer group bg-[#135bec]/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center border border-slate-700" data-alt="Gourmet breakfast spread preview image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFrLlVpG1wN5PCWBuY1yYK9IqevhasuhSxCM6QAHXXe7XAiOQno8ovMZq8t6bxBhiI8j_dZRFCmWGOsZHKXkSGbWi1cALhimDt5Md2x08ur_cKbvV1K1GMGQ5QfA4pHXtK7fZsjukIRvZhts7NtdUW37MUv28df-1eJYoSVveAGy8vTm47SFcapSpLbRaTalZEJJtEoc9mwZ-F1GSMHg58zsplMxccMNqHk8d4LFFjb0XSaeE4NseW0ZUGtjdmRGr6nJ5B2piOSCk");'></div>
+<div>
+<p class="text-white font-semibold">Daily Breakfast Buffet</p>
+<p class="text-slate-400 text-xs">Fresh pastries, hot items, fruit</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20">Food &amp; Beverage</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-white font-medium">$25.00</p>
+<p class="text-slate-400 text-xs">Per Person</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-300">
+<span class="material-symbols-outlined text-sm">domain</span>
+<span class="text-sm">All Properties</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<div class="relative inline-flex items-center cursor-pointer">
+<div class="w-10 h-5 bg-primary rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform transform translate-x-5"></div>
+</div>
+<span class="ml-2 text-xs font-medium text-primary">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white transition-colors">chevron_right</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#232f48]/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center border border-slate-700" data-alt="Spa treatment massage stones preview image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4rBCNEZyvtRkIOs7OB7T8JVhrzaemTvgNzmzyxIegkFicyHTkWinDv6TK4rXKWApITouSRtLs2AsNFRseEwik-I_TZnwgdRr7kRiFcPaWVsETFg-6V_cV3UX8mXeVrs6q3YlEmOYZcAea2b6PkUwxEf7rdsbmoqZQV4_I-7zR1Mjm2_7bbxLcWhFZTxZ4a7QWvanQKOeerID7qH0yXF85jsYTA22Be1TQz6a42LZYXO8zqSH_yrJrb5__nEbq25nVr5h9M9WK-SM");'></div>
+<div>
+<p class="text-white font-semibold">60-min Deep Tissue Massage</p>
+<p class="text-slate-400 text-xs">Therapeutic full-body session</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Wellness</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-white font-medium">$120.00</p>
+<p class="text-slate-400 text-xs">Per Person</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-sm">4 Properties</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<div class="relative inline-flex items-center cursor-pointer">
+<div class="w-10 h-5 bg-primary rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform transform translate-x-5"></div>
+</div>
+<span class="ml-2 text-xs font-medium text-primary">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white transition-colors">chevron_right</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#232f48]/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center border border-slate-700" data-alt="Luxury sedan for airport transfer preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADoGIR028dxkJwChvPT6P2ovA1dz-FnA6Fr4Vimb1ya_ZTm5CUt5Ck9iBEpgXa7xWXPA7gZF4lS0qAEKDoD8O8P9oqtfG7wH7b2tccK0olavt_h2mqyTTFpjqV9j3vlo5pyuWBng-UV7u3C-UHmI9ft4hqufqmBsgxXQBPKI9oTVFctg446fdBl5n_yetSDvOZXim7YfRVuaUXftKrtu3oryL8hF2Pg2711MdQoirgfsp3eslydseiztulakILIX7mRVMtVRWbtSw");'></div>
+<div>
+<p class="text-white font-semibold">Airport Luxury Sedan</p>
+<p class="text-slate-400 text-xs">Private chauffeur transfer</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">Transport</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-white font-medium">$85.00</p>
+<p class="text-slate-400 text-xs">Per Stay</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-300">
+<span class="material-symbols-outlined text-sm">domain</span>
+<span class="text-sm">All Properties</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<div class="relative inline-flex items-center cursor-pointer">
+<div class="w-10 h-5 bg-slate-600 rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform"></div>
+</div>
+<span class="ml-2 text-xs font-medium text-slate-500">Inactive</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white transition-colors">chevron_right</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#232f48]/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center border border-slate-700" data-alt="Luxury bedroom for late check-out preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkELzSAa6EOCG-xG-58orRqD13KxvqjelIomxREnyrmSWN_bvuuIUpK1GY57qY_qr1jNImtHkNlXO2PPu0GdX3R5xJ1f6fmyxoLdAVfClWGiPV9vX3jw2O_TcwARjo3lPohAvEH0H2YynZy58CGxPRbgRSaVmmDD9ckSkrARZbEsYKiwMlvgeavJhtJXSmi04ybSmHUvimsFCWROYik0VAvF_ItzYmyUS4tLf_wh5HEb_T5FViZ___g91i6LSPVQpf7jtCIKffqv4");'></div>
+<div>
+<p class="text-white font-semibold">Late Check-out (4 PM)</p>
+<p class="text-slate-400 text-xs">Extend your stay by 5 hours</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">Room Service</span>
+</td>
+<td class="px-6 py-4">
+<p class="text-white font-medium">$40.00</p>
+<p class="text-slate-400 text-xs">Per Night</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-slate-300">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-sm">12 Properties</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center">
+<div class="relative inline-flex items-center cursor-pointer">
+<div class="w-10 h-5 bg-primary rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform transform translate-x-5"></div>
+</div>
+<span class="ml-2 text-xs font-medium text-primary">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-white transition-colors">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 border-t border-[#232f48] flex items-center justify-between">
+<p class="text-sm text-slate-400">Showing <span class="text-white font-medium">4</span> of <span class="text-white font-medium">28</span> extras</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-[#232f48] rounded border border-slate-700 text-sm disabled:opacity-50">Previous</button>
+<button class="px-3 py-1 bg-primary text-white rounded text-sm">1</button>
+<button class="px-3 py-1 bg-[#232f48] rounded border border-slate-700 text-sm hover:bg-slate-700">2</button>
+<button class="px-3 py-1 bg-[#232f48] rounded border border-slate-700 text-sm hover:bg-slate-700">3</button>
+<button class="px-3 py-1 bg-[#232f48] rounded border border-slate-700 text-sm hover:bg-slate-700">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuration Side Panel -->
+<aside class="w-[420px] bg-[#1a2233] border-l border-[#232f48] h-[calc(100vh-64px)] flex flex-col shadow-2xl z-40">
+<!-- Panel Header -->
+<div class="p-6 border-b border-[#232f48] flex items-center justify-between">
+<div>
+<h2 class="text-lg font-bold text-white">Edit Extra</h2>
+<p class="text-slate-400 text-xs">ID: EXT-90234-BUFFET</p>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Panel Scrollable Content -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
+<!-- General Info Group -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">info</span>
+<h3 class="text-sm font-bold uppercase tracking-wider">General Information</h3>
+</div>
+<div class="space-y-3">
+<div class="space-y-1">
+<label class="text-xs font-medium text-slate-400 uppercase">Extra Name</label>
+<input class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5" type="text" value="Daily Breakfast Buffet"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-medium text-slate-400 uppercase">Description</label>
+<textarea class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5" rows="3">Fresh artisanal pastries, seasonal tropical fruits, made-to-order omelets, and premium coffee selection.</textarea>
+</div>
+</div>
+</div>
+<!-- Asset Selection Group -->
+<div class="space-y-4 pt-4 border-t border-[#232f48]">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">image</span>
+<h3 class="text-sm font-bold uppercase tracking-wider">Visual Assets</h3>
+</div>
+<div class="relative group cursor-pointer border-2 border-dashed border-[#232f48] hover:border-primary/50 rounded-xl transition-all p-4 flex flex-col items-center gap-2 text-center bg-[#111722]/50">
+<div class="size-20 bg-cover bg-center rounded-lg shadow-lg mb-2" data-alt="High resolution breakfast buffet asset thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4HftS-jgrkiKpzaS_fJuS0n-MmGBS8bTa42TIz9q629K_xH2TLTL464bRfJqBq73Och_lKZB-UqmEbK7fxI_OZvk7zeGVyPtx25y1ERcDCb-OFhISPphl6Htq6S_k9zscQubiI4BWFm3YfyUBAoZUVdq5XbDOBBceS5_SLnF5vzZ03SpvGUh5_phIE6wnKvY-mPPqJcuC5kV-bmtyPm86gZ1oBX5QtaeWCXsZX58IrO6PFhMm5sMATn-FTZAatvZQubnynuKh4Ic");'></div>
+<p class="text-xs font-medium text-white">Click to change cover image</p>
+<p class="text-[10px] text-slate-500">Recommended: 1200x800px JPG/PNG</p>
+</div>
+</div>
+<!-- Pricing Group -->
+<div class="space-y-4 pt-4 border-t border-[#232f48]">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">payments</span>
+<h3 class="text-sm font-bold uppercase tracking-wider">Pricing &amp; Tax</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="text-xs font-medium text-slate-400 uppercase">Base Price</label>
+<div class="relative">
+<span class="absolute left-3 top-2 text-slate-400 text-sm">$</span>
+<input class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5 pl-7" type="number" value="25.00"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-medium text-slate-400 uppercase">Tax Class</label>
+<select class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5">
+<option>Standard VAT (12%)</option>
+<option>Exempt</option>
+<option>Reduced (5%)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Inventory Group -->
+<div class="space-y-4 pt-4 border-t border-[#232f48]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">warehouse</span>
+<h3 class="text-sm font-bold uppercase tracking-wider">Inventory &amp; Limits</h3>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="space-y-3">
+<div class="space-y-1">
+<label class="text-xs font-medium text-slate-400 uppercase">Max Capacity Per Slot</label>
+<input class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5" type="number" value="150"/>
+<p class="text-[10px] text-slate-500 mt-1">Leave empty for unlimited bookings.</p>
+</div>
+</div>
+</div>
+<!-- Terms Group -->
+<div class="space-y-4 pt-4 border-t border-[#232f48]">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">gavel</span>
+<h3 class="text-sm font-bold uppercase tracking-wider">Terms &amp; Conditions</h3>
+</div>
+<div class="space-y-1">
+<textarea class="w-full bg-[#111722] border-[#232f48] rounded-lg text-white focus:ring-primary focus:border-primary text-sm p-2.5" rows="3">Cancellation policy: 24h notice required. Children under 5 years eat for free when accompanied by an adult.</textarea>
+</div>
+</div>
+</div>
+<!-- Panel Footer Actions -->
+<div class="p-6 border-t border-[#232f48] bg-[#1a2233] flex gap-3">
+<button class="flex-1 px-4 py-2.5 border border-[#232f48] hover:bg-[#232f48] text-white text-sm font-bold rounded-lg transition-colors">
+                    Discard
+                </button>
+<button class="flex-1 px-4 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-bold rounded-lg transition-colors shadow-lg shadow-primary/20">
+                    Save Changes
+                </button>
+</div>
+</aside>
+</main>
+<!-- Global Tooltip/Toast (Visual only) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 animate-bounce shadow-emerald-500/20 hidden">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-bold text-sm">Changes saved successfully</span>
+</div>
+</div>
+</body></html>

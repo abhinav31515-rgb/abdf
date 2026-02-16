@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rates &amp; Inventory Calendar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2234", // Slightly lighter than bg-dark for cards/tables
+                        "surface-hover": "#242f46",
+                        "border-dark": "#2d3648",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for the table */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a2234;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d3648;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3f4b63;
+        }
+        
+        /* Sticky columns hack */
+        .sticky-col-header {
+            position: sticky;
+            left: 0;
+            z-index: 20;
+        }
+        .sticky-col {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-display min-h-screen flex flex-col">
+<!-- Top Navigation / Header -->
+<header class="bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-border-dark px-6 py-4 flex items-center justify-between sticky top-0 z-30">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary text-3xl">calendar_month</span>
+<h1 class="text-xl font-bold tracking-tight">Rates &amp; Inventory</h1>
+</div>
+<!-- Filters -->
+<div class="hidden md:flex items-center gap-3 ml-4 pl-4 border-l border-gray-200 dark:border-border-dark">
+<div class="relative group">
+<button class="flex items-center gap-2 text-sm bg-gray-100 dark:bg-background-dark px-3 py-2 rounded border border-transparent hover:border-gray-300 dark:hover:border-border-dark transition-colors">
+<span class="material-icons text-gray-500 text-sm">apartment</span>
+<span>Marriott - Downtown</span>
+<span class="material-icons text-gray-400 text-sm">expand_more</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 text-sm bg-gray-100 dark:bg-background-dark px-3 py-2 rounded border border-transparent hover:border-gray-300 dark:hover:border-border-dark transition-colors">
+<span class="material-icons text-gray-500 text-sm">tune</span>
+<span>All Room Types</span>
+<span class="material-icons text-gray-400 text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Date Navigation -->
+<div class="flex items-center bg-gray-100 dark:bg-background-dark rounded p-1 border border-gray-200 dark:border-border-dark">
+<button class="p-1 hover:bg-white dark:hover:bg-surface-hover rounded text-gray-500 dark:text-gray-400">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<div class="px-4 text-sm font-medium flex items-center gap-2 cursor-pointer">
+<span class="material-icons text-gray-500 text-sm">date_range</span>
+                    Oct 01 - Oct 14, 2023
+                </div>
+<button class="p-1 hover:bg-white dark:hover:bg-surface-hover rounded text-gray-500 dark:text-gray-400">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+<!-- Primary Action -->
+<button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded shadow-lg shadow-blue-500/20 font-medium text-sm flex items-center gap-2 transition-all">
+<span class="material-icons text-sm">edit_calendar</span>
+                Bulk Update
+            </button>
+<div class="w-px h-8 bg-gray-200 dark:border-border-dark mx-2"></div>
+<button class="p-2 text-gray-500 hover:text-white transition-colors">
+<span class="material-icons">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center text-xs font-bold text-white cursor-pointer" title="User Profile">
+                JD
+            </div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col p-4 md:p-6 overflow-hidden h-[calc(100vh-80px)]">
+<!-- Legend & View Controls -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+<!-- View Toggles -->
+<div class="flex bg-gray-200 dark:bg-surface-dark p-1 rounded-lg">
+<button class="px-4 py-1.5 rounded text-sm font-medium bg-white dark:bg-primary text-primary dark:text-white shadow-sm transition-all">Combined</button>
+<button class="px-4 py-1.5 rounded text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all">Rates Only</button>
+<button class="px-4 py-1.5 rounded text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all">Availability</button>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+<span>Sold Out</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span>High Demand (&lt;5)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-xs text-gray-400">block</span>
+<span>Closed to Arrival</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-xs text-blue-400">timelapse</span>
+<span>Min Stay</span>
+</div>
+</div>
+</div>
+<!-- Calendar Grid Container -->
+<div class="flex-1 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark overflow-hidden flex flex-col shadow-xl">
+<div class="overflow-auto custom-scrollbar flex-1 relative">
+<table class="w-full border-collapse text-left">
+<thead class="sticky top-0 z-20 bg-gray-50 dark:bg-surface-dark shadow-sm">
+<tr>
+<!-- Sticky Room Type Header -->
+<th class="p-4 sticky-col-header bg-gray-50 dark:bg-surface-dark min-w-[240px] border-b border-r border-gray-200 dark:border-border-dark shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Room Type</span>
+</th>
+<!-- Date Headers -->
+<!-- Loop for 14 days -->
+<!-- Day 1 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Sun</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">01</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 2 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors relative">
+<div class="text-[10px] uppercase text-primary font-bold mb-1">Mon</div>
+<div class="text-lg font-bold text-primary">02</div>
+<div class="text-[10px] text-primary/70">Oct</div>
+<div class="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
+</th>
+<!-- Day 3 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Tue</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">03</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 4 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Wed</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">04</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 5 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Thu</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">05</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 6 (Weekend) -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-100 dark:bg-gray-800/30 text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Fri</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">06</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 7 (Weekend) -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-100 dark:bg-gray-800/30 text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Sat</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">07</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- Day 8 -->
+<th class="min-w-[100px] border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark text-center py-2 px-1 group hover:bg-gray-100 dark:hover:bg-surface-hover cursor-pointer transition-colors">
+<div class="text-[10px] uppercase text-gray-500 dark:text-gray-400 font-semibold mb-1">Sun</div>
+<div class="text-lg font-bold text-gray-800 dark:text-white">08</div>
+<div class="text-[10px] text-gray-400">Oct</div>
+</th>
+<!-- More days placeholder ... -->
+</tr>
+</thead>
+<tbody class="text-sm">
+<!-- Row 1: Deluxe King Room -->
+<tr class="group">
+<td class="p-4 sticky-col bg-white dark:bg-surface-dark border-b border-r border-gray-200 dark:border-border-dark shadow-[4px_0_24px_rgba(0,0,0,0.2)] group-hover:bg-gray-50 dark:group-hover:bg-surface-hover transition-colors">
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Deluxe King Room</h3>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-icons text-[12px]">person</span> 2</span>
+<span>•</span>
+<span>35m²</span>
+</div>
+<div class="mt-2 text-xs font-mono text-gray-400">DLX-K-01</div>
+</div>
+</td>
+<!-- Cells for Deluxe King -->
+<!-- Oct 01 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">12 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$149</div>
+<div class="h-4"></div> <!-- Spacer -->
+</div>
+</td>
+<!-- Oct 02 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center bg-primary/10 border-primary/30 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">8 left</div>
+<div class="font-bold text-lg text-primary">$159</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-blue-400" title="Min Stay: 2 nights">timelapse</span>
+</div>
+</div>
+</td>
+<!-- Oct 03 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">3 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$189</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-blue-400" title="Min Stay: 2 nights">timelapse</span>
+</div>
+</div>
+</td>
+<!-- Oct 04 - SOLD OUT -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center bg-red-500/5 dark:bg-red-900/10 hover:bg-red-500/10 cursor-not-allowed relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center opacity-70">
+<div class="text-xs font-bold text-red-500 bg-red-500/10 px-2 py-0.5 rounded-full">0 left</div>
+<div class="font-bold text-lg text-gray-400 line-through">$189</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-red-400" title="Sold Out">block</span>
+</div>
+</div>
+</td>
+<!-- Oct 05 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">15 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$149</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 06 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">10 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$210</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 07 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">4 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$210</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 08 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">12 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$149</div>
+<div class="h-4"></div>
+</div>
+</td>
+</tr>
+<!-- Row 2: Standard Queen Room -->
+<tr class="group">
+<td class="p-4 sticky-col bg-white dark:bg-surface-dark border-b border-r border-gray-200 dark:border-border-dark shadow-[4px_0_24px_rgba(0,0,0,0.2)] group-hover:bg-gray-50 dark:group-hover:bg-surface-hover transition-colors">
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Standard Queen Room</h3>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-icons text-[12px]">person</span> 2</span>
+<span>•</span>
+<span>28m²</span>
+</div>
+<div class="mt-2 text-xs font-mono text-gray-400">STD-Q-02</div>
+</div>
+</td>
+<!-- Oct 01 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">20 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$119</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 02 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">18 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$119</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 03 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">15 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$129</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 04 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">4 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$149</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 05 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">22 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$119</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 06 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">14 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$159</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 07 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">10 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$159</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 08 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">20 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$119</div>
+<div class="h-4"></div>
+</div>
+</td>
+</tr>
+<!-- Row 3: Junior Suite -->
+<tr class="group">
+<td class="p-4 sticky-col bg-white dark:bg-surface-dark border-b border-r border-gray-200 dark:border-border-dark shadow-[4px_0_24px_rgba(0,0,0,0.2)] group-hover:bg-gray-50 dark:group-hover:bg-surface-hover transition-colors">
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Junior Suite</h3>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-icons text-[12px]">person</span> 4</span>
+<span>•</span>
+<span>45m²</span>
+</div>
+<div class="mt-2 text-xs font-mono text-gray-400">JNR-ST-05</div>
+</div>
+</td>
+<!-- Oct 01 (Closed) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center bg-gray-100 dark:bg-surface-hover cursor-not-allowed relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center opacity-50">
+<div class="text-xs font-bold text-gray-500">Closed</div>
+<div class="font-bold text-lg text-gray-400">---</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-gray-500" title="Closed to Arrival">block</span>
+</div>
+</div>
+</td>
+<!-- Oct 02 (Closed) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center bg-gray-100 dark:bg-surface-hover cursor-not-allowed relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center opacity-50">
+<div class="text-xs font-bold text-gray-500">Closed</div>
+<div class="font-bold text-lg text-gray-400">---</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-gray-500" title="Closed to Arrival">block</span>
+</div>
+</div>
+</td>
+<!-- Oct 03 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">5 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$350</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 04 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">2 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$380</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 05 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">4 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$350</div>
+<div class="h-4"></div>
+</div>
+</td>
+<!-- Oct 06 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">1 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$420</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-blue-400" title="Min Stay: 3 nights">timelapse</span>
+</div>
+</div>
+</td>
+<!-- Oct 07 (Weekend) -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">1 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$420</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-blue-400" title="Min Stay: 3 nights">timelapse</span>
+</div>
+</div>
+</td>
+<!-- Oct 08 -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">5 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$350</div>
+<div class="h-4"></div>
+</div>
+</td>
+</tr>
+<!-- Row 4: Executive Suite (More empty for visual variety) -->
+<tr class="group">
+<td class="p-4 sticky-col bg-white dark:bg-surface-dark border-b border-r border-gray-200 dark:border-border-dark shadow-[4px_0_24px_rgba(0,0,0,0.2)] group-hover:bg-gray-50 dark:group-hover:bg-surface-hover transition-colors">
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-gray-900 dark:text-white">Executive Suite</h3>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-icons text-[12px]">person</span> 6</span>
+<span>•</span>
+<span>60m²</span>
+</div>
+<div class="mt-2 text-xs font-mono text-gray-400">EXE-S-01</div>
+</div>
+</td>
+<!-- Populate with loop for visual consistency but dummy data -->
+<!-- Using simple repetitive structure for the rest of cells in this row to show density -->
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">3 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$550</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">3 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$550</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">1 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$580</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center bg-red-500/5 dark:bg-red-900/10 hover:bg-red-500/10 cursor-not-allowed relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center opacity-70">
+<div class="text-xs font-bold text-red-500 bg-red-500/10 px-2 py-0.5 rounded-full">0 left</div>
+<div class="font-bold text-lg text-gray-400 line-through">$580</div>
+<div class="flex gap-1 justify-center">
+<span class="material-icons text-[14px] text-red-400" title="Sold Out">block</span>
+</div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">2 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$550</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">2 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$620</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-gray-800/30 p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">2 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$620</div>
+<div class="h-4"></div>
+</div>
+</td>
+<td class="border-b border-r border-gray-200 dark:border-border-dark p-2 text-center hover:bg-primary/5 cursor-pointer relative transition-colors h-24">
+<div class="flex flex-col h-full justify-between items-center">
+<div class="text-xs font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">3 left</div>
+<div class="font-bold text-lg text-gray-900 dark:text-white">$550</div>
+<div class="h-4"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Stats -->
+<div class="border-t border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark px-6 py-3 flex justify-between items-center text-sm">
+<span class="text-gray-500 dark:text-gray-400">Showing 4 room types across 8 visible days</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-white dark:bg-background-dark border border-gray-200 dark:border-border-dark rounded text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-hover">Previous 14 Days</button>
+<button class="px-3 py-1 bg-white dark:bg-background-dark border border-gray-200 dark:border-border-dark rounded text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-surface-hover">Next 14 Days</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

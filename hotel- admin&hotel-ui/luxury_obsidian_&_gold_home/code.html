@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Obsidian &amp; Gold Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f2b90d",
+              "background-light": "#f8f8f5",
+              "background-dark": "#221e10",
+              "obsidian": "#1a160d",
+            },
+            fontFamily: {
+              "display": ["Noto Serif", "serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            backgroundImage: {
+                'gold-gradient': 'linear-gradient(135deg, #f2b90d 0%, #d4a008 100%)',
+                'obsidian-gradient': 'linear-gradient(to bottom, #221e10, #1a160d)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal sections */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-display selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- 10. Sticky 'Reservations Atelier' bar (Placed at top for UX, or sticky bottom) -->
+<!-- Let's make it a sticky header that stays on top -->
+<nav class="fixed top-0 w-full z-50 bg-background-dark/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center">
+<span class="text-2xl font-bold tracking-widest text-primary uppercase">Obsidian</span>
+</div>
+<div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Suites</a>
+<a class="hover:text-primary transition-colors" href="#">Dining</a>
+<a class="hover:text-primary transition-colors" href="#">Wellness</a>
+<a class="hover:text-primary transition-colors" href="#">Events</a>
+</div>
+<button class="bg-primary text-background-dark px-6 py-2 rounded-lg font-semibold hover:bg-white transition-colors duration-300 uppercase tracking-wider text-xs">
+                    Reserve
+                </button>
+</div>
+</div>
+</nav>
+<!-- 1. Full-bleed cinematic video hero -->
+<section class="relative h-screen w-full overflow-hidden">
+<!-- Placeholder for video, using an image for now as requested no video files -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Cinematic luxury hotel lobby with gold lighting and dark marble" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAubWgvBWRdpWqCtgHKkBlb-ie3YCxq5_CPnoOytaJgj7hKg3O41yikSwBJR0Rl4ZRxQYAS4crafM5miTOv8JHdo_ntRGJZk5W4OZtNkqQvS3qKIh3_1ATOFDdgL3U04Ph73DkL5fXc-Ho36kJMeco1t27u1FWwwQCxGsT-ibDlJG2NK9kBw7jwfEYzqDYu7W7R0KBp9DtHdNjz6KjEgUyD_1ITICY40EYzYs8IInL3jYZ_Y_0AHwivPnk3vTDUG4cWlouAZfmRtJI');">
+<div class="absolute inset-0 bg-black/50"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+<p class="text-primary tracking-[0.3em] uppercase text-sm mb-4 animate-fade-in-up">Welcome to the Sanctuary</p>
+<h1 class="text-5xl md:text-7xl lg:text-8xl text-white font-light italic mb-6 leading-tight">
+                Refined <br/> <span class="not-italic font-normal">Luxury</span>
+</h1>
+<div class="w-24 h-[1px] bg-primary mb-8"></div>
+<p class="text-white/80 max-w-lg text-lg italic font-light">
+                Where obsidian shadows meet golden light. An experience curated for the few.
+            </p>
+<div class="absolute bottom-10 animate-bounce">
+<span class="material-icons text-white/50 text-4xl">keyboard_arrow_down</span>
+</div>
+</div>
+</section>
+<!-- 2. Horizontal scroll of 'Signature Suites' -->
+<section class="py-24 bg-background-dark relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex justify-between items-end">
+<div>
+<h2 class="text-4xl text-white mb-2">Signature Suites</h2>
+<p class="text-white/60 italic">Sleep within a masterpiece.</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:text-background-dark transition-all">
+<span class="material-icons">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:text-background-dark transition-all">
+<span class="material-icons">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-8 px-4 sm:px-6 lg:px-8 no-scrollbar snap-x snap-mandatory pb-8">
+<!-- Suite 1 -->
+<div class="min-w-[85vw] md:min-w-[600px] snap-center group cursor-pointer">
+<div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10"></div>
+<img alt="Luxury hotel bedroom with dark walls and gold accents" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Luxury hotel bedroom with dark walls and gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxyBXpLcckLEhlw4sPsdSKavOUhlQ8cKY7H6uM3AmX8OxMjLl9UV9IhVQcgMrmepOGyaJeZkpp6_0nB5Udy5bmj8HORMDJeWsJU4RjRvZHL6CQl8kKENlwK6qPP4w2AfbKM8pxiNlbDxcYLUh9ZWa7-inOEaeCasc7buZa6Qnjl9qrqGTcVc61-lysJjbMG3CC7RTv6VsYx7dtR4b457hj91sDb0-rP4XBWKicJH4U7uaIC2HU5bwjxD8bbRUzkos7IXypOB1HPFs"/>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<span class="bg-primary text-background-dark text-xs px-3 py-1 rounded-sm uppercase tracking-wider font-bold">The Presidential</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl text-white mb-1 group-hover:text-primary transition-colors">The Obsidian Penthouse</h3>
+<p class="text-white/50 text-sm">380 sqm • Panoramic City View • Private Butler</p>
+</div>
+<p class="text-primary text-xl italic">$2,400<span class="text-white/40 text-sm not-italic ml-1">/ night</span></p>
+</div>
+</div>
+<!-- Suite 2 -->
+<div class="min-w-[85vw] md:min-w-[600px] snap-center group cursor-pointer">
+<div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10"></div>
+<img alt="Opulent living room suite with velvet furniture" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Opulent living room suite with velvet furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjzSovK7xIUIOvAmLw-UsCmy4Lgf_VPLqXz68rZQc29yyyc9Mb-2ii696g0ctsL0DsXJJbtYqEUMIsYSpGuXFJkDAC9UDWNLn4hOYNJet3JXN01pc2Z-cBFqSGNeaNEHDvoDUO5Tzwnpl_MbtyZzEEpjDBaru0pTvQDvqBZdVEI9HAxrfCgI8rKoqKXP_EDHJTG7fV9HERO3Fsnjkpv-g1LoM5Og-Jb3D3v-yEQutWLNyOcR9wQhcEBtltDhW48UYwJDOH5a3YFjI"/>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<span class="bg-white/10 backdrop-blur-md text-white border border-white/20 text-xs px-3 py-1 rounded-sm uppercase tracking-wider font-bold">Signature</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl text-white mb-1 group-hover:text-primary transition-colors">Royal Gold Suite</h3>
+<p class="text-white/50 text-sm">220 sqm • Ocean Facing • Gold Leaf Ceilings</p>
+</div>
+<p class="text-primary text-xl italic">$1,800<span class="text-white/40 text-sm not-italic ml-1">/ night</span></p>
+</div>
+</div>
+<!-- Suite 3 -->
+<div class="min-w-[85vw] md:min-w-[600px] snap-center group cursor-pointer">
+<div class="relative aspect-[16/9] overflow-hidden rounded-xl mb-6">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all z-10"></div>
+<img alt="Modern dark minimalist hotel room interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Modern dark minimalist hotel room interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzGoDyCrFdahbfvVqzvWDPUxQxTGduoYHTWNUrk1wvjbdWk4KlNjd972GYMgilapvO_d2WGjTfJ1XUb-EHLIYli0uyPiH6GJ752Te4yKq-K0QfyJimvbMSVgehDtLcp_CV37cxKKHler8tHaHUCyKMdnf_Y83EIRt-xwTbqc6C0kk9jKDZSrXv0-vIB2cF7tEnPydOioLBxVBAMmGpYDiMxZQch7-l75aS98bCXfVXduuFfI6EqqOkrHEmS19QZrH6o7k8ZJC2xUs"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl text-white mb-1 group-hover:text-primary transition-colors">Terrace Loft</h3>
+<p class="text-white/50 text-sm">150 sqm • Private Rooftop • Plunge Pool</p>
+</div>
+<p class="text-primary text-xl italic">$1,200<span class="text-white/40 text-sm not-italic ml-1">/ night</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. 'The Artisanal Kitchen' dining section with masonry grid -->
+<section class="py-24 bg-obsidian text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<span class="text-primary uppercase tracking-widest text-xs font-bold">Gastronomy</span>
+<h2 class="text-4xl md:text-5xl mt-4 mb-6">The Artisanal Kitchen</h2>
+<p class="text-white/60 max-w-2xl mx-auto font-light">
+                    Culinary excellence curated by Michelin-starred chefs. From local delicacies to international fusion, every dish is a work of art.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
+<!-- Large item -->
+<div class="lg:col-span-2 lg:row-span-2 relative rounded-lg overflow-hidden group">
+<img alt="Gourmet fine dining dish with artistic plating" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Gourmet fine dining dish with artistic plating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Ym8Zfa7lxvVtEvQVTWFZIJ1pk0AHp1H2PuXvveQ-U-VNl4pnhfajVEcyM43-_jMC4lmneK_YdwakA_HMtJc6iiyo6H49byOqel1o00bZrrLZenCP6EhjVoNH3OLxiTjgnzDUDwtNyqru2vjamKq2lNPzu0AZnG7ctPU0zYNP3PhpPHtpIsAGhb-dWULpEpCLwDF6s9pVR8MTVts1Y_k6W2wX1RfP181COaMUP3JylOu3DvRySSRVZOUuql1fQNIvo3UnUr8vYus"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="text-2xl italic text-primary">Le Doré</h3>
+<p class="text-sm text-white/80">Fine French Dining</p>
+</div>
+</div>
+<!-- Tall item -->
+<div class="lg:row-span-2 relative rounded-lg overflow-hidden group">
+<img alt="Bartender pouring a golden cocktail in dark bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Bartender pouring a golden cocktail in dark bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD870gFsNCdfrGnp-_Y1u2PHXsDjktBLO3i4xkkxmQGHaJqs5Q9VSsF-P5Qzkm7hVJXJXI2rKFX7CplBKp3nn8PnHSTswUuSllPYMJR0Isq_5eAgqCw06abTAFSb4BPtOGPqYcwJg6gAD1F50xabc-BzfyT1-yV3I2JsM3sohjIOapZbWhTJTP6uUxy2oHLnZr7NZPn3EctokeyvWmOPEngF4QwNL5DB12XWXD7kkjkm6fMdyAebGH0EKqTenn9js0ZFI_CfjJTe8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="text-2xl italic text-primary">The Onyx Bar</h3>
+<p class="text-sm text-white/80">Signature Cocktails</p>
+</div>
+</div>
+<!-- Standard item -->
+<div class="relative rounded-lg overflow-hidden group">
+<img alt="Chef plating food with precision" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Chef plating food with precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNw7GIKEXgu6ZCwbqWZN0uw_5rxPacIGvFVSOAK62RF7A6ylod0WPIstHDa9q34ehYsdRENcVgN7HPixXbyVlkfPbLkMy93iCKUd9HRLANCcGxubbGkLAw4ULcVDnYWcoJxBFpARta3kmth9EZfgJHLb2vAGFCM6MmN1mlFEWcv4A5o2ljjoYKzTwN-oz0_7gX0b_YKJELFYKfIFFlOkyxjoNcyP3ksQ23PssgEQw52Yh9QdUt3TFahGzzJGQIKFfDr_pDxEHAIy8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-lg italic text-white group-hover:text-primary transition-colors">Chef's Table</h3>
+</div>
+</div>
+<!-- Standard item -->
+<div class="relative rounded-lg overflow-hidden group">
+<img alt="Dark moody restaurant interior with candle light" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Dark moody restaurant interior with candle light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMetQS7t6t5dXypqdUk7TJ8jStYRAfSGu_t4qVorSfXH5LicoBTV4mhT_7Tkw86y0rub9c05PLatuDeVG2RZ2F5cJa7P7gN1UR81sQ6T-tkrdziieGDDJ75sWsQ4ELtNuv5dEiAjk8n4fEB-jCRorAIZzqsQDpT16CLOmfv9U5TpO5RetamM-a0HG0UuCYdIKT5nQEI72HPqtTmPYboeGujNiqPdDRvr52bUwcN8C_NQXR8fLuYr3wAMfEyV80rd0IOHDgb8Gszng"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-lg italic text-white group-hover:text-primary transition-colors">Private Dining</h3>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a class="inline-block border-b border-primary text-primary pb-1 hover:text-white hover:border-white transition-all uppercase tracking-widest text-sm" href="#">View All Menus</a>
+</div>
+</div>
+</section>
+<!-- 4. 'Wellness & Spa' with ethereal parallax backgrounds -->
+<section class="relative py-32 flex items-center justify-center parallax-bg" data-alt="Serene spa pool with dark stone and ambient light" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAc6lDlNv2Qb8fAA_yvPMltQP4bi3OVpx24R8P3KaAELo-QhlNf6EMmg7NyVlpQH4wMZyMgVziQdjV6qoSqb2jFuZz6l59SttJYHvIA8IcOD4hi_H31iaARwamkElQpUvNe9MWF7Gu-c-d1QRQ8v65SUWIakYqUwmxdTawDBXSturXuwMwiyNaKTmjhdok5Zu4N0slbH2a5uLRZ89u5egM4vtJdRbeaX3ZEQTEyz2Smw1tQ66pWPs6YTLGwD3iOIRP08R2QieAhoGs');">
+<div class="absolute inset-0 bg-black/60"></div>
+<div class="relative z-10 container mx-auto px-4 text-center">
+<span class="text-white/80 uppercase tracking-[0.4em] text-sm">Rejuvenate</span>
+<h2 class="text-5xl md:text-7xl text-white font-light italic my-6">Serenity Spa &amp; Wellness</h2>
+<p class="text-white/80 max-w-xl mx-auto text-lg mb-10 font-light leading-relaxed">
+                Disconnect from the world and reconnect with yourself. Our award-winning treatments blend ancient traditions with modern science.
+            </p>
+<button class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-3 rounded-lg hover:bg-primary hover:border-primary hover:text-background-dark transition-all uppercase tracking-wider text-sm">
+                Explore Treatments
+            </button>
+</div>
+</section>
+<!-- 5. 'Curated Experiences' card deck -->
+<section class="py-24 bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end border-b border-white/10 pb-8">
+<div>
+<h2 class="text-4xl text-white mb-2">Curated Experiences</h2>
+<p class="text-white/50">Moments designed to linger in memory.</p>
+</div>
+<div class="mt-4 md:mt-0">
+<a class="text-primary hover:text-white transition-colors text-sm uppercase tracking-widest flex items-center gap-2" href="#">
+                        View Concierge Selection <span class="material-icons text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden cursor-pointer">
+<img alt="High fashion shopping street" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="High fashion shopping street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUCRDFjywToZgK1jT6e2XXPwmOtjFfig1pZ5KdWZlUWq81dmVEtmgwlXKcpO3oxvQGh4_IZsKoY6D8dO63Q-s1HLcwMVHf2FGWEGPZjxNC6u_s-6uILSmSab2V5d3iqIlVGgAVwXXqgsoWBvk30MquMr0BW3PPUeftX870kJH_-wexpxgYSpxRcDsa0NSksBUAj-YVRSVQmEwfvcG1rggCejvf-zxv519q8O9RQlWYRXERB9RZEoIgJRktmXmQFMYd1VXL52G-qCo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transition-all duration-300 transform group-hover:-translate-y-2">
+<span class="text-primary text-xs uppercase tracking-widest mb-2 block">Exclusive</span>
+<h3 class="text-2xl text-white font-light italic mb-2">Private Shopping</h3>
+<p class="text-white/60 text-sm h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 transition-all duration-300">
+                            After-hours access to the city's most exclusive boutiques with a personal stylist.
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden cursor-pointer mt-0 md:-mt-8">
+<img alt="Luxury yacht on dark water at sunset" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Luxury yacht on dark water at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCapSjWXP3pnsT6qCDAjvUrYySe1aqlXT8GXVX5Ma3wHhE-TLfkU6UF2dd5YYj3H3BMpHmg-dFMYWx0RoJJEQAt7uB86-CQeyk8jyHPfiD80UR-cE_dKEoVdOiSl8HbijCrpaX3ZrqmLWQf1afaZ0iLcbQMiRK4LlekwVUe5JX3beAB2wVQ4i9y9gXlLv8_2kJtySk9hOltK0i-huab7qRVt96Rs_dgPydK0EVc97CuH1R-qaYvI_ow6edF0P_5O_ic6csL5KNcolQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transition-all duration-300 transform group-hover:-translate-y-2">
+<span class="text-primary text-xs uppercase tracking-widest mb-2 block">Adventure</span>
+<h3 class="text-2xl text-white font-light italic mb-2">Sunset Yacht</h3>
+<p class="text-white/60 text-sm h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 transition-all duration-300">
+                            Champagne and canapés aboard our private 60ft yacht as the sun sets.
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative h-[400px] rounded-xl overflow-hidden cursor-pointer">
+<img alt="Inside a museum with classical art" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Inside a museum with classical art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3cF34x_EqQw8Ya3fEkDOBG7lPB-_5mVsYJIkYAuoAomUQBIBIEDW-uLnqo2uqabNFRfbB48Z7y-W2xJo3w2wCyr0CmuDnkDq_qFfiiObQ76D0Uqs06DlNXrzBwxmFwnIHaeBbDBL0HYvqc_fhlUJutjLVf7se3XEbJycICuBHPEI_nyG8SlThVdF6SoaWmVR-1mR1OJRlaN4y1FnD4iX4pQ5yyxQKa-9CMG5NAgGGiBgMbXADm2xZUEXVK4yh144hk0_TBwJVs34"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transition-all duration-300 transform group-hover:-translate-y-2">
+<span class="text-primary text-xs uppercase tracking-widest mb-2 block">Culture</span>
+<h3 class="text-2xl text-white font-light italic mb-2">Art After Dark</h3>
+<p class="text-white/60 text-sm h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 transition-all duration-300">
+                            Private guided tours of the National Gallery with our resident art historian.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. 'Guest Tributes' slider -->
+<section class="py-20 bg-obsidian border-y border-white/5">
+<div class="max-w-4xl mx-auto px-4 text-center">
+<span class="material-icons text-primary text-5xl mb-6 opacity-80">format_quote</span>
+<div class="relative">
+<!-- Simple fade slider effect using absolute positioning could be done with JS, for CSS only we show one main testimonial -->
+<blockquote class="text-2xl md:text-3xl text-white font-light leading-relaxed italic mb-8">
+                    "An oasis of impeccable taste. The attention to detail in the Obsidian Suite is unlike anything I've experienced in Tokyo, New York, or Paris."
+                </blockquote>
+<cite class="not-italic">
+<span class="block text-primary uppercase tracking-widest text-sm font-bold">Victoria St. Clair</span>
+<span class="block text-white/40 text-xs mt-1">Editor in Chief, Vogue Traveller</span>
+</cite>
+</div>
+<div class="flex justify-center gap-2 mt-10">
+<div class="w-12 h-1 bg-primary rounded-full"></div>
+<div class="w-2 h-1 bg-white/20 rounded-full"></div>
+<div class="w-2 h-1 bg-white/20 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- 7. 'Heritage & Legacy' storytelling block with sepia imagery -->
+<section class="py-24 bg-background-light dark:bg-[#2a2515]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 relative">
+<div class="absolute top-4 left-4 w-full h-full border border-primary/30 rounded-lg"></div>
+<img alt="Vintage architectural drawing and old fountain pen" class="relative z-10 w-full rounded-lg shadow-2xl sepia-[.3] grayscale-[.2]" data-alt="Vintage architectural drawing and old fountain pen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAYR23PP08SHV6SHvqBG_Hm4OQvt9wsEnd-UX7cIaaZsOgVp7wm36_fVBszYpE0smg2jwdinGEIQqvcGB4G1hFoiGZ0BaUFaGF6CGKiz_Yc6ABN8jJxKnwN3ReB7019giEid6tTEODaUTdaPr24T-h6hv7vVRboHK7bRURjYnmD4ScnpPUyVIl541ZdGoJ831BvnxSQ30Fu57Fy1vMVWBfq0ey37J0DIoSkUWoli8T6bL1K0Y-4pe3MQzAn9k2fo7JmziA7RWnY0g"/>
+<div class="absolute -bottom-6 -right-6 bg-background-dark p-6 rounded-lg border border-primary/20 z-20 hidden md:block">
+<p class="text-primary text-4xl font-display italic">1924</p>
+<p class="text-white/60 text-xs uppercase tracking-widest">Established</p>
+</div>
+</div>
+<div class="lg:w-1/2">
+<span class="text-primary uppercase tracking-widest text-xs font-bold mb-2 block">Our Heritage</span>
+<h2 class="text-4xl md:text-5xl text-gray-900 dark:text-white mb-6 font-display">A Legacy of <br/><span class="italic text-primary">Golden Era</span> Opulence</h2>
+<p class="text-gray-600 dark:text-gray-300 mb-6 font-light leading-relaxed">
+                        Founded by the visionary architect Arthur Golding, our hotel stands as a testament to the roaring twenties. Restored meticulously to preserve the original obsidian marble floors and gold-leaf archways, we invite you to step back into a time of unbridled elegance.
+                    </p>
+<p class="text-gray-600 dark:text-gray-300 mb-8 font-light leading-relaxed">
+                        Every corner whispers stories of the dignitaries, artists, and royals who have walked these halls for over a century.
+                    </p>
+<a class="text-gray-900 dark:text-white font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors" href="#">Read Our History</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Interactive map with 'Local Secrets' -->
+<section class="h-[600px] relative bg-gray-900">
+<!-- Static Map Image Background acting as interactive map -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-60" data-alt="Stylized dark map of the city" data-location="City Center Map" style="background-image: url('https://placeholder.pics/svg/300');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/90 via-background-dark/40 to-transparent"></div>
+<div class="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+<div class="max-w-md bg-background-dark/90 backdrop-blur-md p-8 rounded-xl border border-white/10 shadow-2xl">
+<span class="text-primary uppercase tracking-widest text-xs font-bold mb-2 block">Location</span>
+<h2 class="text-3xl text-white mb-6">In the Heart of <br/><span class="italic text-primary">Everything</span></h2>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-icons text-primary mt-1">location_on</span>
+<div>
+<h4 class="text-white font-bold">The Royal Opera House</h4>
+<p class="text-white/50 text-sm">5 min walk</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-primary mt-1">location_on</span>
+<div>
+<h4 class="text-white font-bold">Obsidian High Street</h4>
+<p class="text-white/50 text-sm">Direct Access</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-primary mt-1">location_on</span>
+<div>
+<h4 class="text-white font-bold">Central Park Gardens</h4>
+<p class="text-white/50 text-sm">10 min private car</p>
+</div>
+</li>
+</ul>
+<button class="mt-8 w-full border border-white/30 text-white py-3 rounded hover:bg-white hover:text-background-dark transition-all">
+                    Open in Maps
+                </button>
+</div>
+<!-- Fake Map Pins scattered -->
+<div class="absolute top-1/3 right-1/4 group cursor-pointer">
+<span class="material-icons text-primary text-4xl drop-shadow-lg animate-bounce">place</span>
+<div class="bg-white text-background-dark px-3 py-1 rounded shadow-lg absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-xs font-bold">Hidden Jazz Club</div>
+</div>
+<div class="absolute bottom-1/3 right-1/3 group cursor-pointer">
+<span class="material-icons text-primary text-4xl drop-shadow-lg animate-bounce" style="animation-delay: 0.5s;">place</span>
+</div>
+</div>
+</section>
+<!-- 9. 'Bespoke Events' planning section -->
+<section class="py-24 bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-obsidian rounded-2xl overflow-hidden border border-white/5 flex flex-col md:flex-row shadow-2xl">
+<div class="md:w-1/2 p-12 lg:p-16 flex flex-col justify-center">
+<span class="text-primary uppercase tracking-widest text-xs font-bold mb-2">Celebrations</span>
+<h2 class="text-4xl text-white mb-6">Bespoke Events</h2>
+<p class="text-white/60 mb-8 font-light leading-relaxed">
+                        From intimate weddings in our Gold Salon to grand corporate galas in the Obsidian Ballroom. Our dedicated planners weave magic into every detail.
+                    </p>
+<form class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<input class="bg-background-dark border border-white/10 text-white px-4 py-3 rounded focus:outline-none focus:border-primary transition-colors" placeholder="Name" type="text"/>
+<input class="bg-background-dark border border-white/10 text-white px-4 py-3 rounded focus:outline-none focus:border-primary transition-colors" placeholder="Email" type="email"/>
+</div>
+<select class="w-full bg-background-dark border border-white/10 text-white/60 px-4 py-3 rounded focus:outline-none focus:border-primary transition-colors">
+<option>Wedding Inquiry</option>
+<option>Corporate Event</option>
+<option>Private Party</option>
+</select>
+<button class="bg-primary text-background-dark w-full py-3 rounded font-bold uppercase tracking-wider hover:bg-white transition-colors" type="button">
+                            Plan Your Event
+                        </button>
+</form>
+</div>
+<div class="md:w-1/2 relative min-h-[400px]">
+<img alt="Elegant table setting for a wedding" class="absolute inset-0 w-full h-full object-cover" data-alt="Elegant table setting for a wedding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoXJqBxkhLQlFfp0VMoauoxjucxEU1mP_--y85tfi1cFEjktTJXeJxSFdb5TBP4qNpbC1ULtoGvdKG9cGcZnb9uHvMEe1RfttGQBw_hMthYnVaQZy7ywnUSGH-JM4jt6wqfZ6xAQLv7u_zmOWMkvDZDOwNRrfYUgFODg1SlgVu8zaW5gh2wvNyLbckJRODsgWSu29eJi7rB_ui6T4mAGj52fszcKLDPguIre8IMpZfqLGzrzcEGGrtpWpMjpBIXwXLfHQ3ig3GLk8"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 11. Instagram social wall -->
+<section class="py-20 bg-background-dark border-t border-white/5">
+<div class="container mx-auto px-4 text-center mb-12">
+<h3 class="text-white text-xl font-light tracking-wider">#ObsidianMoments</h3>
+<p class="text-primary text-sm mt-2">Follow us @ObsidianHotel</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1 px-1">
+<!-- IG Post 1 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer">
+<img alt="Poolside view" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Poolside view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKB6Wz3kT9BsePyVz2ND9c4eQylKnrLh9qDTO32VuzxkJda2TZElbb4_PCgC8EbikGorWXx5WNQRqY1WoOUGM6ufq26ConMC7GXawlFuTYgm8NJf2a6npP69rjqv1OXhn59MVr6Z8IY9ZhuNKTWdi8qDlIbYcyERlueMeU2Aj83HO_w9Zqpx2MneW-Zzt9BXkWdF8AYHJz2_KtsiiUGg94Qp_MaUW5OYb5UKs7a151JWHFwDxcpUt9SkrjPi6MyUkuxLpNe8DuuBA"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+<!-- IG Post 2 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer">
+<img alt="Champagne glasses" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Champagne glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxgVKX8yNOkyuZ_E1fat8oT0eDTmxx5ayYCaNMSk6F-VKpUABrdZoqSAJMjT0q4kdOMyEb4O4rZ1-Gnp3Xsx9-0OaTHWQjI4rcib5Qj0UAjS3K6Ho89A-fpQiuynuj7mgSRkrKfVYMHXpuwDHI7-Il6SFXZACMWghJKAw0re-Fvr95XFpNqK_1zFZOUMYrQYo4cJRCC5MOin5zFa5yZRXGZeVz-9f09ZDZO3IhP7-ZoP7JyXB_E4QFFMnQlA56IHb4Ml26vPQL4ss"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+<!-- IG Post 3 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer">
+<img alt="Lobby details" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Lobby details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTPN1GpadoYFRnFDpknuvEY0cqIhLT-NDRRY11jt1JDxRbQDu6QjAzyAonBgCoQuCzhi6P_WhauQMgig-SQv3tANUZ0Ju3oksa2t75pc7gy73yLA6raNr42ftVXyFx1WLTOMpWo01zD0HmINplBvFdGtef4rzWTtaxQkM0P4u2iRHMIxuAeKsyEErPb0ajBGb5HzM0vfEbjV2Q0rsuWr-1VDCIucEvFgDHJd_T00kvgCd-piuJrpimEXzKyifeZfKxo8R3kxRuDw"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+<!-- IG Post 4 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer hidden md:block">
+<img alt="Relaxing spa treatment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Relaxing spa treatment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ests02PpN8f_x-jDfcSV2uDkqmoN4j7NSuVVLU-fwPOw3jPMuo_kyFe2lpWpTQQFRzYVe55szJcuSgd57nxbOLCf1VURmmpEnYqdH9UQSA3mHgJhLkzkOeNLSOxSliuT_rkVs4Dco3NfBYnQZxxQPFtgTI8yKfRaQ47dAg9AXa_OE1Z6sUJaXWradAZVCmkqI-5tIGzn7xnCqZHOMyaxGUAiWaI4ATnplUO9WXhbtDgHsLgGpEcXzV8aTLznh5m2A6cqURFniS0"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+<!-- IG Post 5 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer hidden lg:block">
+<img alt="Gourmet dessert" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Gourmet dessert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRy_hUsZMwJQ0xt5DcOH4qTpOD0ViSjQeVnXWMJnkCIqhvnJFZ09vxT4kCVhuVUZS-ovIO35PzfomgdOqC5rK7hVxOa9fidzXwf9vhElAiSRqCEwWoqjVyKkEsGXChx-MIGoOaUTsL7688CRnv5DgH8YuoAIxtPR58tu0AmEBGfWaA0lPCgNa_3A6O1uAsBAIiA4-0g-5gRZhM3P9ha5hjbgnq3JEDSWmErwyLoX9_N7XzihMHxKBPZt8u5qZDJgH3vwSgbPJpQZQ"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+<!-- IG Post 6 -->
+<div class="aspect-square relative group overflow-hidden cursor-pointer hidden lg:block">
+<img alt="City view from suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="City view from suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiRC6_RkZ1_sg7UsQzx7yxiakRmpPfFzIImOZgliAZUCy6h1uPp6wEgCLdFz0FufULOjdSeV1nAedUx2yZuZ-IHO4ybDkTKwoef3225GoCDj9bhBi_W2ozvhQ2VrtiEam24IiX30eCVmQr9N_tXZFlVHD3usDDADVkF5oDe4P1xgQDMJpXPH45Y_so5txAqOCkpPBx7cLea23UycihH-wpQ7neW4-dXs0cJlIOvEnWxDlYZFCfo3gmIF7IVHUrGCG3OvdsETNRQQo"/>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white">favorite</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 12. Elaborate multi-column gold-on-black footer -->
+<footer class="bg-obsidian pt-24 pb-12 border-t border-primary/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<!-- Brand Col -->
+<div>
+<span class="text-3xl font-bold tracking-widest text-primary uppercase mb-6 block">Obsidian</span>
+<p class="text-white/60 mb-6 font-light">
+                        1280 Fifth Avenue<br/>
+                        New York, NY 10029
+                    </p>
+<p class="text-white/60 font-light">
+                        +1 (212) 555-0199<br/>
+                        concierge@obsidian.com
+                    </p>
+</div>
+<!-- Links Col 1 -->
+<div>
+<h4 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Explore</h4>
+<ul class="space-y-4 text-white/60 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">Rooms &amp; Suites</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Dining &amp; Bars</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Spa &amp; Wellness</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Experiences</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+</ul>
+</div>
+<!-- Links Col 2 -->
+<div>
+<h4 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">Company</h4>
+<ul class="space-y-4 text-white/60 font-light">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press Room</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+<!-- Newsletter -->
+<div>
+<h4 class="text-white font-bold uppercase tracking-wider mb-6 text-sm">The Journal</h4>
+<p class="text-white/50 text-sm mb-4 font-light">Subscribe to receive exclusive offers and news from the world of Obsidian.</p>
+<div class="flex flex-col gap-3">
+<input class="bg-background-dark border border-white/10 text-white px-4 py-2 rounded focus:outline-none focus:border-primary" placeholder="Email Address" type="email"/>
+<button class="bg-primary/20 border border-primary text-primary px-4 py-2 rounded hover:bg-primary hover:text-background-dark transition-colors uppercase text-xs font-bold tracking-widest">
+                            Subscribe
+                        </button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex gap-4">
+<!-- Awards placeholder -->
+<div class="h-10 w-10 rounded-full border border-white/20 flex items-center justify-center text-white/40">
+<span class="material-icons text-sm">star</span>
+</div>
+<div class="h-10 w-10 rounded-full border border-white/20 flex items-center justify-center text-white/40">
+<span class="material-icons text-sm">verified</span>
+</div>
+<div class="h-10 w-10 rounded-full border border-white/20 flex items-center justify-center text-white/40">
+<span class="material-icons text-sm">emoji_events</span>
+</div>
+</div>
+<div class="text-white/30 text-xs font-light text-center md:text-right">
+                    © 2023 Obsidian Hotels &amp; Resorts. All Rights Reserved.<br/>
+                    Privacy Policy | Terms of Service
+                </div>
+</div>
+</div>
+</footer>
+<!-- Fixed Reservation Bar (Bottom on Mobile) -->
+<div class="fixed bottom-0 w-full bg-background-dark border-t border-primary/20 p-4 md:hidden z-50">
+<button class="w-full bg-primary text-background-dark py-3 rounded font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(242,185,13,0.3)]">
+            Check Availability
+        </button>
+</div>
+</body></html>

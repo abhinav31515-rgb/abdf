@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard Home</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                        "surface-dark-lighter": "#242e42",
+                        "neutral-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #242e42;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4b66;
+        }
+        
+        .chart-gradient-primary {
+            background: linear-gradient(180deg, rgba(19, 91, 236, 0.2) 0%, rgba(19, 91, 236, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-display antialiased selection:bg-primary selection:text-white">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 flex flex-col hidden md:flex z-20">
+<!-- Logo Area -->
+<div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-icons text-white text-lg">hotel</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Hotel<span class="text-primary">Admin</span></span>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+<p class="px-3 text-xs font-semibold text-gray-500 dark:text-neutral-dark uppercase tracking-wider mb-2 mt-2">Main Menu</p>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-primary dark:text-blue-400" href="#">
+<span class="material-icons text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">apartment</span>
+                    Properties
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">article</span>
+                    Content
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">trending_up</span>
+                    SEO
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">perm_media</span>
+                    Media Library
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">rate_review</span>
+                    Reviews
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">calendar_today</span>
+                    Bookings
+                </a>
+<div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-800">
+<p class="px-3 text-xs font-semibold text-gray-500 dark:text-neutral-dark uppercase tracking-wider mb-2">System</p>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter hover:text-gray-900 dark:hover:text-white group transition-colors" href="#">
+<span class="material-icons text-[20px] text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-primary transition-colors">settings</span>
+                        Settings
+                    </a>
+</div>
+</nav>
+<!-- User Profile Snippet Sidebar Footer -->
+<div class="p-4 border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-3">
+<img alt="Admin Profile" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700" data-alt="Admin user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgF43Jg0g6Cpv8VNOLpsr3fVc39YroxGitYbC1wl2oznxv1T7oBaK6IvY5DWoBxBTSYWzyurnLYNYo4yX3mVKyqbdg9J7VgRVLz0TFp_XgoZr_OQA71KLdbblYHQ0Hq0W--_W5S_KBFcTDrCZ21iF9UizdTjQC4dWDfxTDyQ5qxq1TUUU9qHA32aVk07UfYB2xWp8yolKWi5WaQu7z18HmeS0Q0x4y9gKqQ9MIqVSaGf78yNj3JAagWQ1-t6NZHn33ns_58Ppnycg"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-gray-900 dark:text-white truncate">Tom Cook</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 truncate">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Bar -->
+<header class="h-16 bg-white dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 z-10 shrink-0">
+<!-- Left: Mobile Menu & Context Selector -->
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter rounded-lg">
+<span class="material-icons">menu</span>
+</button>
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-sm text-gray-500 dark:text-neutral-dark">Context:</span>
+<div class="relative">
+<select class="appearance-none bg-gray-50 dark:bg-surface-dark-lighter border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 py-1.5 pl-3 pr-8 rounded-lg text-sm font-medium focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary">
+<option>Global (All Brands)</option>
+<option>Grand Hotel Collection</option>
+<option>Seaside Resorts Ltd</option>
+<option>Urban Stays Inc</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500 dark:text-gray-400">
+<span class="material-icons text-sm">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Center: Global Search -->
+<div class="flex-1 max-w-lg mx-4 hidden md:block">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 dark:text-gray-500">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg leading-5 bg-gray-50 dark:bg-surface-dark-lighter text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Search properties, bookings, or guests..." type="text"/>
+</div>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-3">
+<button class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter rounded-full relative">
+<span class="material-icons">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-surface-dark"></span>
+</button>
+<button class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-surface-dark-lighter rounded-full">
+<span class="material-icons">help_outline</span>
+</button>
+<div class="h-8 w-px bg-gray-200 dark:bg-gray-700 mx-1"></div>
+<img alt="Admin Profile" class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 md:hidden" data-alt="Admin user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAN0tSL3d7CitOPOrTCAPuQEDvcYbjjai3CirLSaqzW9iN4xACGewLSjbIIvhj4ifleO_eGkBdIAfUzOsFhH44khMeOhaM1vogHNk5V4_wrQ7xfT5nTyaITTGOA_sA5fuAl17P5V3_Mu73tu4hx5RkK1w8RY55M4otwfrz2LpTA7kPkS79gPv-zjuDZAPQu34NpqjAi2xer58U4NdStN83kGSL57OCmfKs88NXm_yBFnyTy1PHP5zh5ihPIw1S7TbFptlRbTWyPxQ"/>
+</div>
+</header>
+<!-- Dashboard Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-6">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Overview</h1>
+<p class="text-sm text-gray-500 dark:text-neutral-dark mt-1">Here's what's happening across your properties today.</p>
+</div>
+<div class="flex gap-2">
+<button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-primary bg-primary/10 hover:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:ring-offset-surface-dark transition-colors">
+<span class="material-icons text-sm mr-2">download</span>
+                                Export Report
+                            </button>
+<button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-primary hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:ring-offset-surface-dark transition-colors">
+<span class="material-icons text-sm mr-2">add</span>
+                                Add Property
+                            </button>
+</div>
+</div>
+<!-- KPI Cards Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-5 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-neutral-dark">Total Bookings</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-2">1,245</h3>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-icons text-xs mr-1">arrow_upward</span> 12%
+                                </span>
+</div>
+<div class="mt-4 h-10 w-full">
+<!-- Simulated Sparkline -->
+<svg class="w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 35 L10 30 L20 32 L30 25 L40 28 L50 20 L60 25 L70 15 L80 18 L90 10 L100 5" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="opacity-10" d="M0 35 L10 30 L20 32 L30 25 L40 28 L50 20 L60 25 L70 15 L80 18 L90 10 L100 5 V 40 H 0 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-5 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-neutral-dark">Occupancy Rate</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-2">78%</h3>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-icons text-xs mr-1">arrow_upward</span> 4%
+                                </span>
+</div>
+<div class="mt-4 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 78%"></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Avg. rate $142/night</p>
+</div>
+<!-- KPI 3 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-5 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-neutral-dark">Total Revenue</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-2">$142,500</h3>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+<span class="material-icons text-xs mr-1">arrow_downward</span> 2.1%
+                                </span>
+</div>
+<div class="mt-4 h-10 w-full">
+<!-- Simulated Sparkline -->
+<svg class="w-full h-full text-red-500" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 20 L10 25 L20 22 L30 28 L40 25 L50 30 L60 28 L70 35 L80 32 L90 38 L100 40" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path class="opacity-10" d="M0 20 L10 25 L20 22 L30 28 L40 25 L50 30 L60 28 L70 35 L80 32 L90 38 L100 40 V 40 H 0 Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-5 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-neutral-dark">Sync Health</p>
+<h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-2">98.5%</h3>
+</div>
+<div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
+<span class="material-icons text-green-600 dark:text-green-400 text-sm">check_circle</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-medium text-green-600 dark:text-green-400">Systems Operational</span>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Last sync: 2 mins ago</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Trend Charts (Occupies 2/3) -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Chart Card -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Revenue &amp; Occupancy Trends</h3>
+<p class="text-sm text-gray-500 dark:text-neutral-dark">Comparative view over the last 30 days</p>
+</div>
+<div class="flex bg-gray-100 dark:bg-surface-dark-lighter rounded-lg p-1">
+<button class="px-3 py-1.5 text-xs font-medium rounded-md bg-white dark:bg-background-dark text-gray-900 dark:text-white shadow-sm">30 Days</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Quarter</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Year</button>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="relative h-64 w-full">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between text-xs text-gray-400 dark:text-gray-600">
+<div class="border-b border-dashed border-gray-200 dark:border-gray-700 w-full h-0"></div>
+<div class="border-b border-dashed border-gray-200 dark:border-gray-700 w-full h-0"></div>
+<div class="border-b border-dashed border-gray-200 dark:border-gray-700 w-full h-0"></div>
+<div class="border-b border-dashed border-gray-200 dark:border-gray-700 w-full h-0"></div>
+<div class="border-b border-gray-200 dark:border-gray-700 w-full h-0"></div>
+</div>
+<!-- Bars (Revenue) -->
+<div class="absolute inset-0 flex items-end justify-between px-2 pt-4 pb-0 z-0 gap-2">
+<!-- Generating several bars for effect -->
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[40%] hover:bg-primary/30 transition-all cursor-pointer group relative">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-50">$45k</div>
+</div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[60%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[55%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[70%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[85%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[65%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[50%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[75%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[90%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[80%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[60%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-sm h-[70%] hover:bg-primary/30 transition-all cursor-pointer"></div>
+</div>
+<!-- Line (Occupancy) -->
+<svg class="absolute inset-0 w-full h-full z-10 pointer-events-none" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 60 C 10 50, 20 40, 30 55 C 40 70, 50 30, 60 40 C 70 50, 80 20, 90 25 L 100 20" fill="none" stroke="#135bec" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points on line -->
+<circle class="fill-white dark:fill-surface-dark stroke-primary stroke-2" cx="30" cy="55" r="3"></circle>
+<circle class="fill-white dark:fill-surface-dark stroke-primary stroke-2" cx="60" cy="40" r="3"></circle>
+<circle class="fill-white dark:fill-surface-dark stroke-primary stroke-2" cx="90" cy="25" r="3"></circle>
+</svg>
+</div>
+<div class="mt-4 flex items-center justify-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs text-gray-500 dark:text-gray-400">Occupancy %</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary/30"></span>
+<span class="text-xs text-gray-500 dark:text-gray-400">Revenue Volume</span>
+</div>
+</div>
+</div>
+<!-- Task Queue -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Content Task Queue</h3>
+<span class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2.5 py-0.5 rounded-full text-xs font-medium">5 Pending</span>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+<thead class="bg-gray-50 dark:bg-surface-dark-lighter">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Item</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Property</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Type</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-surface-dark divide-y divide-gray-200 dark:divide-gray-800">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">New 'Standard Suite' description</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Grand Hotel Central</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">Content</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<a class="text-primary hover:text-blue-600 dark:hover:text-blue-400" href="#">Review</a>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Summer Promo Images</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Seaside Resort</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">Media</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<a class="text-primary hover:text-blue-600 dark:hover:text-blue-400" href="#">Approve</a>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Update Amenities List</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Urban Stays Inc</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">Content</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<a class="text-primary hover:text-blue-600 dark:hover:text-blue-400" href="#">Review</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Operational Alerts (Occupies 1/3) -->
+<div class="space-y-6">
+<!-- Alert Panel -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm flex flex-col h-full">
+<div class="px-6 py-5 border-b border-gray-200 dark:border-gray-800">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-icons text-amber-500">warning</span>
+                                        Operational Alerts
+                                    </h3>
+<p class="text-sm text-gray-500 dark:text-neutral-dark mt-1">Items requiring immediate attention</p>
+</div>
+<div class="p-4 space-y-4 flex-1 overflow-y-auto" style="max-height: 500px;">
+<!-- Alert Item: Critical -->
+<div class="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-lg p-4">
+<div class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-red-600 dark:text-red-400 text-sm mt-0.5">error_outline</span>
+</div>
+<div class="ml-3 w-full">
+<h4 class="text-sm font-medium text-red-800 dark:text-red-300">Sync Error: Property ID 402</h4>
+<p class="text-xs text-red-700 dark:text-red-400 mt-1">Expedia API Timeout. Inventory not updated for 2 hours.</p>
+<div class="mt-3">
+<button class="text-xs font-semibold text-red-800 dark:text-red-300 bg-red-100 dark:bg-red-900/40 px-2 py-1 rounded hover:bg-red-200 transition-colors">Retry Sync</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Alert Item: Warning -->
+<div class="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 rounded-lg p-4">
+<div class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-amber-600 dark:text-amber-400 text-sm mt-0.5">star_border</span>
+</div>
+<div class="ml-3 w-full">
+<h4 class="text-sm font-medium text-amber-800 dark:text-amber-300">Unanswered Review</h4>
+<p class="text-xs text-amber-700 dark:text-amber-400 mt-1">1-star rating at The Grand Hotel. Guest complained about cleanliness.</p>
+<div class="mt-3">
+<button class="text-xs font-semibold text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 px-2 py-1 rounded hover:bg-amber-200 transition-colors">Draft Reply</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Alert Item: Warning -->
+<div class="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 rounded-lg p-4">
+<div class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-amber-600 dark:text-amber-400 text-sm mt-0.5">image_not_supported</span>
+</div>
+<div class="ml-3 w-full">
+<h4 class="text-sm font-medium text-amber-800 dark:text-amber-300">Missing Images</h4>
+<p class="text-xs text-amber-700 dark:text-amber-400 mt-1">3 Room types at Seaside Resort are missing high-res images.</p>
+<div class="mt-3">
+<button class="text-xs font-semibold text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/40 px-2 py-1 rounded hover:bg-amber-200 transition-colors">Upload</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Alert Item: Info -->
+<div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-lg p-4">
+<div class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-blue-600 dark:text-blue-400 text-sm mt-0.5">info_outline</span>
+</div>
+<div class="ml-3 w-full">
+<h4 class="text-sm font-medium text-blue-800 dark:text-blue-300">System Maintenance</h4>
+<p class="text-xs text-blue-700 dark:text-blue-400 mt-1">Scheduled maintenance in 2 days (Sunday 2:00 AM EST).</p>
+<div class="mt-3">
+<button class="text-xs font-semibold text-blue-800 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-2 py-1 rounded hover:bg-blue-200 transition-colors">View Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

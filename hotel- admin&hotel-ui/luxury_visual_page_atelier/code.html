@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxury Visual Page Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                    "primary": "#f2b90d",
+                    "background-light": "#f8f8f5",
+                    "background-dark": "#221e10",
+                    "surface-dark": "#2d281a",
+                    "surface-darker": "#1a170d",
+                },
+                fontFamily: {
+                    "display": ["Noto Serif", "serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                boxShadow: {
+                    'glow': '0 0 15px rgba(242, 185, 13, 0.15)',
+                }
+            },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a170d; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666; 
+        }
+        .gold-border-hover:hover {
+            box-shadow: 0 0 0 1px #f2b90d;
+        }
+        .canvas-area {
+            background-image: 
+                linear-gradient(45deg, #2d281a 25%, transparent 25%), 
+                linear-gradient(-45deg, #2d281a 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #2d281a 75%), 
+                linear-gradient(-45deg, transparent 75%, #2d281a 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display h-screen overflow-hidden flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-surface-darker border-b border-primary/20 flex items-center justify-between px-6 z-20 shrink-0">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-background-dark font-bold">L</div>
+<nav class="flex items-center text-sm gap-2 text-gray-400">
+<span class="hover:text-primary cursor-pointer transition-colors">Dashboard</span>
+<span class="material-icons text-base">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Properties</span>
+<span class="material-icons text-base">chevron_right</span>
+<span class="text-white font-medium">The Grand Azure • Landing Page</span>
+</nav>
+</div>
+<div class="flex items-center bg-surface-dark rounded-lg p-1 border border-primary/10">
+<button aria-label="Desktop View" class="p-2 text-primary hover:bg-primary/10 rounded transition-colors">
+<span class="material-icons text-xl">desktop_mac</span>
+</button>
+<button aria-label="Tablet View" class="p-2 text-gray-400 hover:text-white hover:bg-primary/10 rounded transition-colors">
+<span class="material-icons text-xl">tablet_mac</span>
+</button>
+<button aria-label="Mobile View" class="p-2 text-gray-400 hover:text-white hover:bg-primary/10 rounded transition-colors">
+<span class="material-icons text-xl">smartphone</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs text-gray-400 uppercase tracking-widest">Auto-saved</span>
+<div class="h-8 w-8 rounded-full bg-gradient-to-br from-primary to-orange-600 border border-primary/50 overflow-hidden" data-alt="User profile avatar gradient">
+<!-- User Avatar Placeholder -->
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden">
+<!-- LEFT SIDEBAR: Component Collection -->
+<aside class="w-80 bg-surface-darker border-r border-primary/10 flex flex-col z-10 shrink-0">
+<div class="p-5 border-b border-primary/10">
+<h2 class="text-lg text-primary font-medium mb-1">Curated Elements</h2>
+<p class="text-xs text-gray-500 italic">Drag to assemble your masterpiece</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Category: Structural -->
+<div>
+<h3 class="text-xs uppercase tracking-widest text-gray-400 mb-3 ml-1 font-semibold">Signatures</h3>
+<div class="space-y-3">
+<!-- Component Card -->
+<div class="group bg-surface-dark border border-white/5 rounded-lg p-3 hover:border-primary/50 transition-all cursor-grab active:cursor-grabbing shadow-lg">
+<div class="h-20 bg-gray-800 rounded mb-3 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Hotel lobby hero section thumbnail" style="background-image: linear-gradient(to right, #000, transparent), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJF8itt3bek89nZArdVxsrioIBNu2ShIcKSYVkZO7Z0w8ZMlcNeShc3I1BWyBCYRgn8KQvsN7ZyPIriYglYtOPmk-L62SvBxNcSzsig7Rv7E5tAExu5TJ6gDewMamxrqs-1uS2-2PQa1YapSMKKBMoMqfpESzTzq_UbExiXIfmesplb4Ii60ybI-GMu2JyVvoIaulFG5PuukRY3GOHtMhyqhBcm7tQB7gV7bQesA65rJdUBKmwS3jI1Ux4TZz3BhDGsgJmI68I2kU');"></div>
+<div class="absolute bottom-2 left-2 text-[8px] text-white">HERO TITLE</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-200">Cinematic Hero</span>
+<span class="material-icons text-gray-500 text-sm group-hover:text-primary">drag_indicator</span>
+</div>
+</div>
+<!-- Component Card -->
+<div class="group bg-surface-dark border border-white/5 rounded-lg p-3 hover:border-primary/50 transition-all cursor-grab active:cursor-grabbing shadow-lg">
+<div class="h-20 bg-gray-800 rounded mb-3 overflow-hidden relative flex items-center justify-center gap-1 p-2">
+<div class="h-full w-1/3 bg-gray-600 rounded-sm"></div>
+<div class="h-full w-1/3 bg-gray-600 rounded-sm"></div>
+<div class="h-full w-1/3 bg-gray-600 rounded-sm"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-200">Artisanal Gallery</span>
+<span class="material-icons text-gray-500 text-sm group-hover:text-primary">drag_indicator</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Commerce -->
+<div>
+<h3 class="text-xs uppercase tracking-widest text-gray-400 mb-3 ml-1 font-semibold">Commerce</h3>
+<div class="space-y-3">
+<!-- Component Card -->
+<div class="group bg-surface-dark border border-white/5 rounded-lg p-3 hover:border-primary/50 transition-all cursor-grab active:cursor-grabbing shadow-lg">
+<div class="h-10 bg-gray-800 rounded mb-3 overflow-hidden relative border border-primary/20 flex items-center justify-between px-2">
+<div class="w-16 h-2 bg-gray-600 rounded-full"></div>
+<div class="w-8 h-4 bg-primary rounded text-[6px] flex items-center justify-center text-black font-bold">BOOK</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-200">Bespoke Booking Bar</span>
+<span class="material-icons text-gray-500 text-sm group-hover:text-primary">drag_indicator</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Narrative -->
+<div>
+<h3 class="text-xs uppercase tracking-widest text-gray-400 mb-3 ml-1 font-semibold">Narrative</h3>
+<div class="space-y-3">
+<!-- Component Card -->
+<div class="group bg-surface-dark border border-white/5 rounded-lg p-3 hover:border-primary/50 transition-all cursor-grab active:cursor-grabbing shadow-lg">
+<div class="h-16 bg-gray-800 rounded mb-3 overflow-hidden relative flex p-2 gap-2">
+<div class="w-8 h-8 rounded-full bg-gray-600 shrink-0"></div>
+<div class="space-y-1 w-full">
+<div class="w-3/4 h-2 bg-gray-700 rounded-full"></div>
+<div class="w-1/2 h-2 bg-gray-700 rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-200">Guest Testimony</span>
+<span class="material-icons text-gray-500 text-sm group-hover:text-primary">drag_indicator</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- CENTER CANVAS: Preview Area -->
+<section class="flex-1 bg-background-dark relative flex flex-col items-center justify-center overflow-hidden canvas-area">
+<!-- Canvas Wrapper -->
+<div class="relative w-full h-full max-w-6xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl my-8 scroll-smooth scrollbar-hide">
+<!-- Simulated Web Page Content -->
+<div class="bg-background-light dark:bg-background-dark min-h-full">
+<!-- Header Simulation -->
+<nav class="absolute top-0 w-full z-10 px-12 py-6 flex justify-between items-center text-white mix-blend-difference gold-border-hover transition-shadow duration-300">
+<div class="text-2xl font-bold tracking-widest">AZURE</div>
+<div class="space-x-8 text-sm tracking-wide">
+<span>Suites</span>
+<span>Dining</span>
+<span>Wellness</span>
+<span>Events</span>
+</div>
+<div class="absolute top-2 right-2 opacity-0 hover:opacity-100 bg-primary text-black text-xs px-2 py-1 rounded">Edit Header</div>
+</nav>
+<!-- Hero Section (Editable) -->
+<div class="relative h-[80vh] w-full group cursor-pointer border-2 border-transparent hover:border-primary transition-colors duration-300">
+<!-- Edit Controls Overlay -->
+<div class="absolute top-4 right-4 z-30 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary hover:bg-yellow-400 text-background-dark p-2 rounded shadow-lg transition-colors">
+<span class="material-icons text-sm">edit</span>
+</button>
+<button class="bg-surface-dark hover:bg-gray-800 text-white p-2 rounded shadow-lg transition-colors">
+<span class="material-icons text-sm">delete</span>
+</button>
+</div>
+<!-- Hero Content -->
+<div class="absolute inset-0 bg-black/30 z-10"></div>
+<img class="w-full h-full object-cover" data-alt="Dark moody luxury hotel bedroom interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuB0ljYn2xPAHA2Y8mF3mdXlekNewu0cjEBKHaS9Ul5p-0WWmnainAqjtDGLCmMmNPc0K9E5xDU4q7VpnVwmwdOOn49pI5xegDMSB2M9w0K-_8zIbp_G9FKlcT8LWCDmaIqCR-gTGSpzEeKDUsWfzejl-pGRRUKuFwz4Z3E-CmYAdIDVM2mrt7lp7iQSaXue231c1hvrBemBqyWH7DUOkOmM_BfBsXhRKgLokNilxpMeVdYvB30kLb51w_oKe5LYb-cddydaJvijE"/>
+<div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white px-4">
+<p class="text-primary tracking-[0.3em] text-sm uppercase mb-4 animate-fade-in-up">The Royal Collection</p>
+<h1 class="text-6xl md:text-8xl font-light italic mb-8" style="font-family: 'Noto Serif', serif;">Timeless Elegance</h1>
+<button class="border border-white/50 px-8 py-3 hover:bg-primary hover:border-primary hover:text-black transition-all duration-300 uppercase tracking-widest text-xs">Explore Suites</button>
+</div>
+</div>
+<!-- Intro Section (Editable) -->
+<div class="py-24 px-8 md:px-24 text-center bg-background-dark group border-l-2 border-r-2 border-transparent hover:border-primary/50 relative">
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 bg-primary text-black text-xs px-2 py-1 rounded">Edit Text</div>
+<div class="max-w-3xl mx-auto">
+<span class="text-primary text-4xl block mb-6">❦</span>
+<p class="text-2xl md:text-3xl text-gray-200 leading-relaxed font-light">
+                                "A sanctuary crafted for the discerning traveler, where every detail whispers a story of luxury and every moment is an curated masterpiece."
+                            </p>
+<p class="mt-8 text-sm text-gray-500 uppercase tracking-widest">— The Concierge</p>
+</div>
+</div>
+<!-- Gallery Grid (Editable) -->
+<div class="grid grid-cols-1 md:grid-cols-2 group border-2 border-transparent hover:border-primary transition-colors relative">
+<div class="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 bg-primary text-black text-xs px-2 py-1 rounded">Manage Gallery</div>
+<div class="aspect-[4/3] relative">
+<img class="w-full h-full object-cover" data-alt="High end hotel pool lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc1Q4-CLG-8-XZyjofVwY1FaqdnLSRpYzMJG0gF-Z_rW0xFIhJ6iIJm18DOdG4TBAJjfO-Aw7JGyRfPNcRkHW3HrhDsRDfewCKXZNiPKhQ5KibsERD16_v0JKxe7UMYqxKH6qH6WPO0w6aL2R7DQKDtyVxfQ3e56hzTy7Qo2EzTn04LtqzogdOnDCmd6wyHXPeFe4sVcXSs1LjC5G_HBoIhJToLZQEzXPkfYuKY4fy0_PhbBOK7wnIsmfTc59T1XrJfWj07vEr81o"/>
+<div class="absolute inset-0 bg-black/20 hover:bg-transparent transition-all"></div>
+</div>
+<div class="bg-surface-dark flex items-center justify-center p-12">
+<div class="text-center">
+<h3 class="text-3xl text-primary mb-4 italic">The Azure Spa</h3>
+<p class="text-gray-400 mb-6 font-light">Rejuvenate your senses with our world-class treatments using rare botanicals.</p>
+<a class="text-white border-b border-primary/50 pb-1 hover:text-primary transition-colors" href="#">View Menu</a>
+</div>
+</div>
+</div>
+<!-- Footer Placeholder -->
+<footer class="bg-surface-darker py-16 text-center text-gray-500 text-xs border-t border-white/5">
+<p>© 2023 The Grand Azure. All Rights Reserved.</p>
+</footer>
+</div>
+</div>
+<!-- Floating Action Bar -->
+<div class="absolute bottom-8 z-40 bg-surface-darker/90 backdrop-blur-md border border-primary/20 rounded-full px-6 py-3 shadow-glow flex items-center gap-6">
+<div class="flex items-center gap-2 text-gray-400 hover:text-white cursor-pointer transition-colors border-r border-white/10 pr-6">
+<span class="material-icons text-sm">undo</span>
+<span class="text-xs uppercase tracking-wider font-semibold">Undo</span>
+</div>
+<div class="flex items-center gap-2 text-gray-400 hover:text-white cursor-pointer transition-colors border-r border-white/10 pr-6">
+<span class="material-icons text-sm">visibility</span>
+<span class="text-xs uppercase tracking-wider font-semibold">Preview</span>
+</div>
+<button class="bg-primary hover:bg-yellow-400 text-background-dark px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg transition-transform hover:scale-105 active:scale-95">
+                    Publish Live
+                </button>
+</div>
+</section>
+<!-- RIGHT SIDEBAR: Styling Atelier -->
+<aside class="w-80 bg-surface-darker border-l border-primary/10 flex flex-col z-10 shrink-0 overflow-y-auto">
+<div class="p-5 border-b border-primary/10 flex justify-between items-center">
+<h2 class="text-lg text-primary font-medium">Styling Atelier</h2>
+<span class="material-icons text-gray-500 text-sm">tune</span>
+</div>
+<!-- Typography Panel -->
+<div class="border-b border-white/5">
+<button class="w-full px-5 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+<span class="text-sm font-medium text-gray-200">Typography</span>
+<span class="material-icons text-gray-500 text-sm">expand_less</span>
+</button>
+<div class="px-5 pb-5 space-y-4">
+<div class="space-y-1">
+<label class="text-xs text-gray-500 uppercase tracking-wide">Headings</label>
+<select class="w-full bg-surface-dark border border-white/10 rounded text-gray-300 text-sm py-2 px-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Noto Serif Display</option>
+<option>Playfair Display</option>
+<option>Cormorant Garamond</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-xs text-gray-500 uppercase tracking-wide">Size Scale</label>
+<input class="w-full accent-primary h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" type="range"/>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-dark border border-white/10 py-1 rounded text-gray-400 hover:text-primary hover:border-primary/50 transition-colors font-serif italic">Italic</button>
+<button class="flex-1 bg-surface-dark border border-white/10 py-1 rounded text-gray-400 hover:text-primary hover:border-primary/50 transition-colors uppercase text-xs tracking-widest">Caps</button>
+</div>
+</div>
+</div>
+<!-- Palette Panel -->
+<div class="border-b border-white/5">
+<button class="w-full px-5 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+<span class="text-sm font-medium text-gray-200">Palette &amp; Tones</span>
+<span class="material-icons text-gray-500 text-sm">expand_more</span>
+</button>
+<!-- Hidden content for demo purposes, assume accordion logic here -->
+</div>
+<!-- Gold Leaf Effects -->
+<div class="border-b border-white/5">
+<button class="w-full px-5 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+<span class="text-sm font-medium text-gray-200">Gold Leaf Effects</span>
+<span class="material-icons text-gray-500 text-sm">expand_less</span>
+</button>
+<div class="px-5 pb-5 space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-400">Border Accent</span>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 checked:bg-primary" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-700 cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs text-gray-500 uppercase tracking-wide">Glow Intensity</label>
+<div class="flex items-center gap-3">
+<span class="text-xs text-gray-600">Soft</span>
+<input class="flex-1 accent-primary h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" type="range"/>
+<span class="text-xs text-gray-600">Radiant</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Imagery Settings -->
+<div class="border-b border-white/5">
+<button class="w-full px-5 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+<span class="text-sm font-medium text-gray-200">Immersive Imagery</span>
+<span class="material-icons text-gray-500 text-sm">expand_more</span>
+</button>
+</div>
+<!-- Selected Element Properties (Contextual) -->
+<div class="mt-auto p-5 bg-surface-dark border-t border-primary/10">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-icons text-sm">layers</span>
+<span class="text-xs font-bold uppercase tracking-widest">Active Selection</span>
+</div>
+<p class="text-sm text-white mb-2">Hero Section #01</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="text-xs bg-white/5 hover:bg-white/10 text-gray-300 py-2 rounded transition-colors">Change Image</button>
+<button class="text-xs bg-white/5 hover:bg-white/10 text-gray-300 py-2 rounded transition-colors">Reset Style</button>
+</div>
+</div>
+</aside>
+</main>
+<style>
+        /* Custom Toggle Switch CSS since Tailwind forms plugin might behave differently depending on version */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #f2b90d;
+        }
+        .toggle-checkbox {
+            right: auto;
+            left: 0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 2.5rem;
+        }
+    </style>
+</body></html>
