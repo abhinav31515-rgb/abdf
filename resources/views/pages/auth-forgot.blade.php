@@ -2,8 +2,8 @@
 @section('title', 'Forgot Password | '.$theme['brand']['property_name'])
 @section('meta_description', 'Reset account password securely via verification flow.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Forgot Password</h1><p>Reset your password with a secure email verification flow.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Forgot Password</h1><p>Reset your password with a secure email verification flow.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Password Reset</h3>

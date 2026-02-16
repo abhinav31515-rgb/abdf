@@ -14,6 +14,10 @@
             --brand-primary: {{ $theme['appearance']['primary'] }};
             --brand-secondary: {{ $theme['appearance']['secondary'] }};
             --brand-surface: {{ $theme['appearance']['surface'] }};
+            --brand-bg: {{ $theme['appearance']['background'] ?? '#f8f9fb' }};
+            --brand-text: {{ $theme['appearance']['text'] ?? '#111827' }};
+            --brand-text-muted: {{ $theme['appearance']['text_muted'] ?? '#6b7280' }};
+            --brand-border: {{ $theme['appearance']['border'] ?? '#e5e7eb' }};
             --brand-font: {{ $theme['appearance']['font_family'] ?? 'Inter, Arial, sans-serif' }};
             --brand-radius: {{ $theme['appearance']['radius'] ?? '10px' }};
             --brand-shadow: {{ $theme['appearance']['shadow'] ?? '0 12px 30px rgba(15,18,23,.12)' }};

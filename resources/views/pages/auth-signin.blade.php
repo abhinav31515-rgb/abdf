@@ -2,8 +2,8 @@
 @section('title', 'Sign In | '.$theme['brand']['property_name'])
 @section('meta_description', 'Sign in to manage bookings, profile details, and preferences.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Sign In</h1><p>Access your booking history, preferences, and loyalty benefits.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Sign In</h1><p>Access your booking history, preferences, and loyalty benefits.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Member Sign In</h3>

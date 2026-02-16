@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     <style>
         :root {
-            --admin-primary: {{ $theme['appearance']['primary'] ?? '#135bec' }};
+            --admin-primary: {{ $theme['appearance']['admin_primary'] ?? '#135bec' }};
             --admin-secondary: {{ $theme['appearance']['secondary'] ?? '#101622' }};
-            --admin-surface: {{ $theme['appearance']['surface'] ?? '#f6f6f8' }};
+            --admin-surface: {{ $theme['appearance']['background'] ?? '#f6f6f8' }};
+            --admin-border: {{ $theme['appearance']['border'] ?? '#dbe2ea' }};
+            --admin-text: {{ $theme['appearance']['text'] ?? '#111827' }};
+            --admin-text-muted: {{ $theme['appearance']['text_muted'] ?? '#64748b' }};
             --admin-font: {{ $theme['appearance']['font_family'] ?? 'Inter, Arial, sans-serif' }};
         }
     </style>

@@ -2,8 +2,8 @@
 @section('title', 'Payment | '.$theme['brand']['property_name'])
 @section('meta_description', 'Secure payment step to complete your reservation.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Payment</h1><p>Securely complete payment to confirm your reservation.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Payment</h1><p>Securely complete payment to confirm your reservation.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Card Details</h3>

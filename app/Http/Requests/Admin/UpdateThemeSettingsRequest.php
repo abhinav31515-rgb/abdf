@@ -24,6 +24,12 @@ class UpdateThemeSettingsRequest extends FormRequest
             'appearance.surface' => ['required', 'regex:/^#([A-Fa-f0-9]{6})$/'],
             'appearance.header_style' => ['required', 'string', 'max:40'],
             'appearance.hero_overlay' => ['required', 'string', 'max:40'],
+
+            'appearance.background' => ['nullable', 'regex:/^#([A-Fa-f0-9]{6})$/'],
+            'appearance.text' => ['nullable', 'regex:/^#([A-Fa-f0-9]{6})$/'],
+            'appearance.text_muted' => ['nullable', 'regex:/^#([A-Fa-f0-9]{6})$/'],
+            'appearance.border' => ['nullable', 'regex:/^#([A-Fa-f0-9]{6})$/'],
+            'appearance.admin_primary' => ['nullable', 'regex:/^#([A-Fa-f0-9]{6})$/'],
             'hero.eyebrow' => ['required', 'string', 'max:120'],
             'hero.title' => ['required', 'string', 'max:180'],
             'hero.subtitle' => ['required', 'string', 'max:400'],

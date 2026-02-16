@@ -2,8 +2,8 @@
 @section('title', 'Checkout | '.$theme['brand']['property_name'])
 @section('meta_description', 'Complete guest details and payment to confirm your reservation.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Checkout</h1><p>Final review before we issue your confirmed itinerary.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Checkout</h1><p>Final review before we issue your confirmed itinerary.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Booking Review</h3>

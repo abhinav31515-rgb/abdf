@@ -4,10 +4,10 @@
 @section('meta_description', 'Explore premium rooms and suites with city views, elegant interiors, and luxury amenities.')
 
 @section('content')
-<section class="sub-hero">
+<section class="sub-hero page-hero">
     <div class="container"><h1>Rooms & Suites</h1><p>Crafted for comfort, designed for memorable stays.</p></div>
 </section>
-<section class="section">
+<section class="section page-section">
     <div class="container cards">
         @foreach($theme['rooms'] as $room)
             <article class="offer-card">

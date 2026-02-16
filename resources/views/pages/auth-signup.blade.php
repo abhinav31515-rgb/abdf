@@ -2,8 +2,8 @@
 @section('title', 'Join | '.$theme['brand']['property_name'])
 @section('meta_description', 'Create your account to unlock member-only benefits and rates.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Create Account</h1><p>Join our membership program to personalize every stay.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Create Account</h1><p>Join our membership program to personalize every stay.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Membership Registration</h3>

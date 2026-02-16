@@ -14,7 +14,12 @@
     "hero_overlay": "dark-luxury",
     "font_family": "Inter, Arial, sans-serif",
     "radius": "10px",
-    "shadow": "0 12px 30px rgba(15,18,23,.12)"
+    "shadow": "0 12px 30px rgba(15,18,23,.12)",
+    "background": "#f8f9fb",
+    "text": "#111827",
+    "text_muted": "#6b7280",
+    "border": "#e5e7eb",
+    "admin_primary": "#135bec"
   },
   "menus": [
     {
