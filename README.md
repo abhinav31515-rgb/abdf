@@ -34,6 +34,19 @@ This scaffold is structured for **reusability across multiple hotel brands** wit
 - `PUT /admin/theme-settings/{brand}` for persisting theme settings.
 - `/admin/pages?brand=eros` (index/create/edit/delete/clone page records with lifecycle fields).
 
+
+### Admin module routes scaffolded
+- `/admin/brand-overview`
+- `/admin/brand-hierarchy`
+- `/admin/section-builder`
+- `/admin/menu-manager`
+- `/admin/seo-manager`, `/admin/seo-assistant`, `/admin/redirect-manager`
+- `/admin/media-library`, `/admin/gallery-manager`
+- `/admin/review-inbox`, `/admin/moderation-rules`, `/admin/response-center`
+- `/admin/booking-center`, `/admin/rates-inventory`, `/admin/offers-packages`
+- `/admin/ota-connectors`, `/admin/pms-connectors`, `/admin/sync-center`
+- `/admin/reports-analytics`, `/admin/users-roles`, `/admin/system-support`
+
 ### Next production steps
 1. Replace JSON storage with DB tables and revisioning.
 2. Add drag/drop page ordering and redirect manager.

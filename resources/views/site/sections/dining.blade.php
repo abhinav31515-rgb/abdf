@@ -9,6 +9,7 @@
                 <article class="offer-card dining-card">
                     <h3>{{ $restaurant['name'] }}</h3>
                     <p>{{ $restaurant['type'] }}</p>
+                    <a href="{{ route('site.dining.detail', ['slug' => Illuminate\Support\Str::slug($restaurant['name']), 'brand' => $brandKey]) }}">Discover Venue</a>
                 </article>
             @endforeach
         </div>

@@ -10,6 +10,7 @@
                     <h3>{{ $room['name'] }}</h3>
                     <p>{{ $room['size'] }} · {{ $room['view'] }}</p>
                     <strong>{{ $room['price'] }}</strong>
+                    <p><a href="{{ route('site.rooms.detail', ['slug' => Illuminate\Support\Str::slug($room['name']), 'brand' => $brandKey]) }}">View Details</a></p>
                 </article>
             @endforeach
         </div>

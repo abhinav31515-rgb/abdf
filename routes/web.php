@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminModuleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PageManagementController;
 use App\Http\Controllers\Admin\ThemeSettingsController;
@@ -66,4 +67,27 @@ Route::prefix('admin')->middleware(['auth'])->group(function (): void {
     Route::put('/pages/{id}', [PageManagementController::class, 'update'])->name('admin.pages.update');
     Route::post('/pages/{id}/clone', [PageManagementController::class, 'clone'])->name('admin.pages.clone');
     Route::delete('/pages/{id}', [PageManagementController::class, 'destroy'])->name('admin.pages.destroy');
+
+
+    Route::get('/brand-overview', [AdminModuleController::class, 'show'])->defaults('module', 'brand-overview')->name('admin.brand-overview');
+    Route::get('/brand-hierarchy', [AdminModuleController::class, 'show'])->defaults('module', 'brand-hierarchy')->name('admin.brand-hierarchy');
+    Route::get('/section-builder', [AdminModuleController::class, 'show'])->defaults('module', 'section-builder')->name('admin.section-builder');
+    Route::get('/menu-manager', [AdminModuleController::class, 'show'])->defaults('module', 'menu-manager')->name('admin.menu-manager');
+    Route::get('/seo-manager', [AdminModuleController::class, 'show'])->defaults('module', 'seo-manager')->name('admin.seo-manager');
+    Route::get('/seo-assistant', [AdminModuleController::class, 'show'])->defaults('module', 'seo-assistant')->name('admin.seo-assistant');
+    Route::get('/redirect-manager', [AdminModuleController::class, 'show'])->defaults('module', 'redirect-manager')->name('admin.redirect-manager');
+    Route::get('/media-library', [AdminModuleController::class, 'show'])->defaults('module', 'media-library')->name('admin.media-library');
+    Route::get('/gallery-manager', [AdminModuleController::class, 'show'])->defaults('module', 'gallery-manager')->name('admin.gallery-manager');
+    Route::get('/review-inbox', [AdminModuleController::class, 'show'])->defaults('module', 'review-inbox')->name('admin.review-inbox');
+    Route::get('/moderation-rules', [AdminModuleController::class, 'show'])->defaults('module', 'moderation-rules')->name('admin.moderation-rules');
+    Route::get('/response-center', [AdminModuleController::class, 'show'])->defaults('module', 'response-center')->name('admin.response-center');
+    Route::get('/booking-center', [AdminModuleController::class, 'show'])->defaults('module', 'booking-center')->name('admin.booking-center');
+    Route::get('/rates-inventory', [AdminModuleController::class, 'show'])->defaults('module', 'rates-inventory')->name('admin.rates-inventory');
+    Route::get('/offers-packages', [AdminModuleController::class, 'show'])->defaults('module', 'offers-packages')->name('admin.offers-packages');
+    Route::get('/ota-connectors', [AdminModuleController::class, 'show'])->defaults('module', 'ota-connectors')->name('admin.ota-connectors');
+    Route::get('/pms-connectors', [AdminModuleController::class, 'show'])->defaults('module', 'pms-connectors')->name('admin.pms-connectors');
+    Route::get('/sync-center', [AdminModuleController::class, 'show'])->defaults('module', 'sync-center')->name('admin.sync-center');
+    Route::get('/reports-analytics', [AdminModuleController::class, 'show'])->defaults('module', 'reports-analytics')->name('admin.reports-analytics');
+    Route::get('/users-roles', [AdminModuleController::class, 'show'])->defaults('module', 'users-roles')->name('admin.users-roles');
+    Route::get('/system-support', [AdminModuleController::class, 'show'])->defaults('module', 'system-support')->name('admin.system-support');
 });

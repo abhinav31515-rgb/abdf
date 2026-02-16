@@ -10,7 +10,7 @@
                     <span class="pill">{{ $offer['tag'] }}</span>
                     <h3>{{ $offer['title'] }}</h3>
                     <p>{{ $offer['description'] }}</p>
-                    <a href="#">View Details</a>
+                    <a href="{{ route('site.offers.detail', ['slug' => Illuminate\Support\Str::slug($offer['title']), 'brand' => $brandKey]) }}">View Details</a>
                 </article>
             @endforeach
         </div>
