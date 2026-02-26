@@ -11,41 +11,118 @@
     "secondary": "#0f1217",
     "surface": "#f5f2eb",
     "header_style": "glass-dark",
-    "hero_overlay": "dark-luxury"
+    "hero_overlay": "dark-luxury",
+    "font_family": "Inter, Arial, sans-serif",
+    "radius": "10px",
+    "shadow": "0 12px 30px rgba(15,18,23,.12)",
+    "background": "#f8f9fb",
+    "text": "#111827",
+    "text_muted": "#6b7280",
+    "border": "#e5e7eb",
+    "admin_primary": "#135bec"
   },
   "menus": [
-    {"label": "Stay", "anchor": "#stay"},
-    {"label": "Dining", "anchor": "#dining"},
-    {"label": "Offers", "anchor": "#offers"},
-    {"label": "Wellness", "anchor": "#wellness"},
-    {"label": "Gallery", "anchor": "#gallery"},
-    {"label": "Contact", "anchor": "#contact"}
+    {
+      "label": "Stay",
+      "anchor": "#stay"
+    },
+    {
+      "label": "Dining",
+      "anchor": "#dining"
+    },
+    {
+      "label": "Offers",
+      "anchor": "#offers"
+    },
+    {
+      "label": "Wellness",
+      "anchor": "#wellness"
+    },
+    {
+      "label": "Gallery",
+      "anchor": "#gallery"
+    },
+    {
+      "label": "Contact",
+      "anchor": "#contact"
+    }
   ],
   "hero": {
     "eyebrow": "Shangri-La Inspired Experience",
     "title": "Urban Luxury in the Heart of New Delhi",
     "subtitle": "An elevated recreation of the Shangri-La visual language with conversion-focused UX and premium storytelling.",
-    "primary_cta": {"label": "Explore Offers", "target": "#offers"},
-    "secondary_cta": {"label": "View Rooms", "target": "#stay"}
+    "primary_cta": {
+      "label": "Explore Offers",
+      "target": "#offers"
+    },
+    "secondary_cta": {
+      "label": "View Rooms",
+      "target": "#stay"
+    }
   },
   "rooms": [
-    {"name": "Deluxe Room", "size": "42 sqm", "view": "City view", "price": "From ₹18,000"},
-    {"name": "Horizon Club Room", "size": "52 sqm", "view": "Skyline view", "price": "From ₹24,000"},
-    {"name": "Executive Suite", "size": "76 sqm", "view": "Panoramic view", "price": "From ₹38,000"}
+    {
+      "name": "Deluxe Room",
+      "size": "42 sqm",
+      "view": "City view",
+      "price": "From ₹18,000"
+    },
+    {
+      "name": "Horizon Club Room",
+      "size": "52 sqm",
+      "view": "Skyline view",
+      "price": "From ₹24,000"
+    },
+    {
+      "name": "Executive Suite",
+      "size": "76 sqm",
+      "view": "Panoramic view",
+      "price": "From ₹38,000"
+    }
   ],
   "offers": [
-    {"title": "Signature Staycation", "description": "Luxury suites, breakfast for two, and evening high tea in a serene setting.", "tag": "Best Seller"},
-    {"title": "Wellness Escape", "description": "Daily yoga, spa therapies, and curated nutrition menus for complete balance.", "tag": "Spa"},
-    {"title": "Delhi Discovery", "description": "Private guided city tour paired with fine dining and premium airport transfers.", "tag": "City Tour"}
+    {
+      "title": "Signature Staycation",
+      "description": "Luxury suites, breakfast for two, and evening high tea in a serene setting.",
+      "tag": "Best Seller"
+    },
+    {
+      "title": "Wellness Escape",
+      "description": "Daily yoga, spa therapies, and curated nutrition menus for complete balance.",
+      "tag": "Spa"
+    },
+    {
+      "title": "Delhi Discovery",
+      "description": "Private guided city tour paired with fine dining and premium airport transfers.",
+      "tag": "City Tour"
+    }
   ],
   "dining": [
-    {"name": "Sorrento", "type": "Italian Fine Dining"},
-    {"name": "Tamra", "type": "Global Interactive Kitchen"},
-    {"name": "Grappa", "type": "Cocktail & Lounge Bar"}
+    {
+      "name": "Sorrento",
+      "type": "Italian Fine Dining"
+    },
+    {
+      "name": "Tamra",
+      "type": "Global Interactive Kitchen"
+    },
+    {
+      "name": "Grappa",
+      "type": "Cocktail & Lounge Bar"
+    }
   ],
   "features": [
-    {"title": "Airport Transfers", "description": "Luxury arrival and departure support."},
-    {"title": "Club Lounge Access", "description": "Private check-in and curated evening service."},
-    {"title": "Personalized Concierge", "description": "Experiences tailored to guest preferences."}
+    {
+      "title": "Airport Transfers",
+      "description": "Luxury arrival and departure support."
+    },
+    {
+      "title": "Club Lounge Access",
+      "description": "Private check-in and curated evening service."
+    },
+    {
+      "title": "Personalized Concierge",
+      "description": "Experiences tailored to guest preferences."
+    }
   ]
 }

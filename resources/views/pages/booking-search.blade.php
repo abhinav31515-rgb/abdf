@@ -2,8 +2,8 @@
 @section('title', 'Booking Search | '.$theme['brand']['property_name'])
 @section('meta_description', 'Start your booking by selecting dates, guests, and room preferences.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Start Your Booking</h1><p>Select travel details to view live rates and room availability.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Start Your Booking</h1><p>Select travel details to view live rates and room availability.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Stay Details</h3>

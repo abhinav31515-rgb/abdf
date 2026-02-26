@@ -31,6 +31,11 @@
             <div><label>Surface</label><input type="text" name="appearance[surface]" value="{{ old('appearance.surface', $theme['appearance']['surface']) }}"></div>
             <div><label>Header Style</label><input type="text" name="appearance[header_style]" value="{{ old('appearance.header_style', $theme['appearance']['header_style']) }}"></div>
             <div><label>Hero Overlay</label><input type="text" name="appearance[hero_overlay]" value="{{ old('appearance.hero_overlay', $theme['appearance']['hero_overlay']) }}"></div>
+            <div><label>Background</label><input type="text" name="appearance[background]" value="{{ old('appearance.background', $theme['appearance']['background'] ?? '#f8f9fb') }}"></div>
+            <div><label>Text</label><input type="text" name="appearance[text]" value="{{ old('appearance.text', $theme['appearance']['text'] ?? '#111827') }}"></div>
+            <div><label>Muted Text</label><input type="text" name="appearance[text_muted]" value="{{ old('appearance.text_muted', $theme['appearance']['text_muted'] ?? '#6b7280') }}"></div>
+            <div><label>Border</label><input type="text" name="appearance[border]" value="{{ old('appearance.border', $theme['appearance']['border'] ?? '#e5e7eb') }}"></div>
+            <div><label>Admin Primary</label><input type="text" name="appearance[admin_primary]" value="{{ old('appearance.admin_primary', $theme['appearance']['admin_primary'] ?? $theme['appearance']['primary']) }}"></div>
         </div>
     </div>
 

@@ -2,8 +2,8 @@
 @section('title', 'Sitemap | '.$theme['brand']['property_name'])
 @section('meta_description', 'Browse all website pages from a single index.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Sitemap</h1><p>A complete index of key journeys and information pages.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Sitemap</h1><p>A complete index of key journeys and information pages.</p></div></section>
+<section class="section page-section">
     <div class="container cards">
         <article class="offer-card">
             <h3>Stay</h3>

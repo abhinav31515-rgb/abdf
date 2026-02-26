@@ -1,4 +1,4 @@
-<section class="section reviews">
+<section class="section home-section reviews">
     <div class="container">
         <div class="section-head">
             <h2>Guest Reviews</h2>

@@ -1,4 +1,4 @@
-<section class="section location">
+<section class="section home-section location">
     <div class="container cards">
         <article class="offer-card">
             <h2>Prime Location</h2>

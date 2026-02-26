@@ -2,8 +2,8 @@
 @section('title', 'Guest Details | '.$theme['brand']['property_name'])
 @section('meta_description', 'Enter guest information and requests before payment.')
 @section('content')
-<section class="sub-hero"><div class="container"><h1>Guest Details</h1><p>Share traveler details and preferences for a seamless arrival.</p></div></section>
-<section class="section">
+<section class="sub-hero page-hero"><div class="container"><h1>Guest Details</h1><p>Share traveler details and preferences for a seamless arrival.</p></div></section>
+<section class="section page-section">
     <div class="container split-layout">
         <div class="offer-card">
             <h3>Primary Guest Information</h3>
